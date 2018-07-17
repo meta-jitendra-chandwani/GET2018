@@ -1,25 +1,23 @@
 import java.util.*;
 
-
-interface Promotion {
-
+interface Promotion 
+{
 	public void getMinimumPrice();
 	public void setMinimumPrice();
 	public void getFixedDiscount(double SUM);
 	public double setFixedDiscount(double SUM,int discount);
-	
-	}
+}
 
 
-class Store implements Promotion{
-    private Scanner sc=new Scanner(System.in); 
-    
-	String selected_item[]=new String[50];
-	int selected_item_index=0;
-	int selected_item_quantity[]=new int[50];
-	int selected_item_quantity_index=0;
-	
-	int Discount_percentage=0;
+class Store implements Promotion
+{
+    private Scanner sc = new Scanner(System.in); 
+    String selected_item[] = new String[50];
+	int selected_item_index = 0;
+	int selected_item_quantity[] = new int[50];
+	int selected_item_quantity_index = 0;
+	int Discount_percentage = 0;
+
 	Store(Map<String, Integer> map)
 	{
 		Option(map);		
@@ -34,62 +32,64 @@ class Store implements Promotion{
 		Glasses("GLASS40", "2018-07-15", "2018-08-15");
 
 		private String code,startDate,endDate;  
-		private PromotionEnum(String code,String startDate,String endDate){  
-		this.code=code;  
-		this.startDate=startDate;  
-		this.endDate=endDate;  
-
+		private PromotionEnum(String code,String startDate,String endDate)
+		{  
+		this.code = code;  
+		this.startDate = startDate;  
+		this.endDate = endDate;  
 		}  
-		  
+ 
 	}
 	
 
-	boolean isPromotionApplicable(){
+	boolean isPromotionApplicable()
+	{
 //		if(java.time.LocalDate.now());  
 		return true;
 	}
+	
 	void Option(Map<String, Integer> map)
 	{
 		System.out.println("\n1. Add the item\n2. Update the Cart\n3. Display Cart Item\n4. Proceed to Bill");
 		System.out.print("Enter your choice : ");
-		int choose=sc.nextInt();
+		int choose = sc.nextInt();
 		switch(choose)
 		{
-		case 1: Item_List(map);
+		case 1: itemList(map);
 				break;
-		case 2: Update_Cart(map);
+		case 2: updateCart(map);
 				break;
-		case 3: Display_item(map);
+		case 3: displayItem(map);
 				break;
-		case 4: Bill(map);
+		case 4: finalBill(map);
 				break;
 		default: System.out.print("There is no such option.");
 		}
 	}
 	
-	void Item_List(Map<String, Integer> map)
+	void itemList(Map<String, Integer> map)
 	{
 //		System.out.println("==========Here the list of Item==========");
 		System.out.print("\n\t\tItem\t\t\t\tPrice\n");
-				map.keySet().forEach(key -> System.out.println("\t\t"+key + "\t\t\t\t" + map.get(key)));
-		this.Add_to_cart(map);
+		map.keySet().forEach(key -> System.out.println("\t\t"+key + "\t\t\t\t" + map.get(key)));
+		this.addToCart(map);
 	}
 	
-	void Add_to_cart(Map<String, Integer> map)
+	void addToCart(Map<String, Integer> map)
 	{
 		System.out.print("\t\tChoose the Item to put into cart : ");
-		String item_choose=sc.next();
-		selected_item[selected_item_index]=item_choose;
+		String item_choose = sc.next();
+		selected_item[selected_item_index] = item_choose;
 		selected_item_index++;
 		System.out.print("\t\tQuantity : ");
 		int quantity = sc.nextInt();
-		selected_item_quantity[selected_item_quantity_index]=quantity;
+		selected_item_quantity[selected_item_quantity_index] = quantity;
 		selected_item_quantity_index++;
 		System.out.print("Do you want to add more item into your cart(Y/N) : ");
         char reply = sc.next().charAt(0);
-		if(reply=='Y'||reply=='y')
+		if(reply == 'Y'||reply == 'y')
 		{
-			Item_List(map);
+			itemList(map);
 		}
 		else
 		{
@@ -98,10 +98,10 @@ class Store implements Promotion{
 		}
 	}
 	
-	void Update_Cart(Map<String, Integer> map)
+	void updateCart(Map<String, Integer> map)
 	{
 //		Display_item(map);
-		if(selected_item_index==0)
+		if(selected_item_index == 0)
 		{
 			check(map);
 		}
@@ -114,14 +114,15 @@ class Store implements Promotion{
 		{
 		case 1: Remove(map);
 				break;
-		case 2: Change_quantity(map);
+		case 2: changeQuantity(map);
 				break;
 		default: System.out.print("There is no such option.");
 		}
 		}	
 	}
 	
-	void Remove(Map<String, Integer> map){
+	void Remove(Map<String, Integer> map)
+	{
 //		System.out.print("Please enter item name to update : ");
 //		String remove_item=sc.next();
 //		System.out.println(selected_item_index);
@@ -139,24 +140,24 @@ class Store implements Promotion{
 //	       }
 //		System.out.println(selected_item[0]);
 //		Display_item(map);
-		
+	
 	}
 	
-	void Change_quantity(Map<String, Integer> map)
+	void changeQuantity(Map<String, Integer> map)
 	{
 		System.out.print("Please enter item name to update : ");
-		String update_item=sc.next();
-		int index=0;
+		String update_item = sc.next();
+		int index = 0;
 		for (int i = 0; i < selected_item_index; i++)
 		{
 			if (selected_item[i] == update_item)
 			{
-				index=i;
+				index = i;
 			}
 		}
 		System.out.print("Enter Quantity : ");
-		selected_item_quantity[index]=sc.nextInt();	
-		Display_item(map);
+		selected_item_quantity[index] = sc.nextInt();	
+		displayItem(map);
 	}
 	
 	void check(Map<String, Integer> map)
@@ -164,9 +165,9 @@ class Store implements Promotion{
 		System.out.println("Sorry but there is no item in your cart to display");
 		System.out.print("Do you want to add item into your cart(Y/N) : ");
 		char reply = sc.next().charAt(0);
-		if(reply=='Y'||reply=='y')
+		if(reply == 'Y'||reply == 'y')
 		{
-			Item_List(map);
+			itemList(map);
 		}
 		else
 		{
@@ -174,18 +175,18 @@ class Store implements Promotion{
 		}
 	}
 	
-	void Display_item(Map<String, Integer> map)
+	void displayItem(Map<String, Integer> map)
 	{
-		if(selected_item_index==0)
+		if(selected_item_index == 0)
 		{
 			check(map);
 		}
 		else
 		{	
-		int i=0;
+		int i = 0;
 		System.out.println("Item\t\t\tQuantity");
-		int temp=selected_item_index;
-		while(temp>0)
+		int temp = selected_item_index;
+		while(temp > 0)
 		{
 			System.out.println(selected_item[i]+"\t\t\t"+selected_item_quantity[i]);
 			temp--;
@@ -193,9 +194,9 @@ class Store implements Promotion{
 		}
 		System.out.print("Do you want to checkout(Y/N) : ");
 		 char reply = sc.next().charAt(0);
-			if(reply=='Y'||reply=='y')
+			if(reply == 'Y'||reply == 'y')
 			{
-				Bill(map);
+				finalBill(map);
 			}
 			else
 			{
@@ -213,7 +214,7 @@ class Store implements Promotion{
 		}	
 	}
 	
-	void Bill(Map<String, Integer> map)
+	void finalBill(Map<String, Integer> map)
 	{
 		if(selected_item_index==0)
 		{
@@ -221,20 +222,20 @@ class Store implements Promotion{
 		}
 		else
 		{
-		int i=0;
-		int temp=selected_item_index;
-		double SUM=0.0;
+		int i = 0;
+		int temp = selected_item_index;
+		double SUM = 0.0;
 		System.out.println("Item\tQuantity\tPrice\tTotal");
 		while(temp>0)
 		{
-		SUM+=selected_item_quantity[i]*map.get(selected_item[i]);
+		SUM += selected_item_quantity[i] * map.get(selected_item[i]);
 		System.out.println(selected_item[i]+"\t"+ selected_item_quantity[i]+"\t\t"+ map.get(selected_item[i])+"\t"+selected_item_quantity[i]*map.get(selected_item[i]));
 		temp--;
 		i++;
 		}
 		System.out.println("Total Amount : "+SUM);
 		getFixedDiscount(SUM);
-		double amount=setFixedDiscount(SUM,Discount_percentage);
+		double amount = setFixedDiscount(SUM,Discount_percentage);
 		System.out.println("Discount % : "+Discount_percentage);
 		System.out.println("Total Amount after avail Discount: "+amount);
 		}
@@ -255,13 +256,13 @@ class Store implements Promotion{
 	@Override
 	public void getFixedDiscount(double SUM) 
 	{
-		if((1000<SUM)&&(SUM<5000))
+		if((1000 < SUM)&&(SUM < 5000))
 		{
-			Discount_percentage=5;
+			Discount_percentage = 5;
 		}
-		else if(SUM>=5000)
+		else if(SUM >= 5000)
 		{
-			Discount_percentage=10;
+			Discount_percentage = 10;
 		}
 				
 	}
@@ -269,13 +270,15 @@ class Store implements Promotion{
 	@Override
 	public double setFixedDiscount(double SUM,int discount) 
 	{
-		SUM=SUM*(100-discount)/100;
-//		System.out.print(SUM1);
-		return SUM;
+		double sum = SUM;
+		int Discount = discount;
+		sum = sum * (100 - Discount) / 100;
+		return sum;
 	}
 }
 
-public class Cart {
+public class Cart 
+{
 	public static void main(String []args)
 	{
 		Map<String, Integer>  map = new HashMap<String, Integer>();
@@ -284,6 +287,6 @@ public class Cart {
 		    map.put("Shirt",1150);
 		    map.put("Mobile",4500);
 		    map.put("Glasses",520);
-	    Store store=new Store(map);
+		 new Store(map);
 	 }
 }
