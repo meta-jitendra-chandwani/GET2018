@@ -32,29 +32,26 @@ class Store implements Promotion {
     }
 
     enum PromotionEnum {
-        T15,
-        Start_2018_07_15,
-        End_2018_08_15;
-        //		 RED, GREEN, BLUE;
-        //		Shoe("SHOE5", "2018-07-15", "2018-08-15"),
-        //		Shirt("SHIRT10", "2018-07-15", "2018-08-15"),
-        //		Mobile("MOB5", "2018-07-15", "2018-08-15"),
-        //		Glasses("GLASS40", "2018-07-15", "2018-08-15");
+        
+           		Shoe("SHOE5", "2018-07-15", "2018-08-15"),
+        		Shirt("SHIRT10", "2018-07-15", "2018-08-15"),
+        		Mobile("MOB5", "2018-07-15", "2018-08-15"),
+        		Glasses("GLASS40", "2018-07-15", "2018-08-15");
 
-        //		private String code,startDate,endDate;  
-        //		private PromotionEnum(String code,String startDate,String endDate)
-        //		{  
-        //		this.code = code;  
-        //		this.startDate = startDate;  
-        //		this.endDate = endDate;  
-        //		}  
+        		private String code,startDate,endDate;  
+        		private PromotionEnum(String code,String startDate,String endDate)
+        		{  
+        		this.code = code;  
+        		this.startDate = startDate;  
+        		this.endDate = endDate;  
+        		}  
     }
 
 
     @Override
     public boolean isPromotionApplicable() throws ParseException {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        System.out.print(PromotionEnum.Start_2018_07_15);
+//      PromotionEnum promotionEnum=PromotionEnum.Shoe;
         Date date1 = sdf.parse("2009-12-31");
         Date date2 = sdf.parse("2010-01-31");
 
