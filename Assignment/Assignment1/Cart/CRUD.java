@@ -8,19 +8,19 @@ public class CRUD {
     List < Integer > selected_item_quantity;
     Store cart;
     Product product = new Product();
-    HashMap < String, Integer > people;
+    HashMap < String, Integer > Product;
 
-    void someMethod() {
-        people = product.getPeopleMap();
-        product.setProduct(people);
-        cart = new Store(people);
+    void getProductDetails() {
+        Product = product.getPeopleMap();
+        product.setProduct(Product);
+        cart = new Store(Product);
 
         selected_item = cart.getselected_item();
         selected_item_quantity = cart.getselected_item_quantity();
 
     }
 
-    void Option() {
+    void Option() throws Exception {
         System.out
             .println("\n1. Add the item\n2. Update the Cart\n3. Display Cart Item\n4. Proceed to Bill");
         System.out.print("Enter your choice : ");
@@ -28,29 +28,29 @@ public class CRUD {
 
         switch (choose) {
             case 1:
-                itemList(people);
+                itemList(Product);
                 break;
             case 2:
-                updateCart(people);
+                updateCart(Product);
                 break;
             case 3:
-                displayItem(people);
+                displayItem(Product);
                 break;
             case 4:
-                cart.finalBill(people);
+                cart.finalBill(Product);
                 break;
             default:
                 System.out.print("There is no such option.");
         }
     }
 
-    void itemList(HashMap < String, Integer > map) {
+    void itemList(HashMap < String, Integer > map) throws Exception { //Display Item List
         System.out.print("\n\t\tItem\t\t\t\tPrice\n");
         map.keySet().forEach(key -> System.out.println("\t\t" + key + "\t\t\t\t" + map.get(key)));
         this.addToCart(map);
     }
 
-    void addToCart(HashMap < String, Integer > map) {
+    void addToCart(HashMap < String, Integer > map) throws Exception { //Item that you wants to add into cart
         System.out.print("\t\tChoose the Item to put into cart : ");
         String item_choose = sc.next();
         selected_item.add(item_choose);
@@ -66,7 +66,7 @@ public class CRUD {
         }
     }
 
-    void displayItem(HashMap < String, Integer > map) {
+    void displayItem(HashMap < String, Integer > map) throws Exception { //display the item in cart
         if (!selected_item.isEmpty()) {
             int i = 0;
             System.out.println("Item\t\t\tQuantity");
@@ -89,7 +89,7 @@ public class CRUD {
         }
     }
 
-    void updateCart(HashMap < String, Integer > map) {
+    void updateCart(HashMap < String, Integer > map) throws Exception { //For update the cart item such as quantity and remove item
         if (!selected_item.isEmpty()) {
             System.out.println("1. Remove Item\n2. Change the quantity");
             System.out.print("Enter your choice : ");
@@ -108,7 +108,7 @@ public class CRUD {
         }
     }
 
-    void Remove(HashMap < String, Integer > map) {
+    void Remove(HashMap < String, Integer > map) throws Exception { //to remove item from cart
         System.out.print("Please enter item Product name to remove : ");
         String remove_item = sc.next();
         for (int i = 0; i < selected_item.size(); i++) {
@@ -117,13 +117,13 @@ public class CRUD {
                 selected_item_quantity.remove(i);
             } else {
                 System.out.println("Sorry this item is not into your cart.");
-                updateCart(people);
+                updateCart(Product);
             }
         }
         displayItem(map);
     }
 
-    void changeQuantity(HashMap < String, Integer > map) {
+    void changeQuantity(HashMap < String, Integer > map) throws Exception { //to  change the quantity of particular item
         System.out.print("Please enter item name to update : ");
         String update_item = sc.next();
         int index = 0;
@@ -138,9 +138,9 @@ public class CRUD {
         displayItem(map);
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         CRUD crud = new CRUD();
-        crud.someMethod();
+        crud.getProductDetails();
         crud.Option();
     }
 }
