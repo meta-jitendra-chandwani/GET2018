@@ -1,60 +1,50 @@
-public class Stack
-{
-	static final int MAX = 1000;
-	int top;
-	int a[] = new int[MAX]; // Maximum size of Stack
+public class Stack {
+    static final int MAX = 1000;
+    int top;
+    int a[] = new int[MAX]; // Maximum size of Stack
 
-	boolean isEmpty()
-	{
-		return (top < 0);
-	}
-	Stack()
-	{
-		top = -1;
-	}
+    boolean isEmpty() {
+        return (top < 0);
+    }
 
-	boolean Push(int x)
-	{
-		if (top >= (MAX-1))
-		{
-			System.out.println("Stack Overflow");
-			return false;
-		}
-		else
-		{
-			a[++top] = x;
-			return true;
-		}
-	}
+    Stack() {
+        top = -1;
+    }
 
-	int PoP()
-	{
-		if (top < 0)
-		{
-			System.out.println("Stack Underflow");
-			return 0;
-		}
-		else
-		{
-			int x = a[top--];
-			return x;
-		}
-	}
-	
-	int Top()
-	{
-	    return a[top];
-	}
+    boolean Push(int x) //push element into the stack
+    {
+        if (top >= (MAX - 1)) {
+            System.out.println("Stack Overflow");
+            return false;
+        } else {
+            a[++top] = x;
+            return true;
+        }
+    }
+
+    int PoP() //pop element from the stack
+    {
+        if (top < 0) {
+            System.out.println("Stack Underflow");
+            return 0;
+        } else {
+            int x = a[top--];
+            return x;
+        }
+    }
+
+    int Top() //return top most element of stack
+    {
+        return a[top];
+    }
 }
 
-class Main
-{
-	public static void main(String args[])
-	{
-		Stack s = new Stack();
-		s.Push(10);
-		s.Push(20);
-		s.Push(30);
-		System.out.println(s.Top() + " top");
-	}
+class Main {
+    public static void main(String args[]) {
+        Stack s = new Stack();
+        s.Push(10);
+        s.Push(20);
+        s.Push(30);
+        System.out.println(s.Top() + " top");
+    }
 }
