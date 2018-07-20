@@ -1,37 +1,37 @@
 import java.util.Scanner;
 
 public class AreaMain {
-    private static Scanner sc = new Scanner(System.in);
+    private static Scanner input = new Scanner(System.in);
 
     public static void main(String arg[]) {
-        double input_one, input_two;
+        double inputone, inputtwo;
         Area area = new Area();
         System.out.println("1. Area of Triangle\n2. Area of Rectangle\n3. Area of Square\n4. Area of Circle");
         System.out.print("Enter your choice : ");
-        switch (sc.nextInt()) {
+        switch (input.nextInt()) {
             case 1:
                 System.out.print("Enter Base : ");
-                input_one = sc.nextDouble();
+                inputone = input.nextDouble();
                 System.out.print("Enter Height : ");
-                input_two = sc.nextDouble();
-                System.out.print("Area of Triangle : " + area.Triangle(input_one, input_two));
+                inputtwo = input.nextDouble();
+                System.out.print("Area of Triangle : " + area.Triangle(inputone, inputtwo));
                 break;
             case 2:
                 System.out.print("Enter Length : ");
-                input_one = sc.nextDouble();
+                inputone = input.nextDouble();
                 System.out.print("Enter Breadth : ");
-                input_two = sc.nextDouble();
-                System.out.print("Area of Reactangle : " + area.Rectangle(input_one, input_two));
+                inputtwo = input.nextDouble();
+                System.out.print("Area of Reactangle : " + area.Rectangle(inputone, inputtwo));
                 break;
             case 3:
                 System.out.print("Enter Length : ");
-                input_one = sc.nextDouble();
-                System.out.print("Area of Square : " + area.Square(input_one));
+                inputone = input.nextDouble();
+                System.out.print("Area of Square : " + area.Square(inputone));
                 break;
             case 4:
                 System.out.print("Enter Radius : ");
-                input_one = sc.nextDouble();
-                System.out.print("Area of Circle : " + area.Circle(input_one));
+                inputone = input.nextDouble();
+                System.out.print("Area of Circle : " + area.Circle(inputone));
                 break;
             default:
                 System.out.print("No such option");

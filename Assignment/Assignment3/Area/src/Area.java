@@ -1,3 +1,6 @@
+/*
+ * area class is to compute area of different shapes
+ */
 public class Area {
     /*
      * compute the area of triangle
