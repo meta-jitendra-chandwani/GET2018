@@ -7,20 +7,20 @@ public class Stringoperation {
      * @return 0 if both strings are not equal
      * @return 1 if both strings are equal 
      */
-    int compare(String string_one, String string_two) {
-        if (string_one.length() != string_two.length()) {
+    int compare(String stringone, String stringtwo) {
+        if (stringone.length() != stringtwo.length()) {
             return 0;
         }
 
-        boolean flg = true;
-        for (int i = 0; i < string_one.length(); i++) {
-            if (string_one.charAt(i) != string_two.charAt(i)) {
-                flg = false;
+        boolean flag = true;
+        for (int i = 0; i < stringone.length(); i++) {
+            if (stringone.charAt(i) != stringtwo.charAt(i)) {
+                flag = false;
                 break;
             }
         }
 
-        if (flg) {
+        if (flag) {
             return 1;
         } else {
             return 0;
@@ -34,17 +34,17 @@ public class Stringoperation {
      * @return change the case of input string
      */
     String changeCase(String string) {
-        String updated_String = "";
+        String updatedstring = "";
         for (int i = 0; i < string.length(); i++) {
             char aChar = string.charAt(i);
             if (65 <= aChar && aChar <= 90) {
-                updated_String += (char)((aChar + 32));
+                updatedstring += (char)((aChar + 32));
             } else if (97 <= aChar && aChar <= 122) {
-                updated_String += (char)((aChar - 32));
+                updatedstring += (char)((aChar - 32));
             }
         }
 
-        return updated_String;
+        return updatedstring;
     }
 
     /*
@@ -53,12 +53,12 @@ public class Stringoperation {
      * @return reverse of input string
      */
     String reverse(String string) {
-        String reverse_string = "";
+        String reversestring = "";
 
         for (int i = string.length() - 1; i >= 0; i--) {
-            reverse_string += string.charAt(i);
+            reversestring += string.charAt(i);
         }
-        return reverse_string;
+        return reversestring;
     }
 
     /*
@@ -67,17 +67,17 @@ public class Stringoperation {
      * @return the longest word in a string
      */
     String longestWord(String string) {
-        String array_string[] = string.split(" ");
-        int max = array_string[0].length();
+        String arraystring[] = string.split(" ");
+        int max = arraystring[0].length();
         int index = 0;
-        for (int i = 1; i < array_string.length; i++) {
-            if (max < array_string[i].length()) {
-                max = array_string[i].length();
+        for (int i = 1; i < arraystring.length; i++) {
+            if (max < arraystring[i].length()) {
+                max = arraystring[i].length();
                 index = i;
             }
         }
 
-        return array_string[index];
+        return arraystring[index];
     }
 
 }

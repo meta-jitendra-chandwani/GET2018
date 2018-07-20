@@ -1,36 +1,36 @@
 import java.util.Scanner;
 
 public class StringMain {
-    private static Scanner sc = new Scanner(System.in);
+    private static Scanner input = new Scanner(System.in);
 
 	public static void main(String arg[]) {
-        String string_one,string_two;
+        String stringone,stringtwo;
         Stringoperation string = new Stringoperation();
         System.out.println("1. Compare two strings\n2. Reverse of string\n3. Change Case\n4. Largest word");
         System.out.print("Enter your choice : ");
-        switch (sc.nextInt()) {
+        switch (input.nextInt()) {
             case 1:
                 System.out.print("Enter First String : ");
-                string_one = sc.next().trim();
+                stringone = input.next().trim();
                 System.out.print("Enter Second String : ");
-                string_two = sc.next().trim();
-                System.out.print(string.compare(string_one, string_two));
+                stringtwo = input.next().trim();
+                System.out.print(string.compare(stringone, stringtwo));
                 break;
             case 2:
                 System.out.print("Enter String : ");
-                string_one = sc.next().trim();
-                System.out.print("Reverse of String : " + string.reverse(string_one));
+                stringone = input.next().trim();
+                System.out.print("Reverse of String : " + string.reverse(stringone));
                 break;
             case 3:
                 System.out.print("Enter String : ");
-                string_one = sc.next().trim();
-                System.out.print("Result : " + string.changeCase(string_one));
+                stringone = input.next().trim();
+                System.out.print("Result : " + string.changeCase(stringone));
                 break;
             case 4:
                 System.out.print("Enter String : ");
-                sc.nextLine();
-                string_one = sc.nextLine().trim();
-                System.out.print("Longest word : " + string.longestWord(string_one));
+                input.nextLine();
+                stringone = input.nextLine().trim();
+                System.out.print("Longest word : " + string.longestWord(stringone));
                 break;
             default:
                 System.out.print("No such option");
