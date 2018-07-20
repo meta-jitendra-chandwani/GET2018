@@ -2,75 +2,109 @@ import java.util.Scanner;
 
 public class JobScheduler {
 
-    void sortArrivalTime(int number_process, int pid[], int arrival_time[], int burst_time[]) {		//sorting according to arrival times
-        int swap_variable;
-        for (int i = 0; i < number_process; i++) {
-            for (int j = 0; j < number_process - (i + 1); j++) {
-                if (arrival_time[j] > arrival_time[j + 1]) {
-                	swap_variable = arrival_time[j];
-                    arrival_time[j] = arrival_time[j + 1];
-                    arrival_time[j + 1] = swap_variable;
-                    swap_variable = burst_time[j];
-                    burst_time[j] = burst_time[j + 1];
-                    burst_time[j + 1] = swap_variable;
-                    swap_variable = pid[j];
+	/*
+	 * sorting of processing according to their arrival time
+	 * @param process Id
+	 * @param arrival time of each process
+	 * @param burst time of each process
+	 */
+    void sortArrivalTime(int pid[], int arrivaltime[], int bursttime[]) {		//
+        int swapvariable;
+        for (int i = 0; i < arrivaltime.length; i++) {
+            for (int j = 0; j < arrivaltime.length - (i + 1); j++) {
+                if (arrivaltime[j] > arrivaltime[j + 1]) {
+                	swapvariable = arrivaltime[j];
+                    arrivaltime[j] = arrivaltime[j + 1];
+                    arrivaltime[j + 1] = swapvariable;
+                    swapvariable = bursttime[j];
+                    bursttime[j] = bursttime[j + 1];
+                    bursttime[j + 1] = swapvariable;
+                    swapvariable = pid[j];
                     pid[j] = pid[j + 1];
-                    pid[j + 1] = swap_variable;
+                    pid[j + 1] = swapvariable;
                 }
             }
         }
     }
 
-    int[] completionTime(int number_process, int arrival_time[], int burst_time[], int completion_time[]) { //completion time of each process
-        for (int i = 0; i < number_process; i++) {
+    /*
+     * compute completion time of each process     *
+     * @param arrival time of each process
+	 * @param burst time of each process
+	 * @return completion time of each process
+     */
+    int[] completionTime(int arrivaltime[], int bursttime[]) { //
+    	int completiontime[]=new int[arrivaltime.length];
+        for (int i = 0; i < arrivaltime.length; i++) {
             if (i == 0) {
-                completion_time[i] = arrival_time[i] + burst_time[i];
+                completiontime[i] = arrivaltime[i] + bursttime[i];
             } else {
-                if (arrival_time[i] > completion_time[i - 1]) {
-                    completion_time[i] = arrival_time[i] + burst_time[i];
+                if (arrivaltime[i] > completiontime[i - 1]) {
+                    completiontime[i] = arrivaltime[i] + bursttime[i];
                 } else
-                    completion_time[i] = completion_time[i - 1] + burst_time[i];
+                    completiontime[i] = completiontime[i - 1] + bursttime[i];
             }
         }
-        return completion_time;
+        return completiontime;
     }
 
-    int[] turnAroundTime(int number_process, int arrival_time[], int burst_time[], int completion_time[], int turn_around_time[]) { //Turnaround time of each process
-        completionTime(number_process, arrival_time, burst_time, completion_time);
-        for (int i = 0; i < number_process; i++) {
-            turn_around_time[i] = completion_time[i] - arrival_time[i]; // turnaround time= completion time- arrival time
+    /*
+     * compute Turn around time of each process
+     * @param arrival time of each process
+	 * @param completion time of each process
+	 * @return turn around time of each process, turnaround time= completion time- arrival time
+     */
+    int[] turnAroundTime(int arrivaltime[], int completiontime[]) {
+    	int turnaroundtime[]=new int[arrivaltime.length];
+        for (int i = 0; i < arrivaltime.length; i++) {
+            turnaroundtime[i] = completiontime[i] - arrivaltime[i];  
         }
-        return turn_around_time;
+        return turnaroundtime;
     }
 
-    int[] waitingTime(int number_process, int arrival_time[], int burst_time[], int completion_time[], int turn_around_time[], int waiting_time[]) { //waiting time of each process
-        turnAroundTime(number_process, arrival_time, burst_time, completion_time, turn_around_time);
-        for (int i = 0; i < number_process; i++) {
-            waiting_time[i] = turn_around_time[i] - burst_time[i]; // waiting time= turnaround time- burst time
+    /*
+     * compute Turnaround time of each process
+     * @param burst time of each process
+	 * @param completion time of each process
+	 * @param turn around time of each process
+	 * @return waiting time time of each process, waiting time= turnaround time- burst time* 
+     */
+    int[] waitingTime(int bursttime[], int completiontime[], int turnaroundtime[]) { //waiting time of each process
+    	int waitingtime[]=new int[bursttime.length];
+    	for (int i = 0; i < bursttime.length; i++) {
+            waitingtime[i] = turnaroundtime[i] - bursttime[i]; // waiting time= turnaround time- burst time
         }
-        return waiting_time;
+        return waitingtime;
     }
 
-    float averageWaitingTime(int number_process, int arrival_time[], int burst_time[], int completion_time[], int turn_around_time[], int waiting_time[]) { //average waiting time
-        float average_waiting_time = 0;
-        int waiting_time_value[] = waitingTime(number_process, arrival_time, burst_time, completion_time, turn_around_time, waiting_time);
-        for (int i = 0; i < number_process; i++) {
-            average_waiting_time += waiting_time_value[i];
+    /*
+     * compute average waiting time of all processes
+     * @param waiting time of each process
+     * @return average waiting time
+     */
+    float averageWaitingTime(int waitingtime[]) { //average waiting time
+        float averagewaitingtime = 0;        
+        for (int i = 0; i < waitingtime.length; i++) {
+            averagewaitingtime += waitingtime[i];
         }
-        return average_waiting_time / number_process;
-
+        return averagewaitingtime /  waitingtime.length;
     }
     
-    int maximumWaitingTime(int waiting_time[]){
-    	int maximum_waiting_time = waiting_time[0];
-        for(int i = 0; i < waiting_time.length; i++)
+    /*
+     * compute maximum waiting time
+     * @param waiting time of each process
+     * @return maximum waiting time
+     */
+    int maximumWaitingTime(int waitingtime[]){
+    	int maximumwaitingtime = waitingtime[0];
+        for(int i = 0; i < waitingtime.length; i++)
         {
-            if(maximum_waiting_time < waiting_time[i])
+            if(maximumwaitingtime < waitingtime[i])
             {
-            	maximum_waiting_time = waiting_time[i];
+            	maximumwaitingtime = waitingtime[i];
             }
         }
-        return maximum_waiting_time;
+        return maximumwaitingtime;
         		
     	
     }
@@ -78,38 +112,38 @@ public class JobScheduler {
     public static void main(String args[]) {
         Scanner sc = new Scanner(System.in);
         System.out.print("Enter no of process: ");
-        int number_process = sc.nextInt();
-        int pid[] = new int[number_process]; // process ids
-        int arrival_time[] = new int[number_process]; // arrival times
-        int burst_time[] = new int[number_process]; // burst or execution times
-        int completion_time[] = new int[number_process]; // completion times
-        int turn_around_time[] = new int[number_process]; // turn around times
-        int waiting_time[] = new int[number_process]; // waiting times 
-        float average_waiting_time = 0;
-        int maximum_waiting_time=0;
+        int numberprocess = sc.nextInt();
+        int pid[] = new int[numberprocess]; // process ids
+        int arrivaltime[] = new int[numberprocess]; // arrival times
+        int bursttime[] = new int[numberprocess]; // burst or execution times
+        int completiontime[] = new int[numberprocess]; // completion times
+        int turnaroundtime[] = new int[numberprocess]; // turn around times
+        int waitingtime[] = new int[numberprocess]; // waiting times 
+        float averagewaitingtime = 0;
+        int maximumwaitingtime=0;
 
-        for (int i = 0; i < number_process; i++) {
+        for (int i = 0; i < numberprocess; i++) {
             System.out.print("Enter Process[" + (i + 1) + "] arrival time: ");
-            arrival_time[i] = sc.nextInt();
+            arrivaltime[i] = sc.nextInt();
             System.out.print("Enter Process[" + (i + 1) + "] brust time: ");
-            burst_time[i] = sc.nextInt();
+            bursttime[i] = sc.nextInt();
             pid[i] = i + 1;
         }
 
         JobScheduler job = new JobScheduler();
-        job.sortArrivalTime(number_process, pid, arrival_time, burst_time);
-        completion_time = job.completionTime(number_process, arrival_time, burst_time, completion_time);
-        turn_around_time = job.turnAroundTime(number_process, arrival_time, burst_time, completion_time, turn_around_time);
-        waiting_time = job.waitingTime(number_process, arrival_time, burst_time, completion_time, turn_around_time, waiting_time);
-        average_waiting_time = job.averageWaitingTime(number_process, arrival_time, burst_time, completion_time, turn_around_time, waiting_time);
-        maximum_waiting_time=job.maximumWaitingTime(waiting_time);
+        job.sortArrivalTime(pid, arrivaltime, bursttime);
+        completiontime = job.completionTime(arrivaltime, bursttime);
+        turnaroundtime = job.turnAroundTime(arrivaltime, completiontime);
+        waitingtime = job.waitingTime(bursttime, completiontime, turnaroundtime);
+        averagewaitingtime = job.averageWaitingTime(waitingtime);
+        maximumwaitingtime=job.maximumWaitingTime(waitingtime);
 
         System.out.println("\nProcess Id\tArrival Time\tBrust Time\tCompletion Time\tTurnAround Time\tWaiting Time");
-        for (int i = 0; i < number_process; i++) {
-            System.out.println(pid[i] + "\t\t" + arrival_time[i] + "\t\t" + burst_time[i] + "\t\t" + completion_time[i] + "\t\t" + turn_around_time[i] + "\t\t" + waiting_time[i]);
+        for (int i = 0; i < numberprocess; i++) {
+            System.out.println(pid[i] + "\t\t" + arrivaltime[i] + "\t\t" + bursttime[i] + "\t\t" + completiontime[i] + "\t\t" + turnaroundtime[i] + "\t\t" + waitingtime[i]);
         }
         sc.close();
-        System.out.println("\nAverage waiting time : " + average_waiting_time); // printing average waiting time.
-        System.out.println("Maximum Waiting Time : "+maximum_waiting_time);
+        System.out.println("\nAverage waiting time : " + averagewaitingtime); // printing average waiting time.
+        System.out.println("Maximum Waiting Time : "+maximumwaitingtime);
     }
 }
