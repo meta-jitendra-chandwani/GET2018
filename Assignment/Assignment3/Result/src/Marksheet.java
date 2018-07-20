@@ -1,10 +1,14 @@
 import java.util.ArrayList;
 import java.util.List;
 
+/*
+ * class Marksheet compute various operation on student grades
+ * such as average,maximum,minimum and passing percentage
+ */
 public class Marksheet {
-    List < Integer > student_marks=new ArrayList<Integer>();
-    public Marksheet(List < Integer > student_marks) {
-        this.student_marks=student_marks;
+    List < Integer > studentmarks=new ArrayList<Integer>();
+    public Marksheet(List < Integer > studentmarks) {
+        this.studentmarks=studentmarks;
     }
 
     /*
@@ -13,10 +17,10 @@ public class Marksheet {
      */
     double averageMarks() throws ArithmeticException{
         int sum = 0;
-        for (int i = 0; i < student_marks.size(); i++) {
-            sum += student_marks.get(i);
+        for (int i = 0; i < studentmarks.size(); i++) {
+            sum += studentmarks.get(i);
         }
-        return (double)sum / student_marks.size();
+        return (double)sum / studentmarks.size();
     }
 
     /*
@@ -24,13 +28,13 @@ public class Marksheet {
      * @return maximum marks
      */
     int maximumMarks() throws ArithmeticException{
-        int maximum_marks = student_marks.get(0);
-        for (int i = 1; i < student_marks.size(); i++) {
-            if (maximum_marks < student_marks.get(i)) {
-                maximum_marks = student_marks.get(i);
+        int maximummarks = studentmarks.get(0);
+        for (int i = 1; i < studentmarks.size(); i++) {
+            if (maximummarks < studentmarks.get(i)) {
+                maximummarks = studentmarks.get(i);
             }
         }
-        return maximum_marks;
+        return maximummarks;
     }
 
     /*
@@ -38,13 +42,13 @@ public class Marksheet {
      * @return minimum marks
      */
     int minimumMarks() throws ArithmeticException{
-        int minimum_marks = student_marks.get(0);
-        for (int i = 1; i < student_marks.size(); i++) {
-            if (minimum_marks > student_marks.get(i)) {
-                minimum_marks = student_marks.get(i);
+        int minimummarks = studentmarks.get(0);
+        for (int i = 1; i < studentmarks.size(); i++) {
+            if (minimummarks > studentmarks.get(i)) {
+                minimummarks = studentmarks.get(i);
             }
         }
-        return minimum_marks;
+        return minimummarks;
     }
 
     /*
@@ -53,11 +57,11 @@ public class Marksheet {
      */
     double passPercentage() throws ArithmeticException{
         int count = 0;
-        for (int i = 0; i < student_marks.size(); i++) {
-            if (student_marks.get(i) >= 40) {
+        for (int i = 0; i < studentmarks.size(); i++) {
+            if (studentmarks.get(i) >= 40) {
                 count++;
             }
         }
-        return   (double) count / student_marks.size() * 100;
+        return   (double) count / studentmarks.size() * 100;
     }
 }

@@ -4,22 +4,22 @@ import java.util.Scanner;
 
 
 public class MarksheetMain {
-    private static Scanner sc = new Scanner(System.in);
-    static List<Integer> student_marks=new ArrayList<Integer>();
+    private static Scanner input = new Scanner(System.in);
+    static List<Integer> studentmarks=new ArrayList<Integer>();
     
 	public static void main(String arg[]) {
 		System.out.print("Enter number of student : ");
-		int number_of_student=sc.nextInt();
+		int numberofstudent=input.nextInt();
 		System.out.println("Enter Students Marks : ");
 
-		for(int i=0;i<number_of_student;i++){
+		for(int i=0;i<numberofstudent;i++){
 			System.out.print("Student "+(i+1)+" : " );
-			student_marks.add(i,sc.nextInt());			
+			studentmarks.add(i,input.nextInt());			
 		}
-		Marksheet marksheet=new Marksheet(student_marks);
+		Marksheet marksheet=new Marksheet(studentmarks);
 		System.out.println("1. Average of all grade\n2. Maximum of all grades\n3. Minimum of all grades\n4. % of students passed");
         System.out.print("Enter your choice : ");
-        switch (sc.nextInt()) {
+        switch (input.nextInt()) {
         case 1:
             System.out.printf("Average sum of grade : %.2f",marksheet.averageMarks());
             break;
