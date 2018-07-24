@@ -10,18 +10,18 @@ public class Search {
      * @return index at which element is found
      * @return -1 if element if not found
      */
-    int linearSearch(int element, int array[]) {
-        try {
-            for (int i = 0; i < array.length; i++) {
-                if (element == array[i]) {
-                    return i;
-                }
-            }
-        } catch (Exception e) {
-            e.getStackTrace();
+    int linearSearch(int element, int array[],int length) {
+        if(length==0){
+        	 return -1;
         }
-
-        return -1;
+        else{
+        	if(element==array[length-1]){
+        		return (length-1);
+        	}
+        	else{
+            	return linearSearch(element, array, length-1);
+        	}
+        }       
     }
 
     /*

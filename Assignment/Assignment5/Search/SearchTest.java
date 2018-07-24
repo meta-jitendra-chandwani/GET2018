@@ -10,7 +10,7 @@ public class SearchTest {
 		int length = array.length - 1;
 		int actual = search.binarySearch(3, array, 0, length - 1);
 		assertEquals(1, actual);
-		int actual1 = search.linearSearch(4, array);
+		int actual1 = search.linearSearch(4, array,array.length);
 		assertEquals(2, actual1);
 
 	}
@@ -20,8 +20,8 @@ public class SearchTest {
 		int array[] = { 2, 3, 4, 10, 40 };
 		int length = array.length - 1;
 		int actual = search.binarySearch(3, array, 0, length - 1);
-		assertEquals(2, actual);
-		int actual1 = search.linearSearch(4, array);
+		assertEquals(1, actual);
+		int actual1 = search.linearSearch(4, array,array.length);
 		assertEquals(2, actual1);
 
 	}
