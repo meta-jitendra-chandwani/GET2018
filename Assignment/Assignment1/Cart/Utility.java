@@ -22,14 +22,21 @@ public class Utility implements Discount {
         displayItem();
         System.out.print("\t\tChoose the Item to put into cart : ");
         String itemName = input.next();
+        int index=find(itemName);
+        if(isProductCorrect(itemName)){
+        	int itemPrice = list.get(index).Price;
 
-        int itemPrice = findPrice(itemName);
+            System.out.print("\t\tQuantity : ");
+            int itemQuantity = input.nextInt();
 
-        System.out.print("\t\tQuantity : ");
-        int itemQuantity = input.nextInt();
-
-        int itemDiscount = findDiscount(itemName);
-        cartList.add(new Cart(itemName, itemPrice, itemQuantity, itemDiscount));
+            int itemDiscount = list.get(index).Discount;
+            cartList.add(new Cart(itemName, itemPrice, itemQuantity, itemDiscount));
+        }  
+        else{
+        	System.out.println("No Such Product.\nPlease the enter correct name of the Product.");
+        	addToCart();
+        }
+       
 
     }
 
@@ -108,7 +115,7 @@ public class Utility implements Discount {
             if (isPromotionApplicable(promo_code)) {
                 discountPercentagePromoCode = getMinimumPrice(SUM, promo_code);
                 if (discountPercentagePromoCode == 0) {
-                    System.out.print("Sorry but this promo code will not apply due to minimum amount balance.");
+                    System.out.println("Sorry but this promo code will not apply due to minimum amount balance.");
                 }
             } else {
                 System.out.println("Sorry but this promo code is not valid.");
@@ -121,15 +128,26 @@ public class Utility implements Discount {
 
     }
 
+    boolean isProductCorrect(String Name) throws Exception{
+    	boolean value = false;
+    	 for (int i = 0; i < list.size(); i++) {
+             if (Name.equals(list.get(i).Name)) {
+            	 value= true;
+            	 break;
+             }
+             else{
+            	 value= false;
+             }
+    	 }
+    	 return value;
+    	 
+    }
     int find(String Name) throws Exception {
         int index = -1;
         for (int i = 0; i < list.size(); i++) {
             if (Name.equals(list.get(i).Name)) {
                 index = i;
             }
-        }
-        if (index == -1) {
-            System.err.println("No such Product");
         }
         return index;
     }
@@ -145,16 +163,6 @@ public class Utility implements Discount {
             System.err.println("No such Product");
         }
         return index;
-    }
-    
-    int findPrice(String Name) throws Exception {
-        int index = find(Name);
-        return (list.get(index).Price);
-    }
-
-    int findDiscount(String Name) throws Exception {
-        int index = find(Name);
-        return (list.get(index).Discount);
     }
 
     void cartDisplay() throws Exception {
