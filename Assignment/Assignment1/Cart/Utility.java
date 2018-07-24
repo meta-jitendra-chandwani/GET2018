@@ -180,8 +180,7 @@ public class Utility implements Discount {
     public boolean isPromotionApplicable(String code) throws ParseException {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDateTime now = LocalDateTime.now(); //System or Current Date
-        if (dtf.format(now).compareTo(Promotion.PromoCode.startDate) >= 0) { //check whether current date is valid or not
-            if (dtf.format(now).compareTo(Promotion.PromoCode.endDate) <= 0) { //if yes then check promo code enter by user
+        if (dtf.format(now).compareTo(Promotion.PromoCode.startDate) >= 0 && dtf.format(now).compareTo(Promotion.PromoCode.endDate) <= 0) {
                 if (code.equals(Promotion.PromoCode.code)) {
                     return true;
                 } else {
@@ -189,11 +188,7 @@ public class Utility implements Discount {
                 }
             } else {
                 return false;
-            }
-        } else {
-            return false;
-        }
-
+            }      
     }
 
     @Override
