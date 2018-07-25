@@ -10,31 +10,29 @@ public class Splitarray {
      * @return index number if solution exist
      * @return -1 if not
      */
-    int splitArray(int array[]) {
+    int splitArray(int array[]) throws AssertionError{
     	if(isEmpty(array)){
     		throw new AssertionError("Array is empty");
     	}
     	else{
-        for (int i = 1; i < array.length; i++) {
-            for (int j = i - 1; j >= 0; j--) {
-                sum1 += array[j];
-            }
-            for (int k = i; k < array.length; k++) {
-                sum2 += array[k];
-            }
-            if (sum1 == sum2) {
-                return (i);
-            } else {
-                sum1 = 0;
-                sum2 = 0;
-            }
+    		int arraySum[] = new int[array.length];
+    			arraySum[0] = array[0];
+    			for(int i=1; i < array.length; i++) {
+    			arraySum[i] = arraySum[i-1] + array[i];
+    			}
 
-        }
+    			for(int i=0; i < array.length-1; i++) {
+    			if ( arraySum[i] == (arraySum[array.length-1]- arraySum[i])) {
+    			return i+1;
+    			}
+    		}
         }
         return -1;
     	
     }
     
+    
+
     /*
      * To check whether array is empty or not
      * @param array
