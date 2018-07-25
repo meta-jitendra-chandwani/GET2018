@@ -1,28 +1,47 @@
 import static org.junit.Assert.*;
-import org.junit.Test;
 
+import java.util.Arrays;
+import java.util.Collection;
+
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
+import org.junit.runners.Parameterized.Parameters;
+
+@RunWith(Parameterized.class)
 public class SearchTest {
-	Search search = new Search();
+	Search search;
+	private int array[];
+	private int element;
+	private int index;
+
+	@Before
+	public void initializeObject() {
+		search = new Search();
+	}
+
+	public SearchTest(int element, int array[], int index) {
+		this.array = array;
+		this.element = element;
+		this.index = index;
+	}
+
+	@Parameters
+	 public static Collection<Object[]> maxMirror() {
+		 int search[]={2, 3, 4, 10, 40};
+		 int search1[]={5,6,7,14,15,78};
+			return Arrays.asList(new Object[][] { { 3,search, 1 },{7,search1,2}});
+		}
 
 	@Test
-	public void test() {
-		int array[] = { 2, 3, 4, 10, 40 };
-		int length = array.length - 1;
-		int actual = search.binarySearch(3, array, 0, length - 1);
-		assertEquals(1, actual);
-		int actual1 = search.linearSearch(4, array,array.length);
-		assertEquals(2, actual1);
-
+	public void linearSearchTest() {
+		assertEquals(search.linearSearch(element, array, array.length), index);
 	}
 
 	@Test
-	public void testfail() {
-		int array[] = { 2, 3, 4, 10, 40 };
-		int length = array.length - 1;
-		int actual = search.binarySearch(3, array, 0, length - 1);
-		assertEquals(1, actual);
-		int actual1 = search.linearSearch(4, array,array.length);
-		assertEquals(2, actual1);
-
+	public void binarySearchTest() {
+		assertEquals(search.binarySearch(element, array, 0, array.length - 1),
+				index);
 	}
 }
