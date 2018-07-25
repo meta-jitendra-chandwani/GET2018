@@ -1,31 +1,39 @@
 import static org.junit.Assert.*;
 
+import java.util.Arrays;
+import java.util.Collection;
+
+import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
+import org.junit.runners.Parameterized.Parameters;
 
-
+@RunWith(Parameterized.class)
 public class SplitarrayTest {
-
+private Splitarray split;
+private int array[];
+private int value;
+	 @Before
+		public void initializeObject() {
+		 split=new Splitarray();
+		}
+	 
+	 public SplitarrayTest(int array[],int value) {
+		 this.array=array;
+		 this.value=value;	
+	}
 	
-	Splitarray split=new Splitarray();
-	@Test
-	public void test() {
-		
-		int array[] = { 1, 1, 1, 2, 1 };
-		int actual = split.splitArray(array);
-		assertEquals(3, actual);
-	}
-	@Test
-	public void test1() {
-		
-		int array[] = { 2, 1, 1, 2, 1 };
-		int actual = split.splitArray(array);
-		assertEquals(-1, actual);
-	}
-	@Test
-	public void test2() {
-		
-		int array[] = {10, 10};
-		int actual = split.splitArray(array);
-		assertEquals(1, actual);
-	}
+	 @Parameters
+	 public static Collection<Object[]> maxMirror() {
+		 int splitArray[]={ 1, 1, 1, 2, 1  };
+		 int splitArray1[] = { 2, 1, 1, 2, 1 };
+		 int splitArray2[] = {10, 10};
+			return Arrays.asList(new Object[][] { { splitArray,3 },{splitArray1,-1},{splitArray2,1} });
+		}
+	
+	 @Test
+		public void splitArrayTest() {
+			assertEquals(split.splitArray(array),value );
+		}
 }
