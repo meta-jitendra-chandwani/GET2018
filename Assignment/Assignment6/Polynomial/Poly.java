@@ -9,7 +9,7 @@ import java.util.Scanner;
  * Addition of two polynomials
  * Multiplication of two polynomials 
  */
-public class Poly implements PolyInterface {
+public final class Poly implements PolyInterface {
 	int order;
 	static Scanner input = new Scanner(System.in);
 	double[] coeff;
