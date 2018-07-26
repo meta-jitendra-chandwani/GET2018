@@ -16,17 +16,30 @@ public class LinearSearchTest {
 	private int element;
 	private int index;
 
+	/*
+	 * Initialize the object
+	 */
 	@Before
 	public void initializeObject() {
 		search = new Search();
 	}
 
+	/*
+	 * Parameterized Constructor - initialize the variable
+	 * @param element - element to be search
+	 * @param array - array
+	 * @param index - element index in particular array
+	 */
 	public LinearSearchTest(int element, int array[], int index) {
 		this.array = array;
 		this.element = element;
 		this.index = index;
 	}
 
+	/*
+	 * Collection of Object -  contained the parameterized test case
+	 * @return Collection Object
+	 */
 	@Parameters
 	public static Collection<Object[]> maxMirror() {
 		int search[] = { 2, 3, 4, 10, 40 };
@@ -35,6 +48,10 @@ public class LinearSearchTest {
 				{ 7, search1, 4 } });
 	}
 
+	/*
+	 * Test Case evaluation
+	 * Check whether actual value is same as expected value
+	 */
 	@Test
 	public void linearSearchTest() {
 		assertEquals(search.linearSearch(element, array, array.length), index);
