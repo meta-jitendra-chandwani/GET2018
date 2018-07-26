@@ -16,17 +16,30 @@ public class BinarySearchTest {
 	private int element;
 	private int index;
 
+	/*
+	 * Initialize the object
+	 */
 	@Before
 	public void initializeObject() {
 		search = new Search();
 	}
 
+	/*
+	 * Parameterized Constructor - initialize the variable
+	 * @param element - element to be search
+	 * @param array - array
+	 * @param index - element index in particular array
+	 */
 	public BinarySearchTest(int element, int array[], int index) {
 		this.array = array;
 		this.element = element;
 		this.index = index;
 	}
 
+	/*
+	 * Collection of Object -  contained the parameterized test case
+	 * @return Collection Object
+	 */
 	@Parameters
 	public static Collection<Object[]> maxMirror() {
 		int search[] = { 2, 3, 4, 10, 40 };
@@ -35,6 +48,10 @@ public class BinarySearchTest {
 				{ 41, search1, 2 } });
 	}
 
+	/*
+	 * Test Case evaluation
+	 * Check whether actual value is same as expected value
+	 */
 	@Test
 	public void binarySearchTest() {
 		assertEquals(search.binarySearch(element, array, 0, array.length - 1),
