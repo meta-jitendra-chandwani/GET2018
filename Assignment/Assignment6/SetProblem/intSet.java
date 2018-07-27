@@ -23,12 +23,13 @@ public final class intSet implements intSetInterface {
 
 	@Override
 	public boolean isMember(int x, int[] set) {
+		boolean result = false;
 		for (int value : set) {
 			if (value == x) {
-				return true;
+				result = true;
 			}
 		}
-		return false;
+		return result;
 	}
 	
 	
@@ -53,11 +54,11 @@ public final class intSet implements intSetInterface {
 	 */
 	@Override
 	public int[] getComplement(int[] base, int[] set) {
-		List<Integer> listSet = Arrays.stream(set).boxed()
+		List<Integer> listSet = Arrays.stream(set).boxed()	
 				.collect(Collectors.toList());
 		List<Integer> baseSet = Arrays.stream(base).boxed()
 				.collect(Collectors.toList());
-		listSet.removeAll(baseSet);
+		listSet.removeAll(baseSet);				//remove value of base class from universal set to find complement of set.
 		
 		int result[] = listSet.stream().mapToInt(Integer::intValue).toArray();
 		return result;
@@ -107,10 +108,7 @@ public final class intSet implements intSetInterface {
 				.collect(Collectors.toList());
 		if (listSet2.containsAll(listSet1)) {
 			value = true;
-		} else {
-			value = false;
 		}
 		return value;
 	}
-
 }
