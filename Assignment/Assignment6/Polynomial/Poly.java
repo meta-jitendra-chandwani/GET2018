@@ -1,7 +1,5 @@
 package Polynomial;
 
-import java.util.Scanner;
-
 /*
  * Class Poly - Operation on polynomial
  * evaluate value of polynomial
@@ -10,9 +8,8 @@ import java.util.Scanner;
  * Multiplication of two polynomials 
  */
 public final class Poly implements PolyInterface {
-	int order;
-	static Scanner input = new Scanner(System.in);
-	double[] coeff;
+	private final int order;
+	private final double[] coeff;
 
 	/*
 	 * Parameterized constructor -  which assign value to coefficient and order.
