@@ -3,98 +3,106 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package zoo_management_system.Cage;
+package Cage;
 
 import java.util.ArrayList;
 import java.util.List;
-import zoo_management_system.Animal.Animal;
-import zoo_management_system.Animal.BirdAnimal;
-import zoo_management_system.Animal.MammalAnimal;
-import zoo_management_system.Animal.ReptileAnimal;
-import zoo_management_system._CageEnum_;
 
-/**
- *
- * @author Jitendra
- */
+import Zoo.Zoo;
+import Animal.Animal;
+import Animal.BirdAnimal;
+import Animal.MammalAnimal;
+import Animal.ReptileAnimal;
+
 public class Cage {
 
-    String cageName;
-    String cageType;
-    String zoneName;
-    int cageCapacity = 5;
-    Animal animal;
-    List<Animal> animalList;
-    List<MammalAnimal> mammalAnimal;
-    List<BirdAnimal> birdAnimal;
-    List<ReptileAnimal> reptileAnimal;
-    List<Cage> cageList;
+	public String cageName;
+	public String cageType;
+	public String zoneName;
+	int cageCapacity = 5;
+	Animal animal;
+	List<Animal> animalList;
+	List<MammalAnimal> mammalAnimalList;
+	List<BirdAnimal> birdAnimalList;
+	List<ReptileAnimal> reptileAnimalList;
 
-    public Cage(String cageName, String cageType, String zoneName) {
-        this.cageType = cageType;
-        this.cageName = cageName;
-        this.zoneName = zoneName;
+	static List<MammalAnimal> mammalInCage=new ArrayList<MammalAnimal>();
+	static List<BirdAnimal> birdInCage=new ArrayList<BirdAnimal>();
+	static List<ReptileAnimal> reptileInCage=new ArrayList<ReptileAnimal>();
 
-    }
+	public Cage(String cageName, String cageType, String zoneName) {
+		this.cageType = cageType;
+		this.cageName = cageName;
+		this.zoneName = zoneName;
 
-    public Cage() {
-        animal = new Animal();
-        animalList = animal.getAnimalsList();
-        mammalAnimal = animal.getMammalAnimalsList();
-        birdAnimal = animal.getBirdAnimalsList();
-        reptileAnimal = animal.getReptileAnimalsList();
+	}
 
-        cageList = new ArrayList<>();
-        cageList.add(new Cage("Cage1", "Mammal","Zone1"));
-        cageList.add(new Cage("Cage2", "Mammal","Zone1"));
-        cageList.add(new Cage("Cage3", "Mammal","Zone1"));
-        cageList.add(new Cage("Cage4", "Mammal","Zone1"));
-        cageList.add(new Cage("Cage5", "Mammal","Zone1"));
-        
-        
-        cageList.add(new Cage("Cage1", "Mammal","Zone2"));
-        cageList.add(new Cage("Cage2", "Mammal","Zone2"));
-        cageList.add(new Cage("Cage3", "Mammal","Zone2"));
-        cageList.add(new Cage("Cage4", "Mammal","Zone2"));
-        cageList.add(new Cage("Cage5", "Mammal","Zone2"));
-        
-        
-        cageList.add(new Cage("Cage1", "Bird","Zone3"));
-        cageList.add(new Cage("Cage2", "Bird","Zone3"));
-        cageList.add(new Cage("Cage3", "Bird","Zone3"));
-        cageList.add(new Cage("Cage4", "Bird","Zone3"));
-        cageList.add(new Cage("Cage5", "Bird","Zone3"));
-        
-        
-        cageList.add(new Cage("Cage1", "Reptile","Zone4"));
-        cageList.add(new Cage("Cage2", "Reptile","Zone4"));
-        cageList.add(new Cage("Cage3", "Reptile","Zone4"));
-        cageList.add(new Cage("Cage4", "Reptile","Zone4"));
-        cageList.add(new Cage("Cage5", "Reptile","Zone4"));
+	public Cage(String Category) {
+		animalList = Zoo.setAnimal();
+		mammalAnimalList = Zoo.setMammalAnimalList();
+        reptileAnimalList = Zoo.setReptileAnimalList();
+        birdAnimalList =Zoo.setBirdAnimalList();
+		switch (Category) {
+		case "mammal":
+			int i=0;
+			while(i<cageCapacity&&i<mammalAnimalList.size())
+			{
+				mammalInCage.add(i, mammalAnimalList.get(i));
+//				System.out.println(cageMammalList.get(i).Name);
+				i++;
+			}
+			break;
+		case "reptile":
+			int i1=0;
+			while(i1<cageCapacity&&i1<reptileAnimalList.size())
+			{
+				reptileInCage.add(i1, reptileAnimalList.get(i1));
+				i1++;
+			}
+			break;
+		case "bird":
+			int i11=0;
+			while(i11<cageCapacity&&i11<birdAnimalList.size())
+			{
+				birdInCage.add(i11, birdAnimalList.get(i11));
+				i11++;
+			}
+			break;
+		}
 
-    }
+	
+		}
+		
+	
 
-    void putAnimalCage() {
+	public static List<MammalAnimal> getMammalInCageList(){
+		return mammalInCage;
+	}
+	public static List<BirdAnimal> getBirdInCageList(){
+		return birdInCage;
+	}
+	public static List<ReptileAnimal> getReptileInCageList(){
+		return reptileInCage;
+	}
 
-    }
+	
 
-//    public Cage(){
-//        
-//    }
-//    public List<MammalAnimal> getCageList(){
-//        return mammalCage;
-//    }
-    void getInfo() {
+	void putAnimalCage() {
 
-    }
+	}
 
-    void addAnimal(String Category, String Name, int Age) {
+	// public Cage(){
+	//
+	// }
+	// public List<MammalAnimal> getCageList(){
+	// return mammalCage;
+	// }
+	void getInfo() {
 
-    }
+	}
 
-    public static void main(String[] args) {
-        Cage cage = new Cage();
+	void addAnimal(String Category, String Name, int Age) {
 
-        System.out.println(cage.mammalCage[0]);
-    }
+	}
+
 }
