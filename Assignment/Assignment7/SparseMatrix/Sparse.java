@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class Sparse {
+public final class Sparse {
 
-    int row, col;
+    final int row, col;
 
     /*
      * Initialization of row and coloumn
@@ -57,39 +57,38 @@ public class Sparse {
      */
     public int[][] multiplyMatrices(int matrixOne[][], int matrixTwo[][]) {
 
-        List<Integer> Row = new ArrayList<>();
-        List<Integer> Col = new ArrayList<>();
-        List<Integer> Value = new ArrayList<>();
+        List<Integer> rowList = new ArrayList<>();
+        List<Integer> colList = new ArrayList<>();
+        List<Integer> valueList = new ArrayList<>();
         for (int i = 0; i < matrixOne.length; i++) {
             for (int j = 0; j < matrixTwo.length; j++) {
                 if (matrixOne[i][1] == matrixTwo[j][0]) {
-                    Row.add(matrixOne[i][0]);
-                    Col.add(matrixTwo[j][1]);
-                    Value.add(matrixOne[i][2] * matrixTwo[j][2]);
+                	rowList.add(matrixOne[i][0]);
+                	colList.add(matrixTwo[j][1]);
+                	valueList.add(matrixOne[i][2] * matrixTwo[j][2]);
 
                 }
             }
 
         }
         int start = 0;
-        for (int i = start; i < Row.size() - 1; i++) {
-            if (Row.get(i) == Row.get(i + 1) && Col.get(i) == Col.get(i + 1)) {
-                int newValue = Value.get(i) + Value.get(i + 1);
-                Value.set(i + 1, newValue);
-                Row.remove(i);
-                Col.remove(i);
-                Value.remove(i);
+        for (int i = start; i < rowList.size() - 1; i++) {
+            if (rowList.get(i) == rowList.get(i + 1) && colList.get(i) == colList.get(i + 1)) {
+                int newValue = valueList.get(i) + valueList.get(i + 1);
+                valueList.set(i + 1, newValue);
+                rowList.remove(i);
+                colList.remove(i);
+                valueList.remove(i);
                 start = i;
             }
         }
-        int multiplicationMatrix[][] = new int[Row.size()][3];
-        for (int i = 0; i < Row.size(); i++) {
-            multiplicationMatrix[i][0] = Row.get(i);
-            multiplicationMatrix[i][1] = Col.get(i);
-            multiplicationMatrix[i][2] = Value.get(i);
+        int multiplicationMatrix[][] = new int[rowList.size()][3];
+        for (int i = 0; i < rowList.size(); i++) {
+            multiplicationMatrix[i][0] = rowList.get(i);
+            multiplicationMatrix[i][1] = colList.get(i);
+            multiplicationMatrix[i][2] = valueList.get(i);
         }
         return multiplicationMatrix;
-//        return changetoSparseMatrix(mul, mul.length, mul[0].length);
     }
 
     /*
@@ -103,30 +102,9 @@ public class Sparse {
         for (int i = 0; i < matrixOne.length; i++) {
             if (!Arrays.equals(matrixOne[i], matrixTwo[i])) {
                 flag = false;
+                break;
             }
         }
         return flag;
     }
-
-//    int[][] changetoSparseMatrix(int matrix[][], int matRow) {
-//        int newMatrix[][] = new int[row][col];
-//        for (int i = 0; i < matrix.length; i++) {
-//            newMatrix[matrix[i][0]][matrix[i][1]] = matrix[i][2];
-//        }
-//        return newMatrix;
-//    }
-//
-//    public static void main(String[] args) {
-//        Sparse sparse = new Sparse(4, 4);
-//        int setArray1[][] = {{0, 1, 1}, {0, 3, 2}, {1, 0, 3}, {1, 3, 4}, {2, 3, 5}, {3, 2, 6}};
-//        int setArray2[][] = {{0, 0, 3}, {0, 3, 4}, {1, 2, 4}, {2, 0, 6}, {2, 3, 5}, {3, 2, 1}};
-//
-//        int add[][] = sparse.addMatrices(setArray1, setArray2);
-//        for (int i = 0; i < 4; i++) {
-//            for (int j = 0; j < 4; j++) {
-//                System.out.print(add[i][j] + "\t");
-//            }
-//            System.out.println();
-//        }
-//    }
 }
