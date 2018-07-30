@@ -1,11 +1,9 @@
-package zoo_management_system.Animal;
+package Animal;
 
-import java.util.ArrayList;
-import java.util.List;
+
 
 public class Lion extends MammalAnimal {
 
-    private static List<Lion> lionList;
 
     Lion(String Category, String Name, int Age) {
         super(Category, Name, Age);
