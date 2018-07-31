@@ -8,110 +8,136 @@ import Animal.Lion;
 import Animal.Peacock;
 import Cage.Cage;
 
+/*
+ * Zone - contain number of cage.
+ * Each Zone is classify into 3 categories.
+ * Zone1 -  Mammal Zone, Zone2 - Bird Zone, Zone3 - Reptile Zone
+ */
 public class Zone {
-	int CapacityZone = 2;
+	int capacityZone = 2;
 	int cageCapacity = 5;
 	_ZoneEnum_ zone;
-	List<Lion> mammalInCage ;
-	List<Peacock> birdInCage;
-	List<Crocodile> reptileInCage;
-	public List<Cage> mammalCageList = new ArrayList<Cage>();
-	public List<Cage> birdCageList = new ArrayList<Cage>();
-	public List<Cage> reptileCageList = new ArrayList<Cage>();
+	List<Lion> lionInCage ;
+	List<Peacock> peacockInCage;
+	List<Crocodile> crocodileInCage;
+	public List<Cage> lionCageList = new ArrayList<Cage>();
+	public List<Cage> peacockCageList = new ArrayList<Cage>();
+	public List<Cage> crocodileCageList = new ArrayList<Cage>();
 
-	Cage cageMammals, cageBirds, cageReptiles;
+	Cage cageLion, cagePeacock, cageCrocodile;
 
 	public Zone(_ZoneEnum_ zone) {
 		this.zone = zone;
 	}
 
+	/*
+	 * Add Cage in Zone - Zone contain number of zone
+	 */
 	public void addCage() {
 
 		if (_ZoneEnum_.Zone1.equals(zone)) {
-			if (mammalCageList.size() == CapacityZone) {
+			if (lionCageList.size() == capacityZone) {
 				System.out.println("No more cage add in zone 1");
 			} else {
 				
-				cageMammals = new Cage("Mammal  Cage" + (mammalCageList.size()+1), "mammal", "Zone1");
-				mammalInCage = cageMammals.getMammalInCageList();
-				mammalCageList.add(cageMammals);
-				System.out.println("\nCage "+mammalCageList.size()+" is added in Zone 1\n");
+				cageLion = new Cage("Mammal  Cage" + (lionCageList.size()+1), "mammal", "Zone1");
+				lionInCage = cageLion.getMammalInCageList();
+				lionCageList.add(cageLion);
+				System.out.println("\nCage "+lionCageList.size()+" is added in Zone 1\n");
 				
 			}
 		}
 
 		else if (_ZoneEnum_.Zone2.equals(zone)) {
-			if (birdCageList.size() == CapacityZone) {
+			if (peacockCageList.size() == capacityZone) {
 				System.out.println("No more cage add in zone 2");
 			} else {
-				cageBirds = new Cage("Bird  Cage" + (birdCageList.size()+1), "bird", "Zone2");
-				birdInCage = cageBirds.getBirdInCageList();
-				birdCageList.add(cageBirds);
-				System.out.println("\nCage "+birdCageList.size()+" is added in Zone 2\n");
+				cagePeacock = new Cage("Bird  Cage" + (peacockCageList.size()+1), "bird", "Zone2");
+				peacockInCage = cagePeacock.getBirdInCageList();
+				peacockCageList.add(cagePeacock);
+				System.out.println("\nCage "+peacockCageList.size()+" is added in Zone 2\n");
 			}
 		} else if (_ZoneEnum_.Zone3.equals(zone)) {
-			if (reptileCageList.size() == CapacityZone) {
+			if (crocodileCageList.size() == capacityZone) {
 				System.out.println("No more cage add in zone 3");
 			} else {
-				cageReptiles = new Cage("Reptile  Cage" + (mammalCageList.size()+1), "reptile", "Zone3");
-				reptileInCage = cageReptiles.getReptileInCageList();
-				reptileCageList.add(cageReptiles);
-				System.out.println("\nCage "+reptileCageList.size()+" is added in Zone 3\n");
+				cageCrocodile = new Cage("Reptile  Cage" + (crocodileCageList.size()+1), "reptile", "Zone3");
+				crocodileInCage = cageCrocodile.getReptileInCageList();
+				crocodileCageList.add(cageCrocodile);
+				System.out.println("\nCage "+crocodileCageList.size()+" is added in Zone 3\n");
 			}
-
 		}
-
 	}
 
+	/*
+	 * Add animal in Zone 
+	 * @param Category - distinguish on the basis of category - animal will be add on Zone
+	 */
 	public void addAnimalInZone(String category){
 		if(category=="mammal"){
-			if (mammalInCage.size() == cageCapacity) {
+			if (lionInCage.size() == cageCapacity) {
 				System.out.println("\nCage Capacity is full.\n");
 				addCage();
-				cageMammals.addAnimalInCage();
+				cageLion.addAnimalInCage();
 			} else {		 
-				cageMammals.addAnimalInCage();
+				cageLion.addAnimalInCage();
 			}
 		}
 		else if(category=="bird"){
-			if (birdInCage.size() == cageCapacity) {
+			if (peacockInCage.size() == cageCapacity) {
 				System.out.println("\nCage Capacity is full.\n");
 				addCage();
-				cageBirds.addAnimalInCage();
+				cagePeacock.addAnimalInCage();
 			} else {		 
-				cageBirds.addAnimalInCage();
+				cagePeacock.addAnimalInCage();
 			}
 		}
 		else if(category=="reptile"){
-			if (reptileInCage.size() == cageCapacity) {
+			if (crocodileInCage.size() == cageCapacity) {
 				System.out.println("\nCage Capacity is full.\n");
 				addCage();
-				cageReptiles.addAnimalInCage();
+				cageCrocodile.addAnimalInCage();
 			} else {		 
-				cageReptiles.addAnimalInCage();
+				cageCrocodile.addAnimalInCage();
 			}
 		}
 	}
 
-
-	public List<Cage> setMammalCageList() {
-		return mammalCageList;
+	/*
+	 * Cage list which contain mammal in it.
+	 * @return List of Mammal Cage
+	 */
+	public List<Cage> setLionCageList() {
+		return lionCageList;
 	}
 
-	public List<Cage> setBirdCageList() {
-		return birdCageList;
+	/*
+	 * Cage list which contain Bird in it.
+	 * @return List of Bird Cage
+	 */
+	public List<Cage> setPeacockCageList() {
+		return peacockCageList;
 	}
 
-	public List<Cage> setReptileCageList() {
-		return reptileCageList;
+	/*
+	 * Cage list which contain Reptile in it.
+	 * @return List of Reptile Cage
+	 */
+	public List<Cage> setCrocodileCageList() {
+		return crocodileCageList;
 	}
 
+	/*
+	 * To check canteen is here or not
+	 */
 	boolean hasCanteen() {
 		return false;
 	}
 
+	/*
+	 * To check park is here or not
+	 */
 	boolean hasPark() {
 		return true;
 	}
-
 }
