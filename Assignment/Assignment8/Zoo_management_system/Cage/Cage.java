@@ -19,16 +19,16 @@ public class Cage {
 	public String cageName;
 	public String cageType;
 	public String zoneName;
-	int cageCapacity = 5;
+	static int cageCapacity = 5;
 	Animal animal;
 	List<Animal> animalList;
 	List<MammalAnimal> mammalAnimalList;
 	List<BirdAnimal> birdAnimalList;
 	List<ReptileAnimal> reptileAnimalList;
 
-	static List<MammalAnimal> mammalInCage=new ArrayList<MammalAnimal>();
-	static List<BirdAnimal> birdInCage=new ArrayList<BirdAnimal>();
-	static List<ReptileAnimal> reptileInCage=new ArrayList<ReptileAnimal>();
+	static List<MammalAnimal> mammalInCage = new ArrayList<MammalAnimal>();
+	static List<BirdAnimal> birdInCage = new ArrayList<BirdAnimal>();
+	static List<ReptileAnimal> reptileInCage = new ArrayList<ReptileAnimal>();
 
 	public Cage(String cageName, String cageType, String zoneName) {
 		this.cageType = cageType;
@@ -36,72 +36,46 @@ public class Cage {
 		this.zoneName = zoneName;
 
 	}
-
-	public Cage(String Category) {
+	
+	public void addAnimalInCage(){
 		animalList = Zoo.setAnimal();
 		mammalAnimalList = Zoo.setMammalAnimalList();
-        reptileAnimalList = Zoo.setReptileAnimalList();
-        birdAnimalList =Zoo.setBirdAnimalList();
-		switch (Category) {
-		case "mammal":
-			int i=0;
-			while(i<cageCapacity&&i<mammalAnimalList.size())
-			{
-				mammalInCage.add(i, mammalAnimalList.get(i));
-//				System.out.println(cageMammalList.get(i).Name);
-				i++;
-			}
+		reptileAnimalList = Zoo.setReptileAnimalList();
+		birdAnimalList = Zoo.setBirdAnimalList();
+		switch (cageType) {
+		case "mammal":			
+				mammalInCage.add(mammalAnimalList.size()-1,mammalAnimalList.get(mammalAnimalList.size()-1));
+				System.out.println(mammalAnimalList.get(mammalAnimalList.size()-1).animalId
+						+ " is added in Cage");
 			break;
 		case "reptile":
-			int i1=0;
-			while(i1<cageCapacity&&i1<reptileAnimalList.size())
-			{
-				reptileInCage.add(i1, reptileAnimalList.get(i1));
-				i1++;
-			}
+				reptileInCage.add(reptileAnimalList.size()-1, reptileAnimalList.get(reptileAnimalList.size()-1));
+				System.out.println(reptileAnimalList.get(reptileAnimalList.size()-1).animalId
+						+ " is added in Cage");
+		
 			break;
 		case "bird":
-			int i11=0;
-			while(i11<cageCapacity&&i11<birdAnimalList.size())
-			{
-				birdInCage.add(i11, birdAnimalList.get(i11));
-				i11++;
-			}
+				birdInCage.add(birdAnimalList.size()-1, birdAnimalList.get(birdAnimalList.size()-1));
+				System.out.println(birdInCage.get(birdAnimalList.size()-1).animalId
+						+ " is added in Cage");
 			break;
 		}
 
-	
-		}
-		
-	
+	}
 
-	public static List<MammalAnimal> getMammalInCageList(){
+	public List<MammalAnimal> getMammalInCageList() {
 		return mammalInCage;
 	}
-	public static List<BirdAnimal> getBirdInCageList(){
+
+	public List<BirdAnimal> getBirdInCageList() {
 		return birdInCage;
 	}
-	public static List<ReptileAnimal> getReptileInCageList(){
+
+	public List<ReptileAnimal> getReptileInCageList() {
 		return reptileInCage;
 	}
 
-	
-
 	void putAnimalCage() {
-
-	}
-
-	// public Cage(){
-	//
-	// }
-	// public List<MammalAnimal> getCageList(){
-	// return mammalCage;
-	// }
-	void getInfo() {
-
-	}
-
-	void addAnimal(String Category, String Name, int Age) {
 
 	}
 
