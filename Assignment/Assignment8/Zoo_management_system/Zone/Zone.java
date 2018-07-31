@@ -9,64 +9,109 @@ import Animal.ReptileAnimal;
 import Cage.Cage;
 
 public class Zone {
-    int CapacityZone=2;
-//    Cage cage=new Cage();
-    List<MammalAnimal> mammalInCage;//=Cage.getMammalCageList();
-    List<BirdAnimal> birdInCage;//=Cage.getBirdCageList();
-    List<ReptileAnimal> reptileInCage;//e=Cage.getReptileCageList();
-    public List<Cage> cageList=new ArrayList<Cage>();
-    Cage cage;
+	int CapacityZone = 2;
+	int cageCapacity = 5;
+	_ZoneEnum_ zone;
+	List<MammalAnimal> mammalInCage ;
+	List<BirdAnimal> birdInCage;
+	List<ReptileAnimal> reptileInCage;
+	public List<Cage> mammalCageList = new ArrayList<Cage>();
+	public List<Cage> birdCageList = new ArrayList<Cage>();
+	public List<Cage> reptileCageList = new ArrayList<Cage>();
 
-    public Zone(_ZoneEnum_ zone) {
-    	if(_ZoneEnum_.Zone1.equals(zone)){
-    		cage=new Cage("mammal");
-    		mammalInCage=Cage.getMammalInCageList();
-    		cageList.add(new Cage("Mammal Cage1", "mammal", "Zone1"));
-    		cageList.add(new Cage("Mammal Cage2", "mammal", "Zone1"));
-    		
-    	}
-    	
-    	else if(_ZoneEnum_.Zone2.equals(zone)){
-    		cage=new Cage("bird");
-    		birdInCage=Cage.getBirdInCageList();
-    		cageList.add(new Cage("Bird Cage1", "Bird", "Zone3"));
-    		cageList.add(new Cage("Bird Cage2", "Bird", "Zone3"));
-    		
-    	}
-    	else if(_ZoneEnum_.Zone3.equals(zone)){
-    		cage=new Cage("reptile");
-    		reptileInCage=Cage.getReptileInCageList();
-    		cageList.add(new Cage("Reptile Cage1", "Reptile", "Zone2"));
-    		cageList.add(new Cage("Reptile Cage2", "Reptile", "Zone2"));
-    		
-    	}
-    	
+	Cage cageMammals, cageBirds, cageReptiles;
+
+	public Zone(_ZoneEnum_ zone) {
+		this.zone = zone;
 	}
 
-    void getInfo(){
-        
-    }
-    
-    void addCage(){
-    	
-        
-    }
-    
-    int SpareCapacity(){
-//        return CapacityZone-List.size();
-    return -1;
-    }
-    
-    int totalCapacity(){
-        return CapacityZone;
-    }
-    
-    boolean hasCanteen(){
-        return false;
-    }
-    
-    boolean hasPark(){
-        return true;
-    }
-       
+	public void addCage() {
+
+		if (_ZoneEnum_.Zone1.equals(zone)) {
+			if (mammalCageList.size() == CapacityZone) {
+				System.out.println("No more cage add in zone 1");
+			} else {
+				
+				cageMammals = new Cage("Mammal  Cage" + (mammalCageList.size()+1), "mammal", "Zone1");
+				mammalInCage = cageMammals.getMammalInCageList();
+				mammalCageList.add(cageMammals);
+				System.out.println("Cage "+mammalCageList.size()+" is added in Zone 1");
+				
+			}
+		}
+
+		else if (_ZoneEnum_.Zone2.equals(zone)) {
+			if (birdCageList.size() == CapacityZone) {
+				System.out.println("No more cage add in zone 2");
+			} else {
+				cageBirds = new Cage("Bird  Cage" + (birdCageList.size()+1), "bird", "Zone2");
+				birdInCage = cageBirds.getBirdInCageList();
+				birdCageList.add(cageBirds);
+				System.out.println("Cage "+birdCageList.size()+" is added in Zone 2");
+			}
+		} else if (_ZoneEnum_.Zone3.equals(zone)) {
+			if (reptileCageList.size() == CapacityZone) {
+				System.out.println("No more cage add in zone 3");
+			} else {
+				cageReptiles = new Cage("Reptile  Cage" + (mammalCageList.size()+1), "reptile", "Zone3");
+				reptileInCage = cageReptiles.getReptileInCageList();
+				reptileCageList.add(cageReptiles);
+				System.out.println("Cage "+reptileCageList.size()+" is added in Zone 3");
+			}
+
+		}
+
+	}
+
+	public void addAnimalInZone(String category){
+		if(category=="mammal"){
+			if (mammalInCage.size() == cageCapacity) {
+				System.out.println("Cage Capacity is full.\n");
+				addCage();
+				cageMammals.addAnimalInCage();
+			} else {		 
+				cageMammals.addAnimalInCage();
+			}
+		}
+		else if(category=="bird"){
+			if (birdInCage.size() == cageCapacity) {
+				System.out.println("Cage Capacity is full.\n");
+				addCage();
+				cageBirds.addAnimalInCage();
+			} else {		 
+				cageBirds.addAnimalInCage();
+			}
+		}
+		else if(category=="reptile"){
+			if (reptileInCage.size() == cageCapacity) {
+				System.out.println("Cage Capacity is full.\n");
+				addCage();
+				cageReptiles.addAnimalInCage();
+			} else {		 
+				cageReptiles.addAnimalInCage();
+			}
+		}
+	}
+
+
+	public List<Cage> setMammalCageList() {
+		return mammalCageList;
+	}
+
+	public List<Cage> setBirdCageList() {
+		return birdCageList;
+	}
+
+	public List<Cage> setReptileCageList() {
+		return reptileCageList;
+	}
+
+	boolean hasCanteen() {
+		return false;
+	}
+
+	boolean hasPark() {
+		return true;
+	}
+
 }
