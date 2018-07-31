@@ -1,19 +1,17 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Animal;
 
+/*
+ * Peacock Animal class
+ */
 public class Peacock extends BirdAnimal {
 
 	public String name;
 	public int age;
 
-	public Peacock(String Category, String Name, int Age, String animalId) {
-		super(Category, animalId);
-		this.name = Name;
-		this.age = Age;
+	public Peacock(String category, String name, int age, String animalId) {
+		super(category, animalId);
+		this.name = name;
+		this.age = age;
 	}
 
     String typeSound() {

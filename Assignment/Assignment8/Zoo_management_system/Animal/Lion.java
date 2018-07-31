@@ -1,14 +1,17 @@
 package Animal;
 
+/*
+ * Lion Animal class
+ */
 public class Lion extends MammalAnimal {
 
 	public String name;
 	public int age;
 
-	public Lion(String Category, String Name, int Age, String animalId) {
-		super(Category, animalId);
-		this.name = Name;
-		this.age = Age;
+	public Lion(String category, String name, int age, String animalId) {
+		super(category, animalId);
+		this.name = name;
+		this.age = age;
 	}
 
 	String typeSound() {
