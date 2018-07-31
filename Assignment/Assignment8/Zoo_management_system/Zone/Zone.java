@@ -3,18 +3,18 @@ package Zone;
 import java.util.ArrayList;
 import java.util.List;
 
-import Animal.BirdAnimal;
-import Animal.MammalAnimal;
-import Animal.ReptileAnimal;
+import Animal.Crocodile;
+import Animal.Lion;
+import Animal.Peacock;
 import Cage.Cage;
 
 public class Zone {
 	int CapacityZone = 2;
 	int cageCapacity = 5;
 	_ZoneEnum_ zone;
-	List<MammalAnimal> mammalInCage ;
-	List<BirdAnimal> birdInCage;
-	List<ReptileAnimal> reptileInCage;
+	List<Lion> mammalInCage ;
+	List<Peacock> birdInCage;
+	List<Crocodile> reptileInCage;
 	public List<Cage> mammalCageList = new ArrayList<Cage>();
 	public List<Cage> birdCageList = new ArrayList<Cage>();
 	public List<Cage> reptileCageList = new ArrayList<Cage>();
@@ -35,7 +35,7 @@ public class Zone {
 				cageMammals = new Cage("Mammal  Cage" + (mammalCageList.size()+1), "mammal", "Zone1");
 				mammalInCage = cageMammals.getMammalInCageList();
 				mammalCageList.add(cageMammals);
-				System.out.println("Cage "+mammalCageList.size()+" is added in Zone 1");
+				System.out.println("\nCage "+mammalCageList.size()+" is added in Zone 1\n");
 				
 			}
 		}
@@ -47,7 +47,7 @@ public class Zone {
 				cageBirds = new Cage("Bird  Cage" + (birdCageList.size()+1), "bird", "Zone2");
 				birdInCage = cageBirds.getBirdInCageList();
 				birdCageList.add(cageBirds);
-				System.out.println("Cage "+birdCageList.size()+" is added in Zone 2");
+				System.out.println("\nCage "+birdCageList.size()+" is added in Zone 2\n");
 			}
 		} else if (_ZoneEnum_.Zone3.equals(zone)) {
 			if (reptileCageList.size() == CapacityZone) {
@@ -56,7 +56,7 @@ public class Zone {
 				cageReptiles = new Cage("Reptile  Cage" + (mammalCageList.size()+1), "reptile", "Zone3");
 				reptileInCage = cageReptiles.getReptileInCageList();
 				reptileCageList.add(cageReptiles);
-				System.out.println("Cage "+reptileCageList.size()+" is added in Zone 3");
+				System.out.println("\nCage "+reptileCageList.size()+" is added in Zone 3\n");
 			}
 
 		}
@@ -66,7 +66,7 @@ public class Zone {
 	public void addAnimalInZone(String category){
 		if(category=="mammal"){
 			if (mammalInCage.size() == cageCapacity) {
-				System.out.println("Cage Capacity is full.\n");
+				System.out.println("\nCage Capacity is full.\n");
 				addCage();
 				cageMammals.addAnimalInCage();
 			} else {		 
@@ -75,7 +75,7 @@ public class Zone {
 		}
 		else if(category=="bird"){
 			if (birdInCage.size() == cageCapacity) {
-				System.out.println("Cage Capacity is full.\n");
+				System.out.println("\nCage Capacity is full.\n");
 				addCage();
 				cageBirds.addAnimalInCage();
 			} else {		 
@@ -84,7 +84,7 @@ public class Zone {
 		}
 		else if(category=="reptile"){
 			if (reptileInCage.size() == cageCapacity) {
-				System.out.println("Cage Capacity is full.\n");
+				System.out.println("\nCage Capacity is full.\n");
 				addCage();
 				cageReptiles.addAnimalInCage();
 			} else {		 

@@ -2,9 +2,12 @@ package Animal;
 
 public class MammalAnimal extends Animal {
 
-    public MammalAnimal(String Category, String Name, int age, String mammalId) {
-        super(Category, Name, age,mammalId);
-    }
+	public String category;
+	
+    public MammalAnimal(String Category, String animalId) {
+        super(animalId);
+        this.category=Category;
+      }
 
 
 }

@@ -6,14 +6,12 @@ import Zoo.Zoo;
 
 public class Animal {
 
-	public String category;
-	public String name;
-	public int age;
+	
 	public String animalId;
 	static List<Animal> animalList;
-	static List<MammalAnimal> mammalAnimalList;
-	static List<ReptileAnimal> reptileAnimalList;
-	static List<BirdAnimal> birdAnimalList;
+	static List<Lion> mammalAnimalList;
+	static List<Crocodile> reptileAnimalList;
+	static List<Peacock> birdAnimalList;
 
 	public Animal() {
 		animalList = Zoo.setAnimal();
@@ -23,10 +21,7 @@ public class Animal {
 
 	}
 
-	public Animal(String category, String name, int age, String animalId) {
-		this.category = category;
-		this.name = name;
-		this.age = age;
+	public Animal(String animalId) {
 		this.animalId = animalId;
 	}
 

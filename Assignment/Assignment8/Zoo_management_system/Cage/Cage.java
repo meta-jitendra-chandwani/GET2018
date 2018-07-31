@@ -10,9 +10,9 @@ import java.util.List;
 
 import Zoo.Zoo;
 import Animal.Animal;
-import Animal.BirdAnimal;
-import Animal.MammalAnimal;
-import Animal.ReptileAnimal;
+import Animal.Crocodile;
+import Animal.Lion;
+import Animal.Peacock;
 
 public class Cage {
 
@@ -22,13 +22,13 @@ public class Cage {
 	static int cageCapacity = 5;
 	Animal animal;
 	List<Animal> animalList;
-	List<MammalAnimal> mammalAnimalList;
-	List<BirdAnimal> birdAnimalList;
-	List<ReptileAnimal> reptileAnimalList;
+	List<Lion> mammalAnimalList;
+	List<Peacock> birdAnimalList;
+	List<Crocodile> reptileAnimalList;
 
-	static List<MammalAnimal> mammalInCage = new ArrayList<MammalAnimal>();
-	static List<BirdAnimal> birdInCage = new ArrayList<BirdAnimal>();
-	static List<ReptileAnimal> reptileInCage = new ArrayList<ReptileAnimal>();
+	static List<Lion> mammalInCage = new ArrayList<Lion>();
+	static List<Peacock> birdInCage = new ArrayList<Peacock>();
+	static List<Crocodile> reptileInCage = new ArrayList<Crocodile>();
 
 	public Cage(String cageName, String cageType, String zoneName) {
 		this.cageType = cageType;
@@ -63,15 +63,15 @@ public class Cage {
 
 	}
 
-	public List<MammalAnimal> getMammalInCageList() {
+	public List<Lion> getMammalInCageList() {
 		return mammalInCage;
 	}
 
-	public List<BirdAnimal> getBirdInCageList() {
+	public List<Peacock> getBirdInCageList() {
 		return birdInCage;
 	}
 
-	public List<ReptileAnimal> getReptileInCageList() {
+	public List<Crocodile> getReptileInCageList() {
 		return reptileInCage;
 	}
 

@@ -7,8 +7,10 @@ package Animal;
 
 public class BirdAnimal extends Animal {
 
-	public BirdAnimal(String Category, String Name, int Age, String birdId) {
-		super(Category, Name, Age, birdId);
-	}
-
+public String category;
+	
+    public BirdAnimal(String Category, String animalId) {
+        super(animalId);
+        this.category=Category;
+      }
 }
