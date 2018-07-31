@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Cage;
 
 import java.util.ArrayList;
@@ -22,61 +17,70 @@ public class Cage {
 	static int cageCapacity = 5;
 	Animal animal;
 	List<Animal> animalList;
-	List<Lion> mammalAnimalList;
-	List<Peacock> birdAnimalList;
-	List<Crocodile> reptileAnimalList;
+	List<Lion> lionAnimalList;
+	List<Peacock> peacockAnimalList;
+	List<Crocodile> crocodileAnimalList;
 
-	static List<Lion> mammalInCage = new ArrayList<Lion>();
-	static List<Peacock> birdInCage = new ArrayList<Peacock>();
-	static List<Crocodile> reptileInCage = new ArrayList<Crocodile>();
+	static List<Lion> lionInCage = new ArrayList<Lion>();
+	static List<Peacock> peacockInCage = new ArrayList<Peacock>();
+	static List<Crocodile> crocodileInCage = new ArrayList<Crocodile>();
 
 	public Cage(String cageName, String cageType, String zoneName) {
 		this.cageType = cageType;
 		this.cageName = cageName;
 		this.zoneName = zoneName;
-
 	}
 	
+	/*
+	 * Add animal in cage 
+	 */
 	public void addAnimalInCage(){
 		animalList = Zoo.setAnimal();
-		mammalAnimalList = Zoo.setMammalAnimalList();
-		reptileAnimalList = Zoo.setReptileAnimalList();
-		birdAnimalList = Zoo.setBirdAnimalList();
+		lionAnimalList = Zoo.setMammalAnimalList();
+		crocodileAnimalList = Zoo.setReptileAnimalList();
+		peacockAnimalList = Zoo.setBirdAnimalList();
 		switch (cageType) {
 		case "mammal":			
-				mammalInCage.add(mammalAnimalList.size()-1,mammalAnimalList.get(mammalAnimalList.size()-1));
-				System.out.println(mammalAnimalList.get(mammalAnimalList.size()-1).animalId
+				lionInCage.add(lionAnimalList.size()-1,lionAnimalList.get(lionAnimalList.size()-1));
+				System.out.println(lionAnimalList.get(lionAnimalList.size()-1).animalId
 						+ " is added in Cage");
 			break;
 		case "reptile":
-				reptileInCage.add(reptileAnimalList.size()-1, reptileAnimalList.get(reptileAnimalList.size()-1));
-				System.out.println(reptileAnimalList.get(reptileAnimalList.size()-1).animalId
+				crocodileInCage.add(crocodileAnimalList.size()-1, crocodileAnimalList.get(crocodileAnimalList.size()-1));
+				System.out.println(crocodileAnimalList.get(crocodileAnimalList.size()-1).animalId
 						+ " is added in Cage");
 		
 			break;
 		case "bird":
-				birdInCage.add(birdAnimalList.size()-1, birdAnimalList.get(birdAnimalList.size()-1));
-				System.out.println(birdInCage.get(birdAnimalList.size()-1).animalId
+				peacockInCage.add(peacockAnimalList.size()-1, peacockAnimalList.get(peacockAnimalList.size()-1));
+				System.out.println(peacockInCage.get(peacockAnimalList.size()-1).animalId
 						+ " is added in Cage");
 			break;
 		}
 
 	}
 
+	/*
+	 * List of Lion animal in cage
+	 * @return list of Lion animal in cage
+	 */
 	public List<Lion> getMammalInCageList() {
-		return mammalInCage;
+		return lionInCage;
 	}
 
+	/*
+	 * List of Peacock animal in cage
+	 * @return list of Peacock animal in cage
+	 */
 	public List<Peacock> getBirdInCageList() {
-		return birdInCage;
+		return peacockInCage;
 	}
 
+	/*
+	 * List of Crocodile animal in cage
+	 * @return list of Crocodile animal in cage
+	 */	
 	public List<Crocodile> getReptileInCageList() {
-		return reptileInCage;
+		return crocodileInCage;
 	}
-
-	void putAnimalCage() {
-
-	}
-
 }
