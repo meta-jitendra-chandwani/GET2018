@@ -14,146 +14,180 @@ import Animal.Peacock;
 
 import Cage.Cage;
 
+/*
+ * Zone Class - is main class of zoo management system
+ * Through which animal is add or removed from zoo.
+ */
 public class Zoo {
 	static List<Animal> animalList = new ArrayList<Animal>();
-	static List<Lion> mammalAnimalList = new ArrayList<Lion>();
-	static List<Peacock> birdAnimalList = new ArrayList<Peacock>();
-	static List<Crocodile> reptileAnimalList = new ArrayList<Crocodile>();
-	Zone mammalZone, birdZone, reptileZone;
+	static List<Lion> lionAnimalList = new ArrayList<Lion>();
+	static List<Peacock> peacockAnimalList = new ArrayList<Peacock>();
+	static List<Crocodile> crocodileAnimalList = new ArrayList<Crocodile>();
+	Zone lionZone, peacockZone, crocodileZone;
 	List<Zone> zoneList = new ArrayList<Zone>();
-	List<Cage> mammalCageList = new ArrayList<Cage>();
-	List<Cage> birdCageList = new ArrayList<Cage>();
-	List<Cage> reptileCageList = new ArrayList<Cage>();
+	List<Cage> lionCageList = new ArrayList<Cage>();
+	List<Cage> peacockCageList = new ArrayList<Cage>();
+	List<Cage> crocodileCageList = new ArrayList<Cage>();
 
-	void addAnimal(String Category, String Name, int Age, String animalId) {
-		if (mammalCageList.size() == 0 && "mammal".equals(Category)) {
+	/*
+	 * Add animal - to add animal in zoo in their particular zone and cage.	
+	 * @param category - category of animal such as Mammal, Bird or Reptile	
+	 * @param name - name of animal
+	 * @param age - age of animal
+	 * @param animalId - unique animal id assigned to every animal
+	 */
+	void addAnimal(String category, String name, int age, String animalId) {
+		if (lionCageList.size() == 0 && "mammal".equals(category)) {
 
-			mammalZone = new Zone(_ZoneEnum_.Zone1);
-			mammalCageList = mammalZone.setMammalCageList();
-			zoneList.add(mammalZone);
+			lionZone = new Zone(_ZoneEnum_.Zone1);
+			lionCageList = lionZone.setLionCageList();
+			zoneList.add(lionZone);
 			System.out.println("\n====  Zone 1 is created for mammals ===");
-			mammalZone.addCage();
+			lionZone.addCage();
 
-			mammalAnimalList.add(new Lion(Category, Name, Age, animalId));
-			animalList.add(new Lion(Category, Name, Age, animalId));
-			mammalZone.addAnimalInZone("mammal");
+			lionAnimalList.add(new Lion(category, name, age, animalId));
+			animalList.add(new Lion(category, name, age, animalId));
+			lionZone.addAnimalInZone("mammal");
 
-		} else if (birdCageList.size() == 0 && "bird".equals(Category)) {
+		} else if (peacockCageList.size() == 0 && "bird".equals(category)) {
 
-			birdZone = new Zone(_ZoneEnum_.Zone2);
-			birdCageList = birdZone.setBirdCageList();
-			zoneList.add(birdZone);
+			peacockZone = new Zone(_ZoneEnum_.Zone2);
+			peacockCageList = peacockZone.setPeacockCageList();
+			zoneList.add(peacockZone);
 			System.out.println("\n====  Zone 2 is created for bird ===");
-			birdZone.addCage();
+			peacockZone.addCage();
 
-			birdAnimalList.add(new Peacock(Category, Name, Age, animalId));
-			animalList.add(new Peacock(Category, Name, Age, animalId));
-			birdZone.addAnimalInZone("bird");
+			peacockAnimalList.add(new Peacock(category, name, age, animalId));
+			animalList.add(new Peacock(category, name, age, animalId));
+			peacockZone.addAnimalInZone("bird");
 
 		}
 
-		else if (reptileCageList.size() == 0 && "reptile".equals(Category)) {
-			reptileZone = new Zone(_ZoneEnum_.Zone3);
-			reptileCageList = reptileZone.setReptileCageList();
-			zoneList.add(reptileZone);
+		else if (crocodileCageList.size() == 0 && "reptile".equals(category)) {
+			crocodileZone = new Zone(_ZoneEnum_.Zone3);
+			crocodileCageList = crocodileZone.setCrocodileCageList();
+			zoneList.add(crocodileZone);
 			System.out.println("\n====  Zone 3 is created for reptile ===");
-			reptileZone.addCage();
+			crocodileZone.addCage();
 
-			reptileAnimalList.add(new Crocodile(Category, Name, Age, animalId));
-			animalList.add(new Crocodile(Category, Name, Age, animalId));
-			reptileZone.addAnimalInZone("reptile");
+			crocodileAnimalList.add(new Crocodile(category, name, age, animalId));
+			animalList.add(new Crocodile(category, name, age, animalId));
+			crocodileZone.addAnimalInZone("reptile");
 
 		} else {
 
-			if ("mammal".equals(Category)) {
-				mammalAnimalList.add(new Lion(Category, Name, Age, animalId));
-				animalList.add(new Lion(Category, Name, Age, animalId));
-				mammalZone.addAnimalInZone("mammal");
+			if ("mammal".equals(category)) {
+				lionAnimalList.add(new Lion(category, name, age, animalId));
+				animalList.add(new Lion(category, name, age, animalId));
+				lionZone.addAnimalInZone("mammal");
 			}
 
-			else if ("bird".equals(Category)) {
-				birdAnimalList.add(new Peacock(Category, Name, Age, animalId));
-				animalList.add(new Peacock(Category, Name, Age, animalId));
-				birdZone.addAnimalInZone("bird");
+			else if ("bird".equals(category)) {
+				peacockAnimalList.add(new Peacock(category, name, age, animalId));
+				animalList.add(new Peacock(category, name, age, animalId));
+				peacockZone.addAnimalInZone("bird");
 			}
 
-			else if ("reptile".equals(Category)) {
-				reptileAnimalList.add(new Crocodile(Category, Name, Age,
+			else if ("reptile".equals(category)) {
+				crocodileAnimalList.add(new Crocodile(category, name, age,
 						animalId));
-				animalList.add(new Crocodile(Category, Name, Age, animalId));
-				reptileZone.addAnimalInZone("reptile");
+				animalList.add(new Crocodile(category, name, age, animalId));
+				crocodileZone.addAnimalInZone("reptile");
 			}
 
 		}
 
 	}
 
+	/*
+	 * List of Lion
+	 * @return Lion animal list
+	 */
 	public static List<Lion> setMammalAnimalList() {
-		return mammalAnimalList;
+		return lionAnimalList;
 	}
 
+	/*
+	 * List of Crocodile
+	 * @return Crocodile animal list
+	 */
 	public static List<Crocodile> setReptileAnimalList() {
-		return reptileAnimalList;
+		return crocodileAnimalList;
 	}
 
+	/*
+	 * List of Peacock
+	 * @return Peacock animal list
+	 */
 	public static List<Peacock> setBirdAnimalList() {
-		return birdAnimalList;
+		return peacockAnimalList;
 	}
 
+	/*
+	 * List of all animal
+	 * @return animal list - list of animals
+	 */
 	public static List<Animal> setAnimal() {
-
 		return animalList;
 	}
 
+
+	/*
+	 * Remove the reference of animal
+	 * @param unique animalId
+	 */
 	void removeAnimal(String animalId) {
 		for (int i = 0; i < animalList.size(); i++) {
-            if ((animalList.get(i).animalId).equals(animalId)) {
-            	System.out.println(animalList.get(i).animalId+" Is removed");
-            	animalList.remove(i);
-            }
-        }
-		
-		for (int i = 0; i < mammalAnimalList.size(); i++) {
-            if ((mammalAnimalList.get(i).animalId).equals(animalId)) {
-            	System.out.println(mammalAnimalList.get(i).animalId+" mammal Is removed");
-            	mammalAnimalList.remove(i);
-            }
-        }
-		
-		for (int i = 0; i < birdAnimalList.size(); i++) {
-            if ((birdAnimalList.get(i).animalId).equals(animalId)) {
-            	System.out.println(birdAnimalList.get(i).animalId+" bird Is removed");
-            	birdAnimalList.remove(i);
-            }
-        }
-		
-		for (int i = 0; i < reptileAnimalList.size(); i++) {
-            if ((reptileAnimalList.get(i).animalId).equals(animalId)) {
-            	System.out.println(reptileAnimalList.get(i).animalId+" reptile Is removed");
-            	reptileAnimalList.remove(i);
-            }
-        }
+			if ((animalList.get(i).animalId).equals(animalId)) {
+				System.out.println(animalList.get(i).animalId + " Is removed");
+				animalList.remove(i);
+			}
+		}
+
+		for (int i = 0; i < lionAnimalList.size(); i++) {
+			if ((lionAnimalList.get(i).animalId).equals(animalId)) {
+				System.out.println(lionAnimalList.get(i).animalId
+						+ " mammal Is removed");
+				lionAnimalList.remove(i);
+			}
+		}
+
+		for (int i = 0; i < peacockAnimalList.size(); i++) {
+			if ((peacockAnimalList.get(i).animalId).equals(animalId)) {
+				System.out.println(peacockAnimalList.get(i).animalId
+						+ " bird Is removed");
+				peacockAnimalList.remove(i);
+			}
+		}
+
+		for (int i = 0; i < crocodileAnimalList.size(); i++) {
+			if ((crocodileAnimalList.get(i).animalId).equals(animalId)) {
+				System.out.println(crocodileAnimalList.get(i).animalId
+						+ " reptile Is removed");
+				crocodileAnimalList.remove(i);
+			}
+		}
 	}
 
 	public static void main(String arg[]) {
 		Zoo zoo = new Zoo();
-		for(int i=1;i<=8;i++){
+		for (int i = 1; i <= 8; i++) {
 			zoo.addAnimal("mammal", "Lion", 10, "Mammal" + i);
 			zoo.addAnimal("bird", "Peacock", 6, "Bird" + i);
 			zoo.addAnimal("reptile", "Crocodile", 6, "Reptile" + i);
 		}
 		System.out.println("\n=====Animal List=====");
-		for(int i=0;i<animalList.size();i++){
+		for (int i = 0; i < animalList.size(); i++) {
 			System.out.println(animalList.get(i).animalId);
 		}
 		zoo.removeAnimal("Reptile2");
 		System.out.println("\n=====Animal List=====");
-		for(int i=0;i<animalList.size();i++){
+		for (int i = 0; i < animalList.size(); i++) {
 			System.out.println(animalList.get(i).animalId);
 		}
 		System.out.println("\n=====Mammal Animal List=====");
-		for(int i=0;i<reptileAnimalList.size();i++){
-			System.out.println(reptileAnimalList.get(i).animalId);
+		for (int i = 0; i < crocodileAnimalList.size(); i++) {
+			System.out.println(crocodileAnimalList.get(i).animalId);
 		}
 
 	}
