@@ -15,11 +15,6 @@ public class Peacock extends BirdAnimal {
         super(Category, Name, Age);
     }
 
-    @Override
-    String Type() {
-        return "Peacock";
-    }
-
     String typeSound() {
         return "Pea Pea";
     }

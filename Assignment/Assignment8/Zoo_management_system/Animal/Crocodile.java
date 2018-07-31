@@ -6,11 +6,6 @@ public class Crocodile extends ReptileAnimal {
         super(Category, Name, Age);
     }
 
-    @Override
-    String Type() {
-        return "Crocodile";
-    }
-
     String typeSound() {
         return "Crock";
     }

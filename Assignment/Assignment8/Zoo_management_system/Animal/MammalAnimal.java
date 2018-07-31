@@ -1,22 +1,10 @@
 package Animal;
 
 public class MammalAnimal extends Animal {
-//    String Category;
-	
-    public MammalAnimal(String Category, String Name, int Age) {
-        super(Category, Name, Age);
+
+    public MammalAnimal(String Category, String Name, int age, String mammalId) {
+        super(Category, Name, age,mammalId);
     }
 
-    String getName() {
-        return this.Name;
-    }
 
-    @Override
-    String getCategory() {
-        return this.Category;
-    }
-
-    String Type() {
-        return "MammalAnimal";
-    }
 }

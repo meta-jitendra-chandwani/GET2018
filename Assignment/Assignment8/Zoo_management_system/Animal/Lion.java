@@ -9,11 +9,6 @@ public class Lion extends MammalAnimal {
         super(Category, Name, Age);
     }
 
-    @Override
-    String Type() {
-        return "Lion";
-    }
-
     String typeSound() {
         return "Roar";
     }

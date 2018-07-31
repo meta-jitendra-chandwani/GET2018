@@ -7,20 +7,8 @@ package Animal;
 
 public class BirdAnimal extends Animal {
 
-    public BirdAnimal(String Category, String Name, int Age) {
-        super(Category, Name, Age);
-    }
+	public BirdAnimal(String Category, String Name, int Age, String birdId) {
+		super(Category, Name, Age, birdId);
+	}
 
-    String getName() {
-        return this.Name;
-    }
-
-    @Override
-    String getCategory() {
-        return this.Category;
-    }
-
-    String Type() {
-        return "BirdAnimal";
-    }
 }
