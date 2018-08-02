@@ -1,12 +1,12 @@
 package shapes;
 
 import java.text.DecimalFormat;
-
+import implementation.ShapeType;
 import implementation.Point;
 import implementation.Shape;
 
-/**
- * This Triangle class implements Shape interface
+/*
+ * Triangle class - implements the property of shape interface
  */
 public class Triangle implements Shape {
     private Point origin;
@@ -29,39 +29,75 @@ public class Triangle implements Shape {
         this.origin = origin;
         this.timeStamp = timestamp;
     }
-
+    
+    /*
+	 * (non-Javadoc)
+	 * @see implementation.Shape#getArea()
+	 * getArea - to evaluate the area of Triangle
+	 */
     @Override
     public double getArea() {
         double perimeter = getPerimeter() / 2;
-        return Double.parseDouble(
-                df.format(Math.sqrt(perimeter * (perimeter - sideA) * (perimeter - sideB) * (perimeter - base))));
+        return Double.parseDouble(df.format(Math.sqrt(perimeter * (perimeter - sideA) * (perimeter - sideB) * (perimeter - base))));
     }
 
+    /*
+	 * (non-Javadoc)
+	 * @see implementation.Shape#getPerimeter()
+	 * getPerimeter - to evaluate the perimeter of Triangle
+	 * @return - perimeter of triangle
+	 */
     @Override
     public double getPerimeter() {
         return Double.parseDouble(df.format(sideA + sideB + base));
     }
 
+    /*
+	 * (non-Javadoc)
+	 * @see implementation.Shape#getOrigin()
+	 * getOrigin - find the origin of triangle
+	 * @return Point of triangle
+	 */
     public Point getOrigin() {
         return origin;
     }
 
+    /*
+	 * (non-Javadoc)
+	 * @see implementation.Shape#isPointEnclosed(implementation.Point)
+	 * isPointEnclosed - check whether point is enclosed in triangle or not
+	 * @param Point - to be checked
+	 * @return boolean value - true if exist or false
+	 */
     public boolean isPointEnclosed(Point isPointEnclosed) {
+    	boolean value = false;
         if (isPointEnclosed.getyPoint() - slopeA * isPointEnclosed.getxPoint() <= origin.getyPoint()
                 - slopeA * origin.getyPoint()
                 && isPointEnclosed.getyPoint() - slopeB * isPointEnclosed.getxPoint() <= pointA.getyPoint()
                         - slopeB * pointA.getxPoint()
                 && isPointEnclosed.getyPoint() >= origin.getyPoint()) {
-            return true;
+        	value = true;
         }
-        return false;
+        return value;
     }
 
+    /*
+	 * (non-Javadoc)
+	 * @see implementation.Shape#getTimestamp()
+	 * getTimestamp - get the timestamp of circle when added to the screen
+	 * @return - timestamp of circle
+	 */
     @Override
     public long getTimestamp() {
         return timeStamp;
     }
-
+    
+    /*
+	 * (non-Javadoc)
+	 * @see implementation.Shape#getShapeType()
+	 * getShapeType - get type of shape
+	 * @return the shape type from enum
+	 */
     public ShapeType getShapeType() {
         return ShapeType.Triangle;
     }
@@ -74,6 +110,5 @@ public class Triangle implements Shape {
         pointB = new Point(origin.getxPoint() + base, origin.getyPoint());
         slopeA = (pointA.getyPoint() - origin.getyPoint()) / (pointA.getxPoint() - origin.getxPoint());
         slopeB = (pointA.getyPoint() - pointB.getyPoint()) / (pointA.getxPoint() - pointB.getxPoint());
-        ;
     }
 }
