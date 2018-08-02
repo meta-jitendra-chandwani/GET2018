@@ -6,10 +6,6 @@ package implementation;
 
 public interface Shape {
 
-    enum ShapeType {
-        Square, Rectangle, Circle, Triangle;
-    }
-
     double getArea();
 
     double getPerimeter();
