@@ -5,6 +5,9 @@ public class Point {
 	private final double xPoint;
 	private final double yPoint;
 
+	/*
+	 * Point constructor - initialize the xPoint and yPoint
+	 */
 	public Point(double xPoint, double yPoint) {
 		this.xPoint = xPoint;
 		this.yPoint = yPoint;
@@ -13,6 +16,10 @@ public class Point {
 		}
 	}
 
+	/*
+	 * checkLocation - check location of xPoint and yPoint
+	 * Is these are inside the Screen or not
+	 */
 	boolean checkLocation() {
 		boolean value=false;
 		if (xPoint >= 0 && xPoint <= 1920 && yPoint >= 0 && yPoint <= 1080) {
@@ -21,10 +28,18 @@ public class Point {
 		return value;
 	}
 
+	/*
+	 * getxPoint
+	 * @return xPoint of object Point class
+	 */
 	public double getxPoint() {
 		return xPoint;
 	}
 
+	/*
+	 * getyPoint
+	 * @return yPoint of object Point class
+	 */
 	public double getyPoint() {
 		return yPoint;
 	}
