@@ -3,11 +3,13 @@ package implementation;
 import java.util.ArrayList;
 import java.util.List;
 
-import implementation.Shape.ShapeType;
+import implementation.ShapeType;
 
+/*
+ * Screen class - which hold the shapes
+ */
 public class Screen {
 	static ArrayList<Shape> shapesList = new ArrayList<>();
-
 	
 	/*
 	 * addShape to add shape on screen
@@ -49,6 +51,9 @@ public class Screen {
 		}
 	}
 
+	/*
+	 * ascendingInArea -  sort the shape list according to their respective area.
+	 */
 	static ArrayList<Shape> ascendingInArea() {
 		ArrayList<Shape> sortedShapes = shapesList;
 		for (int i = 0; i < sortedShapes.size() - 1; i++) {
@@ -63,6 +68,9 @@ public class Screen {
 		return sortedShapes;
 	}
 
+	/*
+	 * ascendingInPerimeter -  sort the shape list according to their respective perimeter.
+	 */
 	static ArrayList<Shape> ascendingInPerimeter() {
 		ArrayList<Shape> sortedShapes = shapesList;
 		for (int i = 0; i < sortedShapes.size() - 1; i++) {
@@ -77,6 +85,9 @@ public class Screen {
 		return sortedShapes;
 	}
 
+	/*
+	 * ascendingInTimestamp -  sort the shape list according to their respective time stamp.
+	 */
 	static ArrayList<Shape> ascendingInTimestamp() {
 		ArrayList<Shape> sortedShapes = shapesList;
 		for (int i = 0; i < sortedShapes.size() - 1; i++) {
@@ -91,6 +102,9 @@ public class Screen {
 		return sortedShapes;
 	}
 
+	/*
+	 * ascendingInOriginDistance -  sort the shape list according to their respective origin distance.
+	 */
 	static ArrayList<Shape> ascendingInOriginDistance() {
 		ArrayList<Shape> sortedShapes = shapesList;
 		for (int i = 0; i < sortedShapes.size() - 1; i++) {
@@ -109,6 +123,11 @@ public class Screen {
 		return sortedShapes;
 	}
 
+	/*
+	 * isPointEnclosed - check whether point is enclosed in shape or not
+	 * @param Point - to be checked
+	 * @return List of shape which enclosed the point 
+	 */
 	static ArrayList<Shape> isPointEnclosed(Point point) {
 		ArrayList<Shape> pointEnclosedShapes = new ArrayList<>();
 		for (int i = 0; i < shapesList.size(); i++) {
@@ -118,10 +137,4 @@ public class Screen {
 		}
 		return pointEnclosedShapes;
 	}
-	
-//	public static void main(String []arg){
-//		Screen.addShape(ShapeType.Circle, new Point(100,200), new ArrayList<>(Arrays.asList(50d)));
-//		Screen.addShape(ShapeType.Circle, new Point(20, 3), new ArrayList<>(Arrays.asList(30d)));
-//		Screen.addShape(ShapeType.Rectangle, new Point(1, 23), new ArrayList<>(Arrays.asList(12d, 23d)));
-//	}
 }
