@@ -1,6 +1,5 @@
 package implementation;
 
-
 public class Point {
 	private final double xPoint;
 	private final double yPoint;
@@ -17,13 +16,17 @@ public class Point {
 	}
 
 	/*
-	 * checkLocation - check location of xPoint and yPoint
-	 * Is these are inside the Screen or not
+	 * checkLocation - check location of xPoint and yPoint Is these are inside
+	 * the Screen or not
 	 */
-	boolean checkLocation() {
-		boolean value=false;
-		if (xPoint >= 0 && xPoint <= 1920 && yPoint >= 0 && yPoint <= 1080) {
-			value = true;
+	public boolean checkLocation() {
+		boolean value = false;
+		try {
+			if (xPoint >= 0 && xPoint <= 1920 && yPoint >= 0 && yPoint <= 1080) {
+				value = true;
+			}
+		} catch (Exception e) {
+			e.getStackTrace();
 		}
 		return value;
 	}
