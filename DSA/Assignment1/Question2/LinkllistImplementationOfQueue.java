@@ -4,17 +4,7 @@ package Question2;
  *LinkllistImplementationOfQueue - is a implementation of Queue using linklist
  */
 public class LinkllistImplementationOfQueue<T> {
-	class QNode {
-		T key;
-		QNode next;
-
-		public QNode(T item) {
-			this.key = item;
-			this.next = null;
-		}
-	}
-
-	QNode front, rear;
+	QNode<T> front, rear;
 
 	public LinkllistImplementationOfQueue() {
 		this.front = this.rear = null;
@@ -42,7 +32,7 @@ public class LinkllistImplementationOfQueue<T> {
 	 */
 	public void enQueue(T item) {
 		try{
-			QNode node = new QNode(item);
+			QNode<T> node = new QNode<T>(item);
 
 			if (this.rear == null) {
 				this.front = this.rear = node;
@@ -67,7 +57,7 @@ public class LinkllistImplementationOfQueue<T> {
 			System.out.println("Queue is Empty!");
 		}
 		else{
-			QNode temp = this.front;
+			QNode<T> temp = this.front;
 			this.front = this.front.next;
 
 			if (this.front == null) {
