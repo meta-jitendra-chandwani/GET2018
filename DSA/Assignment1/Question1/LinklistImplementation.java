@@ -3,20 +3,12 @@ package Question1;
 import java.util.NoSuchElementException;
 
 /*
- *LinklistImplementation - is a implementation of stack using linklist
- *Class implements Stack interface  
+ * LinklistImplementation - is a implementation of stack using linklist
+ * Class implements Stack interface  
  */
 public class LinklistImplementation<T> implements Stack<T> {
 
-	/*
-	 * Node class - which implement the Node and Data structure of linklist
-	 */
-	class Node {
-		public T data;
-		public Node next;
-	}
-
-	private Node first;
+	private Node<T> first;
 
 	public LinklistImplementation() {
 		first = null;
@@ -35,7 +27,7 @@ public class LinklistImplementation<T> implements Stack<T> {
 			if (first == null) {
 				throw new NoSuchElementException();
 			} else {
-				T top = first.data;
+				T top = (T) first.data;
 				value = top;
 			}
 		}catch(Exception e){
@@ -55,9 +47,9 @@ public class LinklistImplementation<T> implements Stack<T> {
 	@Override
 	public void push(T item) {
 		try{
-			Node n = new Node();
-			n.data = item;
-			n.next = first;
+			Node<T> n = new Node<T>();
+			n.data = item;			//add item in node n data part
+			n.next = first;			//and add new node  at first
 			first = n;
 		}catch(Exception e){
 			e.getStackTrace();
@@ -78,7 +70,7 @@ public class LinklistImplementation<T> implements Stack<T> {
 			if (first == null) {
 				throw new NoSuchElementException();
 			} else {
-				Node pop = first;
+				Node<T> pop = first;
 				first = first.next;
 				value = pop.data;
 			}
