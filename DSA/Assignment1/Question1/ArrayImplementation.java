@@ -6,14 +6,12 @@ package Question1;
 public class ArrayImplementation<T> implements Stack<T> {
 	private T arrayStack[];
 	private int sizeofArray = 0;
-
+	private int top = -1;
 	@SuppressWarnings("unchecked")
 	public ArrayImplementation(int sizeofArray) {
 		this.sizeofArray = sizeofArray;
 		arrayStack = (T[]) new Object[sizeofArray];
 	}
-
-	private int top = -1;
 
 	/*
 	 * (non-Javadoc)
@@ -23,7 +21,7 @@ public class ArrayImplementation<T> implements Stack<T> {
 	 */
 	@Override
 	public T peek() {
-		return arrayStack[top];
+		return arrayStack[top]; //return the top element of stack
 	}
 
 	/*
@@ -38,13 +36,12 @@ public class ArrayImplementation<T> implements Stack<T> {
 			if (top == sizeofArray) {
 				System.out.println("Stack overflow");
 			} else {
-				top = top + 1;
-				arrayStack[top] = item;
+				top = top + 1;			//increase the size of top
+				arrayStack[top] = item;	//insert item at that point
 			}	
 		}catch(Exception e){
 			e.getStackTrace();
-		}
-		
+		}		
 	}
 
 	/*
