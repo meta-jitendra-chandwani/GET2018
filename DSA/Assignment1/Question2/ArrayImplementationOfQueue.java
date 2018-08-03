@@ -42,8 +42,8 @@ public class ArrayImplementationOfQueue<T> implements Queue<T> {
 			if (isFull()) {
 				System.out.println("Queue is Full ! Insertion not possible");
 			} else {
-				rear++;
-				arrayQueue[rear] = item;
+				rear++;		//increase the size of rear
+				arrayQueue[rear] = item;		//add item from rear
 			}
 		}catch(Exception e){
 			e.getStackTrace();
