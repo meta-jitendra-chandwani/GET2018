@@ -4,9 +4,9 @@ import java.util.*;
 
 public interface NestedList {
 	
-	int sumOfList(List<List<Integer>> list);
+	public int sumOfList(List<List<Integer>> nestedList);
 
-	int largestValue(List<Integer> list);
+	public int largestValue(List<List<Integer>> nestedList);
 
-	boolean searchElement(List<Integer> list, int element);
+	boolean searchElement(List<List<Integer>> nestedList, int element);
 }
