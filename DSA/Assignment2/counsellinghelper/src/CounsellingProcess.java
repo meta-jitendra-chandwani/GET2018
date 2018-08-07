@@ -124,17 +124,17 @@ public class CounsellingProcess {
         for (int i = 0; i < noOfStudents; i++) {
             Student student = queueOfStudents.deQueue();
 
-            for (int j = 0, k = 0; j < 5;) {
-                if (k == programList.size()) {
-                    j++; //next student
-                    k = 0;
-                } else if (student.getInterestedProgram().get(j).equals(programList.get(k).getName()) &&
-                    programList.get(k).getCapacity() > 0) { //to check whether student selected program is available or not
-                    selectedProgramList.add(new AllocatedPrograms(student.getName(), programList.get(k).getName())); // add student into the selectedProgramList
-                    programList.get(k).setCapacity(programList.get(k).getCapacity() - 1); //change capacity of program list
+            for (int studentIndexNumber = 0, programIndexNumber = 0; studentIndexNumber < 5;) {
+                if (programIndexNumber == programList.size()) {
+                	studentIndexNumber++; //next student
+                	programIndexNumber = 0;
+                } else if (student.getInterestedProgram().get(studentIndexNumber).equals(programList.get(programIndexNumber).getName()) &&
+                    programList.get(programIndexNumber).getCapacity() > 0) { //to check whether student selected program is available or not
+                    selectedProgramList.add(new AllocatedPrograms(student.getName(), programList.get(programIndexNumber).getName())); // add student into the selectedProgramList
+                    programList.get(programIndexNumber).setCapacity(programList.get(programIndexNumber).getCapacity() - 1); //change capacity of program list
                     break;
                 } else {
-                    k++; // next program
+                	programIndexNumber++; // next program
                 }
             }
         }
