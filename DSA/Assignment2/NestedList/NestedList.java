@@ -1,12 +1,14 @@
 
 
 import java.util.*;
-
+/*
+ * NestedList interface contains number of operation to be performed on Json
+ */
 public interface NestedList {
 	
-	public int sumOfList(List<List<Integer>> nestedList);
+	public long sumOfList(List<List<Long>> nestedList);
 
-	public int largestValue(List<List<Integer>> nestedList);
+	public long largestValue(List<List<Long>> nestedList);
 
-	boolean searchElement(List<List<Integer>> nestedList, int element);
+	boolean searchElement(List<List<Long>> nestedList, int element);
 }

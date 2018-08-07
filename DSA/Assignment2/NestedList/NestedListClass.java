@@ -1,121 +1,137 @@
+import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
+
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 /*
  * NestedListClass - implements NestedList, and perform operation on nestedlist.
  */
 public class NestedListClass implements NestedList {
+    static List < List < Long >> nestedList = new ArrayList < List < Long >> ();
+    String URL;
 
-	/*
-	 * (non-Javadoc)
-	 * @see NestedList#sumOfList(java.util.List)
-	 * sumOfList - To calculate the sum of nested list
-	 * @param nestedList - nested List
-	 * @return - the sum of all integer in nested list
-	 */
-	@Override
-	public int sumOfList(List<List<Integer>> nestedList) {
-		int returnValue = 0;
-		if (!(nestedList == null || nestedList.size() == 0)) {
-			int sum = 0;
-			for (Object list : nestedList) {
-				if (list instanceof Integer) {
-					sum += (int) list;
-				} else {
-					sum += sumOfList((List) list);
-				}
-			}
-			returnValue = sum;
-		}
-		return returnValue;
+    public NestedListClass(String URL) {
+        this.URL = URL;
+    }
 
-	}
+    /*
+     * JsonParser -  parse the json object into the list
+     * @return List of List of JSON Objects
+     */
+    @SuppressWarnings("rawtypes")
+    List JsonParser() {
+        Object object;
+        JSONObject jsonObject = null;
+        try {
 
-	/*
-	 * (non-Javadoc)
-	 * @see NestedList#largestValue(java.util.List)
-	 * largestValue - To calculate the largest value from the nested list
-	 * @param nestedList - nested List
-	 * @return - the largest value from the nested list
-	 */
-	@Override
-	public int largestValue(List<List<Integer>> nestedList) {
-		int returnValue = 0;
-		if (!(nestedList == null || nestedList.size() == 0)) {
-			int maximumValueInList = 0;
-			for (Object list : nestedList) {
-				if (list instanceof Integer) {
-					if ((int) list > maximumValueInList) {
-						maximumValueInList = (int) list;
-					}
-				} else {
-					maximumValueInList = largestValue((List) list);
-				}
-			}
-			returnValue = maximumValueInList;
-		}
-		return returnValue;
-	}
+            object = new JSONParser().parse(new FileReader(URL));
+            jsonObject = (JSONObject) object;
 
-	/*
-	 * (non-Javadoc)
-	 * @see NestedList#searchElement(java.util.List, int)
-	 * searchElement - Search the element in the nested list
-	 * @param nestedList - nested list
-	 * @param element - the element to be search in the list
-	 * @return - boolean value - true if element is search else false.
-	 */
-	@Override
-	public boolean searchElement(List<List<Integer>> nestedList, int element) {
-		boolean returnValue = false;
-		if (!(nestedList == null || nestedList.size() == 0)) {
-			for (Object list : nestedList) {
-				if (list instanceof Integer) {
-					if ((int) list == element) {
-						returnValue = true;
-						break;
-					}
-				} else {
-					if (!returnValue) {
-						returnValue = searchElement((List) list, element);
-					}
-				}
-			}
-		}
-		return returnValue;
-	}
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return (List) jsonObject.get("list");
+    }
 
-	public static void main(String[] arg) {
+    /*
+     * (non-Javadoc)
+     * @see NestedList#sumOfList(java.util.List)
+     * sumOfList - To calculate the sum of nested list
+     * @param nestedList - nested List
+     * @return - the sum of all integer in nested list
+     */
+    @SuppressWarnings({
+        "unchecked",
+        "rawtypes"
+    })
+    @Override
+    public long sumOfList(List < List < Long >> nestedList) {
+        long returnValue = 0;
+        if (!(nestedList == null || nestedList.size() == 0)) {
+            int sum = 0;
+            for (Object list: nestedList) {
+                if (list instanceof Long) {
+                    sum += (long) list;
+                } else {
+                    sum += sumOfList((List) list);
+                }
+            }
+            returnValue = sum;
+        }
+        return returnValue;
 
-		List<List<Integer>> list = new ArrayList<>();
-		List<Integer> nestedList = new ArrayList<Integer>();
-		List<Integer> nestedList1 = new ArrayList<Integer>();
-		List<Integer> nestedList2 = new ArrayList<Integer>();
+    }
 
-		nestedList.add(1);
-		nestedList.add(2);
-		nestedList.add(3);
-		nestedList.add(4);
+    /*
+     * (non-Javadoc)
+     * @see NestedList#largestValue(java.util.List)
+     * largestValue - To calculate the largest value from the nested list
+     * @param nestedList - nested List
+     * @return - the largest value from the nested list
+     */
+    @SuppressWarnings({
+        "unchecked",
+        "rawtypes"
+    })
+    @Override
+    public long largestValue(List < List < Long >> nestedList) {
+        long maximumValueInList = 0;
+        if (!(nestedList == null || nestedList.size() == 0)) {
+            for (Object list: nestedList) {
+                if (list instanceof Long) {
+                    if ((long) list > maximumValueInList) {
+                        maximumValueInList = (long) list;
+                    }
+                } else {
+                    maximumValueInList = largestValue((List) list);
+                }
+            }
+        }
+        return maximumValueInList;
+    }
 
-		nestedList1.add(5);
-		nestedList1.add(6);
-		nestedList1.add(7);
-		nestedList1.add(8);
-		
-		
-		nestedList2.add(9);
-		nestedList2.add(10);
-		nestedList2.add(11);
-		nestedList2.add(12);
-		
-		list.add(nestedList);
-		list.add(nestedList1);
-		list.add(nestedList2);
+    /*
+     * (non-Javadoc)
+     * @see NestedList#searchElement(java.util.List, int)
+     * searchElement - Search the element in the nested list
+     * @param nestedList - nested list
+     * @param element - the element to be search in the list
+     * @return - boolean value - true if element is search else false.
+     */
+    @SuppressWarnings({
+        "unchecked",
+        "rawtypes"
+    })
+    @Override
+    public boolean searchElement(List < List < Long >> nestedList, int element) {
+        boolean returnValue = false;
+        if (!(nestedList == null || nestedList.size() == 0)) {
+            for (Object list: nestedList) {
+                if (list instanceof Long) {
+                    if ((long) list == element) {
+                        returnValue = true;
+                        break;
+                    }
+                } else {
+                    if (!returnValue) {
+                        returnValue = searchElement((List) list, element);
+                    }
+                }
+            }
+        }
+        return returnValue;
+    }
 
-		NestedListClass operation = new NestedListClass();
-		System.out.println("Sum of the lists : " + operation.sumOfList(list));
-		System.out.println("largest value from the list : " + operation.largestValue(list));
-		System.out.println("Search 11  from the list: " + operation.searchElement(list, 11));
+    @SuppressWarnings("unchecked")
+    public static void main(String[] arg) {
 
-	}
+        NestedListClass operation = new NestedListClass("C:\\Users\\User23\\workspace\\Area\\src\\InputFile.json");
+        nestedList = operation.JsonParser();
+        System.out.println("Addition of list value : " + operation.sumOfList(nestedList));
+        System.out.println("Maximum of list value : " + operation.largestValue(nestedList));
+        System.out.println("Search 2 from list : " + operation.searchElement(nestedList, 2));
+
+    }
 
 }
