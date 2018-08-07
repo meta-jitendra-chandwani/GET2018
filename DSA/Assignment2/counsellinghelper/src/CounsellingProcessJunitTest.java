@@ -11,11 +11,17 @@ import org.junit.Test;
 public class CounsellingProcessJunitTest {
 	private CounsellingProcess cp;
 
+	/*
+	 * Initialize object of CounsellingProcess class.
+	 */
 	@Before
 	public void initialize(){
 		cp = new CounsellingProcess();
 	}
 	
+	/*
+	 * testCounsellingProgram - test the functionality of class
+	 */
 	@Test
 	public void testCounsellingProgram() throws IOException, EncryptedDocumentException, InvalidFormatException {
 		cp.addProgram("Programs.xlsx");
@@ -23,6 +29,9 @@ public class CounsellingProcessJunitTest {
 		cp.allotPrograms();
 	}
 
+	/*
+	 * programFileNotExistTest - test the functionality of class
+	 */
 	@Test
 	public void programFileNotExistTest() {
 		try {
@@ -33,6 +42,9 @@ public class CounsellingProcessJunitTest {
 		}
 	}
 
+	/*
+	 * studentFileNotExistTest - test the functionality of class
+	 */
 	@Test
 	public void studentFileNotExistTest() throws EncryptedDocumentException, InvalidFormatException {
 		try {
