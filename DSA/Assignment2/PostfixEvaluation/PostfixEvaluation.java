@@ -1,4 +1,3 @@
-package Assignment2;
 
 import java.util.Scanner;
 
@@ -6,17 +5,48 @@ import java.util.Scanner;
  * PostfixEvaluation - Evaluate postfix Expression
  */
 public class PostfixEvaluation implements Stack {
-	static Scanner input = new Scanner(System.in);
-
 	private int arrayStack[];
 	private int sizeofStack = 0;
+	private int top = -1;
 
 	public PostfixEvaluation(int sizeofStack) {
 		this.sizeofStack = sizeofStack;
 		arrayStack = new int[sizeofStack];
 	}
 
-	private int top = -1;
+	/**
+	 * Check whether string is integer or not
+	 * @param stringValue
+	 * @return
+	 */
+	public static boolean isInteger(String stringValue) {
+		return isInteger(stringValue, 10);
+	}
+
+	/**
+	 * Convert String into Integer 
+	 * @param stringValue
+	 * @param radix
+	 * @return
+	 */
+	public static boolean isInteger(String stringValue, int radix) {
+		if (stringValue.isEmpty())
+			return false;
+		for (int i = 0; i < stringValue.length(); i++) {
+			if (i == 0 && stringValue.charAt(i) == '-') {
+				if (stringValue.length() == 1) {
+					return false;
+				} else {
+					continue;
+				}
+			}
+			if (Character.digit(stringValue.charAt(i), radix) < 0)
+				{
+				return false;
+				}
+		}
+		return true;
+	}
 
 	/*
 	 * evaluateExpression - evaluate the postfix expression
@@ -25,36 +55,37 @@ public class PostfixEvaluation implements Stack {
 	 */
 	public int evaluateExpression(String expression) {
 		try {
-			for (int i = 0; i < expression.length(); i++) {
-				char characterOfString = 0;
-				if (i % 2 == 0) {
-					characterOfString = expression.charAt(i);
+			String expressionArray[] = expression.split(" ");
+			for (int i = 0; i < expressionArray.length; i++) {
+				String characterOfString = new String();
 
-					if (Character.isDigit(characterOfString)) {
-						push(characterOfString - '0');
-					} else {
-						int popElement1 = pop();
-						int popElement2 = pop();
+				characterOfString = expressionArray[i];
 
-						switch (characterOfString) {
-						case '+':
-							push(popElement2 + popElement1);
-							break;
+				if (isInteger(characterOfString)) {
+					push(Integer.parseInt(characterOfString));
+				} else {
+					int popElement1 = pop();
+					int popElement2 = pop();
 
-						case '-':
-							push(popElement2 - popElement1);
-							break;
+					switch (characterOfString) {
+					case "+":
+						push(popElement2 + popElement1);
+						break;
 
-						case '/':
-							push(popElement2 / popElement1);
-							break;
+					case "-":
+						push(popElement2 - popElement1);
+						break;
 
-						case '*':
-							push(popElement2 * popElement1);
-							break;
-						}
+					case "/":
+						push(popElement2 / popElement1);
+						break;
+
+					case "*":
+						push(popElement2 * popElement1);
+						break;
 					}
 				}
+
 			}
 		} catch (Exception exception) {
 			exception.getStackTrace();
@@ -75,7 +106,8 @@ public class PostfixEvaluation implements Stack {
 
 	/*
 	 * (non-Javadoc)
-	 * @see Question2.Stack#push(java.lang.Object) Push - Is to push value into the stack
+	 * @see Question2.Stack#push(java.lang.Object) 
+	 * Push - Is to push value into the stack
 	 * @param item - of generic type
 	 */
 	@Override
@@ -95,7 +127,8 @@ public class PostfixEvaluation implements Stack {
 
 	/*
 	 * (non-Javadoc)
-	 * @see Question2.Stack#pop() pop - To pop element from the stack
+	 * @see Question2.Stack#pop() 
+	 * pop - To pop element from the stack
 	 * @return T - generic value that has been pop.
 	 */
 	@Override
@@ -116,9 +149,10 @@ public class PostfixEvaluation implements Stack {
 	}
 
 	public static void main(String[] arg) {
+		Scanner input = new Scanner(System.in);
 		System.out.println("Enter postfix Expression : ");
 		String expression = input.nextLine();
-		PostfixEvaluation evaluation = new PostfixEvaluation(10);
+		PostfixEvaluation evaluation = new PostfixEvaluation(100);
 		int value = evaluation.evaluateExpression(expression);
 		System.out.print("Value : " + value);
 	}
