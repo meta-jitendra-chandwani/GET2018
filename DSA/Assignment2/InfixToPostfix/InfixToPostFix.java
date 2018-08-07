@@ -6,14 +6,14 @@ package Assignment2;
 public class InfixToPostFix implements CharacterStack {
 	private String arrayStack[];
 	private int sizeofStack = 0;
+	private int top = -1;
+
 
 	public InfixToPostFix(int sizeofStack) {
 		this.sizeofStack = sizeofStack;
 		arrayStack = new String[sizeofStack];
 	}
-
-	private int top = -1;
-
+	
 	/*
 	 * (non-Javadoc)
 	 * @see Assignment2.CharacterStack#peek() Peek - return top element of stack
@@ -66,26 +66,6 @@ public class InfixToPostFix implements CharacterStack {
 		return value;
 
 	}
-
-	// public static boolean isInteger(String s) {
-	// return isInteger(s, 10);
-	// }
-	//
-	// public static boolean isInteger(String s, int radix) {
-	// if (s.isEmpty())
-	// return false;
-	// for (int i = 0; i < s.length(); i++) {
-	// if (i == 0 && s.charAt(i) == '-') {
-	// if (s.length() == 1)
-	// return false;
-	// else
-	// continue;
-	// }
-	// if (Character.digit(s.charAt(i), radix) < 0)
-	// return false;
-	// }
-	// return true;
-	// }
 
 	/*
 	 * Precedence - Check the precedence of operator
