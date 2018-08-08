@@ -1,10 +1,12 @@
-import static org.junit.jupiter.api.Assertions.*;
+package PriorityQueue;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+
 
 class MaxPriorityQueueTest {
-
+	/**
+	 * Test the functionality of Priority Class
+	 */
 	@Test
 	void test() {
 		PriorityQueue pq = new MaxPriorityQueue(5);

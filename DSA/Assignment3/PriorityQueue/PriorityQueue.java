@@ -1,3 +1,5 @@
+package PriorityQueue;
+
 
 public interface PriorityQueue {
 

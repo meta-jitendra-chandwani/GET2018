@@ -1,3 +1,5 @@
+package PriorityQueue;
+
 
 public class MaxPriorityQueue implements PriorityQueue{
 
@@ -8,7 +10,10 @@ public class MaxPriorityQueue implements PriorityQueue{
 		this.queue = new int[sizeOfQueue + 1];
 		this.lastIndex = 0;
 	}
-	
+	/**
+	 * Insert value
+	 * @param value - value to inserted
+	 */
 	@Override
 	public void insert(int value) {
 		try {
@@ -23,11 +28,17 @@ public class MaxPriorityQueue implements PriorityQueue{
 		}
 	}
 
+	/**
+	 * Peek value - return front value of queue
+	 */
 	@Override
 	public int peek() {
 		return this.queue[1];
 	}
 
+	/**
+	 * pop - remove front element from the queue which have higher priority
+	 */
 	@Override
 	public int pop() throws ArrayIndexOutOfBoundsException{
 		if(this.isEmpty()) {

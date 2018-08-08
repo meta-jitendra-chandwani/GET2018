@@ -1,3 +1,5 @@
+package PriorityQueue;
+
 
 public class MinPriorityQueue implements PriorityQueue{
 
@@ -23,11 +25,17 @@ public class MinPriorityQueue implements PriorityQueue{
 		}
 	}
 
+	/**
+	 * Peek value - return front value of queue
+	 */
 	@Override
 	public int peek() {
 		return this.queue[1];
 	}
 
+	/**
+	 * pop - remove front element from the queue which have lower priority
+	 */
 	@Override
 	public int pop() {
 		try {
