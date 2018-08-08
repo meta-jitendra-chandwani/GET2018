@@ -1,3 +1,4 @@
+package Bowling;
 
 public class Bowler {
 
@@ -10,7 +11,6 @@ public class Bowler {
 	}
 	
 	/**
-	 * 
 	 * @return - index of bowler
 	 */
 	public int getIndex() {
@@ -18,7 +18,6 @@ public class Bowler {
 	}
 	
 	/**
-	 * 
 	 * @return - Quota of a bowler
 	 */
 	public int getQuota() {
