@@ -8,33 +8,57 @@ public class EmployeeWithComparable implements Comparable<EmployeeWithComparable
     private String name;
     private String address;
   
+    /**
+     * 
+     * @return id
+     */
     public int getId() {
         return id;
     }
 
+    /**
+     * 
+     * @return name
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * 
+     * @return address
+     */
     public String getAdress() {
         return address;
     }
-
    
-
+    /**
+     * 
+     * @param id
+     * @param name
+     * @param address
+     */
     public EmployeeWithComparable(int id, String name, String address) {
         this.id = id;
         this.name = name;
         this.address=address;
     }
 
+    /**
+     * @return int value in form of 0,1,-1
+     * 0 -  both are equal
+     * 1 - first value is greater
+     * -1 - second value is greater
+     */
     @Override
     public int compareTo(EmployeeWithComparable emp) {    	
         return (this.id - emp.id);
     }
 
+    /**
+     *  this is required to print the user friendly information about the Employee
+     */
     @Override
-    //this is required to print the user friendly information about the Employee
     public String toString() {
         return "\nid : " + this.id + ", name : " + this.name + ", address : " + this.address +"\n";
     }
