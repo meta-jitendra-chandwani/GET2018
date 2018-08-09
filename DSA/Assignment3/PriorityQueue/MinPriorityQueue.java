@@ -11,6 +11,10 @@ public class MinPriorityQueue implements PriorityQueue{
 		this.lastIndex = 0;
 	}
 	
+	/**
+	 * insert -  insert value in priority queue
+	 * @param - value to be inserted
+	 */
 	@Override
 	public void insert(int value) {
 		try {

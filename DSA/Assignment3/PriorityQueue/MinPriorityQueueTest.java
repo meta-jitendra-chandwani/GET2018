@@ -7,6 +7,9 @@ import org.junit.jupiter.api.Test;
 
 class MinPriorityQueueTest {
 
+	/**
+	 * Test to check the functionality of Priority Queue
+	 */
 	@Test
 	void test() {
 		PriorityQueue pq = new MinPriorityQueue(5);

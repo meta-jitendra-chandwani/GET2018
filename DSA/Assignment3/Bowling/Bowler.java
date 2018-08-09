@@ -5,6 +5,10 @@ public class Bowler {
 	private int bowlerIndex;
 	private int quota;
 	
+	/**
+	 * @param - bowlerIndex
+	 * @param - quota
+	 */
 	Bowler(int bowlerIndex, int quota){
 		this.bowlerIndex = bowlerIndex;
 		this.quota = quota;
