@@ -46,7 +46,7 @@ public class JsonParser {
 	 * @return - number of node left after deletion
 	 * @throws NodeNotFoundException
 	 */
-	int deleteFromTree(int key, String value) throws NodeNotFoundException {
+	public int deleteFromTree(int key, String value) throws NodeNotFoundException {
 		Pair pair1 = new Pair(key, value);
 		int value1 = dictionaryTree.delete(pair1);
 		return value1;
@@ -57,7 +57,7 @@ public class JsonParser {
 	 * @param key
 	 * @return value of key
 	 */
-	String findValueOfKey(int key) {
+	public String findValueOfKey(int key) {
 		return dictionaryTree.getValue(key);
 	}
 
@@ -65,7 +65,7 @@ public class JsonParser {
 	 * sortNode - Sort in ascending order
 	 * @return sorted list of pair
 	 */
-	void sortNode() {
+	public void sortNode() {
 		int i = 0;
 		while (i < list.size()) {
 			System.out.println(dictionaryTree.sortedKeyValue().get(i).getKey()
@@ -80,8 +80,7 @@ public class JsonParser {
 	 * @param key2 - boundary condition 2
 	 * @return list of sorted pair according to boundary condition
 	 */
-	void sortNodeWithBoundaryCondition(int key1, int key2) {
-		
+	public void sortNodeWithBoundaryCondition(int key1, int key2) {
 		int i = 0;
 		while (i < 3) {
 			System.out.println(dictionaryTree.sortedKeyValuePair(key1, key2).get(i).getKey()

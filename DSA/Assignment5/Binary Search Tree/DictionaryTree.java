@@ -102,7 +102,7 @@ public class DictionaryTree implements DictionaryInterface {
 	 * @param root - root node of tree
 	 * @return minimum Pair node
 	 */
-	Pair getMinNode(Node root) {
+	private Pair getMinNode(Node root) {
 		Pair pair;
 		int minValueOfKey = root.pair.getKey();
 		String ValueOfKey = root.pair.getValue();
@@ -120,7 +120,7 @@ public class DictionaryTree implements DictionaryInterface {
 	 * @param root
 	 * @return number of node
 	 */
-	int nodesInBTree(Node root) {
+	private int nodesInBTree(Node root) {
 		if (null == root) {
 			return 0;
 		}
@@ -186,14 +186,21 @@ public class DictionaryTree implements DictionaryInterface {
 	 */
 	@Override
 	public ArrayList<Pair> sortedKeyValuePair(int Key1, int Key2) {
-		ArrayList<Pair> sortedList = sortedListOfNode();
-		ArrayList<Pair> sortedListWithBoundaryCondition = new ArrayList<Pair>();
-		for (int i = 0; i < sortedList.size(); i++) {
-			if (sortedList.get(i).getKey() >= Key1
-					&& sortedList.get(i).getKey() <= Key2) {
-				sortedListWithBoundaryCondition.add(sortedList.get(i));
+		ArrayList<Pair> sortedList;
+		ArrayList<Pair> sortedListWithBoundaryCondition = null;
+		try{
+			sortedList = sortedListOfNode();
+			sortedListWithBoundaryCondition = new ArrayList<Pair>();
+			for (int i = 0; i < sortedList.size(); i++) {
+				if (sortedList.get(i).getKey() >= Key1
+						&& sortedList.get(i).getKey() <= Key2) {
+					sortedListWithBoundaryCondition.add(sortedList.get(i));
+				}
 			}
+		}catch(Exception e){
+			e.getStackTrace();
 		}
+		
 		return sortedListWithBoundaryCondition;
 	}
 }
