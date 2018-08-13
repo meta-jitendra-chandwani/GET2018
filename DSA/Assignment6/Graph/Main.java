@@ -13,7 +13,7 @@ public class Main {
 		graph.addEdge(1, 3, 2);
 		graph.addEdge(2, 3, 4);
 		graph.addEdge(3, 4, 2);
-		graph.addEdge(1, 5, 6);
+		graph.addEdge(4, 5, 6);
 		edgeList = graph.getAdjacentList();
 		System.out.println("List of Edge");
 		graph.printGraph(edgeList);
@@ -26,6 +26,8 @@ public class Main {
         
         System.out.println("Reachable from 3: ");
         graph.reachable(3);
+        
+        graph.Dijkstra(0);
 
 	}
 }
