@@ -150,8 +150,6 @@ class Graph implements GraphInterface {
 
 	// The function to do DFS traversal. It uses recursive DFSUtil()
 	boolean[] DFS(int a) {
-		// Mark all the vertices as not visited(set as
-		// false by default in java)
 		boolean visited[] = new boolean[vertices];
 		// Call the recursive helper function to print DFS traversal
 		// starting from all vertices one by one
@@ -178,21 +176,6 @@ class Graph implements GraphInterface {
 	@Override
 	public void reachable(int a) {
 		DFS(a);
-	}
-
-	void initialize() {
-		for (int i = 0; i < 10; ++i) {
-			visited[i] = false;
-		}
-	}
-
-	void dfs(int s) {
-		visited[s] = true;
-		for (int i = 0; i < adjacencylist[s].size(); ++i) {
-			if (visited[Integer.parseInt(adjacencylist[s].get(i).toString())] == false) {
-				dfs(Integer.parseInt(adjacencylist[s].get(i).toString()));
-			}
-		}
 	}
 
 	@Override
