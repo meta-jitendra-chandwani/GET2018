@@ -1,3 +1,12 @@
-"Head Phones"	"Mobile Accessories"
-"Hard Disk Drive"	"Laptop Accessories"
-"Power Bank"	"Mobile Accessories"
+Fashion
+Gadgets
+Mens Wear	Fashion
+Mobile Accessories	Gadgets
+Laptop Accessories	Gadgets
+Mobile Accessories	Gadgets
+Head Phones	Mobile Accessories
+Hard Disk Drive	Laptop Accessories
+Power Bank	Mobile Accessories
+Shirt	Mens Wear
+T-Shirt	Mens Wear
+Jeans	Mens Wear
