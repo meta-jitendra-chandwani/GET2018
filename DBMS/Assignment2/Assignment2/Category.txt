@@ -1,0 +1,3 @@
+"Head Phones"	"Mobile Accessories"
+"Hard Disk Drive"	"Laptop Accessories"
+"Power Bank"	"Mobile Accessories"

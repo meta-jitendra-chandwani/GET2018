@@ -1,0 +1,5 @@
+1002	"JBL C100SI EarPhones"	1	"JBL C100SI is one of the best earphone in this price"	799	10
+(1003	"JBL C200SI EarPhones"	1	"JBL C200SI is one of the best earphone in this price"	899	10
+(1004,"JBL C300SI EarPhones",1,"JBL C300SI is one of the best HeadPhones in this price",1299,5
+(1005,"Segate 2 TB HDD",2,"Seagte HDD",3965,5),
+(1006,"Mi Power Bank",3,"Mi Power Bank 10000mAH",990,5)
