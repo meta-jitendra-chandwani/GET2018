@@ -1,9 +1,9 @@
-Shopper/01	87	Shiv Shakti Nagar-A	Jaipur	Rajasthan	India
-Shopper/01	874	Shiv Shakti Nagar-A	Jaipur	Rajasthan	India
-Shopper/02	11/899	Malviya Nagar	Jaipur	Rajasthan	India
-Shopper/03	50/143	Pratap Nagar	Jaipur	Rajasthan	India
-Shopper/04	50/413	Pratap Nagar	Jaipur	Rajasthan	India
-Shopper/05	84-B	Model Town	Jaipur	Rajasthan	India
-Shopper/06	81/51	Pratap Nagar	Jaipur	Rajasthan	India
-Shopper/07	45	Sitapura	Jaipur	Rajasthan	India
-Shopper/08	12	Heera Nagar	Madgaon	Goa	India
+Shopper/01	87	Shiv Shakti Nagar-A	Jaipur	Rajasthan
+Shopper/01	874	Shiv Shakti Nagar-A	Jaipur	Rajasthan
+Shopper/02	11/899	Malviya Nagar	Jaipur	Rajasthan
+Shopper/03	50/143	Pratap Nagar	Jaipur	Rajasthan
+Shopper/04	50/413	Pratap Nagar	Jaipur	Rajasthan
+Shopper/05	84-B	Model Town	Jaipur	Rajasthan
+Shopper/06	81/51	Pratap Nagar	Jaipur	Rajasthan
+Shopper/07	45	Sitapura	Jaipur	Rajasthan
+Shopper/08	12	Heera Nagar	Madgaon	Goa
