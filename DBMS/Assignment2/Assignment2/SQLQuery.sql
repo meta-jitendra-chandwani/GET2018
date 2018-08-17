@@ -1,3 +1,4 @@
+DROP DATABASE StoreFront;
 CREATE DATABASE StoreFront;
 USE StoreFront;
 
@@ -67,14 +68,13 @@ CREATE TABLE Orders(
 );
 LOAD DATA LOCAL INFILE 'D:/GET2018/GET2018/DBMS/Assignment2/Assignment2/Orders.txt' INTO TABLE Orders  FIELDS TERMINATED BY '\t' LINES TERMINATED BY '\n' IGNORE 0 LINES;
 
-
 SELECT P.Product_Id,C.Category_Title,P.Price FROM Product AS P INNER JOIN Category AS C ON P.Category_Id=C.Category_Id WHERE P.Quantity>0;
 
 SELECT Product_Title FROM Product AS P INNER JOIN Image AS I ON I.Product_Id=P.Product_Id WHERE I.Image_URL="";
 
 SELECT * FROM Category ORDER BY Parent_Category ASC,Category_Title ASC;
 
-SELECT * FROM Category WHERE Parent_Category IS NOT NULL;
+SELECT * FROM Category WHERE  Parent_Category NOT LIKE "Top%";
 
 SELECT P.Product_Title,P.Price,P.Description FROM Product AS P INNER JOIN Category AS C ON P.Category_Id=C.Category_Id WHERE C.Category_Title="Head Phones";
 
