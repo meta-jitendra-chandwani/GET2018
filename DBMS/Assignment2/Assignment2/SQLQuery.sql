@@ -1,10 +1,11 @@
-SELECT P.Product_Id,C.Category_Title,P.Price FROM Product AS P INNER JOIN Category AS C ON P.Category_Id=C.Category_Id WHERE P.Quantity>0;
+SELECT P.Product_Id,C.Category_Title,P.Price FROM Product AS P INNER JOIN Category AS C ON P.Category_Id=C.Category_Id WHERE P.Status_Product="ACTIVE";
 
-SELECT Product_Title FROM Product AS P INNER JOIN Image AS I ON I.Product_Id=P.Product_Id WHERE I.Image_URL="";
+SELECT Distinct(P.Product_Title) FROM Product AS P INNER JOIN Image AS I ON I.Product_Id=P.Product_Id WHERE I.Image_Id=0;
 
 SELECT * FROM Category ORDER BY Parent_Category ASC,Category_Title ASC;
 
-SELECT * FROM Category WHERE  Parent_Category NOT LIKE "Top%";
+Select Category.Category_Title from Category WHERE Category.Category_Title
+NOT IN(Select  distinct Category.Parent_Category from Category);
 
 SELECT P.Product_Title,P.Price,P.Description FROM Product AS P INNER JOIN Category AS C ON P.Category_Id=C.Category_Id WHERE C.Category_Title="Head Phones";
 

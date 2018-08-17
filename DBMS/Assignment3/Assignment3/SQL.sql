@@ -26,9 +26,7 @@ LOAD DATA LOCAL INFILE 'D:/GET2018/GET2018/DBMS/Assignment2/Assignment2/Product.
 
 CREATE TABLE Image(
     Image_Id INT NOT NULL,
-    Image_URL VARCHAR(30),
     Product_Id INT,
-    PRIMARY KEY (Image_Id),
     FOREIGN KEY (Product_Id)
         REFERENCES Product (Product_Id)
 ); 
