@@ -1,12 +1,13 @@
 Fashion	Top Category
 Gadgets	Top Category
-Mens Wear	Fashion
+Men's Wear	Fashion
 Mobile Accessories	Gadgets
 Laptop Accessories	Gadgets
 Mobile Accessories	Gadgets
 Head Phones	Mobile Accessories
 Hard Disk Drive	Laptop Accessories
 Power Bank	Mobile Accessories
-Shirt	Mens Wear
-T-Shirt	Mens Wear
-Jeans	Mens Wear
+Shirt	Men's Wear
+T-Shirt	Men's Wear
+Jeans	Men's Wear
+Monitor	Gadgets
