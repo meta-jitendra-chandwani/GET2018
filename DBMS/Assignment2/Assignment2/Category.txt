@@ -1,5 +1,5 @@
-Fashion
-Gadgets
+Fashion	Top Category
+Gadgets	Top Category
 Mens Wear	Fashion
 Mobile Accessories	Gadgets
 Laptop Accessories	Gadgets
