@@ -1,5 +1,7 @@
 /**
 Create a function to calculate number of orders in a month. Month and year will be input parameter to function.
+getNumberOfOrder - calculate number of order in a month
+Count order in a particular month and year
 **/
 
 DELIMITER $$
@@ -17,6 +19,8 @@ SELECT getNumberOfOrder(08,2018);
 
 /**
 Create a function to return month in a year having maximum orders. Year will be input parameter.
+getMonthWithMaximumOrder - maximum order in a month
+Select Month from order, where year of order date is same as given date--- group by Month of order date in desc 
 **/
 
 DELIMITER $$
