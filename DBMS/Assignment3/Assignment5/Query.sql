@@ -2,6 +2,14 @@
 Create a view displaying the order information
 (Id, Title, Price, Shopper’s name, Email, Orderdate, Status) 
 with latest ordered items should be displayed first for last 60 days.
+
+Create View of Order_Details - Select All the order details from multiple tables
+Order_Product AS OP INNER JOIN ORDERS AS O  INNER JOIN Product AS P  INNER JOIN User AS U
+The Join Between Order_Product and Order - Access to Order Date and Status
+The Join Between Order_Product and Product - Access to Product title and Price
+The Join Between User and Product - Accesss the User Name
+
+Select Data of order item for last 60 days
 **/
 
 CREATE VIEW Order_Details
@@ -23,8 +31,11 @@ FROM
 WHERE
     O.Order_Date > ADDDATE(curdate(), -60)
 ORDER BY Order_Date DESC;
+
 /**
 Use the above view to display the Products(Items) which are in ‘shipped’ state.
+
+Select Product title from View
 **/
 SELECT 
     Product_Title
@@ -35,6 +46,7 @@ WHERE
 
 /**
 Use the above view to display the top 5 most selling products.
+Select Product Title from View according to 5 most selling product.
 **/
 SELECT 
     Product_Title
