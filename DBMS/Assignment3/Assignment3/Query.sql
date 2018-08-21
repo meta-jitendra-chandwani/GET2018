@@ -95,3 +95,24 @@ FROM
         LEFT JOIN
     PRODUCT AS P ON P.Product_Id = T.Product_Id
 GROUP BY T.Product_Id;
+
+/**
+Delete all those products which were not ordered by any Shopper in last 1 year. Return the number of products deleted.
+**/
+
+SET SQL_SAFE_UPDATES = 0;
+UPDATE Product SET Status_Product='INACTIVE' WHERE Product_Id IN
+(SELECT P.Product_Id FROM (Select * from Product) AS P WHERE P.Product_Id NOT IN
+(SELECT DISTINCT(OP.Product_Id) FROM Order_Product OP INNER JOIN Orders O ON OP.Order_Id=O.Order_Id WHERE O.Order_Date >curdate()-365)
+);
+Select * from Product;
+Select Parent_Category from Category;
+
+
+SELECT C.Category_Title, Count(C1.Category_Id) AS count_Of_Child 
+FROM Category AS C
+LEFT JOIN category  AS C1 
+ON C.Category_Title=C1.Parent_Category
+WHERE c.Parent_Category like 'Top%'
+GROUP BY C.Category_Title
+ORDER BY C.Category_Title;
