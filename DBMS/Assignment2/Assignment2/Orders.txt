@@ -23,4 +23,6 @@ Order04/1	Shopper/04	2018-06-06	Shipped	2018-06-09	990
 Order03/1	Shopper/03	2018-04-05	Shipped	2018-04-10	4550
 Order01/1	Shopper/01	2018-05-25	Return	2018-05-29	3965
 Order07/1	Shopper/07	2018-05-15	Shipped	2018-05-19	899
-Order01/4	SHopper/01	2017-05-23	Shipped	2017-05-28	799
+Order01/4	Shopper/01	2017-05-23	Shipped	2017-05-28	799
+Order02/4	Shopper/02	2017-05-28	Shipped	2017-06-02	899
+Order04/4	Shopper/04	2017-04-24	Shipped	2017-04-28	1900
