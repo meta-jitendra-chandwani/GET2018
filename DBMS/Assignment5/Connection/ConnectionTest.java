@@ -18,6 +18,9 @@ public class ConnectionTest {
 	private List<Double> actualOrderTotalList;
 	private List<Double> expectedOrderTotalList;
 
+	/**
+	 * initialize - initialize the object value
+	 */
 	@Before
 	public void initialize() {
 		connectionList = ConnectionJDBC.getPojoList();
@@ -54,6 +57,9 @@ public class ConnectionTest {
 
 	}
 
+	/**
+	 * To check the functionality of UpdateQuery class
+	 */
 	@Test
 	public void orderIdTestCase() {
 		for (int i = 0; i < connectionList.size(); i++) {
@@ -61,6 +67,9 @@ public class ConnectionTest {
 		}
 	}
 
+	/**
+	 * To check the functionality of UpdateQuery class
+	 */
 	@Test
 	public void orderDateTestCase() {
 		for (int i = 0; i < connectionList.size(); i++) {
@@ -69,6 +78,9 @@ public class ConnectionTest {
 		}
 	}
 
+	/**
+	 * To check the functionality of UpdateQuery class
+	 */
 	@Test
 	public void orderTotalTestCase() {
 		for (int i = 0; i < connectionList.size(); i++) {
