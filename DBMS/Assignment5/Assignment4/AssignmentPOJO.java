@@ -4,18 +4,20 @@
  *
  */
 public class AssignmentPOJO {
-	private int numberOfRowUpdated;
+	private int numberOfChild;
+	private String Parent;
 
-	public AssignmentPOJO(int numberOfRowUpdated) {
-		this.numberOfRowUpdated=numberOfRowUpdated;
+	public AssignmentPOJO(String Parent,int numberOfChild) {
+		this.numberOfChild=numberOfChild;
+		this.Parent=Parent;
 	}
 
-	/**
-	 * getNumberOfRowUpdated - get number of row updated
-	 * @return number of row updated
-	 */
-	public int getNumberOfRowUpdated() {
-		return numberOfRowUpdated;
+	public int getNumberOfChild() {
+		return numberOfChild;
 	}
 
+	public String getParent() {
+		return Parent;
+	}
+	
 }

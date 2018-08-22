@@ -1,4 +1,6 @@
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.mysql.jdbc.Statement;
 /**
@@ -7,7 +9,7 @@ import com.mysql.jdbc.Statement;
  *
  */
 public class Assignment {
-	public int numberOfRowUpdated;
+	static List<AssignmentPOJO> PojoList = new ArrayList<AssignmentPOJO>();
 
 	/**
 	 * procedureQuery - Execute Procedure that already exist
@@ -16,9 +18,16 @@ public class Assignment {
 		try (Connection conn = getConnection();
 				Statement stmt = (Statement) conn.createStatement();) {
 			try {			
-				int result = stmt.executeUpdate(Query_Class.CALL_PROCEDURE);
-				AssignmentPOJO assignmentPOJO = new AssignmentPOJO(result);
-				numberOfRowUpdated = assignmentPOJO.getNumberOfRowUpdated();
+				
+				ResultSet resultSet = stmt.executeQuery(Query_Class.QUERY);
+
+				while (resultSet.next()) {
+					String Parent = resultSet.getString("Category_Title");
+					int numberOfChild = resultSet.getInt("count_Of_Child");
+					
+					AssignmentPOJO conPojo = new AssignmentPOJO(Parent, numberOfChild);
+					PojoList.add(conPojo);
+				}
 			} catch (SQLException ex) {
 				System.out.println("Exception");
 				ex.printStackTrace();
@@ -26,6 +35,13 @@ public class Assignment {
 		}catch (SQLException e) {
 			e.printStackTrace();
 		}
+	}
+	/**
+	 * getPojoList - to get pojo list of connection
+	 * @return - Pojo List of Connection
+	 */
+	public static List<AssignmentPOJO> getPojoList() {
+		return PojoList;
 	}
 
 	/**
