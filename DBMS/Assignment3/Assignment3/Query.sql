@@ -108,11 +108,16 @@ UPDATE Product SET Status_Product='INACTIVE' WHERE Product_Id IN
 Select * from Product;
 Select Parent_Category from Category;
 
+/**
+Select and display the category title of all top parent categories sorted alphabetically and the count of their child categories.
+**/
+DROP PROCEDURE value;
+DELIMITER $$ 
+CREATE PROCEDURE value() 
+BEGIN 
+DECLARE value int; 
+(Select count(Category_Id) into Value from category where parent_category like 'Top%');
+Select C.Parent_Category AS Parent,Count(C.Category_Title) AS Child_Count from Category C group by Parent_Category Order BY Parent_category LIMIT value ; 
+END $$
 
-SELECT C.Category_Title, Count(C1.Category_Id) AS count_Of_Child 
-FROM Category AS C
-LEFT JOIN category  AS C1 
-ON C.Category_Title=C1.Parent_Category
-WHERE c.Parent_Category like 'Top%'
-GROUP BY C.Category_Title
-ORDER BY C.Category_Title;
+Call value;
