@@ -3,17 +3,23 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+/**
+ * Batch - Simple JDBC Class used for execute batch(multiple) query
+ * @author Jitendra Chandwani
+ *
+ */
 public class Batch {
 	public int numberOfRowUpdated;
 
+	/**
+	 * batchProcessing -  create batch for query and execute batch
+	 */
 	public void batchProcessing() {
 		try (Connection conn = getConnection();
 				PreparedStatement stmt = conn
 						.prepareStatement(Query_Class.INSERT_QUERY);) {
 			try {
 				conn.setAutoCommit(false);
-				System.out.println("The SQL query is: "
-						+ Query_Class.INSERT_QUERY);
 
 				stmt.setInt(1, 10113);
 				stmt.setInt(2, 1011);
@@ -53,6 +59,10 @@ public class Batch {
 		}
 	}
 
+	/**
+	 * getConnection - Establish Connection with Database
+	 * @return connection
+	 */
 	private static Connection getConnection() {
 		Connection conn = null;
 		try {
