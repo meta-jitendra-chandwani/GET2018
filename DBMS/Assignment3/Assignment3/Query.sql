@@ -111,13 +111,5 @@ Select Parent_Category from Category;
 /**
 Select and display the category title of all top parent categories sorted alphabetically and the count of their child categories.
 **/
-DROP PROCEDURE value;
-DELIMITER $$ 
-CREATE PROCEDURE value() 
-BEGIN 
-DECLARE value int; 
-(Select count(Category_Id) into Value from category where parent_category like 'Top%');
-Select C.Parent_Category AS Parent,Count(C.Category_Title) AS Child_Count from Category C group by Parent_Category Order BY Parent_category LIMIT value ; 
-END $$
-
-Call value;
+SELECT c.Category_Title, Count(c1.Category_Id) AS count_Of_Child FROM category c LEFT JOIN category c1 ON c.category_Id=c1.Parent_Id
+WHERE c.Parent_Id=0 GROUP BY c.Category_Title ORDER BY c.Category_Title; 
