@@ -2,9 +2,17 @@ import java.sql.*;
 
 import com.mysql.jdbc.Statement;
 
+/**
+ * UpdateQuery - Simple JDBC Class used for update query
+ * @author Jitendra Chandwani
+ *
+ */
 public class UpdateQuery {
 	public int numberOfRowUpdated;
 
+	/**
+	 * updateQuery - update query function
+	 */
 	public void updateQuery() {
 		try (Connection conn = getConnection();
 				Statement stmt = (Statement) conn.createStatement();) {
@@ -21,6 +29,10 @@ public class UpdateQuery {
 		}
 	}
 
+	/**
+	 * getConnection - Establish Connection with Database
+	 * @return connection
+	 */
 	private static Connection getConnection() {
 		Connection conn = null;
 		try {

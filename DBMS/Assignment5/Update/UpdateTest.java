@@ -7,15 +7,22 @@ public class UpdateTest {
 	private int numberOfRowUpdated;
 	private UpdateQuery	query;
 
+	/**
+	 * initialize - initialize the object value
+	 */
 	@Before
-	public void initailize(){
+	public void initialize(){
 		query=new UpdateQuery();
 		query.updateQuery();
 		numberOfRowUpdated=query.numberOfRowUpdated;
 	}
 
+
+	/**
+	 * To check the functionality of UpdateQuery class
+	 */
 	@Test
-	public void test() {
+	public void numberOfRowUpdatedTest() {
 		assertEquals(2, numberOfRowUpdated);
 	}
 
