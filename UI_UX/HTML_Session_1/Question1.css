@@ -11,3 +11,9 @@
     margin-right: auto;
     height: 150px;
 }
+#image_contact{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width:800px;
+}
