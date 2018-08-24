@@ -1,0 +1,13 @@
+#top {
+    display: flex;
+    justify-content: center;
+}
+#center{
+    text-align: center;
+}
+#image_table{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 150px;
+}
