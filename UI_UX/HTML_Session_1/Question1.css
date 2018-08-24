@@ -17,3 +17,20 @@
     margin-right: auto;
     width:800px;
 }
+.header{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+h2{
+    text-align: center;
+}
+p{
+    text-align: left;
+}
+#padding{
+    padding-left: 75px;
+    padding-right: 75px;
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
