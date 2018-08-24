@@ -71,10 +71,8 @@ public class Batch {
 			conn = DriverManager.getConnection(url, "root", "root");
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
-			System.exit(1);
 		} catch (SQLException e) {
 			e.printStackTrace();
-			System.exit(2);
 		}
 		return conn;
 	}
