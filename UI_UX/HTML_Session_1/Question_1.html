@@ -1,9 +1,15 @@
 <link rel="stylesheet" href="Question1.css">
+<style>
+       table {
+  table-layout: fixed ;
+  width: 100% ;
+}
+</style>
 <div>
-    <table>
+    <table style="width:100%">
      <tr> 
          <td><img src="./html.png" height="50"></td> 
-            <td>
+            <td  align="right">
                 <a href="www.google.com" target="_blank">Home</a>
                 <a href="www.google.com" target="_blank">About</a>
                 <a href="www.google.com" target="_blank">Product</a>
@@ -16,23 +22,21 @@
 <img src="./contact.jpg" id="image_contact"><br/>
 
 </div>
-    
+
 <div id="center">
-Name <input type="text"><br/>
-Email <input type="email"><br/>
-City <select>
-    <option>Jaipur</option>
-    <option>Bikaner</option>
-    <option>Kota</option>
-    <option>Ajmer</option>
-</select><br/>
-Organisation Name <input type="text"><br/>
-
-Contact Number <input type="number"><br/>
-
-Message <textarea name="comment">Enter text here...</textarea><br/>
-
-<input type="submit" value="Submit"><br/>
-<hr>
+<form target="_blank">
+        Name    <input type="text"><br/>
+        Email   <input type="email"><br/>
+        City    <select>
+                <option>Jaipur</option>
+                <option>Bikaner</option>
+                <option>Kota</option>
+                <option>Ajmer</option>
+                </select><br/>
+        Organisation Name   <input type="text"><br/>
+        Contact Number  <input type="number"><br/>
+        Message <textarea name="comment" placeholder="Enter text here..."></textarea><br/>
+        <input type="submit" value="Submit"><br/>
+</form>
 &copy; Copyright 2018-19|All Right Reserved|Metacube Training
 </div>
