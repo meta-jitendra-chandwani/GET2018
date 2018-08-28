@@ -34,3 +34,76 @@ p{
     padding-bottom: 20px;
     padding-top: 20px;
 }
+#headerAlign{
+    text-align: right;
+    background:grey;
+    height: 50px;
+    color: white;
+    padding-right: 20px;
+    padding-top: 25px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 22;
+}
+#headerAlign a{
+    color: white;
+    font-size: 20
+}
+.container{
+    padding: 20px;
+    text-align: center;
+
+}
+.loginContainer{
+    padding: 20px;
+    text-align: center;
+    /* background: grey; */
+}
+#table_header {
+    table-layout: fixed;
+    width: 100%;
+}
+#table_center_form{
+    width: 50%;
+
+}
+
+td {
+    padding: 10px;
+
+}
+
+td a {
+    padding: 20px;
+    background: burlywood;
+    color: black;
+    border-radius: 15px;
+    font-family: 'Courier New', Courier, monospace;
+    border-bottom: 3px solid black;
+
+}
+
+a:hover {
+    background: #afb4bc
+}
+#messageForError
+{
+    visibility: hidden;
+    color: red;
+    font-size: 12px
+}
+#table_style{
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+}  
+#submitButton {
+    text-align: center;
+}
+.button{
+    background: burlywood;
+    color: white;
+    width: 100px;
+    height: 50px;
+    border-radius: 15px;
+    border-bottom: 3px solid black;
+}
