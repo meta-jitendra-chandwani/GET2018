@@ -18,7 +18,7 @@
                         </label>
                     </td>
                     <td>
-                        <input id="first_name" type="text" placeholder="Enter First Name" name="f_name" onblur="nameValidation()" required>
+                        <input id="first_name" type="text" placeholder="Enter First Name" name="f_name" onblur="nameValidation(this)" required>
                         <br/>
                         <span id="first_name_error">*Please enter valid name</span>
                     </td>
@@ -30,7 +30,7 @@
                         </label>
                     </td>
                     <td>
-                        <input id="last_name" type="text" placeholder="Enter Last Name" name="l_name" onblur="lastNameValidation()" required>
+                        <input id="last_name" type="text" placeholder="Enter Last Name" name="l_name" onblur="nameValidation(this)" required>
                         <br/>
                         <span id="last_name_error">*Please enter valid name</span>
 
