@@ -67,11 +67,11 @@ public class Search_Employee extends HttpServlet {
 				}
 				if (pojoList.size() > 0) {
 					RequestDispatcher requestDispatcher = request
-							.getRequestDispatcher("index.html");
+							.getRequestDispatcher("searchEmployee.html");
 					requestDispatcher.include(request, response);
 					out.println("<html>");
 					out.println("<body>");
-					out.println("<table align='center' style='padding-left: 270px'>");
+					out.println("<table align='center' border=1>");
 					out.println("<tr>"
 							+ "<td><label><b>"
 							+ "First Name"

@@ -76,12 +76,6 @@ p{
     width: 50%;
 
 }
-
-td {
-    padding: 10px;
-
-}
-
 td a {
     padding: 20px;
     background: burlywood;
@@ -95,51 +89,9 @@ td a {
 a:hover {
     background: #afb4bc
 }
-#first_name_error
-{
-    visibility: hidden;
-    color: red;
-    font-size: 12px;
-    content: "✖";
-}
-#last_name_error{
-    visibility: hidden;
-    color: red;
-    font-size: 12px
-}
 .registerbtn{
 position: absolute;
     top: 50%;
-}
-
-
-#email_id_error{
-    visibility: hidden;
-    color: red;
-    font-size: 12px
-}
-
-#password_id_correct{
-    visibility: hidden;
-    color: green;
-    font-size: 12px
-}
-
-#password_id_error{
-    visibility: hidden;
-    color: red;
-    font-size: 12px
-}
-#password_doesnt_match{
-    visibility: hidden;
-    color: red;
-    font-size: 12px
-}
-
-#contact_id_error{
-    visibility: hidden;
-    color: red;
-    font-size: 12px
 }
 #table_style{
     margin: auto;

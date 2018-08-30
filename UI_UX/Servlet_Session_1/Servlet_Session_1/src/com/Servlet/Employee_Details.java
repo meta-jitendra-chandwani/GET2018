@@ -48,8 +48,8 @@ public class Employee_Details extends HttpServlet {
 				ResultSet resultSet = preparedStatement.executeQuery(Query.SELECT_ALL_EMPLOYEE);
 				out.println("<html>");
 				out.println("<body>");
-				out.println("<table border=1 align='center' style='padding-left: 270px'>");
-				out.println("<tr style='padding:5px'>"
+				out.println("<table border=1 align='center'>");
+				out.println("<tr>"
 						+ "<td><label><b>"
 						+ "First Name"
 						+ "</b></label></td>"
