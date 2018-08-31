@@ -1,7 +1,7 @@
 package com.DAO;
 
 public class Query {
-	public final static String INSERT="Insert into User values(?,?,?,?,?,?,?,?)";
+	public final static String INSERT="Insert into User values(?,?,?,?,?,?,?,?,?)";
 	public final static String SELECT_Email="Select Email from User Where Password=?";
 	public final static String SELECT_Pass="Select Password from User Where Email=?";
 

@@ -10,7 +10,9 @@ Mobile_Number VARCHAR(25),
 Email VARCHAR(50),
 Password VARCHAR(50),
 Organization VARCHAR(50),
+Image longblob NOT NULL,
 Primary Key(Email)
 );
-LOAD DATA LOCAL INFILE 'D:/GET2018/GET2018/UI_UX/Servlet_Session_2/UserData.txt' INTO TABLE User FIELDS TERMINATED BY '\t' LINES TERMINATED BY '\n' IGNORE 0 LINES;
-Select * from User;
+select * from Metacube_Database.User;
+
+

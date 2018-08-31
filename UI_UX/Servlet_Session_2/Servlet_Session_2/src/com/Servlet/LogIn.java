@@ -9,10 +9,12 @@ import java.sql.SQLException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import javax.websocket.Session;
 
 import com.DAO.JDBCConnection;
 import com.DAO.Query;
@@ -20,7 +22,6 @@ import com.DAO.Query;
 /**
  * Servlet implementation class LogIn
  */
-@WebServlet("/LogIn")
 public class LogIn extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -32,42 +33,60 @@ public class LogIn extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String mail=request.getParameter("u_name");
 		String password=request.getParameter("pwd");
-		PrintWriter out = response.getWriter();
-
+		String Pass = null;
 		Connection conn = JDBCConnection.getDatabaseConnection(
 				"Metacube_Database", "root", "root");
 		if(conn!=null){
 			System.out.println("Connection In");
 			PreparedStatement preparedStatement = null;
-			ResultSet resultPass=null,resultMail=null;
+			ResultSet resultPass=null;
 			try {
-				preparedStatement = conn.prepareStatement(Query.SELECT_Email);
-				preparedStatement.setString(1, password);
-				resultMail=preparedStatement.executeQuery();
-				
 				preparedStatement = conn.prepareStatement(Query.SELECT_Pass);
 				preparedStatement.setString(1, mail);
 				resultPass=preparedStatement.executeQuery();
+				while(resultPass.next()){
+					Pass=resultPass.getString(1);
+				}
 
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-			if(resultMail.equals(mail)&&resultPass.equals(password)){
+			
+			
+			if(Pass.equals(password)){
+	            //get the old session and invalidate
+	            HttpSession oldSession = request.getSession(false);
+	            if (oldSession != null) {
+	                oldSession.invalidate();
+	            }
+	            //generate a new session
+	            HttpSession newSession = request.getSession(true);
+
+	            //setting session to expiry in 5 mins
+	            newSession.setMaxInactiveInterval(5*60);
+	            newSession.setAttribute("email", mail);
+	            Cookie cookie = new Cookie("email", mail);
+	            response.addCookie(cookie);
+	            response.sendRedirect("Question2.html");
+	            	            
+	        } else {
+	            RequestDispatcher rd = getServletContext().getRequestDispatcher("logInPage.html");
+	            PrintWriter out = response.getWriter();
+	            out.println("<font color=red>Either username or password is wrong.</font>");
+	            rd.include(request, response);
+	        }
+			
+			
+			
+			
+			if(Pass.equals(password)){
 				RequestDispatcher dispatch = request.getRequestDispatcher("Question2.html");
-				dispatch.forward(request, response);
+				dispatch.include(request, response);
 			}else{
-				System.out.println("bc galat h");
+				System.out.println("Wrong Password");
 			}
 			
 			
 		}
 	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-	}
-
 }

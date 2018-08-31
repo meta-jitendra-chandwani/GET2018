@@ -2,7 +2,6 @@
 
 <head>
 <link rel="stylesheet" href="CSS/Question1.css"\>
-<script src="JS/validation.js" type="text/javascript"></script>
 </head>
 
 <body>
@@ -16,9 +15,7 @@
 					<td><label for="firstName"> <b>First Name</b>
 					</label></td>
 					<td><input id="first_name" type="text"
-						placeholder="Enter First Name" name="f_name"
-						onblur="nameValidation(this)" required> <br /> <span
-						id="first_name_error">*Please enter valid name</span></td>
+						placeholder="Enter First Name" name="f_name"  required> <br /></td>
 				</tr>
 			
 				<tr>
@@ -26,8 +23,7 @@
 					</label></td>
 					<td><input id="last_name" type="text"
 						placeholder="Enter Last Name" name="l_name"
-						onblur="nameValidation(this)" required> <br /> <span
-						id="last_name_error">*Please enter valid name</span></td>
+						required> <br /> </td>
 				</tr>
 			
 				<tr>
@@ -49,16 +45,14 @@
 					</label></td>
 					<td><input id="contact_id" type="text"
 						placeholder="Enter Contact Number" name="contact_number"
-						onblur="validateContact()" required> <br /> <span
-						id="contact_id_error">*Please enter valid number</span></td>
+						required> <br /></td>
 				</tr>
 
 				<tr>
 					<td><label for="email"> <b>Email</b>
 					</label></td>
 					<td><input id="email_id" type="text" placeholder="Enter Email"
-						name="email" onblur="mailValidation()" required> <br /> <span
-						id="email_id_error">*Please enter valid E-mail id</span></td>
+						name="email" required> <br /></td>
 				</tr>
 			
 				<tr>
@@ -75,11 +69,7 @@
 					</label></td>
 					<td><input id="password_repeat_id" type="password"
 						placeholder="Repeat Password" name="psw-repeat"
-						onblur="validatePassword()" required> <br /> <span
-						id="password_id_correct">Password Match</span> <span
-						id="password_id_error">*Invalid Password entered</span> <span
-						id="password_doesnt_match"> Password doesn't matched with
-							confirm password</span></td>
+						onblur="validatePassword()" required> <br /> </td>
 				</tr>
 				
 				<tr>
