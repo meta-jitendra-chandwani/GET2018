@@ -10,8 +10,7 @@
     <servlet-name>employeeDetails</servlet-name>
     <url-pattern>/Registration</url-pattern>
   </servlet-mapping>
-  
-    <servlet>
+  <servlet>
     <display-name>LogIn</display-name>
     <servlet-name>LogIn</servlet-name>
     <servlet-class>com.Servlet.LogIn</servlet-class>
@@ -20,7 +19,6 @@
     <servlet-name>LogIn</servlet-name>
     <url-pattern>/LogIn</url-pattern>
   </servlet-mapping>
-  
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
   </welcome-file-list>

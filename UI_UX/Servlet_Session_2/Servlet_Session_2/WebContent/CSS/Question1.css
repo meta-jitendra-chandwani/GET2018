@@ -5,6 +5,16 @@
 #center{
     text-align: center;
 }
+
+#image {
+    vertical-align: middle;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+}
+#hidden_form{
+	visibility: "hidden";
+}
 #image_table{
     display: block;
     margin-left: auto;
@@ -40,7 +50,7 @@ label{
 #headerAlign{
     text-align: right;
     background:grey;
-    height: 50px;
+    height: 150px;
     color: white;
     padding-right: 20px;
     padding-top: 25px;

@@ -1,18 +1,36 @@
+<%@page import="com.controller.Controller"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<%@ page import="java.sql.*"%>
+<%@ page import="java.io.*"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-
 <head>
-<link rel="stylesheet" href="CSS/Question1.css"\>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel="stylesheet" href="CSS/Question1.css" />
+<%
+	String email = session.getAttribute("email").toString();
+	Controller controller = new Controller();
+	String UserName = controller.selectUserName(email);
+%>
+<title>Insert title here</title>
 </head>
 
 <header>
-	<div id="headerALign">
-		<span id="homeSignUp">Home |</span> <a
-			href="../HTML_Session_2/signUpForm.html" target="_blank">SignUp/Login</a>
-	</div>
+<div id="headerAlign">
+
+	<img id="image" src="ImageServlet?email=<%=email%>">
+	<form id="hidden_form" method="POST" action="UploadServlet" enctype="multipart/form-data">
+		<input type="file" name="myimage">
+		<input type="submit"		name="submit_image" value="Upload">
+	</form>
+	<div id="homeSignUp"><%=UserName%></div>
+	<a href="../HTML_Session_1/signUpForm.html" target="_blank">SignUp/Login</a>
+</div>
 
 </header>
-
 <body>
+
 	<div>
 		<table id="table_header">
 			<tr>
@@ -26,35 +44,6 @@
 				</td>
 			</tr>
 		</table>
-		<!--     <table id="table_header">
-            <tr>
-                <td>
-                    <img src="./html.png" height="50">
-                </td>
-                <td align="right">
-                    <div class="tooltip">
-                        <a href="https://www.google.com/" target="_blank">Home</a>
-                        <span class="tooltiptext">Home</span>
-                    </div>
-                    <div class="tooltip">
-                        <a href="https://www.google.com/" target="_blank">About</a>
-                        <span class="tooltiptext">About</span>
-                    </div>
-                    <div class="tooltip">
-                        <a href="https://www.google.com/" target="_blank">Product</a>
-                        <span class="tooltiptext">Product</span>
-                    </div>
-                    <div class="tooltip">
-                        <a href="https://www.google.com/" target="_blank">Gallery</a>
-                        <span class="tooltiptext">Gallery</span>
-                    </div>
-                    <div class="tooltip">
-                        <a href="https://www.google.com/" target="_blank">Contact</a>
-                        <span class="tooltiptext">Contact</span>
-                    </div>
-                </td>
-            </tr>
-        </table> -->
 		<hr>
 		<div id="padding">
 			<img src="Image/htmldo.jpg" id="image_contact"> <br />
@@ -152,5 +141,4 @@
 		</table>
 	</div>
 </body>
-
 </html>

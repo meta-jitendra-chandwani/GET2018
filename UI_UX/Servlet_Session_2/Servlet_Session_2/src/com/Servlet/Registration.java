@@ -59,6 +59,7 @@ public class Registration extends HttpServlet {
 				&& validation.mailValidation(mail)
 				&& validation.validatePassword(password, repeatPassword)
 				&& validation.validateContact(contact_number)) {
+			
 			if (controller.insertion(fName, lName, age, date, contact_number,
 					mail, password, organization)) {
 				out.println("<html>");

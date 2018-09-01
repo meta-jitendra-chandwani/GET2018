@@ -3,8 +3,11 @@ package com.facade;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.InputStream;
+import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
@@ -12,7 +15,7 @@ import java.util.List;
 
 import com.DAO.JDBCConnection;
 import com.DAO.Query;
-import com.model.UserEntity;;
+import com.model.UserEntity;
 
 public class HelperFacade {
 	private static List<UserEntity> UserList=new ArrayList<UserEntity>();
@@ -40,8 +43,56 @@ public class HelperFacade {
 		return UserList;
 	}
 
+	public String getUserName(String emailId) {
+		Connection conn = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet resultPass=null;
+		String f_name=null;
+		String l_name=null;
+		String full_name=null;
+		try {
+			conn = JDBCConnection.getDatabaseConnection("Metacube_Database",
+					"root", "root");
+			preparedStatement = conn.prepareStatement(Query.SELECT_USER_NAME);
+			preparedStatement.setString(1, emailId);
+			resultPass = preparedStatement.executeQuery();
+
+			if (resultPass.next()) {
+				f_name = resultPass.getString(1);
+				l_name = resultPass.getString(2);
+				full_name=f_name+" "+l_name;
+			}
+		}catch(Exception e){
+			e.getStackTrace();
+		}
+		return full_name;		
+	}
 
 
+	public byte[] getProfilePicture(String emailId){
+		Connection conn = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet resultPass=null;
+		Blob image = null;
+		byte[] imgData = null;
+
+		try {
+			conn = JDBCConnection.getDatabaseConnection("Metacube_Database",
+					"root", "root");
+			preparedStatement = conn.prepareStatement(Query.SELECT_IMAGE);
+			preparedStatement.setString(1, emailId);
+			resultPass = preparedStatement.executeQuery();
+
+			if (resultPass.next()) {
+				image = resultPass.getBlob(1);
+				imgData = image.getBytes(1, (int) image.length());
+			}
+		}catch(Exception e){
+			e.getStackTrace();
+		}
+		return imgData;
+
+	}
 	/**
 	 * 
 	 * @param fName
@@ -76,7 +127,6 @@ public class HelperFacade {
 			UserList.add(new UserEntity(fName, lName, age, mail, date, contact_number, password, organization, inputStream));
 			
 			if (conn != null) {
-				System.out.println("Connection In");
 				preparedStatement.setString(1, fName);
 				preparedStatement.setString(2, lName);
 				preparedStatement.setInt(3, age);
