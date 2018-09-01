@@ -15,4 +15,5 @@ Primary Key(Email)
 );
 select * from Metacube_Database.User;
 
-
+Select * from Employee.EmployeeDetails
+Update Metacube_Database.User SET Age = 80 where Email='jchandwani27896@gmail.com';

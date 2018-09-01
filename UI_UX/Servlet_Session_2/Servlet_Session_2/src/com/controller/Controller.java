@@ -7,7 +7,6 @@ import com.facade.HelperFacade;
 
 public class Controller {
     private HelperFacade helperFacade = HelperFacade.getInstance();
-
     /**
      * 
      * @param fName
@@ -31,5 +30,8 @@ public class Controller {
 	
 	public String selectUserName(String emailId){
 		return helperFacade.getUserName(emailId);
+	}
+	public boolean updateImage(String filename,String path,String emailId){
+		return helperFacade.setProfilePicture(filename,path,emailId);
 	}
 }

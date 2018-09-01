@@ -8,6 +8,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link rel="stylesheet" href="CSS/Question1.css" />
+<script type="text/javascript" href="JS/validation">></script>
 <%
 	String email = session.getAttribute("email").toString();
 	Controller controller = new Controller();
@@ -18,14 +19,21 @@
 
 <header>
 <div id="headerAlign">
-
-	<img id="image" src="ImageServlet?email=<%=email%>">
-	<form id="hidden_form" method="POST" action="UploadServlet" enctype="multipart/form-data">
-		<input type="file" name="myimage">
-		<input type="submit"		name="submit_image" value="Upload">
+	<a href='#' onclick="showForm()"> <img id="image" src="ImageServlet?email=<%=email%>">
+	</a>
+	<div id="hideForm">
+	<form  method="POST" action="UploadServlet"
+		enctype="multipart/form-data">
+		<input type="file" name="file" id="file" /> <br /> <input
+			type="hidden" name="email" value=<%=email%>> <input
+			type="text" value="C:\Users\User23\Desktop\photo upload"
+			name="destination" /> </br> <input type="submit" value="Upload"
+			name="upload" id="upload" />
 	</form>
+	</div>
+	
+
 	<div id="homeSignUp"><%=UserName%></div>
-	<a href="../HTML_Session_1/signUpForm.html" target="_blank">SignUp/Login</a>
 </div>
 
 </header>

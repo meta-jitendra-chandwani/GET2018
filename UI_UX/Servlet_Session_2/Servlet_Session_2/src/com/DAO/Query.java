@@ -5,6 +5,9 @@ public class Query {
 	public final static String SELECT_PASSWORD="Select Password from User Where Email=?";
 	public final static String SELECT_IMAGE="Select Image from User Where Email=?";
 	public final static String SELECT_USER_NAME="Select First_Name,Last_Name from User Where Email=?";
+	public final static String UPDATE_IMAGE="Update User SET Image = ? where Email=?";
+	public final static String Update="Update User SET Age = ? where Email LIKE ?";
+
 
 	
 }

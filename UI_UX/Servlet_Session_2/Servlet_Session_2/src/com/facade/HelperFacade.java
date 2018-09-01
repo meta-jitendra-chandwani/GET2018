@@ -3,7 +3,6 @@ package com.facade;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.InputStream;
 import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -18,12 +17,12 @@ import com.DAO.Query;
 import com.model.UserEntity;
 
 public class HelperFacade {
-	private static List<UserEntity> UserList=new ArrayList<UserEntity>();
-	
-	private HelperFacade(){
-		//for singleton
+	private static List<UserEntity> UserList = new ArrayList<UserEntity>();
+
+	private HelperFacade() {
+		// for singleton
 	}
-	
+
 	private static HelperFacade helperFacade = new HelperFacade();
 
 	/**
@@ -33,8 +32,7 @@ public class HelperFacade {
 	public static HelperFacade getInstance() {
 		return helperFacade;
 	}
-	
-	
+
 	/**
 	 * 
 	 * @return
@@ -46,10 +44,10 @@ public class HelperFacade {
 	public String getUserName(String emailId) {
 		Connection conn = null;
 		PreparedStatement preparedStatement = null;
-		ResultSet resultPass=null;
-		String f_name=null;
-		String l_name=null;
-		String full_name=null;
+		ResultSet resultPass = null;
+		String f_name = null;
+		String l_name = null;
+		String full_name = null;
 		try {
 			conn = JDBCConnection.getDatabaseConnection("Metacube_Database",
 					"root", "root");
@@ -60,19 +58,18 @@ public class HelperFacade {
 			if (resultPass.next()) {
 				f_name = resultPass.getString(1);
 				l_name = resultPass.getString(2);
-				full_name=f_name+" "+l_name;
+				full_name = f_name + " " + l_name;
 			}
-		}catch(Exception e){
+		} catch (Exception e) {
 			e.getStackTrace();
 		}
-		return full_name;		
+		return full_name;
 	}
 
-
-	public byte[] getProfilePicture(String emailId){
+	public byte[] getProfilePicture(String emailId) {
 		Connection conn = null;
 		PreparedStatement preparedStatement = null;
-		ResultSet resultPass=null;
+		ResultSet resultPass = null;
 		Blob image = null;
 		byte[] imgData = null;
 
@@ -87,12 +84,13 @@ public class HelperFacade {
 				image = resultPass.getBlob(1);
 				imgData = image.getBytes(1, (int) image.length());
 			}
-		}catch(Exception e){
+		} catch (Exception e) {
 			e.getStackTrace();
 		}
 		return imgData;
 
 	}
+
 	/**
 	 * 
 	 * @param fName
@@ -109,8 +107,7 @@ public class HelperFacade {
 	public boolean insertionOfData(String fName, String lName, int age,
 			Date date, String contact_number, String mail, String password,
 			String organization) throws FileNotFoundException {
-		
-		
+
 		boolean returnValue = false;
 		Connection conn = null;
 		PreparedStatement preparedStatement = null;
@@ -121,11 +118,13 @@ public class HelperFacade {
 					"root", "root");
 			preparedStatement = conn.prepareStatement(Query.INSERT);
 
-			File image = new File("C:\\Users\\User23\\workspace\\Servlet_Session_2\\src\\com\\DefaultImage\\defaultImage.png");
+			File image = new File(
+					"C:\\Users\\User23\\workspace\\Servlet_Session_2\\src\\com\\DefaultImage\\defaultImage.png");
 			inputStream = new FileInputStream(image);
-			
-			UserList.add(new UserEntity(fName, lName, age, mail, date, contact_number, password, organization, inputStream));
-			
+
+			UserList.add(new UserEntity(fName, lName, age, mail, date,
+					contact_number, password, organization, inputStream));
+
 			if (conn != null) {
 				preparedStatement.setString(1, fName);
 				preparedStatement.setString(2, lName);
@@ -151,4 +150,39 @@ public class HelperFacade {
 		}
 		return returnValue;
 	}
+
+	public boolean setProfilePicture(String filename, String path,
+			String emailId) {
+		Connection conn = null;
+
+		PreparedStatement preparedStatement = null;
+		boolean resultPass = false;
+		FileInputStream inputStream = null;
+		try {
+			conn = JDBCConnection.getDatabaseConnection("Metacube_Database",
+					"root", "root");
+
+			File image = new File(path + File.separator
+	                + filename);
+			inputStream = new FileInputStream(image);
+
+			preparedStatement = conn.prepareStatement(Query.UPDATE_IMAGE);
+			preparedStatement.setBinaryStream(1, inputStream,
+					(int) (image.length()));
+			preparedStatement.setString(2, emailId);
+			
+			
+			int result = preparedStatement.executeUpdate();
+			System.out.println("path====" + path + File.separator + filename);
+			System.out.println("email===" + emailId);
+			if (result > 0) {
+				resultPass = true;
+			}
+
+		} catch (Exception e) {
+			e.getStackTrace();
+		}
+		return resultPass;
+	}
+
 }

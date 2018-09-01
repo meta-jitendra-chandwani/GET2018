@@ -12,8 +12,8 @@
     height: 70px;
     border-radius: 50%;
 }
-#hidden_form{
-	visibility: "hidden";
+#hideForm{
+	display : none;
 }
 #image_table{
     display: block;
