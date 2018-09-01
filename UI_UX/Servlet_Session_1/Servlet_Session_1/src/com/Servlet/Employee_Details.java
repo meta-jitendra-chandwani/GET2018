@@ -32,7 +32,6 @@ public class Employee_Details extends HttpServlet {
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
-
 		Connection conn = JDBCConnection.getDatabaseConnection("Employee",
 				"root", "root");
 		if (conn != null) {
@@ -40,11 +39,6 @@ public class Employee_Details extends HttpServlet {
 			Statement preparedStatement = null;
 			try {
 				preparedStatement = (Statement) conn.createStatement();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-
-			try {
 				ResultSet resultSet = preparedStatement.executeQuery(Query.SELECT_ALL_EMPLOYEE);
 				out.println("<html>");
 				out.println("<body>");
@@ -93,8 +87,7 @@ public class Employee_Details extends HttpServlet {
 								+ "</tr>");
 						out.println("</form>");
 					}
-					out.println("</table>");
-					
+					out.println("</table>");					
 					out.println("</body>");
 					out.println("</html>");
 					conn.close();
@@ -108,7 +101,6 @@ public class Employee_Details extends HttpServlet {
 	}
 	@Override
 	public void destroy() {
-		// TODO Auto-generated method stub
 		super.destroy();
 	}
 }

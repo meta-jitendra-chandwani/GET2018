@@ -34,9 +34,7 @@ public class Search_Employee extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 		String firstName = request.getParameter("f_name");
 		String lastName = request.getParameter("l_name");
-
 		PrintWriter out = response.getWriter();
-
 		Connection conn = JDBCConnection.getDatabaseConnection("Employee",
 				"root", "root");
 		if (conn != null) {
@@ -45,16 +43,9 @@ public class Search_Employee extends HttpServlet {
 			try {
 				preparedStatement = conn
 						.prepareStatement(Query.SELECT_EPMLOYEE);
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-
-			try {
 				preparedStatement.setString(1, firstName);
 				preparedStatement.setString(2, lastName);
-
 				ResultSet resultSet = preparedStatement.executeQuery();
-
 				while (resultSet.next()) {
 					String First_Name = resultSet.getString(1);
 					String Last_Name = resultSet.getString(2);
@@ -86,7 +77,6 @@ public class Search_Employee extends HttpServlet {
 							+ "Email"
 							+ "</b></label></td>"
 							+ "</tr>");
-
 					for (Connection_POJO value : pojoList) {
 						out.println("<tr>"
 								+ "<td><label><b>"
@@ -116,5 +106,4 @@ public class Search_Employee extends HttpServlet {
 			response.sendRedirect("Database Connectivity Error!!");
 		}
 	}
-
 }

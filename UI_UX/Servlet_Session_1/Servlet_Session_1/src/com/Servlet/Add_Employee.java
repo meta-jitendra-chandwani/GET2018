@@ -32,9 +32,7 @@ public class Add_Employee extends HttpServlet {
 		String lastName = request.getParameter("l_name");
 		int age = Integer.parseInt(request.getParameter("age"));
 		String email = request.getParameter("email");
-
 		PrintWriter out = response.getWriter();
-
 		Connection conn = JDBCConnection.getDatabaseConnection(
 				"Employee", "root", "root");
 		if(conn!=null){
@@ -42,16 +40,10 @@ public class Add_Employee extends HttpServlet {
 			PreparedStatement preparedStatement = null;
 			try {
 				preparedStatement = conn.prepareStatement(Query.INSERT);
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-
-			try {
 				preparedStatement.setString(1, firstName);
 				preparedStatement.setString(2, lastName);
 				preparedStatement.setInt(3, age);
 				preparedStatement.setString(4, email);
-
 				int result = preparedStatement.executeUpdate();
 				if (result > 0) {
 					out.println("<html>");
@@ -69,7 +61,6 @@ public class Add_Employee extends HttpServlet {
 			}
 		}else{
 			response.sendRedirect("Database Connectivity Error!!");
-		}
-		
+		}		
 	}
 }

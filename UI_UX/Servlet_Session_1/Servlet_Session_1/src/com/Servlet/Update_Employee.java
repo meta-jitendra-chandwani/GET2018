@@ -32,9 +32,7 @@ public class Update_Employee extends HttpServlet {
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		String id = request.getParameter("id");
-
 		PrintWriter out = response.getWriter();
-
 		Connection conn = JDBCConnection.getDatabaseConnection("Employee",
 				"root", "root");
 		if (conn != null) {
@@ -44,14 +42,9 @@ public class Update_Employee extends HttpServlet {
 				preparedStatement = conn
 						.prepareStatement(Query.SELECT_EPMLOYEE_BY_EMAIL);
 				preparedStatement.setString(1, id);
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-			try {
 				out.println("<html>");
 				out.println("<body>");
 				out.println("<form action='Update_To_DB'>");
-
 				ResultSet resultSet = preparedStatement.executeQuery();
 				while(resultSet.next()){
 					String First_Name = resultSet.getString(1);
@@ -91,9 +84,7 @@ public class Update_Employee extends HttpServlet {
 				out.println("</body>");
 				out.println("</html>");
 				conn.close();
-			}
-
-			catch (SQLException e) {
+			}catch (SQLException e) {
 				System.out.println("Exception occur");
 				e.printStackTrace();
 			}

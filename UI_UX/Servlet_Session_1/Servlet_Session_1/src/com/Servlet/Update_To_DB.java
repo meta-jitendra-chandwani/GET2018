@@ -37,16 +37,10 @@ public class Update_To_DB extends HttpServlet {
 			PreparedStatement preparedStatement = null;
 			try {
 				preparedStatement = conn.prepareStatement(Query.UPDATE_EMPLOYEE_DETAILS);
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-
-			try {
 				preparedStatement.setString(1, firstName);
 				preparedStatement.setString(2, lastName);
 				preparedStatement.setInt(3, age);
 				preparedStatement.setString(4, Email);
-
 				int result = preparedStatement.executeUpdate();
 				if (result > 0) {					
 					out.println("<h2 style=\"color:green;text-align:center;\">Employee Updated Successfully !</h2>");
@@ -63,9 +57,6 @@ public class Update_To_DB extends HttpServlet {
 			}
 		}else{
 			response.sendRedirect("Database Connectivity Error!!");
-		}
-		
-	}
-
-	
+		}		
+	}	
 }
