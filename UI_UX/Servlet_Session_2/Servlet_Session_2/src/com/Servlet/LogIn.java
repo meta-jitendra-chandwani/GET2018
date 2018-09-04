@@ -35,12 +35,14 @@ public class LogIn extends HttpServlet {
 		Connection conn = JDBCConnection.getDatabaseConnection(
 				"Metacube_Database", "root", "root");
 
+		//If connection established
 		if (conn != null) {
 			System.out.println("Connection In");
 			PreparedStatement preparedStatement = null;
 			ResultSet resultPass = null;
 
 			try {
+				//Select password of particular email id
 				preparedStatement = conn
 						.prepareStatement(Query.SELECT_PASSWORD);
 				preparedStatement.setString(1, mail);
@@ -51,13 +53,13 @@ public class LogIn extends HttpServlet {
 			} catch (Exception e) {
 				e.getStackTrace();
 			}
-
+			//if password match with user password
 			if (Pass.equals(password)) {
 				HttpSession session = request.getSession();
 				session.setAttribute("email", mail);
 				response.sendRedirect("Main.jsp");
 
-
+			//else - login page 
 			} else {
 				RequestDispatcher rd = getServletContext().getRequestDispatcher("logInPage.html");
 				PrintWriter out = response.getWriter();
@@ -65,6 +67,11 @@ public class LogIn extends HttpServlet {
 				rd.include(request, response);
 			}
 
+		}
+		//else connection fail
+		else{
+			RequestDispatcher rd = getServletContext().getRequestDispatcher("Error.html");
+			rd.include(request, response);
 		}
 	}
 }

@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -14,12 +15,14 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.Validation.Validation;
 import com.controller.Controller;
+import com.model.UserEntity;
 
 /**
  * Servlet implementation class Registration
  */
 public class Registration extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	ArrayList<UserEntity> userList = new ArrayList<UserEntity>();
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
@@ -27,11 +30,10 @@ public class Registration extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		
+
 		String fName = request.getParameter("f_name");
 		String lName = request.getParameter("l_name");
 		int age = Integer.parseInt(request.getParameter("age"));
-
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		String parameter = request.getParameter("dob");
 		Date date = null;
@@ -40,7 +42,6 @@ public class Registration extends HttpServlet {
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
-
 		String contact_number = request.getParameter("contact_number");
 		String mail = request.getParameter("email");
 		String password = request.getParameter("psw");
@@ -48,9 +49,7 @@ public class Registration extends HttpServlet {
 		String organization = request.getParameter("select");
 
 		PrintWriter out = response.getWriter();
-
 		Controller controller = new Controller();
-
 		Validation validation = new Validation();
 
 		if (validation.nameValidation(fName)
@@ -59,9 +58,9 @@ public class Registration extends HttpServlet {
 				&& validation.mailValidation(mail)
 				&& validation.validatePassword(password, repeatPassword)
 				&& validation.validateContact(contact_number)) {
-			
-			if (controller.insertion(fName, lName, age, date, contact_number,
-					mail, password, organization)) {
+			UserEntity user = new UserEntity(fName, lName, age, date,
+					contact_number, mail, password, organization, null);
+			if (controller.insertion(user)) {
 				out.println("<html>");
 				out.println("<h2 style=\"color:green;text-align:center;\">Employee Successfully Added !</h2>");
 				out.println("</html>");
@@ -69,11 +68,8 @@ public class Registration extends HttpServlet {
 						.getRequestDispatcher("logInPage.html");
 				requestDispatcher.include(request, response);
 			}
-
 		} else {
 			response.sendRedirect("Error.html");
 		}
-
 	}
-
 }

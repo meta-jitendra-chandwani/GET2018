@@ -13,7 +13,7 @@
     border-radius: 50%;
 }
 #hideForm{
-	display : none;
+	visibility : hidden;
 }
 #image_table{
     display: block;

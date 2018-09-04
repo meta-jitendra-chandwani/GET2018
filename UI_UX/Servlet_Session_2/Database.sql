@@ -10,7 +10,7 @@ Mobile_Number VARCHAR(25),
 Email VARCHAR(50),
 Password VARCHAR(50),
 Organization VARCHAR(50),
-Image longblob NOT NULL,
+Image longblob NULL,
 Primary Key(Email)
 );
 select * from Metacube_Database.User;

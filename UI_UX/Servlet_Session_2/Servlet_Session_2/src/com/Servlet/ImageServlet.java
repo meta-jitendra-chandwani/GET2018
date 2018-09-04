@@ -17,6 +17,7 @@ public class ImageServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
+	 *  send image as response to jsp file
 	 */
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
@@ -24,7 +25,7 @@ public class ImageServlet extends HttpServlet {
 		String id = request.getParameter("email");
 		
 		Controller controller = new Controller();
-		byte[] imageBytes = controller.select(id);
+		byte[] imageBytes = controller.selectProfilePicture(id);
 
 		response.setContentType("image/jpeg");
 		response.setContentLength(imageBytes.length);

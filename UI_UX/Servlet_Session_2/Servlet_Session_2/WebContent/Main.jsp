@@ -1,3 +1,4 @@
+<%@page import="com.model.UserEntity"%>
 <%@page import="com.controller.Controller"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
@@ -8,32 +9,33 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link rel="stylesheet" href="CSS/Question1.css" />
-<script type="text/javascript" href="JS/validation">></script>
+<script type="text/javascript" src="JS/validation.js"></script>
 <%
 	String email = session.getAttribute("email").toString();
 	Controller controller = new Controller();
 	String UserName = controller.selectUserName(email);
+	UserEntity user = controller.selectUser(email);
 %>
 <title>Insert title here</title>
 </head>
 
 <header>
 <div id="headerAlign">
-	<a href='#' onclick="showForm()"> <img id="image" src="ImageServlet?email=<%=email%>">
-	</a>
-	<div id="hideForm">
-	<form  method="POST" action="UploadServlet"
-		enctype="multipart/form-data">
-		<input type="file" name="file" id="file" /> <br /> <input
-			type="hidden" name="email" value=<%=email%>> <input
-			type="text" value="C:\Users\User23\Desktop\photo upload"
-			name="destination" /> </br> <input type="submit" value="Upload"
-			name="upload" id="upload" />
-	</form>
-	</div>
-	
 
+	<a href='#' onclick="showForm()"> <img id="image"
+		onclick="showForm()" src="ImageServlet?email=<%=email%>">
+	</a>
+	<form id=hideForm method="POST" action="UploadServlet"
+		enctype="multipart/form-data">
+		<input type="file" name="file" id="file" /> <input type="hidden"
+			name="email" value=<%=email%>> <input type="hidden"
+			value="C:\Users\User23\Desktop\photo upload" name="destination" /> <input
+			type="submit" value="Upload" name="upload" id="upload" />
+	</form>
 	<div id="homeSignUp"><%=UserName%></div>
+	<div class="link">
+		<a href="InvalidateSession">Logout</a>
+	</div>
 </div>
 
 </header>
@@ -43,8 +45,8 @@
 		<table id="table_header">
 			<tr>
 				<td><img src="Image/html.png" height="50"></td>
-				<td align="right"><a id="anchor" href="https://www.google.com/"
-					target="_blank">Home</a> <a id="anchor"
+				<td align="right"><a id="anchor" href="UserFriends.jsp"
+					target="_blank">Friends</a> <a id="anchor"
 					href="https://www.google.com/" target="_blank">About</a> <a
 					id="anchor" href="https://www.google.com/" target="_blank">Product</a>
 					<a id="anchor" href="https://www.google.com/" target="_blank">Gallery</a>
@@ -53,100 +55,103 @@
 			</tr>
 		</table>
 		<hr>
-		<div id="padding">
-			<img src="Image/htmldo.jpg" id="image_contact"> <br />
-		</div>
+
 
 	</div>
 	<div id="padding">
-		<h2>What we work ?</h2>
 		<p>
-			HTML markup consists of several key components, including those
-			called tags (and their attributes), character-based data types,
-			character references and entity references. HTML tags most commonly
-			come in pairs like , although some represent empty elements and so
-			are unpaired, for example . The first tag in such a pair is the start
-			tag, and the second is the end tag (they are also called opening tags
-			and closing tags). Another important component is the HTML document
-			type declaration, which triggers standards mode rendering. The
-			following is an example of the classic "Hello, World!" program: The
-			text between and describes the web page, and the text between and is
-			the visible page content. The markup text This is a title defines the
-			browser page title. The Document Type Declaration
-			<!DOCTYPE html>
-			is for HTML5. If a declaration is not included, various browsers will
-			revert to "quirks mode" for rendering.
+		<div id="userProfileDIV">
+
+			<div align="center" id="profileDetailsDIV" style="display: block;">
+				<h2>Profile Details</h2>
+				<form>
+					<table>
+						<tr>
+							<td>Name</td>
+							<td><%=user.getFirstName() + " " + user.getLastName()%></td>
+						</tr>
+						<tr>
+							<td>Date Of Birth</td>
+							<td><%=user.getDate()%></td>
+						</tr>
+						<tr>
+							<td>Age</td>
+							<td><%=user.getAge()%></td>
+						</tr>
+						<tr>
+							<td>Organization</td>
+							<td><%=user.getOrganisation()%></td>
+						</tr>
+						<tr>
+							<td>Contact</td>
+							<td><%=user.getContact_number()%></td>
+						</tr>
+						<tr>
+							<td><input type="button" value="Edit Profile"
+								onclick="toggleProfileDetailUpdateDIV()"></td>
+						</tr>
+					</table>
+				</form>
+			</div>
+
+			<div align="center" id="updateProfileDetailsDIV"
+				style="display: none;">
+				<h2>Update Profile Details</h2>
+				<form action="UpdateUserDetails">
+					<table>
+						<tr>
+							<td>First Name</td>
+							<td><input type="text" value=<%=user.getFirstName()%>
+								name="firstName" id="firstName" required></td>
+						</tr>
+						<tr>
+							<td>Last Name</td>
+							<td><input type="text" value=<%=user.getLastName()%>
+								name="lastName" id="lastName" required></td>
+						</tr>
+						<tr>
+							<td>Age</td>
+							<td><input type="text" value=<%=user.getAge()%> name="age"
+								id="age" required></td>
+						</tr>
+						<tr>
+							<td>Date Of Birth</td>
+							<td><input type="date" value=<%=user.getDate()%> name="dob"
+								id="dob" required></td>
+						</tr>
+						<tr>
+							<td>Mobile</td>
+							<td><input type="text" value=<%=user.getContact_number()%>
+								name="contact" id="contact" required></td>
+						</tr>
+						<tr>
+							<td>Email</td>
+							<td><input type="email" value=<%=user.getMailId()%>
+								name="email" id="email" readonly="readonly"></td>
+						</tr>
+						<tr>
+							<td>Organization</td>
+							<td><select name="organization">
+									<option value="Metacube">Metacube</option>
+									<option value="Google">Google</option>
+									<option value="Amazon">Amazon</option>
+									<option value="Facebook">Facebook</option>
+									<option value="Apple">Apple</option>
+							</select></td>
+						</tr>
+						<tr>
+							<td><input type="submit" value="Update"></td>
+							<td><input type="button" value="Cancel"
+								onclick="toggleProfileDetailUpdateDIV()"></td>
+						</tr>
+					</table>
+				</form>
+			</div>
+		</div>
+		<hr />
+		<div align="center">&copy; Copyright 2018-19 | All Rights
+			reserved. | Metacube Training</div>
 		</p>
-		<p>
-			HTML markup consists of several key components, including those
-			called tags (and their attributes), character-based data types,
-			character references and entity references. HTML tags most commonly
-			come in pairs like , although some represent empty elements and so
-			are unpaired, for example . The first tag in such a pair is the start
-			tag, and the second is the end tag (they are also called opening tags
-			and closing tags). Another important component is the HTML document
-			type declaration, which triggers standards mode rendering. The
-			following is an example of the classic "Hello, World!" program: The
-			text between and describes the web page, and the text between and is
-			the visible page content. The markup text This is a title defines the
-			browser page title. The Document Type Declaration
-			<!DOCTYPE html>
-			is for HTML5. If a declaration is not included, various browsers will
-			revert to "quirks mode" for rendering.
-		</p>
-		<h2>What it work ?</h2>
-		<table style="width: 100%">
-			<tr>
-				<td><img src="Image/html.png" id="image_table">
-					<h4 id="center">Name 1</h4>
-					<div id="center">
-						The Document Type Declaration
-						<!DOCTYPE html>
-						is for HTML5. If a declaration is not included, various browsers
-						will revert to "quirks mode" for rendering. The Document Type
-						Declaration
-						<!DOCTYPE html>
-						is for HTML5. If a declaration is not included, various browsers
-						will revert to "quirks mode" for rendering. The Document Type
-						Declaration
-						<!DOCTYPE html>
-						is for HTML5. If a declaration is not included, various browsers
-						will revert to "quirks mode" for rendering.
-					</div></td>
-				<td><img src="Image/html.png" id="image_table">
-					<h4 id="center">Name 2</h4>
-					<div id="center">
-						The Document Type Declaration
-						<!DOCTYPE html>
-						is for HTML5. If a declaration is not included, various browsers
-						will revert to "quirks mode" for rendering. The Document Type
-						Declaration
-						<!DOCTYPE html>
-						is for HTML5. If a declaration is not included, various browsers
-						will revert to "quirks mode" for rendering. The Document Type
-						Declaration
-						<!DOCTYPE html>
-						is for HTML5. If a declaration is not included, various browsers
-						will revert to "quirks mode" for rendering.
-					</div></td>
-				<td><img src="Image/html.png" id="image_table">
-					<h4 id="center">Name 3</h4>
-					<div id="center">
-						The Document Type Declaration
-						<!DOCTYPE html>
-						is for HTML5. If a declaration is not included, various browsers
-						will revert to "quirks mode" for rendering. The Document Type
-						Declaration
-						<!DOCTYPE html>
-						is for HTML5. If a declaration is not included, various browsers
-						will revert to "quirks mode" for rendering. The Document Type
-						Declaration
-						<!DOCTYPE html>
-						is for HTML5. If a declaration is not included, various browsers
-						will revert to "quirks mode" for rendering.
-					</div></td>
-			</tr>
-		</table>
 	</div>
 </body>
 </html>

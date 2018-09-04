@@ -12,6 +12,34 @@ function nameValidation(Value) {
 }
 
 /**
+ * toggleProfilePictureUpdate - toggle div part of profile picture
+ */
+function toggleProfilePictureUpdate() {
+	var x = document.getElementById("uploadProfilePictureButton");
+	if (x.style.display === "none") {
+		x.style.display = "block";
+	} else {
+		x.style.display = "none";
+	}
+}
+/**
+ * toggleProfileDetailUpdateDIV - toggle div part of  profile update form
+ */
+function toggleProfileDetailUpdateDIV() {
+	debugger;
+	var updateProfileDetailsDIV = document
+			.getElementById("updateProfileDetailsDIV");
+	var profileDetailsDIV = document.getElementById("profileDetailsDIV");
+	if (updateProfileDetailsDIV.style.display === "none") {
+		updateProfileDetailsDIV.style.display = "block";
+		profileDetailsDIV.style.display = "none";
+	} else {
+		updateProfileDetailsDIV.style.display = "none";
+		profileDetailsDIV.style.display = "block";
+	}
+}
+
+/**
  * mailValidation - Validation of email text input using regex - which only
  * accept email as input in text field check whether input sastisfy regex or
  * not.
@@ -25,11 +53,12 @@ function mailValidation() {
 }
 
 function showForm() {
+	debugger;
 	var x = document.getElementById("hideForm");
-	if (x.style.display === "none") {
-		x.style.display = "block";
+	if (x.style.visibility == "hidden") {
+		x.style.visibility = "visible";
 	} else {
-		x.style.display = "none";
+		x.style.visibility = "hidden";
 	}
 }
 /**

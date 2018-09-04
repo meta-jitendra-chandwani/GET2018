@@ -10,6 +10,7 @@ import java.io.PrintWriter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
@@ -61,10 +62,11 @@ public class UploadServlet extends HttpServlet {
 		        
 		        if(controller.updateImage(fileName,path,email)){
 		        	System.out.println("Updated Image");
+		        	RequestDispatcher requestDispatcher = request.getRequestDispatcher("Main.jsp");
+					requestDispatcher.include(request, response);
 		        }else{
 		        	System.out.println("Not updated");
 		        }
-		        writer.println("New file " + fileName + " created at " + path);
 			
 		} catch (FileNotFoundException fne) {
 			writer.println("You either did not specify a file to upload or are "
