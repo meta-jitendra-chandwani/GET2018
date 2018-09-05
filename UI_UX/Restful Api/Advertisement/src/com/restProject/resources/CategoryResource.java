@@ -20,7 +20,10 @@ import com.restProject.models.Category;
 public class CategoryResource {
 	CategoryFacade categoryFacade=CategoryFacade.getInstance();
 	
-	
+	/**
+	 * getAllCategories -  get all category
+	 * @return Response in form of json 
+	 */
 	@GET
 	@Path("/GetAllCategory")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -37,6 +40,11 @@ public class CategoryResource {
 		}
 	}
 	
+	/**
+	 * insertCategory - insert new Category
+	 * @param category - new category
+	 * @return Response 
+	 */
 	@POST
 	@Path("/InsertCategory")
 	@Produces(MediaType.APPLICATION_JSON)

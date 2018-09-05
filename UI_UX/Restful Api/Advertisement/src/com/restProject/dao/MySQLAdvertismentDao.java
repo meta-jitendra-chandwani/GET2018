@@ -94,9 +94,7 @@ public class MySQLAdvertismentDao implements AdvertismentDao {
 		List<Advertisment> listOfAdvertisment = new ArrayList<Advertisment>();
 		String query = AdvertisementQueries.GET_BY_CATEFORY_QUERY;
 		try(Connection conn = Connect.getConnection(); 
-			PreparedStatement pstmt = conn.prepareStatement(query);
-				
-			
+			PreparedStatement pstmt = conn.prepareStatement(query);		
 		){
 			pstmt.setInt(1, categoryId);
 			ResultSet rset =  pstmt.executeQuery();	
