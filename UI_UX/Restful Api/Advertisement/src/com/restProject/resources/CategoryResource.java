@@ -83,6 +83,11 @@ public class CategoryResource {
 		}
 	}
 	
+	/**
+	 * To whether category is exist or not in database
+	 * @param id - category id
+	 * @return	true if exist else false
+	 */
 	private boolean isCategoryExist(int id){
 		boolean isCategoryExistFlag = false;
 		List<Category> listOfCategories = categoryFacade.getAll();
@@ -93,6 +98,5 @@ public class CategoryResource {
 			}
 		}
 		return isCategoryExistFlag;
-	}
-	
+	}	
 }

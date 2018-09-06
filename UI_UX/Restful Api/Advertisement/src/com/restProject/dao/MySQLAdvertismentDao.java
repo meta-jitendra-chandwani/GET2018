@@ -92,7 +92,7 @@ public class MySQLAdvertismentDao implements AdvertismentDao {
 	@Override
 	public List<Advertisment> GetByCategoryId(int categoryId) {
 		List<Advertisment> listOfAdvertisment = new ArrayList<Advertisment>();
-		String query = AdvertisementQueries.GET_BY_CATEFORY_QUERY;
+		String query = AdvertisementQueries.GET_BY_CATEGORY_ID;
 		try(Connection conn = Connect.getConnection(); 
 			PreparedStatement pstmt = conn.prepareStatement(query);		
 		){

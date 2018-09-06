@@ -67,6 +67,11 @@ public class AdvertismentResource{
 		}
 	}
 	
+	/**
+	 * To whether advertisement is exist or not in database
+	 * @param id - advertisement id
+	 * @return	true if exist else false
+	 */
 	private boolean isAdvertismentExist(int id){
 		boolean isExistFalg = false;
 		List<Advertisment> listOfAdvertisment = advertismentFacade.getAll();
@@ -106,13 +111,10 @@ public class AdvertismentResource{
 	@DELETE
 	@Path("/deleteAdvertisment/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response deleteAdvertisment(@HeaderParam("Authorization") String authorizationString,@PathParam("id") String id){
-		
+	public Response deleteAdvertisment(@HeaderParam("Authorization") String authorizationString,@PathParam("id") String id){		
 		if(!"GET-2018".equals(authorizationString)){
 			return Response.serverError().entity("you re not authorized user").build();
-		}
-		
-		
+		}		
 		int advertismentId = 0;
 		try{
 		advertismentId  = Integer.parseInt(id.trim());

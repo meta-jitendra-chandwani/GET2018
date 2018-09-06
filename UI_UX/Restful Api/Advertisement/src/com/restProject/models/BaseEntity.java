@@ -3,11 +3,6 @@ package com.restProject.models;
 public class BaseEntity {
 	private int id;
 
-/*	public BaseEntity(int id) {
-		super();
-		this.id = id;
-	}*/
-
 	/**
 	 * @return the id
 	 */
