@@ -20,6 +20,8 @@ FROM
     User AS S
         INNER JOIN
     Orders AS O ON S.User_Id = O.User_Id
+WHERE
+    O.Order_Date >= ADDDATE(curdate(), -30)
 GROUP BY O.User_Id
 ORDER BY Max_Revenue DESC
 LIMIT 10;
@@ -30,11 +32,11 @@ Display top 20 Products which are ordered most in last 60 days along with number
 Select 
     P.Product_Title, count(OP.Product_Id) AS Added_Most
 FROM
-    Order_Product AS OP
-        INNER JOIN
     Product AS P
         INNER JOIN
-    Orders AS O ON OP.Product_Id = P.Product_Id && OP.Order_Id = O.Order_Id
+    Order_Product AS OP ON OP.Product_Id = P.Product_Id
+        INNER JOIN
+    Orders AS O ON OP.Order_Id = O.Order_Id
 WHERE
     O.Order_Date >= ADDDATE(curdate(), -60)
 GROUP BY P.Product_Id
@@ -105,11 +107,27 @@ UPDATE Product SET Status_Product='INACTIVE' WHERE Product_Id IN
 (SELECT P.Product_Id FROM (Select * from Product) AS P WHERE P.Product_Id NOT IN
 (SELECT DISTINCT(OP.Product_Id) FROM Order_Product OP INNER JOIN Orders O ON OP.Order_Id=O.Order_Id WHERE O.Order_Date >curdate()-365)
 );
-Select * from Product;
-Select Parent_Category from Category;
+Select 
+    *
+from
+    Product;
+Select 
+    Parent_Category
+from
+    Category;
 
 /**
 Select and display the category title of all top parent categories sorted alphabetically and the count of their child categories.
 **/
-SELECT c.Category_Title, Count(c1.Category_Id) AS count_Of_Child FROM category c LEFT JOIN category c1 ON c.category_Id=c1.Parent_Id
-WHERE c.Parent_Id=0 GROUP BY c.Category_Title ORDER BY c.Category_Title; 
+SELECT 
+    c.Category_Title, Count(c1.Category_Id) AS count_Of_Child
+FROM
+    category c
+        LEFT JOIN
+    category c1 ON c.category_Id = c1.Parent_Id
+WHERE
+    c.Parent_Id = 0
+GROUP BY c.Category_Title
+ORDER BY c.Category_Title; 
+
+Select "A" from Category ;
