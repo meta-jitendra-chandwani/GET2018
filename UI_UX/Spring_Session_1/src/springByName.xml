@@ -6,12 +6,12 @@
 
 	
 	
-	<bean id="textEditor" class="com.metacube.training.SpringEx.autoDetect.TextEditor" autowire="byName">
-		<property name="word" value="injection metacube"></property>
+	<bean id="textEditor" class="com.metacube.training.SpringEx.byName.TextEditor" autowire="byName">
+		<property name="word" value="name metacube"></property>
 		
 	</bean>
 
-	<bean id="spellChecker" class="com.metacube.training.SpringEx.autoDetect.SpellChecker">
+	<bean id="spellChecker" class="com.metacube.training.SpringEx.byName.SpellChecker">
 
 	</bean>
 </beans>
