@@ -1,8 +1,9 @@
 package com.metacube.training.EmployeePortal.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -10,12 +11,14 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("/employee")
 public class EmployeeController {
 
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	@GetMapping("/login")
+//	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String login() {
 		return "employee/login";
 	}
 
-	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	@PostMapping("/login")
+//	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public ModelAndView login(@RequestParam(name = "username") String username,
 			@RequestParam(name = "password") String password) {
 

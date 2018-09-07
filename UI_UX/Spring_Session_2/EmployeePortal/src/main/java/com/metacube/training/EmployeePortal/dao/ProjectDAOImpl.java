@@ -1,7 +1,6 @@
 package com.metacube.training.EmployeePortal.dao;
 
 import java.util.List;
-
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,19 +31,23 @@ public class ProjectDAOImpl implements ProjectDAO {
 	}
 
 	public List<Project> getAllProjects() {
+		System.out.println("Get All");
 		return jdbcTemplate.query(SQL_GET_ALL, new ProjectMapper());
 	}
 
 	public boolean deleteProject(Project person) {
+		System.out.println("Delete");
 		return jdbcTemplate.update(SQL_DELETE_PROJECT, person.getId()) > 0;
 	}
 
 	public boolean updateProject(Project person) {
+		System.out.println("Update");
 		return jdbcTemplate.update(SQL_UPDATE_PROJECT, person.getName(), person.getDescription(), person.getStartDate(),
-				person.getEndDate()) > 0;
+				person.getEndDate(),person.getId()) > 0;
 	}
 
 	public boolean createProject(Project person) {
+		System.out.println("Create/Insert");
 		return jdbcTemplate.update(SQL_INSERT_PROJECT, person.getName(), person.getDescription(), person.getStartDate(),
 				person.getEndDate()) > 0;
 	}

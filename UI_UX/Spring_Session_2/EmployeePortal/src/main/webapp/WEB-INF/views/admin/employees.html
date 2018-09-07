@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+<title>employees</title>
+
+</head>
+<body>
+	<div class="container">
+		<div th:if="${not #lists.isEmpty(employees)}">
+			<h2>All projects</h2>
+			<table class="table table-striped">
+				<tr>
+
+					<th>Employee Code</th>
+					<th>First name</th>
+					<th>Middle name</th>
+					<th>Dob</th>
+					<th>Gender</th>
+					<th>Primary Contact Number</th>
+					<th>Secondary Contact Number</th>
+					<th>Email id</th>
+					<th>Skype id</th>
+					<th>Profile Picture</th>
+					<th>Password</th>
+					<th>Skills</th>
+					<th>enabled</th>
+					<th>Edit</th>
+					<th>Delete</th>
+				</tr>
+				<tr th:each="employee : ${employees}">
+					<td th:text="${employee.emp_code}">emp_code</td>
+					<td th:text="${employee.first_name}">first_name</td>
+					<td th:text="${employee.middle_name}">middle_name</td>
+					<td th:text="${employee.dob}">dob</td>
+					<td th:text="${employee.gender}">gender</td>
+					<td th:text="${employee.primary_contact_number}">primary_contact_number</td>
+					<td th:text="${employee.secondary_contact_number}">secondary_contact_number</td>
+					<td th:text="${employee.email_id}">email_id</td>
+					<td th:text="${employee.skype_id}">skype_id</td>
+					<td th:text="${employee.profile_picture}">profile_picture</td>
+					<td th:text="${employee.password}">password</td>
+					<td th:text="${employee.skills}">skills</td>
+					<td th:text="${employee.enable}">enable</td>
+					<td><a th:href="${'employees/edit?emp_code=' + employee.emp_code}" class="btn btn-default">Edit</a></td>
+					<td><a th:href="${'employees/delete?emp_code=' +employee.emp_code}" 	class="btn btn-danger">Delete</a></td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</body>
+</html>

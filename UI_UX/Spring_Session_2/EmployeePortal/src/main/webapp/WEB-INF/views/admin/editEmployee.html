@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<div>
+		<form th:object="${employee}" th:action="@{../employees}"
+			method="post">
+
+			<input type="hidden" th:field="*{emp_code}" required />
+			 <br /> 
+			 First name <input type="text" th:field="*{first_name}" /> 
+			 <br />
+			 Middle name 
+			 <input type="text" 	th:field="*{middle_name}" /> 
+			 <br /> 
+			 Dob 
+			 <input type="date" th:field="*{dob}" /> 
+			 <br />
+			  Gender 
+			  <input type="radio" />
+			  Male 
+			  <input type="radio"  />
+			   Female
+			    <br /> 
+			    Primary Contact Number 
+			    <input type="text" th:field="*{primary_contact_number}" /> 
+			    <br />
+				Secondary Contact Number
+				<input type="text" th:field="*{secondary_contact_number}" />
+				 <br />
+				  Email id 
+				  <input type="email" th:field="*{email_id}" required="required" /> <br />
+			Skype id <input type="text" th:field="*{skype_id}" /> <br />
+			Profile Picture <input type="text" th:field="*{profile_picture}" /> <br />
+			Password <input type="password" th:field="*{password}" /> <br />
+			Skills <select>
+				<option>Java</option>
+				<option>DBMS</option>
+				<option>Saleforce</option>
+			</select> <br />
+			Enable<input type="text" th:field='*{enable}'/>
+			<br/>
+			 <input type="submit" value="Submit">
+		</form>
+
+
+	</div>
+</body>
+</html>

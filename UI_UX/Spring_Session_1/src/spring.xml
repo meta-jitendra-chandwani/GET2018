@@ -7,8 +7,8 @@
 	
 	
 	<bean id="textEditor" class="com.metacube.training.SpringEx.autoDetect.TextEditor" autowire="byName">
-		<property name="word" value="injection metacube"></property>
-		
+		<property name="word" value="injection metacube"/>
+		<property name="spellChecker" ref="spellChecker"/>
 	</bean>
 
 	<bean id="spellChecker" class="com.metacube.training.SpringEx.autoDetect.SpellChecker">
