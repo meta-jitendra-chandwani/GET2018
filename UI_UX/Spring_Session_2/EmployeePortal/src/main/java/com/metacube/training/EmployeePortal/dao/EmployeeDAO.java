@@ -16,4 +16,8 @@ public interface EmployeeDAO {
 
 	boolean createEmployee(Employee employee);
 
+	boolean validateUser(String emp_code,String password);
+
+	List<Employee> getEmployee(String emp_code);
+
 }

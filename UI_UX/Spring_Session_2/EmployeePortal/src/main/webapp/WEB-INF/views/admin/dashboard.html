@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head lang="en">
-    <title>Dashboard</title>
+<title>Dashboard</title>
 </head>
 <body>
-<div class="container">
-    <h1> Admin dashboard</h1>
-    <a th:href="@{../admin/projects}">All Projects</a>
-        <a th:href="@{../admin/projects/add}">Add project</a>
-        <a th:href='@{../admin/employees/add}'>Add Employee</a>
-        <a th:href='@{../admin/employees}'>All Employee</a>
-    
-    
-</div>
+	<div class="container">
+		<h1>Admin dashboard</h1>
+		<a th:href="@{../admin/projects}">All Projects</a> <br /> <a
+			th:href="@{../admin/projects/add}">Add project</a> <br /> <a
+			th:href='@{../admin/employees/add}'>Add Employee</a> <br /> <a
+			th:href='@{../admin/employees}'>All Employee</a> <br /> <a
+			th:href="@{./skills}">add skills</a> <br> <a th:href="@{./jobs}">add
+			job title</a> <br>
+
+
+	</div>
 </body>
 </html>

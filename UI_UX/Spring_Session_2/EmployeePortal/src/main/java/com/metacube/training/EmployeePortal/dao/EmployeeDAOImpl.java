@@ -1,5 +1,8 @@
 package com.metacube.training.EmployeePortal.dao;
 
+import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import javax.sql.DataSource;
@@ -25,11 +28,12 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 	private final String SQL_DELETE_PROJECT = "delete from employee where emp_code = ?";
 	private final String SQL_UPDATE_PROJECT = "update employee set first_name = ?, middle_name  = ?, dob=?,gender=?,primary_contact_number=?,secondary_contact_number=?,email_id=?,skype_id = ?,skills=?,enable=? where emp_code = ?";
 	private final String SQL_GET_ALL = "select * from employee";
-	private final String SQL_INSERT_PROJECT = "insert into employee values(?,?,?,?,?,?,?,?,?,?,?,?)";
+	private final String SQL_GET_EMPLOYEE = "select * from employee where emp_code = ?";
+	private final String SQL_INSERT_PROJECT = "insert into employee(first_name,middle_name,dob,gender,primary_contact_number,secondary_contact_number,email_id,skype_id,profile_picture,password,skills,enable) values(?,?,?,?,?,?,?,?,?,?,?,?)";
+	private final String SQL_VALIDATE_USER = "select * from employee where emp_code = ?";
 
 	@Override
 	public List<Employee> getAllEmployee() {
-		System.out.println("Get All");
 		return jdbcTemplate.query(SQL_GET_ALL, new EmployeeMapper());
 	}
 
@@ -41,13 +45,11 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 
 	@Override
 	public boolean deleteEmployee(Employee employee) {
-		System.out.println("Delete Employee");
 		return jdbcTemplate.update(SQL_DELETE_PROJECT, employee.getEmp_code()) > 0;
 	}
 
 	@Override
 	public boolean updateEmployee(Employee employee) {
-		System.out.println("Update Employee");
 		return jdbcTemplate.update(SQL_UPDATE_PROJECT,
 				employee.getFirst_name(), employee.getMiddle_name(),
 				employee.getDob(), employee.getGender(),
@@ -59,8 +61,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 
 	@Override
 	public boolean createEmployee(Employee employee) {
-		System.out.println("Create/Insert");
-		return jdbcTemplate.update(SQL_INSERT_PROJECT, 
+		return jdbcTemplate.update(SQL_INSERT_PROJECT,
 				employee.getFirst_name(), employee.getMiddle_name(),
 				employee.getDob(), employee.getGender(),
 				employee.getPrimary_contact_number(),
@@ -70,4 +71,17 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 				employee.getEnable()) > 0;
 	}
 
+	@Override
+	public boolean validateUser(String emp_code, String password) {
+		return jdbcTemplate
+				.queryForObject(SQL_VALIDATE_USER, new Object[] { emp_code },
+						new EmployeeMapper()).getPassword().equals(password);
+	}
+
+	@Override
+	public List<Employee> getEmployee(String emp_code) {
+		return jdbcTemplate.query(SQL_GET_EMPLOYEE, new Object[] { emp_code },
+				new EmployeeMapper());
+
+	}
 }

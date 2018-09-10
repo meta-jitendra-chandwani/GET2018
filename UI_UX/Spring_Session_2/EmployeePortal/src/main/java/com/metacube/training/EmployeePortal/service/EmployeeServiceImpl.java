@@ -40,4 +40,14 @@ public class EmployeeServiceImpl implements EmployeeService {
 		return employeeDAO.createEmployee(employee);
 	}
 
+	@Override
+	public boolean validateUser(String emp_code, String password) {
+		return employeeDAO.validateUser(emp_code,password);
+	}
+
+	@Override
+	public List<Employee> getEmployee(String emp_code) {
+		return employeeDAO.getEmployee(emp_code);
+	}
+
 }
