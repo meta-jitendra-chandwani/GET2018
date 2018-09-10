@@ -52,7 +52,4 @@ public class JobTitleDAOImpl implements JobTitleDAO {
 	public JobTitle getJobTitleById(int id) {
 		return jdbcTemplate.queryForObject(SQL_GET_JOB_BY_ID, new Object[] { id }, new JobTitleMapper());
 	}
-	
-	
-
 }

@@ -36,6 +36,12 @@ public class AdminController {
 	@Autowired
 	private SkillService skillService;
 
+	/**
+	 * Project
+	 * 
+	 * @return
+	 */
+
 	@GetMapping("/login")
 	public String login() {
 		return "admin/login";
@@ -44,7 +50,6 @@ public class AdminController {
 	@PostMapping("/login")
 	public ModelAndView login(@RequestParam(name = "username") String username,
 			@RequestParam(name = "password") String password) {
-
 		return new ModelAndView("admin/dashboard", "username", username);
 	}
 
@@ -67,7 +72,7 @@ public class AdminController {
 	@GetMapping(path = "/projects")
 	public String getAllprojects(Model model) {
 		model.addAttribute("projects", projectService.getAllProjects());
-		return "admin/projects";// html hai
+		return "admin/projects";
 	}
 
 	@GetMapping(path = "/projects/edit")
@@ -82,6 +87,13 @@ public class AdminController {
 		return "redirect:/admin/projects";
 	}
 
+	/**
+	 * Employee
+	 * 
+	 * @param model
+	 * @return
+	 */
+
 	@GetMapping(path = "/employees/add")
 	public String createemployee(Model model) {
 		model.addAttribute("employee", new Employee());
@@ -90,21 +102,18 @@ public class AdminController {
 
 	@PostMapping(path = "employees")
 	public String saveemployee(@ModelAttribute("employee") Employee employee) {
-
 		if (employee != null && employee.getEmp_code() == "") {
-			System.out.println(employee.getEmp_code() + "insert me aa gya");
 			employeeService.createEmployee(employee);
 		} else {
-			System.out.println(employee.getEmp_code() + "update me aa gya");
 			employeeService.updateEmployee(employee);
 		}
-		return "redirect:/admin/employees";// employee list
+		return "redirect:/admin/employees";
 	}
 
 	@GetMapping(path = "/employees")
 	public String getAllemployee(Model model) {
 		model.addAttribute("employees", employeeService.getAllEmployee());
-		return "admin/employees";// html hai
+		return "admin/employees";
 	}
 
 	@GetMapping(path = "/employees/edit")
@@ -121,7 +130,7 @@ public class AdminController {
 		return "redirect:/admin/employees";
 	}
 
-	/*
+	/**
 	 * Job Functionalities
 	 */
 
@@ -172,7 +181,7 @@ public class AdminController {
 	}
 
 	/**
-	 * code for skills start from here
+	 * skills
 	 */
 
 	@RequestMapping(path = "/skills", method = RequestMethod.GET)
@@ -193,6 +202,24 @@ public class AdminController {
 			skillService.createSkill(skill);
 		}
 		return "redirect:/admin/skills";
+	}
+
+	/**
+	 * search
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping(path = "/search", method = RequestMethod.GET)
+	public String searchEmployee(Model model) {
+		return "admin/search";
+	}
+
+	@RequestMapping(path = "/search", method = RequestMethod.POST)
+	public String search(@RequestParam(name = "search") String username,
+			Model model) {
+		model.addAttribute("employees",
+				employeeService.getEmployeeById(username));
+		return "admin/search";
 	}
 
 }

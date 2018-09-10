@@ -21,8 +21,6 @@ public class SkillServiceImpl implements SkillService {
 
 	@Override
 	public boolean createSkill(Skill skill) {
-		return skillDAO.createSkill(skill);
-		
+		return skillDAO.createSkill(skill);		
 	}
-
 }

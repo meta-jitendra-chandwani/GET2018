@@ -25,8 +25,9 @@ values(
 );
 Insert into employee(first_name,middle_name,dob,gender,primary_contact_number,secondary_contact_number,email_id,skype_id,profile_picture,password,skills,enable)
 values("Jitendra","Chandwani","1996-08-27",'M',"9782270497","9782270497","jchandwani27896@gmail.com","jitenddra@skype","123456","Jitendr@1996",'Java',true);
-Select * from employee_portal.employee;
+    Select * from employee_portal.employee;
   
+  select password from employee where emp_code = 1010;
 CREATE TABLE job_title_master(
   job_id INT PRIMARY KEY AUTO_INCREMENT,
   job_title VARCHAR(100) NOT NULL

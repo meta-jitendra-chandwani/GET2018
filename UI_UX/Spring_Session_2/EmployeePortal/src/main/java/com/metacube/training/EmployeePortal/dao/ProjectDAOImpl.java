@@ -51,5 +51,4 @@ public class ProjectDAOImpl implements ProjectDAO {
 		return jdbcTemplate.update(SQL_INSERT_PROJECT, person.getName(), person.getDescription(), person.getStartDate(),
 				person.getEndDate()) > 0;
 	}
-
 }

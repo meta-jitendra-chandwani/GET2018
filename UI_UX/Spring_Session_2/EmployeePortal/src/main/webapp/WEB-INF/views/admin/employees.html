@@ -10,7 +10,6 @@
 			<h2>All projects</h2>
 			<table class="table table-striped">
 				<tr>
-
 					<th>Employee Code</th>
 					<th>First name</th>
 					<th>Middle name</th>
@@ -41,8 +40,12 @@
 					<td th:text="${employee.password}">password</td>
 					<td th:text="${employee.skills}">skills</td>
 					<td th:text="${employee.enable}">enable</td>
-					<td><a th:href="${'employees/edit?emp_code=' + employee.emp_code}" class="btn btn-default">Edit</a></td>
-					<td><a th:href="${'employees/delete?emp_code=' +employee.emp_code}" 	class="btn btn-danger">Delete</a></td>
+					<td><a
+						th:href="${'employees/edit?emp_code=' + employee.emp_code}"
+						class="btn btn-default">Edit</a></td>
+					<td><a
+						th:href="${'employees/delete?emp_code=' +employee.emp_code}"
+						class="btn btn-danger">Delete</a></td>
 				</tr>
 			</table>
 		</div>
