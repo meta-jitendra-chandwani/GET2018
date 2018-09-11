@@ -93,4 +93,23 @@ public class EmployeeController {
 		request.getSession().invalidate();
 		return "employee/login";
 	}
+
+	/**
+	 * 
+	 */
+	@GetMapping(path = "/forgotpassword")
+	public String forgotPassword() {
+		return "employee/forgetPassword";
+	}
+
+	@PostMapping(path = "/forgetpassword")
+	public String changePassword(
+			@RequestParam(name = "emp_code") String emp_code,
+			@RequestParam(name = "password") String password,
+			@RequestParam(name = "re_password") String re_password) {
+		return password.equals(re_password)
+				&& employeeService.updateUserPassword(emp_code, password) ? "employee/login"
+				: "employee/error";
+
+	}
 }

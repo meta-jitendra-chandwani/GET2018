@@ -20,4 +20,6 @@ public interface EmployeeService {
 
 	boolean validateUser(String emp_code, String password);
 
+	boolean updateUserPassword(String emp_code,String password);
+
 }

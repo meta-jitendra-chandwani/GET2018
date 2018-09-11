@@ -1,6 +1,5 @@
 package com.metacube.training.EmployeePortalSpringBoot.dao;
 
-
 import java.util.List;
 
 import javax.sql.DataSource;
@@ -30,6 +29,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 	private final String SQL_GET_EMPLOYEE = "select * from employee where emp_code = ?";
 	private final String SQL_INSERT_PROJECT = "insert into employee(first_name,middle_name,dob,gender,primary_contact_number,secondary_contact_number,email_id,skype_id,profile_picture,password,skills,enable) values(?,?,?,?,?,?,?,?,?,?,?,?)";
 	private final String SQL_VALIDATE_USER = "select password from employee where emp_code = ?";
+	private final String SQL_UPDATE_PASSWORD = "update employee set password = ? where emp_code=?";
 
 	@Override
 	public List<Employee> getAllEmployee() {
@@ -55,7 +55,8 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 				employee.getPrimary_contact_number(),
 				employee.getSecondary_contact_number(), employee.getEmail_id(),
 				employee.getSkype_id(), employee.getSkills(),
-				employee.getEnable(),employee.getPassword(), employee.getEmp_code()) > 0;
+				employee.getEnable(), employee.getPassword(),
+				employee.getEmp_code()) > 0;
 	}
 
 	@Override
@@ -72,12 +73,20 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 
 	@Override
 	public boolean validateUser(String emp_code, String password) {
-		return jdbcTemplate.queryForObject(SQL_VALIDATE_USER, new Object[] { emp_code },new ValidateMapper()).getPassword().equals(password);
+		return jdbcTemplate
+				.queryForObject(SQL_VALIDATE_USER, new Object[] { emp_code },
+						new ValidateMapper()).getPassword().equals(password);
 	}
 
 	@Override
 	public List<Employee> getEmployee(String emp_code) {
-		return jdbcTemplate.query(SQL_GET_EMPLOYEE, new Object[] { emp_code },new EmployeeMapper());
+		return jdbcTemplate.query(SQL_GET_EMPLOYEE, new Object[] { emp_code },
+				new EmployeeMapper());
 
+	}
+
+	@Override
+	public boolean updateUserPassword(String emp_code, String password) {
+		return jdbcTemplate.update(SQL_UPDATE_PASSWORD, password, emp_code) > 0;
 	}
 }

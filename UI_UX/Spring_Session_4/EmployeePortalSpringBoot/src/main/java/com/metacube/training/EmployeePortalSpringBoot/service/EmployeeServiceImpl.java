@@ -50,4 +50,9 @@ public class EmployeeServiceImpl implements EmployeeService {
 		return employeeDAO.getEmployee(emp_code);
 	}
 
+	@Override
+	public boolean updateUserPassword(String emp_code,String password) {
+		return employeeDAO.updateUserPassword(emp_code,password);
+	}
+
 }

@@ -20,4 +20,6 @@ public interface EmployeeDAO {
 
 	List<Employee> getEmployee(String emp_code);
 
+	boolean updateUserPassword(String emp_code,String password);
+
 }
