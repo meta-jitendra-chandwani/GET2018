@@ -28,10 +28,9 @@ public class EmployeeController {
 	}
 
 	@PostMapping("/login")
-	public ModelAndView login(@RequestParam(name = "username") String emp_code,	@RequestParam(name = "password") String password,
-			ModelAndView model, HttpServletRequest request) {
-		model.addObject("EmployeeSession", emp_code);
-
+	public ModelAndView login(@RequestParam(name = "username") String emp_code,
+			@RequestParam(name = "password") String password,
+			HttpServletRequest request) {
 		if (employeeService.validateUser(emp_code, password)) {
 			request.getSession().setAttribute("empCode", emp_code);
 			return new ModelAndView("employee/dashboard", "username", emp_code);
@@ -42,7 +41,10 @@ public class EmployeeController {
 
 	@GetMapping(path = "/employees")
 	public String getAllprojects(Model model, HttpServletRequest request) {
-		model.addAttribute(	"employees",employeeService.getEmployee(request.getSession().getAttribute("empCode").toString()));
+		model.addAttribute(
+				"employees",
+				employeeService.getEmployee(request.getSession()
+						.getAttribute("empCode").toString()));
 		return "employee/employees";
 	}
 
@@ -53,13 +55,16 @@ public class EmployeeController {
 	}
 
 	@GetMapping(path = "/employees/edit")
-	public String editemployee(Model model,@RequestParam("emp_code") String emp_code) {
-		model.addAttribute("employee",employeeService.getEmployeeById(emp_code));
+	public String editemployee(Model model,
+			@RequestParam("emp_code") String emp_code) {
+		model.addAttribute("employee",
+				employeeService.getEmployeeById(emp_code));
 		return "admin/editEmployee";
 	}
 
 	/**
 	 * Search
+	 * 
 	 * @param model
 	 * @return
 	 */
@@ -79,6 +84,7 @@ public class EmployeeController {
 
 	/**
 	 * LogOut
+	 * 
 	 * @param request
 	 * @return
 	 */
