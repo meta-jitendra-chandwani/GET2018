@@ -6,20 +6,19 @@ import com.metacube.training.model.Employee;
 
 public interface EmployeeService {
 
-	Employee getEmployeeById(String emp_code);
+	Employee getEmployeeById(int emp_code);
 
 	List<Employee> getAllEmployee();
 
-	List<Employee> getEmployee(String emp_code);
 
-	boolean deleteEmployee(String emp_code);
+	boolean deleteEmployee(int emp_code);
 
 	boolean updateEmployee(Employee employee);
 
-	boolean createEmployee(Employee employee);
+	void createEmployee(Employee employee);
 
-	boolean validateUser(String emp_code, String password);
+	boolean validateUser(int emp_code, String password);
 
-	boolean updateUserPassword(String emp_code,String password);
+	boolean updateUserPassword(int emp_code,String password);
 
 }

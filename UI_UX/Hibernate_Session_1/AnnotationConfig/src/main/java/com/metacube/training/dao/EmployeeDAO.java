@@ -8,18 +8,17 @@ public interface EmployeeDAO {
 
 	List<Employee> getAllEmployee();
 
-	Employee getEmployeeById(String emp_code);
+	Employee getEmployeeById(int emp_code);
 
 	boolean deleteEmployee(Employee employee);
 
 	boolean updateEmployee(Employee employee);
 
-	boolean createEmployee(Employee employee);
+	void createEmployee(Employee employee);
 
-	boolean validateUser(String emp_code,String password);
+	boolean validateUser(int emp_code,String password);
 
-	List<Employee> getEmployee(String emp_code);
 
-	boolean updateUserPassword(String emp_code,String password);
+	boolean updateUserPassword(int emp_code,String password);
 
 }

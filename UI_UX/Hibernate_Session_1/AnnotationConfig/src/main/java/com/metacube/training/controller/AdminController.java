@@ -103,7 +103,7 @@ public class AdminController {
 
 	@PostMapping(path = "employees")
 	public String saveemployee(@ModelAttribute("employee") Employee employee) {
-		if (employee != null && employee.getEmp_code() == "") {
+		if (employee != null && employee.getEmp_code() == 0) {
 			employeeService.createEmployee(employee);
 		} else {
 			employeeService.updateEmployee(employee);
@@ -119,14 +119,14 @@ public class AdminController {
 
 	@GetMapping(path = "/employees/edit")
 	public String editemployee(Model model,
-			@RequestParam("emp_code") String emp_code) {
+			@RequestParam("emp_code") int emp_code) {
 		model.addAttribute("employee",
 				employeeService.getEmployeeById(emp_code));
 		return "admin/editEmployee";
 	}
 
 	@GetMapping(path = "/employees/delete")
-	public String deleteemployee(@RequestParam("emp_code") String emp_code) {
+	public String deleteemployee(@RequestParam("emp_code") int emp_code) {
 		employeeService.deleteEmployee(emp_code);
 		return "redirect:/admin/employees";
 	}
@@ -216,7 +216,7 @@ public class AdminController {
 	}
 
 	@RequestMapping(path = "/search", method = RequestMethod.POST)
-	public String search(@RequestParam(name = "search") String username,
+	public String search(@RequestParam(name = "search") int username,
 			Model model) {
 		model.addAttribute("employees",
 				employeeService.getEmployeeById(username));

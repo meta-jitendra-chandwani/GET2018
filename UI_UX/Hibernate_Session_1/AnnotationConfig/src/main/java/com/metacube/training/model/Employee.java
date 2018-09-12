@@ -2,29 +2,66 @@ package com.metacube.training.model;
 
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 import org.springframework.format.annotation.DateTimeFormat;
 
+@Entity
+@Table(name = "employee")
 public class Employee {
-	private String emp_code;
+	
+	@Id
+	@Column(name = "emp_code")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int emp_code;
+
+	@Column(name = "first_name")
 	private String first_name;
+
+	@Column(name = "middle_name")
 	private String middle_name;
+
+	@Column(name = "dob")
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date dob;
+
+	@Column(name = "gender")
 	private String gender;
+
+	@Column(name = "primary_contact_number")
 	private String primary_contact_number;
+	
+	@Column(name = "secondary_contact_number")
 	private String secondary_contact_number;
+	
+	@Column(name = "email_id")
 	private String email_id;
+	
+	@Column(name = "skype_id")
 	private String skype_id;
+	
+	@Column(name = "profile_picture")
 	private String profile_picture;
+	
+	@Column(name = "password")
 	private String password;
+	
+	@Column(name = "skills")
 	private String skills;
+	
+	@Column(name = "enable")
 	private Boolean enable = true;
 
-	public String getEmp_code() {
+	public int getEmp_code() {
 		return emp_code;
 	}
 
-	public void setEmp_code(String emp_code) {
+	public void setEmp_code(int emp_code) {
 		this.emp_code = emp_code;
 	}
 
@@ -119,7 +156,8 @@ public class Employee {
 	public String getSkills() {
 		return skills;
 	}
+
 	public void setSkills(String skills) {
-		this.skills=skills;
+		this.skills = skills;
 	}
 }

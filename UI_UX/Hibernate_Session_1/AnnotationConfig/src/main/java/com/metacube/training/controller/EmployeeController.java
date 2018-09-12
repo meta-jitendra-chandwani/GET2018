@@ -28,7 +28,7 @@ public class EmployeeController {
 	}
 
 	@PostMapping("/login")
-	public ModelAndView login(@RequestParam(name = "username") String emp_code,
+	public ModelAndView login(@RequestParam(name = "username") int emp_code,
 			@RequestParam(name = "password") String password,
 			HttpServletRequest request) {
 		if (employeeService.validateUser(emp_code, password)) {
@@ -43,8 +43,8 @@ public class EmployeeController {
 	public String getAllprojects(Model model, HttpServletRequest request) {
 		model.addAttribute(
 				"employees",
-				employeeService.getEmployee(request.getSession()
-						.getAttribute("empCode").toString()));
+				employeeService.getEmployeeById(Integer.parseInt(request.getSession()
+						.getAttribute("empCode").toString())));
 		return "employee/employees";
 	}
 
@@ -56,7 +56,7 @@ public class EmployeeController {
 
 	@GetMapping(path = "/employees/edit")
 	public String editemployee(Model model,
-			@RequestParam("emp_code") String emp_code) {
+			@RequestParam("emp_code") int emp_code) {
 		model.addAttribute("employee",
 				employeeService.getEmployeeById(emp_code));
 		return "admin/editEmployee";
@@ -74,7 +74,7 @@ public class EmployeeController {
 	}
 
 	@PostMapping(path = "/search")
-	public String search(@RequestParam(name = "search") String username,
+	public String search(@RequestParam(name = "search") int username,
 			Model model, HttpServletRequest request) {
 		request.getSession().setAttribute("empCode", username);
 		model.addAttribute("employees",
@@ -104,7 +104,7 @@ public class EmployeeController {
 
 	@PostMapping(path = "/forgetpassword")
 	public String changePassword(
-			@RequestParam(name = "emp_code") String emp_code,
+			@RequestParam(name = "emp_code") int emp_code,
 			@RequestParam(name = "password") String password,
 			@RequestParam(name = "re_password") String re_password) {
 		return password.equals(re_password)

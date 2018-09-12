@@ -15,7 +15,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 	private EmployeeDAO employeeDAO;
 
 	@Override
-	public Employee getEmployeeById(String emp_code) {
+	public Employee getEmployeeById(int emp_code) {
 		return employeeDAO.getEmployeeById(emp_code);
 	}
 
@@ -25,7 +25,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 	}
 
 	@Override
-	public boolean deleteEmployee(String emp_code) {
+	public boolean deleteEmployee(int emp_code) {
 		Employee employee = employeeDAO.getEmployeeById(emp_code);
 		return employeeDAO.deleteEmployee(employee);
 	}
@@ -36,22 +36,19 @@ public class EmployeeServiceImpl implements EmployeeService {
 	}
 
 	@Override
-	public boolean createEmployee(Employee employee) {
-		return employeeDAO.createEmployee(employee);
+	public void createEmployee(Employee employee) {
+		employeeDAO.createEmployee(employee);
 	}
 
 	@Override
-	public boolean validateUser(String emp_code, String password) {
+	public boolean validateUser(int emp_code, String password) {
 		return employeeDAO.validateUser(emp_code,password);
 	}
 
-	@Override
-	public List<Employee> getEmployee(String emp_code) {
-		return employeeDAO.getEmployee(emp_code);
-	}
+	
 
 	@Override
-	public boolean updateUserPassword(String emp_code,String password) {
+	public boolean updateUserPassword(int emp_code,String password) {
 		return employeeDAO.updateUserPassword(emp_code,password);
 	}
 

@@ -22,7 +22,10 @@ import org.thymeleaf.spring5.SpringTemplateEngine;
 import org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver;
 import org.thymeleaf.spring5.view.ThymeleafViewResolver;
 
+import com.metacube.training.model.Employee;
+import com.metacube.training.model.JobTitle;
 import com.metacube.training.model.Project;
+import com.metacube.training.model.Skill;
 
 @Configuration
 @EnableWebMvc
@@ -89,7 +92,7 @@ public class MvcWebConfig implements WebMvcConfigurer {
 				env.getProperty("hibernate.hbm2ddl.auto"));
 
 		factoryBean.setHibernateProperties(props);
-		factoryBean.setAnnotatedClasses(Project.class);
+		factoryBean.setAnnotatedClasses(Project.class,Skill.class,JobTitle.class,Employee.class);
 
 		return factoryBean;
 	}

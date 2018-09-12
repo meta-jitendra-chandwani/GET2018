@@ -12,7 +12,7 @@ public interface JobTitleService {
 
 	boolean updateJobTitle(JobTitle jobTitle);
 
-	boolean createJobTitle(JobTitle jobTitle);
+	void createJobTitle(JobTitle jobTitle);
 	
 	JobTitle getJobTitleById(int id);
 }

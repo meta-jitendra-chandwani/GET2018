@@ -34,9 +34,9 @@ public class JobTitleServiceImpl implements JobTitleService {
 	}
 
 	@Override
-	public boolean createJobTitle(JobTitle jobTitle) {
+	public void createJobTitle(JobTitle jobTitle) {
 		// TODO Auto-generated method stub
-		return jobTitleDao.createJobTitle(jobTitle);
+		 jobTitleDao.createJobTitle(jobTitle);
 	}
 
 	@Override

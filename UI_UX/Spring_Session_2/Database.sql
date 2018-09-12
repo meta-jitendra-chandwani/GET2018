@@ -8,7 +8,7 @@ create table employee(
   first_name VARCHAR(100) NOT NULL,
   middle_name VARCHAR(100),
   dob DATE NOT NULL,
-  gender CHAR(1) NOT NULL,
+  gender VARCHAR(1) NOT NULL,
   primary_contact_number VARCHAR(10),
   secondary_contact_number VARCHAR(10),
   email_id VARCHAR(100) NOT NULL,
@@ -60,7 +60,7 @@ CREATE TABLE employee_skill(
 Select * from employee_skill;
 
 CREATE TABLE project(
-  id INT PRIMARY KEY auto_increment,
+  id BIGINT PRIMARY KEY auto_increment,
   name VARCHAR(50),
   description VARCHAR(200) NOT NULL,
   start_date DATE NOT NULL,
@@ -86,7 +86,7 @@ CREATE TABLE job_detail(
   job_code INT NOT NULL,
   reporting_mgr INT,
   team_lead INT,
-  curr_proj_id INT,
+  curr_proj_id BIGINT,
   FOREIGN KEY (emp_code) REFERENCES Employee(emp_code),
   FOREIGN KEY (job_code) REFERENCES job_title_master(job_id),
   FOREIGN KEY (reporting_mgr) REFERENCES Employee(emp_code),
