@@ -3,82 +3,36 @@ package com.metacube.training.dao;
 import java.util.List;
 
 import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaDelete;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.CriteriaUpdate;
+import javax.persistence.criteria.Root;
 
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.metacube.training.model.Employee;
 
+/**
+ * class containing implementation of interface method created on September 08,
+ * 2018
+ */
 @Repository
-@Transactional
 public class EmployeeDAOImpl implements EmployeeDAO {
 
 	@Autowired
 	private SessionFactory sessionFactory;
-
-	private final String SQL_FIND_PROJECT = "from Employee where emp_code = :emp_code";
-	private final String SQL_GET_ALL = "from Employee";
-	private final String SQL_DELETE_PROJECT = "delete from Employee where emp_code = :emp_code";
-	private final String SQL_UPDATE_PROJECT = "update Employee set first_name = :first_name, middle_name  = :middle_name, "
-			+ "dob=:dob,gender=:gender,primary_contact_number=:primary_contact_number,secondary_contact_number=:secondary_contact_number,"
-			+ "email_id=:email_id,skype_id = :skype_id,skills=:skills,enable=:enable,password=:password where emp_code = :emp_code";
-
 	private final String SQL_UPDATE_PASSWORD = "update Employee set password = :password where emp_code= :emp_code";
 
 	@Override
-	public List<Employee> getAllEmployee() {
-		TypedQuery<Employee> query = sessionFactory.getCurrentSession()
-				.createQuery(SQL_GET_ALL);
-		return query.getResultList();
-	}
-
-	@Override
-	public Employee getEmployeeById(int emp_code) {
-		TypedQuery<Employee> query = sessionFactory.getCurrentSession()
-				.createQuery(SQL_FIND_PROJECT);
-		query.setParameter("emp_code", emp_code);
-		return query.getSingleResult();
-	}
-
-	@Override
-	public boolean deleteEmployee(Employee employee) {
-		TypedQuery<Employee> query = sessionFactory.getCurrentSession()
-				.createQuery(SQL_DELETE_PROJECT);
-		query.setParameter("emp_code", employee.getEmp_code());
-		return (query.executeUpdate() > 0);
-	}
-
-	@Override
-	public boolean updateEmployee(Employee employee) {
-		TypedQuery<Employee> query = sessionFactory.getCurrentSession()
-				.createQuery(SQL_UPDATE_PROJECT);
-		query.setParameter("first_name", employee.getFirst_name());
-		query.setParameter("middle_name", employee.getMiddle_name());
-		query.setParameter("dob", employee.getDob());
-		query.setParameter("gender", employee.getGender());
-		query.setParameter("primary_contact_number",
-				employee.getPrimary_contact_number());
-		query.setParameter("secondary_contact_number",
-				employee.getSecondary_contact_number());
-		query.setParameter("email_id", employee.getEmail_id());
-		query.setParameter("skype_id", employee.getSkype_id());
-		query.setParameter("skills", employee.getSkills());
-		query.setParameter("enable", employee.getEnable());
-		query.setParameter("password", employee.getPassword());
-		query.setParameter("emp_code", employee.getEmp_code());
-		return (query.executeUpdate() > 0);
-	}
-
-	@Override
-	public void createEmployee(Employee employee) {
-		sessionFactory.getCurrentSession().save(employee);
-	}
-
-	@Override
 	public boolean validateUser(int emp_code, String password) {
-		return getEmployeeById(emp_code).getPassword().equals(password);		
+		return getEmployeeById(emp_code).getPassword().equals(password);
 	}
 
 	@Override
@@ -90,5 +44,138 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 
 		return (query.executeUpdate() > 0);
 
+	}
+
+	@Override
+	public List<Employee> getAllEmployee() {
+		Session session = sessionFactory.openSession();
+		CriteriaBuilder builder = session.getCriteriaBuilder();
+		CriteriaQuery<Employee> criteria = builder.createQuery(Employee.class);
+		Root<Employee> employeeRoot = criteria.from(Employee.class);
+		criteria.select(employeeRoot);
+		List<Employee> employee = session.createQuery(criteria).getResultList();
+		session.close();
+		return employee;
+	}
+
+	@Override
+	public Employee getEmployeeById(int emp_code) {
+		Session session = sessionFactory.openSession();
+		CriteriaBuilder builder = session.getCriteriaBuilder();
+		CriteriaQuery<Employee> criteria = builder.createQuery(Employee.class);
+		Root<Employee> employeeRoot = criteria.from(Employee.class);
+		criteria.select(employeeRoot);
+		criteria.where(builder.equal(employeeRoot.get("emp_code"), emp_code));
+		Employee employee = session.createQuery(criteria).getSingleResult();
+		session.close();
+		return employee;
+	}
+
+	@Override
+	public boolean deleteEmployee(Employee employee) {
+		Session session = sessionFactory.openSession();
+		Transaction tx = null;
+		CriteriaBuilder builder = session.getCriteriaBuilder();
+		CriteriaDelete<Employee> criteria = builder
+				.createCriteriaDelete(Employee.class);
+		Root<Employee> employeeRoot = criteria.from(Employee.class);
+		criteria.where(builder.equal(employeeRoot.get("emp_code"),
+				employee.getEmp_code()));
+		try {
+			tx = session.beginTransaction();
+			session.createQuery(criteria).executeUpdate();
+			tx.commit();
+		} catch (HibernateException e) {
+			if (tx != null)
+				tx.rollback();
+			e.printStackTrace();
+			return false;
+		} finally {
+			session.close();
+		}
+		return true;
+	}
+
+	@Override
+	public boolean updateEmployee(Employee employee) {
+		Session session = sessionFactory.openSession();
+		Transaction tx = null;
+		CriteriaBuilder builder = session.getCriteriaBuilder();
+		CriteriaUpdate<Employee> criteria = builder
+				.createCriteriaUpdate(Employee.class);
+		Root<Employee> employeeRoot = criteria.from(Employee.class);
+
+		criteria.set(employeeRoot.get("first_name"), employee.getFirst_name())
+				.where(builder.equal(employeeRoot.get("emp_code"),
+						employee.getEmp_code()));
+		criteria.set(employeeRoot.get("middle_name"), employee.getMiddle_name())
+				.where(builder.equal(employeeRoot.get("emp_code"),
+						employee.getEmp_code()));
+		criteria.set(employeeRoot.get("dob"), employee.getDob()).where(
+				builder.equal(employeeRoot.get("emp_code"),
+						employee.getEmp_code()));
+		criteria.set(employeeRoot.get("gender"), employee.getGender()).where(
+				builder.equal(employeeRoot.get("emp_code"),
+						employee.getEmp_code()));
+		criteria.set(employeeRoot.get("primary_contact_number"),
+				employee.getPrimary_contact_number()).where(
+				builder.equal(employeeRoot.get("emp_code"),
+						employee.getEmp_code()));
+		criteria.set(employeeRoot.get("secondary_contact_number"),
+				employee.getSecondary_contact_number()).where(
+				builder.equal(employeeRoot.get("emp_code"),
+						employee.getEmp_code()));
+		criteria.set(employeeRoot.get("email_id"), employee.getEmail_id())
+				.where(builder.equal(employeeRoot.get("emp_code"),
+						employee.getEmp_code()));
+		criteria.set(employeeRoot.get("skype_id"), employee.getSkype_id())
+				.where(builder.equal(employeeRoot.get("emp_code"),
+						employee.getEmp_code()));
+		criteria.set(employeeRoot.get("profile_picture"),
+				employee.getProfile_picture()).where(
+				builder.equal(employeeRoot.get("emp_code"),
+						employee.getEmp_code()));
+		criteria.set(employeeRoot.get("password"),
+				employee.getProfile_picture()).where(
+				builder.equal(employeeRoot.get("emp_code"),
+						employee.getEmp_code()));
+		criteria.set(employeeRoot.get("skills"),
+				employee.getProfile_picture()).where(
+				builder.equal(employeeRoot.get("emp_code"),
+						employee.getEmp_code()));
+		criteria.set(employeeRoot.get("enable"), employee.getEnable()).where(
+				builder.equal(employeeRoot.get("emp_code"),
+						employee.getEmp_code()));
+
+		try {
+			tx = session.beginTransaction();
+			session.createQuery(criteria).executeUpdate();
+			tx.commit();
+		} catch (HibernateException e) {
+			if (tx != null)
+				tx.rollback();
+			e.printStackTrace();
+			return false;
+		} finally {
+			session.close();
+		}
+		return true;
+	}
+
+	@Override
+	public void createEmployee(Employee employee) {
+		Session session = sessionFactory.openSession();
+		Transaction tx = null;
+		try {
+			tx = session.beginTransaction();
+			session.save(employee);
+			tx.commit();
+		} catch (HibernateException e) {
+			if (tx != null)
+				tx.rollback();
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
 	}
 }
