@@ -1,20 +1,16 @@
 package com.metacube.training.controller;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-
-
-
-
 
 import com.metacube.training.model.Employee;
 import com.metacube.training.model.JobTitle;
@@ -34,7 +30,7 @@ public class AdminController {
 
 	@Autowired
 	private ProjectService projectService;
-	
+
 	@Autowired
 	private EmployeeService employeeService;
 
@@ -43,7 +39,6 @@ public class AdminController {
 
 	@Autowired
 	private SkillService skillService;
-
 
 	@GetMapping("/login")
 	public String login() {
@@ -229,4 +224,22 @@ public class AdminController {
 		return "admin/search";
 	}
 
+	/**
+	 * searchThroughProject
+	 * 
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping(path = "/searchThroughProject", method = RequestMethod.GET)
+	public String searchThroughProject(Model model) {
+		return "admin/searchThroughProject";
+	}
+
+	@RequestMapping(path = "/searchThroughProject", method = RequestMethod.POST)
+	public String searchResult(@RequestParam(name = "search") int project_id,
+			Model model) {
+		model.addAttribute("employees",
+				employeeService.getEmployeeByProject(project_id));
+		return "admin/searchThroughProject";
+	}
 }

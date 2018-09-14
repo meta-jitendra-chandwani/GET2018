@@ -21,7 +21,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 	@Override
 	public List<Employee> getAllEmployee() {
-		return employeeRepository.findAll();
+		return (List<Employee>) employeeRepository.findAll();
 	}
 
 	@Override
@@ -54,6 +54,12 @@ public class EmployeeServiceImpl implements EmployeeService {
 	@Override
 	public boolean updateUserPassword(int emp_code, String password) {
 		return employeeRepository.updateUserPassword(password, emp_code) > 0;
+	}
+
+	@Override
+	public List<Employee> getEmployeeByProject(int project_id) {
+		return (List<Employee>) employeeRepository.getEmployeeByProject(project_id);
+		
 	}
 
 }

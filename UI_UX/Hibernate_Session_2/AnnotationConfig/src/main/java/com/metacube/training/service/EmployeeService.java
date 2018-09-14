@@ -20,5 +20,6 @@ public interface EmployeeService {
 	boolean validateUser(int emp_code, String password);
 
 	boolean updateUserPassword(int emp_code,String password);
-
+	
+	List<Employee> getEmployeeByProject(int project_id);
 }

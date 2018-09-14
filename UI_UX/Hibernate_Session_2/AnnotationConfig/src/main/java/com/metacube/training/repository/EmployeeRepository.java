@@ -1,10 +1,11 @@
 package com.metacube.training.repository;
 
 import java.util.Date;
+import java.util.List;
 
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -13,7 +14,8 @@ import com.metacube.training.model.Employee;
 
 @Repository
 @Transactional
-public interface EmployeeRepository<P> extends JpaRepository<Employee, Integer> {
+public interface EmployeeRepository<P> extends
+		CrudRepository<Employee, Integer> {
 
 	@Modifying
 	@Query("update Employee set first_name = :first_name, middle_name  = :middle_name, dob=:dob,gender=:gender,primary_contact_number=:primary_contact_number,secondary_contact_number=:secondary_contact_number,email_id=:email_id,skype_id = :skype_id,skills=:skills,enable=:enable,password=:password where emp_code = :emp_code")
@@ -31,5 +33,8 @@ public interface EmployeeRepository<P> extends JpaRepository<Employee, Integer> 
 	@Query("update Employee set password=:password where emp_code = :emp_code")
 	int updateUserPassword(@Param("password") String password,
 			@Param("emp_code") int emp_code);
+
+	@Query("select e from Job_detail j,Employee e where e.emp_code=j.employeeCode AND j.currentProjectId= :project_id")
+	List<Employee> getEmployeeByProject(@Param("project_id") int project_id);
 
 }

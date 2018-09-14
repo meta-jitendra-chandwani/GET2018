@@ -17,7 +17,7 @@ public class JobTitleServiceImpl implements JobTitleService {
 
 	@Override
 	public List<JobTitle> getAllJobTitle() {
-		return jobTitleRespository.findAll();
+		return (List<JobTitle>) jobTitleRespository.findAll();
 	}
 
 	@Override
