@@ -1,114 +1,150 @@
 <html>
 
 <head>
-    <style>
-        .container {
-            position: relative;
-            text-align: center;
-            color: white;
-        }
-
-        .top-left {
-            position: absolute;
-            top: 8px;
-            left: 100px;
-        }
-
-        li {
-            display: inline-block;
-            width: auto;
-            padding: 0 10;
-            list-style: outside none none;
-        }
-
-        a {
-            color: white;
-            text-decoration: none;
-            font-family: 'Courier New', Courier, monospace
-        }
-
-        ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .container-body-part {
-            flex: 50%;
-        }
-
-        .container-body {
-            display: flex;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 
 <body>
 
     <div id="" class="container">
-        <img src="./images/images/homebg.png">
-        <div class="top-left">
-            <img src="./images/images/logo.png">
-        </div>
-        <div class="" style="position: absolute;top: 8px;left: 35%;">
-            <ul>
-                <li>
-                    <a href="">Home</a>
-                </li>
-                <li>
-                    <a href="">Features</a>
-                </li>
-                <li>
-                    <a href="">Reviews</a>
-                </li>
-                <li>
-                    <a href="">Download</a>
-                </li>
-            </ul>
 
-        </div>
+        <div class="container-body">
+            <div class="top top-logo">
+                <img src="./images/images/logo.png">
+            </div>
 
-        <div class="" style="position: absolute;top: 8px;left: 75%;">
+            <div class="top">
                 <ul>
                     <li>
-                        <a href=""><img src="./images/images/facebookicon.png"></a>
+                        <a href="">Home</a>
                     </li>
                     <li>
-                        <a href=""><img src="./images/images/instagramIcon.png"></a>
+                        <a href="">Features</a>
                     </li>
                     <li>
-                        <a href=""><img src="./images/images/googlePlusIcon.png"></a>
+                        <a href="">Reviews</a>
+                    </li>
+                    <li>
+                        <a href="">Download</a>
                     </li>
                 </ul>
-    
+
             </div>
+
+            <div class="top">
+                <ul>
+                    <li>
+                        <a href="">
+                            <img src="./images/images/facebookicon.png">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <img src="./images/images/instagramIcon.png">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <img src="./images/images/googlePlusIcon.png">
+                        </a>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+
+
         <div class="container-body">
             <div class="container-body-part">
-                <div style="position: absolute; top: 100px;font-size: 40px; width: 40%;">
-                    <h1>Get the most fun weather app</h1>
-                </div>
-                <div style="position: absolute;top: 380px;left:220px">
 
-                    <a class="download-button" href="" style="width: 70px;background: red;padding: 20px;color: white;margin-right: 10px">
+                <h1>Get the most fun weather app</h1>
+
+                <div>
+
+                    <a class="download-button" href="">
                         Download
                     </a>
 
-                    <a class="feature-button" href="" style="width: 70px;background: blue;padding: 20px;color: white">
+                    <a class="feature-button" href="">
                         Features
                     </a>
+                </div>
+            </div>
+            <div class="container-body-part">
+                <img src="./images/images/phone1.png">
+            </div>
+        </div>
+    </div>
 
+
+
+    <div class="perfect-feature">
+        <h1 class="header-center">Perfect Features</h1>
+        <label id="center-label">Only necessary</label>
+        <div class="container-body">
+            <div class="container-body-part container-body">
+                <div class="" style="flex: 30%">
+                    <img src="./images/images/icon.png">
+                </div>
+                <div style="flex: 70%">
+                    <h2 style="font-size: 40px">Usability</h2>
+                    <label>
+                        Sometimes the simplest things are the hardest to find. So we created a new line for everyday life.
+                    </label>
                 </div>
 
 
             </div>
-        </div>
-        <div class="container-body-part">
-            <img src="./images/images/phone1.png" style="top: 100px; position:absolute;">
+            <div class="container-body-part container-body">
+                <div class="" style="flex: 30%">
+                    <img src="./images/images/icon.png">
+                </div>
+                <div style="flex: 70%">
+                    <h2 style="font-size: 40px">Usability</h2>
+                    <label>
+                        Sometimes the simplest things are the hardest to find. So we created a new line for everyday life.
+                    </label>
+                </div>
 
+
+            </div>
+            <div class="container-body-part container-body">
+                <div class="" style="flex: 30%">
+                    <img src="./images/images/icon.png">
+                </div>
+                <div style="flex: 70%">
+                    <h2 style="font-size: 40px">Usability</h2>
+                    <label>
+                        Sometimes the simplest things are the hardest to find. So we created a new line for everyday life.
+                    </label>
+                </div>
+            </div>
         </div>
 
+        <div class="center-image">
+            <img src="./images/images/test1.png">
+        </div>
     </div>
 
+    <div>
+            <h1 class="header-center">Screenshots</h1>
+            <label id="center-label">The Brightest images</label>
+
+            <div class="container-body">
+                <div class="container-body-part">
+                    <img src="./images/images/screen01.png">
+                </div>
+                <div class="container-body-part">
+                    
+                    </div>
+
+            </div>
     </div>
+
+
+
+
+
 </body>
 
 </html>

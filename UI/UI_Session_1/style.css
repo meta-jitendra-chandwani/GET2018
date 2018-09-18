@@ -1,0 +1,82 @@
+.container {
+    background-image: url("./images/images/homebg.png")
+ }
+ .top {
+    margin: 10 20 10 150;
+    flex: 50%;
+}
+ .top-logo {
+    padding-top: 20;
+ }
+
+ li {
+     display: inline-block;
+     width: auto;
+     padding: 0 10;
+     list-style: outside none none;
+     font-size: 20px;
+ }
+
+ a {
+     color: white;
+     text-decoration: none;
+     font-family: 'Courier New', Courier, monospace
+ }
+
+ ul {
+     list-style: none;
+     padding: 0;
+ }
+
+ .container-body-part {
+     flex: 50%;
+ }
+
+ .container-body {
+     display: flex;
+ }
+
+  .download-button {
+     width: 70px;
+     background: red;
+     padding: 20px;
+     color: white;
+     margin-right: 10px;
+     margin-left: 20%;
+ }
+
+ .feature-button {
+     width: 70px;
+     background: blue;
+     padding: 20px;
+     color: white;   
+ } 
+
+ .container-body-part h1{
+     color: white;
+     font-size: 78px;
+     margin-left: 20%;
+ }
+
+ body {
+     background-image: url("./images/images/bodybg.png");
+ }
+
+ .header-center{
+     text-align: center;
+     color: blue;
+     margin-bottom: 5px;
+ }
+ #center-label{
+    display: block;
+    color: grey;
+    text-align: center;
+    
+ }
+ .center-image{
+    display: block;
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+ }
