@@ -7,7 +7,6 @@ import java.util.List;
  */
 public class Animal {	
 	public String animalId;
-	static List<Animal> animalList;
 	static List<Lion> mammalAnimalList;
 	static List<Crocodile> reptileAnimalList;
 	static List<Peacock> birdAnimalList;

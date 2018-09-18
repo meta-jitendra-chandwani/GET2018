@@ -1,0 +1,111 @@
+#top {
+    display: flex;
+    justify-content: center;
+}
+#center{
+    text-align: center;
+}
+#empButton a{
+	background: Black;
+	padding:10px;
+	color: White;
+	border-radius:15px;
+	}
+#empButton a:hover{
+	   background: #afb4bc;
+	   color:red;
+}
+#image_table{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 150px;
+}
+#image_contact{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width:800px;
+}
+.header{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+h2{
+    text-align: center;
+}
+p{
+    text-align: left;
+}
+#padding{
+    padding-left: 75px;
+    padding-right: 75px;
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
+#headerAlign{
+    text-align: right;
+    background:grey;
+    height: 50px;
+    color: white;
+    padding-right: 20px;
+    padding-top: 25px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 22;
+}
+#headerAlign a{
+    color: white;
+    font-size: 20
+}
+.container{
+    padding: 20px;
+    text-align: center;
+
+}
+.loginContainer{
+    padding: 20px;
+    text-align: center;
+    /* background: grey; */
+}
+#table_header {
+    table-layout: fixed;
+    width: 100%;
+}
+#table_center_form{
+    width: 50%;
+
+}
+td a {
+    padding: 20px;
+    background: burlywood;
+    color: black;
+    border-radius: 20px;
+    font-family: 'Courier New', Courier, monospace;
+    border-bottom: 3px solid black;
+
+}
+
+a:hover {
+    background: #afb4bc
+}
+.registerbtn{
+position: absolute;
+    top: 50%;
+}
+#table_style{
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+}  
+#submitButton {
+    text-align: center;
+}
+.button{
+    background: burlywood;
+    color: white;
+    width: 100px;
+    height: 50px;
+    border-radius: 15px;
+    border-bottom: 3px solid black;
+}

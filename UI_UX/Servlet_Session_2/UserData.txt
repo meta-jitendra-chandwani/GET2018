@@ -1,0 +1,5 @@
+Jitendra	Chandwani	22	1996-08-27	9782270497	jchandwani27896@gmail.com	Jitendr@1996	Metacube
+Vaibhav	Guatam	22	1996-05-24	9859635511	vaibhav.gautam@metacube.com	Vaibhav@metacube1	Metacube
+Mayank	Moolchandani	21	1996-05-04	9875641236	mayank.moolchandani@metacube.com	Mayank@metacube1	Metacube
+Rajendra	Singh	20	1996-04-12	7854152364	rajendra.singh@metacube.com	Rajendra@metacube1	Metacube
+Shubham	Jain	19	1996-04-14	9745126544	shubham.jain@metacube.com	Shubham@metacube1	Metacube		

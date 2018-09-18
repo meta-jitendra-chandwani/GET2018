@@ -1,0 +1,14 @@
+302017	Jaipur	Rajasthan
+302022	Jaipur	Rajasthan
+302001	Jaipur	Rajasthan
+302002	Jaipur	Rajasthan
+302033	Jaipur	Rajasthan
+302015	Jaipur	Rajasthan
+303801	Jaipur	Rajasthan
+303601	Jaipur	Rajasthan
+110012	Delhi	Delhi
+110003	Delhi	Delhi
+110024	Delhi	Delhi
+110033	Delhi	Delhi
+110065	Delhi	Delhi
+110002	Delhi	Delhi

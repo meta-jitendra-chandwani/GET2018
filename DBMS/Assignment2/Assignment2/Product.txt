@@ -1,0 +1,11 @@
+1002	JBL C100SI EarPhones	7	JBL C100SI is one of the best earphone in this price	799	52	ACTIVE
+1003	JBL C200SI EarPhones	7	JBL C200SI is one of the best earphone in this price	899	100	ACTIVE
+1004	JBL C300SI EarPhones	7	JBL C300SI is one of the best HeadPhones in this price	1299	50	ACTIVE
+1005	Segate 2 TB HDD	8	Seagte HDD	3965	5	ACTIVE
+1006	Mi Power Bank	9	Mi Power Bank 10000mAH	990	5	ACTIVE
+1007	Levi's Jeans	12	Jeans h bro.	4550	25	ACTIVE
+1008	Levi's Shirt	10	Shirt for mens	1500	10	ACTIVE
+1009	UCB Shirt	10	Shirt by UCB	2500	65	INACTIVE
+1010	UCB T-Shirt	11	T-Shirt by UCB	4500	10	ACTIVE
+1011	UCB Jeans	12	Jeans by UCB	6500	15	INACTIVE
+1012	Helmet	2	Steel Bird Helmet	1900	25	ACTIVE
