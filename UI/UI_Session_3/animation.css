@@ -1,0 +1,53 @@
+.main{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+}
+.square{
+    display: flex;     
+    width: 140px;
+    height: 140px;
+    flex-wrap: wrap;
+}
+.small-square{
+    position: absolute;
+    width: 70px;
+    height: 70px;  
+    animation: animation-square-1 2s infinite;
+  
+}
+.color1{
+    background-color: tomato;
+    animation-delay: 0s
+}
+.color2{
+    background-color: yellowgreen;
+    animation-delay: -0.5s;
+}
+.color3{
+   background-color: blueviolet;
+   animation-delay: -1s;
+}
+.color4{
+   background-color: skyblue;
+   animation-delay: -1.5s;
+}
+@keyframes animation-square-1 {
+    0% {
+    transform: translate(0px,0px);
+    }
+    25% {
+    transform: translate(0px,70px);
+    }
+    50% {
+    transform: translate(70px,70px);
+    }
+    75% {
+    transform: translate(70px,0px);
+    }
+    100% {
+    transform: translate(0px,0px);
+    }
+}
