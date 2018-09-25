@@ -101,11 +101,12 @@ CREATE TABLE address(
 
 
 Select * from address;
-CREATE TABLE job_detail(
+Drop table employee_portal.job_detail;
+CREATE TABLE employee_portal.job_detail(
   emp_code INT NOT NULL,
   job_detail_id INT PRIMARY KEY AUTO_INCREMENT,
   date_of_joining DATE NOT NULL,
-  total_exp INTEGER NOT NULL,
+  total_exp INT NOT NULL,
   job_code INT NOT NULL,
   reporting_mgr INT,
   team_lead INT,
@@ -119,4 +120,7 @@ CREATE TABLE job_detail(
 
 insert into employee_portal.job_detail(emp_code,date_of_joining,total_exp,job_code,reporting_mgr,team_lead,curr_proj_id)
 value(1010,"2018-01-15",5,1,1012,1014,1),(1011,"2017-04-15",3,1,1014,1014,1),(1012,"2018-01-15",5,1,1012,1014,2),(1013,"2017-04-15",3,1,1014,1014,3);
-Select * from job_detail;
+Select * from employee_portal.job_detail;
+select e.emp_code,e.first_name,e.middle_name,e.dob,e.gender,e.primary_contact_number,e.secondary_contact_number,e.email_id,e.skype_id,e.profile_picture,
+e.skills,e.enable,j.reporting_mgr,j.team_lead,j.curr_proj_id from employee_portal.employee e inner join employee_portal.job_detail j on e.emp_code=j.emp_code where j.curr_proj_id=1;
+
