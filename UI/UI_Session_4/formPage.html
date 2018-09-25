@@ -1,0 +1,146 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+        crossorigin="anonymous">
+
+
+
+    <style>
+        input {
+            width: 10%;
+            padding: 12px 20px;
+            margin: 8px -5px;
+            box-sizing: border-box;
+            border-left: 0px;
+        }
+
+        div{
+            background-color: lightgrey;
+            display: flex;
+            /*  flex: 1; */
+            flex-direction: column;
+            justify-content: center;
+            align-content: center;
+        }
+
+        /* textarea {
+            width: 10%;
+            padding: 12px 20px;
+            margin: 8px -5px;
+            box-sizing: border-box;
+            border-left: 0px;
+        } */
+
+        i {
+            background-color: grey;
+            padding: 13px;
+            margin-top: 5px;
+        }
+
+        select {
+            width: 10%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            box-sizing: border-box;
+        }
+
+        label {
+            padding: 12px 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <form action="">
+            <label>
+                First Name
+            </label>
+            <i class="fas fa-user"></i>
+            <input type="text" placeholder="First Name" minlength="3" required/>
+            </br>
+            <label>
+                Last Name
+            </label>
+            <i class="fas fa-user"></i>
+            <input type="text" placeholder="Last Name" minlength="3" required/>
+            </br>
+            <label>
+                Email
+            </label>
+            <i class="fas fa-envelope"></i>
+            <input type="email" placeholder="E-Mail Address" required/>
+            </br>
+            <label>
+                Phone #
+            </label>
+            <i class="fas fa-phone"></i>
+            <input type="number" placeholder="(845)555-1212" minlength="8" required/>
+            </br>
+            <label>
+                Address
+            </label>
+            <i class="fas fa-home"></i>
+            <input type="text" placeholder="Address" required>
+            </br>
+            <label>
+                City
+            </label>
+            <i class="fas fa-home"></i>
+            <input type="text" placeholder="City" required>
+            </br>
+            <label>
+                State
+            </label>
+            <i class="fas fa-list-ul"></i>
+            <select aria-placeholder="Please select your state">
+                <option value="Rajasthan">Rajasthan
+                </option>
+                <option value="Delhi">Delhi
+                </option>
+                <option value="UP">UP
+                </option>
+                <option value="Kerala">Kerala
+                </option>
+            </select>
+            </br>
+            <label>
+                Zip Code
+            </label>
+            <i class="fas fa-home"></i>
+            <input type="number" placeholder="Zip Code" required>
+            </br>
+            <label>
+                Website or domain name
+            </label>
+            <i class="fas fa-globe-americas"></i>
+            <input type="text" placeholder="Website or domain name" required>
+            </br>
+            <label>
+                Do you have any hosting
+
+            </label>
+            <label>
+                <input type="radio" name="hosting" /> Yes
+            </label>
+            <label>
+                <input type="radio" name="hosting" /> No
+            </label>
+
+            </br>
+            <label>
+                Project Description
+            </label>
+            <i class="fas fa-pen"></i>
+            <textarea placeholder="Project Description"></textarea>
+            </br>
+
+            <input type="submit" value="Submit">
+
+        </form>
+    </div>
+
+</body>
+
+</html>
