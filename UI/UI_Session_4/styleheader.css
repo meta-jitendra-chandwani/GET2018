@@ -1,0 +1,49 @@
+.container {
+	background-image: url("../UI_Session_1/images/images/homebg.png");
+}
+
+
+
+.flex-item-center {
+	flex: 1;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+
+
+a {
+	color: white;
+	text-decoration: none;
+	font-family: 'Courier New', Courier, monospace
+}
+
+ul {
+	display: flex;
+	flex-direction: row;
+	list-style: none;
+	padding: 0;
+}
+li {
+	width: auto;
+	padding: 0 10;
+	list-style: outside none none;
+	font-size: 20px;
+}
+.container-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.body-padding {
+	padding: 0 100;
+}
+.facebook-icon{
+	margin-top: 4px;
+}
+body {
+	background-image: url("./images/images/bodybg.png");
+	margin: 0px;
+}

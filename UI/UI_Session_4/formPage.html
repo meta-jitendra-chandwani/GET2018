@@ -1,146 +1,135 @@
 <html>
 
 <head>
+    <title>Form</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
         crossorigin="anonymous">
-
-
-
-    <style>
-        input {
-            width: 10%;
-            padding: 12px 20px;
-            margin: 8px -5px;
-            box-sizing: border-box;
-            border-left: 0px;
-        }
-
-        div{
-            background-color: lightgrey;
-            display: flex;
-            /*  flex: 1; */
-            flex-direction: column;
-            justify-content: center;
-            align-content: center;
-        }
-
-        /* textarea {
-            width: 10%;
-            padding: 12px 20px;
-            margin: 8px -5px;
-            box-sizing: border-box;
-            border-left: 0px;
-        } */
-
-        i {
-            background-color: grey;
-            padding: 13px;
-            margin-top: 5px;
-        }
-
-        select {
-            width: 10%;
-            padding: 12px 20px;
-            margin: 8px 0;
-            box-sizing: border-box;
-        }
-
-        label {
-            padding: 12px 20px;
-        }
-    </style>
 </head>
 
 <body>
-    <div>
-        <form action="">
-            <label>
-                First Name
-            </label>
-            <i class="fas fa-user"></i>
-            <input type="text" placeholder="First Name" minlength="3" required/>
-            </br>
-            <label>
-                Last Name
-            </label>
-            <i class="fas fa-user"></i>
-            <input type="text" placeholder="Last Name" minlength="3" required/>
-            </br>
-            <label>
-                Email
-            </label>
-            <i class="fas fa-envelope"></i>
-            <input type="email" placeholder="E-Mail Address" required/>
-            </br>
-            <label>
-                Phone #
-            </label>
-            <i class="fas fa-phone"></i>
-            <input type="number" placeholder="(845)555-1212" minlength="8" required/>
-            </br>
-            <label>
-                Address
-            </label>
-            <i class="fas fa-home"></i>
-            <input type="text" placeholder="Address" required>
-            </br>
-            <label>
-                City
-            </label>
-            <i class="fas fa-home"></i>
-            <input type="text" placeholder="City" required>
-            </br>
-            <label>
-                State
-            </label>
-            <i class="fas fa-list-ul"></i>
-            <select aria-placeholder="Please select your state">
-                <option value="Rajasthan">Rajasthan
-                </option>
-                <option value="Delhi">Delhi
-                </option>
-                <option value="UP">UP
-                </option>
-                <option value="Kerala">Kerala
-                </option>
-            </select>
-            </br>
-            <label>
-                Zip Code
-            </label>
-            <i class="fas fa-home"></i>
-            <input type="number" placeholder="Zip Code" required>
-            </br>
-            <label>
-                Website or domain name
-            </label>
-            <i class="fas fa-globe-americas"></i>
-            <input type="text" placeholder="Website or domain name" required>
-            </br>
-            <label>
-                Do you have any hosting
+    <div class="main">
+        <form>
+            <h1>Contact Us Today!</h1>
+            <div>
+                <div class="flex-block">
+                    <div class="flex-item-right">
+                        First Name
+                    </div>
+                    <div class="flex-item-left">
+                        <i class="fas fa-user-alt"></i>
+                        <input type="text" id="first-name" name="first-name" placeholder="First Name">
+                    </div>
+                </div>
+                <div class="flex-block">
+                    <div class="flex-item-right">
+                        Last Name
+                    </div>
+                    <div class="flex-item-left">
+                        <i class="fas fa-user-alt"></i>
+                        <input type="text" id="last-name" name="last-name" placeholder="Last Name">
+                    </div>
+                </div>
+                <div class="flex-block">
+                    <div class="flex-item-right">
+                        Email
+                    </div>
+                    <div class="flex-item-left">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" id="email" name="email" placeholder="E-mail Address">
+                    </div>
+                </div>
+                <div class="flex-block">
+                    <div class="flex-item-right">
+                        Phone #
+                    </div>
+                    <div class="flex-item-left">
+                        <i class="fas fa-phone"></i>
+                        <input type="number" id="phone" name="phone" maxlength="10" placeholder="(845)555-1212">
+                    </div>
+                </div>
+                <div class="flex-block">
+                    <div class="flex-item-right">
+                        Address
+                    </div>
+                    <div class="flex-item-left">
+                        <i class="fas fa-home"></i>
+                        <input type="text" id="address" name="address" placeholder="Address">
+                    </div>
+                </div>
+                <div class="flex-block">
+                    <div class="flex-item-right">
+                        City
+                    </div>
+                    <div class="flex-item-left">
+                        <i class="fas fa-home"></i>
+                        <input type="text" id="city" name="city" placeholder="city">
+                    </div>
+                </div>
+                <div class="flex-block">
+                    <div class="flex-item-right">
+                        State
+                    </div>
+                    <div class="flex-item-left">
+                        <i class="fas fa-list-ul"></i>
+                        <select name="state">
+                            <option value="null">Please select your state</option>
+                            <option value="Rajasthan">Rajasthan</option>
+                            <option value="Maharashtra">Maharashtra</option>
+                            <option value="Madhya Pradesh">Madhya Pradesh</option>
+                            <option value="Kerala">Kerala</option>
+                            <option value="Telangana">Telangana</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="flex-block">
+                    <div class="flex-item-right">
+                        Zip Code
+                    </div>
+                    <div class="flex-item-left">
+                        <i class="fas fa-home"></i>
 
-            </label>
-            <label>
-                <input type="radio" name="hosting" /> Yes
-            </label>
-            <label>
-                <input type="radio" name="hosting" /> No
-            </label>
-
-            </br>
-            <label>
-                Project Description
-            </label>
-            <i class="fas fa-pen"></i>
-            <textarea placeholder="Project Description"></textarea>
-            </br>
-
-            <input type="submit" value="Submit">
-
-        </form>
+                        <input type="number" id="zip-code" name="zip-code" maxlength="6" placeholder="Zip Code">
+                    </div>
+                </div>
+                <div class="flex-block">
+                    <div class="flex-item-right">
+                        Website or domain name
+                    </div>
+                    <div class="flex-item-left">
+                        <i class="fas fa-globe-americas"></i>
+                        <input type="text" id="website" name="website" placeholder="Website or domain name">
+                    </div>
+                </div>
+                <div class="flex-block">
+                    <div class="flex-item-right">
+                        Do you have hosting ?
+                    </div>
+                    <div class="flex-radio-button">
+                        <label>
+                            <input type="radio" id="hosting" name="hosting" value="yes">Yes
+                        </label>
+                        <label>
+                            <input type="radio" id="hosting" name="hosting" value="no">No
+                        </label>
+                    </div>
+                </div>
+                <div class="flex-block">
+                    <div class="flex-item-right">
+                        Project Description
+                    </div>
+                    <div class="flex-item-left">
+                        <i class="fas fa-pen text-area-icon"></i>
+                        <textarea rows="3" cols="30" placeholder="Project Description"></textarea>
+                    </div>
+                </div>
+                <div class="flex-item-center">
+                    <input type="submit" value="Submit">
+                </div>
+            </div>
     </div>
-
+    </form>
+    </div>
 </body>
 
 </html>

@@ -1,9 +1,33 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+
+#header{
+	display: flex;
+    justify-content: center;
+	align-items: center;
+	padding: 0 100;
+}
+
+#header nav{
+	flex: 1;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 20 0;
+}
+/* Header CSS */
+#social-link li:first-child{
+	margin-top: 4px;
+}
+
 .container {
 	background-image: url("./images/images/homebg.png");
 }
 
 .top-logo {
-	padding-top: 20;
+	padding: 5 0;
 }
 
 li {
@@ -14,28 +38,30 @@ li {
 }
 .flex-item-coloumn{
 	flex: 1;
+	-ms-flex: 1; /* IE 10 */ 
 	flex-direction: column;
 }
 .flex-item-left {
 	flex: 1;
-	/* shorthand for: flex-grow: 1, flex-shrink: 1, flex-basis: 0 */
+	-ms-flex: 1; /* IE 10 */ 
 	display: flex;
 	justify-content: flex-start;
 	align-items: center;
-	/* flex-wrap: wrap; */
 }
 
 .flex-item-center {
 	flex: 1;
+	-ms-flex: 1; /* IE 10 */ 
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	padding: 0 50;
+	/* padding: 0 50; */
 	/* flex-wrap: wrap; */
 }
 
 .flex-item-right {
 	flex: 1;
+	-ms-flex: 1; /* IE 10 */ 
 	display: flex;
 	justify-content: flex-end;
 	align-items: center;
@@ -57,10 +83,13 @@ ul {
 
 .container-body-part {
 	flex: 1;
+	-ms-flex: 1; /* IE 10 */ 
 }
 
 .container-body {
-	display: flex;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .download-button {
@@ -81,12 +110,9 @@ ul {
 
 body {
 	background-image: url("./images/images/bodybg.png");
-	margin: 0px;
+	/* padding: 0 100; */
 }
 
-.body-padding {
-	padding: 0% 10%;
-}
 
 .header-center {
 	text-align: center;
@@ -133,8 +159,7 @@ h2 {
 .cloudy-bg-text {
 	top: 2230px;
 	font-size: 200px;
-} */
-
+} 
 .block-padding {
 	padding: 100 50;
 }
@@ -142,7 +167,7 @@ h2 {
 /* #content {
 	position: absolute;
 	z-index: 1;
-} */
+} 
 
 .content-sub-heading {
 	color: #83878D;
