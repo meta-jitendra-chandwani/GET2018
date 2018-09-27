@@ -2,260 +2,195 @@
 	margin: 0;
 	padding: 0;
 }
-
-#header{
-	display: flex;
-    justify-content: center;
-	align-items: center;
-	padding: 0 100;
-}
-
-#header nav{
-	flex: 1;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	padding: 20 0;
-}
-/* Header CSS */
-#social-link li:first-child{
-	margin-top: 4px;
-}
-
-.container {
-	background-image: url("./images/images/homebg.png");
-}
-
-.top-logo {
-	padding: 5 0;
-}
-
-li {
-	width: auto;
-	padding: 0 10;
-	list-style: outside none none;
-	font-size: 20px;
-}
-.flex-item-coloumn{
-	flex: 1;
-	-ms-flex: 1; /* IE 10 */ 
-	flex-direction: column;
-}
-.flex-item-left {
-	flex: 1;
-	-ms-flex: 1; /* IE 10 */ 
-	display: flex;
-	justify-content: flex-start;
-	align-items: center;
-}
-
-.flex-item-center {
-	flex: 1;
-	-ms-flex: 1; /* IE 10 */ 
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	/* padding: 0 50; */
-	/* flex-wrap: wrap; */
-}
-
-.flex-item-right {
-	flex: 1;
-	-ms-flex: 1; /* IE 10 */ 
-	display: flex;
-	justify-content: flex-end;
-	align-items: center;
-	/* flex-wrap: wrap; */
-}
-
-a {
-	color: white;
-	text-decoration: none;
-	font-family: 'Courier New', Courier, monospace
-}
-
 ul {
 	display: flex;
 	flex-direction: row;
 	list-style: none;
 	padding: 0;
 }
-
-.container-body-part {
-	flex: 1;
-	-ms-flex: 1; /* IE 10 */ 
+li {
+	width: auto;
+	padding: 0 10;
+	list-style: outside none none;
+	font-size: 20px;
+}
+body {
+	background-image: url("./images/images/bodybg.png");
+}
+/* Container CSS */
+#container {
+	background-image: url("./images/images/homebg.png");
+	height: 959px;
+	background-size: cover;
 }
 
-.container-body {
-    display: flex;
+/* Header CSS */
+.navigation-bar{
+	display: flex;
     justify-content: center;
-    align-items: center;
+	align-items: center;
+	flex-wrap: wrap;
 }
-
-.download-button {
-	background: #FC6A42;
+.navigation-bar nav{
+	flex: 1;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 20 0;
+	flex-wrap: wrap;
+}
+.navigation-bar nav a:hover{
+color: grey;
+}
+#social-link li:first-child{
+	margin-top:	4px;
+}
+#container nav a {
+	color: white;
+	text-decoration: none;
+	font-family: 'Courier New', Courier, monospace
+}
+/* cover */
+#cover{
+	display: flex;
+    justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;	
+}
+#cover div:first-child{
+	flex: 1;
+}
+#cover div:first-child h1{
+	color: white;
+	font-size:60px;
+}
+img{
+	max-width: 100%;
+	height: auto;
+}
+#cover-button-block{
+	display: flex;
+	flex: 1;
+	justify-content: flex-start;
+	align-content: center;
+	padding: 10px 0px;
+	flex-wrap: wrap;
+}
+.button {
     padding: 20px;
     color: white;
     margin-right: 10px;
     border-radius: 5px;
 }
+.download {
+	background: #FC6A42;
+}
 
-.feature-button {
+.feature {
 	background: #4466C9;
-	padding: 20px;
-	color: white;
-	border-radius: 5px;
+}
+/* Perfect Feature Block */
+.content{
+	width: 80%;
+    margin: auto;
 }
 
-
-body {
-	background-image: url("./images/images/bodybg.png");
-	/* padding: 0 100; */
-}
-
-
-.header-center {
+.content-heading{
+	flex: 1;
+	font-size: 45px;
 	text-align: center;
 	color: #648CFF;
-	margin-bottom: 5px;
+	padding: 10 0;
 }
-
-.text-content {
-	font-size: 24;
-	color: grey;
-	font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-	display: block
-}
-
-.heading-space {
-	margin: 20 0 100 0;
-}
-
-h2 {
-	font-size: 40px;
-}
-
-/* .background {
-	position: absolute;
-	z-index: 0;
-	display: block;
-	color: lightgrey;
-	transform: rotate(90deg);
-	-webkit-transform: rotate(90deg);
-}
-
-/* .sunny-bg-text {
-	top: 3050px;
-	left: 1270;
-	font-size: 230px;
-}
-
-.rainy-bg-text {
-	top: 3920px;
-	margin-left: 30px;
-	font-size: 230px;
-}
-
-.cloudy-bg-text {
-	top: 2230px;
-	font-size: 200px;
-} 
-.block-padding {
-	padding: 100 50;
-}
-
-/* #content {
-	position: absolute;
-	z-index: 1;
-} 
-
-.content-sub-heading {
-	color: #83878D;
-	font-size: 18px;
+.content-sub-heading{
+	flex: 1;
+	font-size: 14px;
 	text-align: center;
+	color: #83878D;
+	padding: 10 0;
 }
-
-#contentInformationData {
+.content-fluid{
 	display: flex;
-	margin: 100 0;
+	padding: 10px;
+	flex-wrap: wrap;
 }
-
-#contentBottomImage {
-	width: 70%;
-	margin: 0 auto;
+.content-block{
+	flex: 1;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
-.feature-information h2{
+#content-block-image{
+	width: 80px;
+	padding: 15px;
+}
+.text-block {
+	padding: 10px;
+}
+.text-block h2{
 	font-size: 40px;
     margin: 0px;
 }
-.feature-information p{
+.text-block p{
 	color: #797979;
     padding: 5 5;
     margin: 0;
 }
-.feature-image {
-	width: 80px;
-	padding: 15px;
+#carousel{
+	flex: 1;
+	-ms-flex: 1; 
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 25px 0px;
+	flex-wrap: wrap;
 }
 
-.feature-information {
+/* Screenshots */
+#screenshot-info{
+	padding: 20;
+}
+#screenshot-info img,h2,p{
 	padding: 10px;
 }
+#screenshot-info h2{
+	font-size: 40px;
+}
+#screenshot-info p{
+	font-size: 20px;
+}
 
-.reviews {
-	font-size: 34;
+/* Reviewer  */
+#reviewer-comments{
+	font-size: 32;
+}
+#reviewer-name{
+	font-size: 20;
 	color: black;
 }
-
-.footer-bg {
+/* Bottom  */
+#bottom{
 	background-image: url("images/images/downloadbg.png");
 }
-
-.footer {
-	padding: 30 200 0 200;
-}
-
-.footer-sub {
-	padding-top: 100px;
-}
-
-.footer-sub-background {
-	background-color: #383A53;
-}
-
-.footer-sub-heading {
+#bottom p:first-child{
 	color: white;
-	font-size: 26px;
+	font-size: 40px;
 }
-
-.footer-heading {
+#bottom p:nth-child(2){
 	color: white;
-	font-size: 48px;
+	font-size: 20px;
 }
-
 .store-icon {
 	padding: 15px;
 }
-
-.quotes-apostrope {
-	font-size: 50px;
-	color: #648CFF;
+#reviewer-text-block{
+	flex: 1;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	flex-wrap: wrap;
 }
-
-.container-body span:last-child {
-	margin-left: auto;
+/* Footer */
+#footer{
+	background-color: #383A53;
 }
-
-hr{
-	color: #383a53;
-}
-.facebook-icon{
-	margin-top: 4px;
-}
-
-.flex-item-left h1 {
-	color: white;
-	font-size: 60px;
-}
-
-
