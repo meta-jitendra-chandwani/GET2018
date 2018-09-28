@@ -14,15 +14,25 @@ li {
 	list-style: outside none none;
 	font-size: 20px;
 }
+/* Background image of complete page */
 body {
 	background-image: url("./images/images/bodybg.png");
 }
 /* Container CSS */
+/* 
+	Background image 
+	height of image 
+	background-size : cover 
+*/
 #container {
 	background-image: url("./images/images/homebg.png");
 	height: 959px;
 	background-size: cover;
 }
+
+/* section{
+	padding-top: 50px;
+} */
 
 /* Header CSS */
 .navigation-bar{
@@ -45,7 +55,7 @@ color: grey;
 #social-link li:first-child{
 	margin-top:	4px;
 }
-#container nav a {
+nav a {
 	color: white;
 	text-decoration: none;
 	font-family: 'Courier New', Courier, monospace
@@ -63,6 +73,7 @@ color: grey;
 #cover div:first-child h1{
 	color: white;
 	font-size:60px;
+	text-align: left;
 }
 img{
 	max-width: 100%;
@@ -90,19 +101,22 @@ img{
 	background: #4466C9;
 }
 /* Perfect Feature Block */
+#perfect-feature{
+	padding: 50 0;
+}
 .content{
 	width: 80%;
     margin: auto;
 }
 
-.content-heading{
+.content h1{
 	flex: 1;
 	font-size: 45px;
 	text-align: center;
 	color: #648CFF;
 	padding: 10 0;
 }
-.content-sub-heading{
+#content-sub-heading{
 	flex: 1;
 	font-size: 14px;
 	text-align: center;
@@ -145,8 +159,10 @@ img{
 	padding: 25px 0px;
 	flex-wrap: wrap;
 }
-
 /* Screenshots */
+#screenshots{
+	padding: 50 0;
+}
 #screenshot-info{
 	padding: 20;
 }
@@ -159,8 +175,8 @@ img{
 #screenshot-info p{
 	font-size: 20px;
 }
-
 /* Reviewer  */
+#reviewer{padding: 50 0;}
 #reviewer-comments{
 	font-size: 32;
 }
@@ -171,6 +187,7 @@ img{
 /* Bottom  */
 #bottom{
 	background-image: url("images/images/downloadbg.png");
+	padding-top: 100px;
 }
 #bottom p:first-child{
 	color: white;
@@ -194,3 +211,14 @@ img{
 #footer{
 	background-color: #383A53;
 }
+/* .background {
+	color: lightgrey;
+	transform: rotate(90deg);
+	-webkit-transform: rotate(90deg);
+}
+	.rainy-bg-text {
+    z-index: -1;
+    position: absolute;
+    left: 15%;
+    font-size: 58px;
+} */
