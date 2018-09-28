@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 19.2.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 20 20" style="enable-background:new 0 0 20 20;" xml:space="preserve">
+<style>
+    .left-circle{
+    fill:#3193D1;
+    }
+    .right-circle{
+    stroke:grey;
+    stroke-width:0.5; 
+    fill:white;
+    }
+</style>
+<path d="M10,0 A10,10 0 0 0 10,20" class="left-circle"/> 
+<path d="M10,0.25 A9.75,9.75 0 0 1 10,19.75" class="right-circle"/> 
+
+</svg>
