@@ -18,7 +18,7 @@
                     </div>
                     <div class="flex-item-left">
                         <i class="fas fa-user-alt"></i>
-                        <input type="text" id="first-name" name="first-name" placeholder="First Name">
+                        <input type="text" id="first-name" name="first-name" minlength="3" pattern="^[A-Za-z]+$" placeholder="First Name" required>
                     </div>
                 </div>
                 <div class="flex-block">
@@ -27,7 +27,7 @@
                     </div>
                     <div class="flex-item-left">
                         <i class="fas fa-user-alt"></i>
-                        <input type="text" id="last-name" name="last-name" placeholder="Last Name">
+                        <input type="text" id="last-name" name="last-name" minlength="3" pattern="^[A-Za-z]+$" placeholder="Last Name" required>
                     </div>
                 </div>
                 <div class="flex-block">
@@ -36,7 +36,7 @@
                     </div>
                     <div class="flex-item-left">
                         <i class="fas fa-envelope"></i>
-                        <input type="email" id="email" name="email" placeholder="E-mail Address">
+                        <input type="email" id="email" name="email" placeholder="E-mail Address" required>
                     </div>
                 </div>
                 <div class="flex-block">
@@ -45,7 +45,7 @@
                     </div>
                     <div class="flex-item-left">
                         <i class="fas fa-phone"></i>
-                        <input type="number" id="phone" name="phone" maxlength="10" placeholder="(845)555-1212">
+                        <input type="number" id="phone" name="phone" minlength="10" maxlength="10" placeholder="(845)555-1212" required>
                     </div>
                 </div>
                 <div class="flex-block">
@@ -54,7 +54,7 @@
                     </div>
                     <div class="flex-item-left">
                         <i class="fas fa-home"></i>
-                        <input type="text" id="address" name="address" placeholder="Address">
+                        <input type="text" id="address" name="address" placeholder="Address" required>
                     </div>
                 </div>
                 <div class="flex-block">
@@ -63,7 +63,7 @@
                     </div>
                     <div class="flex-item-left">
                         <i class="fas fa-home"></i>
-                        <input type="text" id="city" name="city" placeholder="city">
+                        <input type="text" id="city" name="city" pattern="^[A-Za-z]+$" placeholder="city" required>
                     </div>
                 </div>
                 <div class="flex-block">
@@ -88,8 +88,7 @@
                     </div>
                     <div class="flex-item-left">
                         <i class="fas fa-home"></i>
-
-                        <input type="number" id="zip-code" name="zip-code" maxlength="6" placeholder="Zip Code">
+                        <input type="number" id="zip-code" name="zip-code" maxlength="6" placeholder="Zip Code" required>
                     </div>
                 </div>
                 <div class="flex-block">
@@ -98,7 +97,7 @@
                     </div>
                     <div class="flex-item-left">
                         <i class="fas fa-globe-americas"></i>
-                        <input type="text" id="website" name="website" placeholder="Website or domain name">
+                        <input type="text" id="website" name="website" placeholder="Website or domain name" required>
                     </div>
                 </div>
                 <div class="flex-block">
@@ -120,11 +119,15 @@
                     </div>
                     <div class="flex-item-left">
                         <i class="fas fa-pen text-area-icon"></i>
-                        <textarea rows="3" cols="30" placeholder="Project Description"></textarea>
+                        <textarea rows="3" cols="30" placeholder="Project Description" required></textarea>
                     </div>
                 </div>
                 <div class="flex-item-center">
-                    <input type="submit" value="Submit">
+                    <button type="submit" value="Submit">
+                        Send
+                        <i class="fas fa-paper-plane submit-icon"></i>
+                    </button>
+                    
                 </div>
             </div>
     </div>
