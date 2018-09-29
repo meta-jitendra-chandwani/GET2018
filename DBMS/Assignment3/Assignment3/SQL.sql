@@ -9,7 +9,8 @@ CREATE TABLE Category(
     PRIMARY KEY (Category_Id)
 );
 LOAD DATA LOCAL INFILE 'D:/GET2018/GET2018/DBMS/Assignment2/Assignment2/Category.txt' INTO TABLE Category FIELDS TERMINATED BY '\t' LINES TERMINATED BY '\n' IGNORE 0 LINES (Category_Title,Parent_Category);
-CREATE TABLE Product (
+
+CREATE TABLE Product(
     Product_Id INT NOT NULL,
     Product_Title VARCHAR(30),
     Category_Id INT,

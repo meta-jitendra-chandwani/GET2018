@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
+  <display-name>Servlet_Session_2</display-name>
+  <servlet>
+    <display-name>addDetailsServlet</display-name>
+    <servlet-name>employeeDetails</servlet-name>
+    <servlet-class>com.Servlet.Registration</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>employeeDetails</servlet-name>
+    <url-pattern>/Registration</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <display-name>LogIn</display-name>
+    <servlet-name>LogIn</servlet-name>
+    <servlet-class>com.Servlet.LogIn</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LogIn</servlet-name>
+    <url-pattern>/LogIn</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <display-name>ImageServlet</display-name>
+    <servlet-name>ImageServlet</servlet-name>
+    <servlet-class>com.Servlet.ImageServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ImageServlet</servlet-name>
+    <url-pattern>/ImageServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <display-name>UploadServlet</display-name>
+    <servlet-name>UploadServlet</servlet-name>
+    <servlet-class>com.Servlet.UploadServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UploadServlet</servlet-name>
+    <url-pattern>/UploadServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <display-name>UploadUserDetails</display-name>
+    <servlet-name>UploadUserDetails</servlet-name>
+    <servlet-class>com.Servlet.UpdateUserDetails</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UploadUserDetails</servlet-name>
+    <url-pattern>/UpdateUserDetails</url-pattern>
+  </servlet-mapping>
+  
+    <servlet>
+    <display-name>InvalidSession</display-name>
+    <servlet-name>InvalidSession</servlet-name>
+    <servlet-class>com.Servlet.InvalidateSession</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>InvalidSession</servlet-name>
+    <url-pattern>/InvalidateSession</url-pattern>
+  </servlet-mapping>
+  
+   <filter>
+		<filter-name>sessionFilter</filter-name>
+		<filter-class>com.Filter.SessionFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>sessionFilter</filter-name>
+		<url-pattern>/UpdateUserDetails</url-pattern>
+		<url-pattern>/ImageServlet</url-pattern>
+		<url-pattern>/UserFriends.jsp</url-pattern>
+		<url-pattern>/FriendProfile.jsp</url-pattern>
+	</filter-mapping> 
+  
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+  </welcome-file-list>
+</web-app>
