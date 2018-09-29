@@ -6,15 +6,9 @@ CREATE TABLE Category(
     Category_Id INT NOT NULL AUTO_INCREMENT,
     Category_Title VARCHAR(20),
     Parent_Category VARCHAR(30),
-    Parent_Id INT,
     PRIMARY KEY (Category_Id)
 );
-LOAD DATA LOCAL INFILE 'D:/GET2018/GET2018/DBMS/Assignment2/Assignment2/Category.txt' INTO TABLE Category FIELDS TERMINATED BY '\t' LINES TERMINATED BY '\n' IGNORE 0 LINES (Category_Title,Parent_Category,Parent_Id);
-
-Select 
-    *
-from
-    Category;
+LOAD DATA LOCAL INFILE 'D:/GET2018/GET2018/DBMS/Assignment2/Assignment2/Category.txt' INTO TABLE Category FIELDS TERMINATED BY '\t' LINES TERMINATED BY '\n' IGNORE 0 LINES (Category_Title,Parent_Category);
 
 CREATE TABLE Product(
     Product_Id INT NOT NULL,
@@ -42,7 +36,7 @@ CREATE TABLE User(
     User_Id VARCHAR(20) NOT NULL,
     User_Type VARCHAR(25),
     User_Name VARCHAR(25),
-    Mobile_Number INT CHECK (Mobile_Number <= 9999999999 AND Mobile_Number >= 1000000000),
+    Mobile_Number INT  CHECK (Mobile_Number <= 9999999999 AND Mobile_Number >=1000000000),
     Last_Order Date,
     PRIMARY KEY (User_Id)
 );
@@ -71,7 +65,7 @@ CREATE TABLE Orders(
     Order_Total INT,
     FOREIGN KEY (User_Id)
         REFERENCES User (User_Id),
-    PRIMARY KEY (Order_Id)
+    PRIMARY KEY(Order_Id)
 );
 LOAD DATA LOCAL INFILE 'D:/GET2018/GET2018/DBMS/Assignment2/Assignment2/Orders.txt' INTO TABLE Orders  FIELDS TERMINATED BY '\t' LINES TERMINATED BY '\n' IGNORE 0 LINES;
 
@@ -83,6 +77,6 @@ CREATE TABLE Order_Product(
         REFERENCES Orders (Order_Id),
     FOREIGN KEY (Product_Id)
         REFERENCES Product (Product_Id),
-    PRIMARY KEY (Order_Product_Id)
+    PRIMARY KEY(Order_Product_Id)
 );
 LOAD DATA LOCAL INFILE 'D:/GET2018/GET2018/DBMS/Assignment2/Assignment2/OrderProduct.txt' INTO TABLE Order_Product  FIELDS TERMINATED BY '\t' LINES TERMINATED BY '\n' IGNORE 0 LINES (Order_Id,Product_Id);
