@@ -74,9 +74,7 @@ input,select{
 .flex-block {
     display: flex;
 }
-#submit-button {
-    display: inline;
-}
+
 input:focus:required:invalid {border-color: red;}
 input:required:valid {border-color: green; }
   
