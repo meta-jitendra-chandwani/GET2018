@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Form</title>
+    <link rel="stylesheet" type="text/css" href="./style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+        crossorigin="anonymous">
+    <script src="./script.js"></script>
+</head>
+
+<body>
+    <section id="form-container">
+        <h1>Contact Us Today!</h1>
+        <form id="registration-form">
+            <div class="flex-block">
+                <div class="flex-item-right">
+                    First Name
+                </div>
+                <div class="flex-item-left">
+                    <i class="fas fa-user-alt"></i>
+                    <input type="text" id="first-name" name="first-name" minlength="3" pattern="^[A-Za-z]+$" placeholder="First Name" required>
+                </div>
+            </div>
+            <div class="flex-block">
+                <div class="flex-item-right">
+                    Last Name
+                </div>
+                <div class="flex-item-left">
+                    <i class="fas fa-user-alt"></i>
+                    <input type="text" id="last-name" name="last-name" minlength="3" pattern="^[A-Za-z]+$" placeholder="Last Name" required>
+                </div>
+            </div>
+            <div class="flex-block">
+                <div class="flex-item-right">
+                    Email
+                </div>
+                <div class="flex-item-left">
+                    <i class="fas fa-envelope"></i>
+                    <input type="email" id="email" name="email" placeholder="E-mail Address" required>
+                </div>
+            </div>
+            <div class="flex-block">
+                <div class="flex-item-right">
+                    Phone #
+                </div>
+                <div class="flex-item-left">
+                    <i class="fas fa-phone"></i>
+                    <input type="number" id="phone" name="phone" minlength="10" maxlength="10" placeholder="(845)555-1212" required>
+                </div>
+            </div>
+            <div class="flex-block">
+                <div class="flex-item-right">
+                    Address
+                </div>
+                <div class="flex-item-left">
+                    <i class="fas fa-home"></i>
+                    <input type="text" id="address" name="address" placeholder="Address" required>
+                </div>
+            </div>
+            <div class="flex-block">
+                <div class="flex-item-right">
+                    City
+                </div>
+                <div class="flex-item-left">
+                    <i class="fas fa-home"></i>
+                    <input type="text" id="city" name="city" pattern="^[A-Za-z]+$" placeholder="city" required>
+                </div>
+            </div>
+
+
+            <div class="flex-block">
+                <div class="flex-item-right">
+                    State
+                </div>
+                <div class="flex-item-left">
+                    <i class="fas fa-list-ul"></i>
+                    <select id="state" name="state" onchange="addElement()">
+                        <option value="null">Please select your state</option>
+                        <option value="Rajasthan">Rajasthan</option>
+                        <option value="Maharashtra">Maharashtra</option>
+                        <option value="Haryana">Haryana</option>
+                    </select>
+                </div>
+            </div>
+
+
+
+            <!--            
+            <div class="form-element-container">
+                <div class="element-label">
+                    Zip Code
+                </div>
+                <div class="form-element">
+                    <span>
+                        <i class="fas fa-home"></i>
+                    </span>
+                    <div>
+                        <input type="number" id="zip-code" name="zip-code" maxlength="6" placeholder="Zip Code" required>
+                    </div>
+                </div>
+            </div>
+            <div class="form-element-container">
+                <div class="element-label">
+                    Website or domain name
+                </div>
+                <div class="form-element">
+                    <span>
+                        <i class="fas fa-globe-americas"></i>
+                    </span>
+                    <div>
+                        <input type="text" id="website" name="website" placeholder="Website or domain name" required>
+                    </div>
+                </div>
+            </div>
+            <div class="form-element-container">
+                <div class="element-label">
+                    Do you have hosting ?
+                </div>
+                <div id="form-radio-button" class="form-element">
+                    <div>
+                        <label><input type="radio" id="hosting" name="hosting" value="yes">Yes</label>
+                    </div>
+                    <div>
+                        <label><input type="radio" id="hosting" name="hosting" value="no">No</label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-element-container">
+                <div class="element-label">
+                    Project Description
+                </div>
+                <div class="form-element">
+                    <span>
+                        <i id="project-description-icon" class="fas fa-pen"></i>
+                    </span>
+                    <div>
+                        <textarea rows="3" cols="30" placeholder="Project Description" required></textarea>
+                    </div>
+                </div>
+            </div>   
+            -->
+
+            <div id="submit-button" class="flex-item-center">
+                <button type="submit" value="Submit">
+                    Send
+                    <i class="fas fa-paper-plane submit-icon"></i>
+                </button>
+            </div>
+        </form>
+    </section>
+</body>
+
+</html>
