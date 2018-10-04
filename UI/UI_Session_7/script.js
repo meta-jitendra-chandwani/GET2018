@@ -153,7 +153,6 @@ function validation() {
         returnValue[index++] = validateZipCode();
     }
 
-    // var i;
     var error = false;
     for (i = 0; i < index; i++) {
         if (!returnValue[i].status) {
