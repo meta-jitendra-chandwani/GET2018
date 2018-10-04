@@ -152,7 +152,6 @@ function validation() {
     if (document.getElementById("state").value == "Haryana" || document.getElementById("state").value == "Maharashtra") {
         returnValue[index++] = validateZipCode();
     }
-
     var error = false;
     for (i = 0; i < index; i++) {
         if (!returnValue[i].status) {
@@ -269,12 +268,9 @@ function validateZipCode() {
     return returnValue;
 }
 function formValue() {
-
     var urlString = window.location;
     var url = new URL(urlString);
     var state = url.searchParams.get("state");
-
-
     document.getElementById("name").innerHTML = url.searchParams.get("first-name") + " " + url.searchParams.get("last-name");
     document.getElementById("email").innerHTML = url.searchParams.get("email");
     document.getElementById("phone").innerHTML = url.searchParams.get("phone");
