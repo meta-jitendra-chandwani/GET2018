@@ -1,0 +1,32 @@
+[
+    {
+        "id": 1,
+        "name": "Jitendra",
+        "mobile": "9829699033",
+        "location": "Rajasthan"
+    },
+    {
+        "id": 2,
+        "name": "Rahul",
+        "mobile": "9782270497",
+        "location": "Rajasthan"
+    },
+    {
+        "id": 3,
+        "name": "Vaibhav",
+        "mobile": "456987455",
+        "location": "Rajasthan"
+    },
+    {
+        "id": 4,
+        "name": "Ram",
+        "mobile": "9829699033",
+        "location": "Rajasthan"
+    },
+    {
+        "id": 5,
+        "name": "Kunika",
+        "mobile": "9782270497",
+        "location": "Delhi"
+    }
+]
