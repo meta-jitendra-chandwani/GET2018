@@ -17,15 +17,17 @@ export class ModalBasicComponent {
   users: User[];
   public user: User;
   content: string;
-  modalBoolean : boolean = true;
+  modalBoolean: boolean = true;
 
-  modalShow(user){
-    this.modalBoolean=false;
-    this.user=user;
-    this.open(this.content);
+  modalShow(user) {
+    this.modalBoolean = false;
+    this.user = user;
+    this.modalService.open(this.content);
   }
 
   open(content) {
+    this.user = null;
+    this.modalBoolean = true;
     this.content = content;
     this.modalService.open(content);
   }
@@ -44,12 +46,12 @@ export class ModalBasicComponent {
 
   save(): void {
     this.userService.updateUser(this.user).subscribe(() => this.goBack("Data Save"));
-    this.content='';
+    this.content = '';
   }
   goBack(message: string): void {
     console.log(message);
 
     this.modalService.dismissAll();
-    this.content='';
+    this.content = '';
   }
 }
