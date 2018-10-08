@@ -11,19 +11,19 @@
 
 <body class="container border">
     <header class="container">
-        <div class="text-center py-1"><strong>User Management</strong></div>
+        <div class="text-center py-1">
+            <strong>User Management</strong>
+        </div>
     </header>
     <section class="container">
         <div class="clearfix pt-5">
             <h3 class="float-left">Users</h3>
-            <!-- <button (click)="openFormModal()" class="btn float-right py-0 mt-1 mr-5">Add User</button> -->
-
             <app-modal-basic class="btn float-right py-0 mt-1 mr-5"></app-modal-basic>
         </div>
     </section>
 
     <section class="container row">
-        <div class="col-md-11 flex-row border" id="search">
+        <div class="col-md-11 flex-row border mb-4" id="search">
             <i class="fas fa-search col-1"></i>
             <input type='text' class="col-11" [(ngModel)]="searchText" placeholder='Search...' />
         </div>
@@ -32,19 +32,22 @@
         </div>
     </section>
 
-    <section class="row mb-2">
-        <div class='col-4 mb-5' *ngFor="let user of users | filter:searchText">
+    <section class="row mb-2 p-2">
+        <div class='col-4 mb-5' *ngFor="let user of users | filter: searchText">
             <div class="card flex-row justify-content-center align-items-center">
                 <img class="card-img-left img-thumbnail col-4 border-0" src="../../assets/image/user-logo.jpg">
                 <div class="card-body col-8">
                     <span>
                         <h5 class="card-title">{{user.name}}</h5>
                     </span>
-                    <a href="#">
-                        <i class="fas fa-pen-alt float-right bg-primary text-dark p-2 rounded-circle"></i>
-                    </a>
-                    <p class="card-text"><i class="fas fa-phone pr-2"></i>{{user.mobile}}</p>
-                    <p class="card-text"><i class='fas fa-map-marker-alt pr-2'></i>{{user.location}}</p>
+                    <span (click)=show(user)>
+                        <i class="fas fa-pen-alt float-right bg-primary text-dark p-2 rounded-circle">
+                        </i>
+                    </span>
+                    <p class="card-text">
+                        <i class="fas fa-phone pr-2"></i>{{user.mobile}}</p>
+                    <p class="card-text">
+                        <i class='fas fa-map-marker-alt pr-2'></i>{{user.location}}</p>
                 </div>
             </div>
         </div>

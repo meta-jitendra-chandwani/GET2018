@@ -7,7 +7,13 @@ import { UserComponent } from './user/user.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ModalBasicComponent } from './modal-basic/modal-basic.component';
-
+import { RouterModule, Routes } from '@angular/router';
+const appRoutes: Routes = [
+  {
+    path: "", component: AppComponent
+  },
+  // { path: "user/1", component: ModalBasicComponent }
+];
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,7 +26,8 @@ import { ModalBasicComponent } from './modal-basic/modal-basic.component';
     FormsModule,
     ReactiveFormsModule,
     Ng2SearchPipeModule,
-    NgbModule
+    NgbModule,
+    RouterModule.forRoot(appRoutes),
   ],
   providers: [],
   bootstrap: [AppComponent],
