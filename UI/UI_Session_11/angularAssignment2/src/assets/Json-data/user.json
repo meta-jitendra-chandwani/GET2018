@@ -1,0 +1,34 @@
+{
+    "Users": [
+        {
+            "id": 1,
+            "name": "Vaibhav",
+            "bill": 2500,
+            "item": [
+                {
+                    "name": "Banana",
+                    "quantity": 50
+                },
+                {
+                    "name": "Apple",
+                    "quantity": 50
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "name": "Jitendra",
+            "bill": 2500,
+            "item": [
+                {
+                    "name": "Banana",
+                    "quantity": 50
+                },
+                {
+                    "name": "Apple",
+                    "quantity": 50
+                }
+            ]
+        }
+    ]
+}

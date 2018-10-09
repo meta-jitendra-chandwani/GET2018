@@ -1,0 +1,83 @@
+{  
+    "Fruits":[  
+       {  
+          "id":1,
+          "name":"Apple",
+          "price":45,
+          "description":"This is apple",
+          "imgUrl":"../../assets/Image/Fruit/apple.jpeg"
+       },
+       {  
+          "id":2,
+          "name":"Banana",
+          "price":45,
+          "description":"This is Banana",
+          "imgUrl":"../../assets/Image/Fruit/banana.jpeg"
+       },
+       {  
+          "id":3,
+          "name":"Pomegranate",
+          "price":45,
+          "description":"This is Pomegranate",
+          "imgUrl":"../../assets/Image/Fruit/pomegranate.jpeg"
+       },
+       {  
+          "id":4,
+          "name":"Strawberry",
+          "price":45,
+          "description":"This is strawberry",
+          "imgUrl":"../../assets/Image/Fruit/strawberry.jpeg"
+       },
+       {  
+          "id":5,
+          "name":"Water-melon",
+          "price":45,
+          "description":"This is Water-melon",
+          "imgUrl":"../../assets/Image/Fruit/water-melon.jpeg"
+       }
+    ],
+    "Vegetables":[  
+        {  
+           "id":1,
+           "name":"Cabbage",
+           "price":45,
+           "description":"This is cabbage",
+           "imgUrl":"../../assets/Image/Vegetable/cabbage.jpg"
+        },
+        {  
+           "id":2,
+           "name":"Cauliflower",
+           "price":45,
+           "description":"This is cauliflower",
+           "imgUrl":"../../assets/Image/Vegetable/cauliflower.jpg"
+        },
+        {  
+           "id":3,
+           "name":"Corn",
+           "price":45,
+           "description":"This is corn",
+           "imgUrl":"../../assets/Image/Vegetable/corn.jpg"
+        },
+        {  
+           "id":4,
+           "name":"Cosmos",
+           "price":45,
+           "description":"This is cosmos",
+           "imgUrl":"../../assets/Image/Vegetable/cosmos.jpg"
+        },
+        {  
+           "id":5,
+           "name":"Loki",
+           "price":45,
+           "description":"This is loki",
+           "imgUrl":"../../assets/Image/Vegetable/loki.jpg"
+        },
+        {  
+            "id":6,
+            "name":"Tomato",
+            "price":45,
+            "description":"This is tomato",
+            "imgUrl":"../../assets/Image/Vegetable/tomato.png"
+         }
+     ]
+ }
