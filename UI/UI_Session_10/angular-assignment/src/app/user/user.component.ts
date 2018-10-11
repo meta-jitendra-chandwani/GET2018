@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter, ViewChild, AfterViewIni
 import { UserService } from '../user.service';
 import { User } from '../user';
 import { ModalBasicComponent } from '../modal-basic/modal-basic.component'
+import { Subscriber } from '../../../node_modules/rxjs';
 // import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -34,6 +35,7 @@ export class UserComponent implements OnInit {
   }
 
   getUser(): any {
+    debugger
     return this.userService.getItems().subscribe((data: User[]) => this.users = data);
   }
 

@@ -13,30 +13,31 @@
     </a>
     <a href="#" class="px-2 text-muted">
       <i class="fas fa-shopping-cart"></i>
-    </a><a href="#" class="badge badge-warning p-2 rounded">4</a>
+    </a>
+    <a href="#" class="badge badge-warning p-2 rounded">4</a>
   </header>
   <section class="row">
     <div class="col-md-2 offset-md-1">
-      <ul class="list-unstyled p-2">
-        <li class="border p-2">
+      <ul class="list-unstyled">
+        <li class="list-group-item list-group-item active" (click)="categoryType('all')" ng-class="{'active': isActive}">
           All Categories
         </li>
-        <li class="border p-2">
+        <li class="list-group-item list-group-item" (click)="categoryType('fruits')" ng-class="{'active': isActive}">
           Fruits
         </li>
-        <li class="border p-2">
-          Vegetable
+        <li class="list-group-item list-group-item" (click)="categoryType('vegetables')" ng-class="{'active': isActive}">
+          Vegetables
         </li>
       </ul>
     </div>
     <section class="row mb-2 p-2 col-9">
-      <div class='col-6 mb-5' *ngFor="let fruit of fruits">
-        <div class="card" style="width: 30rem;">
-          <img class="card-img-top" height="200px" [src]="fruit.imgUrl" alt="Card image cap">
-          <div class="card-body p-0">
-            <h5 class="card-title px-4 pt-2">{{fruit.name}}</h5>
-            <p class="card-text px-4">$ {{fruit.price}}</p>
-            <a href="#" class="btn btn-secondary btn-block">Add to cart</a>
+      <div class='col-6 mb-5' *ngFor="let value of data">
+        <div class="card " style="width: 30rem; ">
+          <img class="card-img-top " height="200px " [src]="value.imgUrl " alt="Card image cap ">
+          <div class="card-body p-0 ">
+            <h5 class="card-title px-4 pt-2 ">{{value.name}}</h5>
+            <p class="card-text px-4 ">$ {{value.price}}</p>
+            <a href="# " class="btn btn-secondary btn-block ">Add to cart</a>
           </div>
         </div>
       </div>
