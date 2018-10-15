@@ -4,15 +4,21 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { UsersComponent } from './users/users.component';
-
+import { ShowCartItemComponent } from './show-cart-item/show-cart-item.component';
+import { RouterModule, Routes } from '@angular/router';
+const routes: Routes = [
+  { path: 'shopping-cart', component: ShowCartItemComponent }
+];
 @NgModule({
+  // exports: [RouterModule],
   declarations: [
     AppComponent,
     HomeComponent,
-    UsersComponent
+    UsersComponent,
+    ShowCartItemComponent
   ],
   imports: [
-    BrowserModule, HttpClientModule
+    BrowserModule, HttpClientModule,RouterModule.forRoot(routes)
   ],
   providers: [],
   bootstrap: [AppComponent]

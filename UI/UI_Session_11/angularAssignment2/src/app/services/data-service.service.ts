@@ -10,19 +10,30 @@ export class DataServiceService {
 
   constructor(private http: HttpClient) { }
 
-  private _url: string = "http://localhost:3000";
   private _urlAll: string = "http://localhost:3001/all";
+  private _categoryFruits: string = "?category=fruits";
+  private _categoryVegetables: string = "?category=vegetables";
+  private _categoryBread: string = "?category=bread";
+  private _categoryDairy: string = "?category=dairy";
+
+
+  getDairyItems(): Observable<Data[]> {
+    return this.http.get<Data[]>(`${this._urlAll}/${this._categoryDairy}`);
+  }
 
   getFruitsItems(): Observable<Data[]> {
-    return this.http.get<Data[]>(`${this._url}/Fruits`);
+    return this.http.get<Data[]>(`${this._urlAll}/${this._categoryFruits}`);
   }
 
   getAllItems(): Observable<Data[]> {
     return this.http.get<Data[]>(this._urlAll);
   }
   getVegetablesItems(): Observable<Data[]> {
-    return this.http.get<Data[]>(`${this._url}/Vegetables`);
+    return this.http.get<Data[]>(`${this._urlAll}/${this._categoryVegetables}`);
 
+  }
+  getBreadsItems(): Observable<Data[]> {
+    return this.http.get<Data[]>(`${this._urlAll}/${this._categoryBread}`);
   }
 
   // addUser(user: Fruits): Observable<Fruits> {

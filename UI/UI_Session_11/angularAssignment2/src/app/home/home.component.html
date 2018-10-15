@@ -8,36 +8,54 @@
 
 <body>
   <header class="border-bottom p-4 mb-2">
-    <a href="#" class="px-2 offset-md-1 text-dark">
-      <i class="fas fa-leaf"></i>
-    </a>
-    <a href="#" class="px-2 text-muted">
-      <i class="fas fa-shopping-cart"></i>
-    </a>
-    <a href="#" class="badge badge-warning p-2 rounded">4</a>
+    <nav>
+      <a href="#" class="px-2 offset-md-1 text-dark">
+        <i class="fas fa-leaf"></i>
+      </a>
+      <a href="#" class="px-2 text-muted">
+        <i class="fas fa-shopping-cart"></i>
+      </a>
+      <a routerLink="/shopping-cart" class="badge badge-warning p-2 rounded">{{cartLength}}</a>
+    </nav>
+    <!--  [cartItem]=cartItem -->
+    <app-show-cart-item [length]=cartLength></app-show-cart-item>
   </header>
   <section class="row">
-    <div class="col-md-2 offset-md-1">
-      <ul class="list-unstyled">
-        <li class="list-group-item list-group-item active" (click)="categoryType('all')" ng-class="{'active': isActive}">
+    <div class="col-md-3 offset-md-1 p-2">
+      <ul class="list-unstyled" id="sideMenu">
+        <li class="list-group-item list-group-item" (click)="categoryType('all')" [class.isActive]="type === 'all'">
           All Categories
         </li>
-        <li class="list-group-item list-group-item" (click)="categoryType('fruits')" ng-class="{'active': isActive}">
+        <li class="list-group-item list-group-item" (click)="categoryType('bread')" [class.isActive]="type === 'bread'">
+          Bread
+        </li>
+        <li class="list-group-item list-group-item" (click)="categoryType('dairy')" [class.isActive]="type === 'dairy'">
+          Dairy
+        </li>
+        <li class="list-group-item list-group-item" (click)="categoryType('fruits')" [class.isActive]="type === 'fruits'">
           Fruits
         </li>
-        <li class="list-group-item list-group-item" (click)="categoryType('vegetables')" ng-class="{'active': isActive}">
+        <li class="list-group-item list-group-item" (click)="categoryType('season')" [class.isActive]="type === 'season'">
+          Seasonings and Spices
+        </li>
+        <li class="list-group-item list-group-item" (click)="categoryType('vegetables')" [class.isActive]="type === 'vegetables'">
           Vegetables
         </li>
       </ul>
     </div>
-    <section class="row mb-2 p-2 col-9">
-      <div class='col-6 mb-5' *ngFor="let value of data">
-        <div class="card " style="width: 30rem; ">
-          <img class="card-img-top " height="200px " [src]="value.imgUrl " alt="Card image cap ">
+    <section class="row mb-2 p-2 col-8">
+      <div class='col-5 mb-5' *ngFor="let product of data">
+        <div class="card">
+          <img class="card-img-top " height="200px " [src]="product.imgUrl " alt="Card image cap ">
           <div class="card-body p-0 ">
-            <h5 class="card-title px-4 pt-2 ">{{value.name}}</h5>
-            <p class="card-text px-4 ">$ {{value.price}}</p>
-            <a href="# " class="btn btn-secondary btn-block ">Add to cart</a>
+            <h5 class="card-title px-4 pt-2 ">{{product.name}}</h5>
+            <p class="card-text px-4 ">$ {{product.price}}</p>
+            <a *ngIf="booleanArray[product.id]!=true" href="# " class="btn btn-secondary btn-block" (click)=addToCart(product)>ADD TO CART</a>
+            <div *ngIf="booleanArray[product.id]==true" class="row p-0 m-0">
+              <a class="btn btn-secondary col-3 text-white" (click)=quantityDecrease(product)>-</a>
+              <span class="col-6 border-top d-flex justify-content-center align-items-center">{{this.cartItem[product.id].quantity}} in cart</span>
+              <a class="btn btn-secondary col-3 text-white" (click)=quantityIncrease(product)>+</a>
+            </div>
           </div>
         </div>
       </div>
