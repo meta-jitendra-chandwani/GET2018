@@ -7,7 +7,7 @@ import { UsersComponent } from './users/users.component';
 import { ShowCartItemComponent } from './show-cart-item/show-cart-item.component';
 import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
-  { path: 'shopping-cart', component: ShowCartItemComponent }
+  { path: 'shopping-cart', component: ShowCartItemComponent, data: { "length": 0, "cartItemArray": [] } }
 ];
 @NgModule({
   // exports: [RouterModule],
@@ -18,7 +18,7 @@ const routes: Routes = [
     ShowCartItemComponent
   ],
   imports: [
-    BrowserModule, HttpClientModule,RouterModule.forRoot(routes)
+    BrowserModule, HttpClientModule, RouterModule.forRoot(routes)
   ],
   providers: [],
   bootstrap: [AppComponent]

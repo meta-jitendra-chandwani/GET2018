@@ -5,12 +5,14 @@ import { AddToCartServiceService } from '../services/add-to-cart-service.service
 import { Order } from '../order';
 import { AfterViewInit, ViewChild } from '@angular/core';
 import { ShowCartItemComponent } from '../show-cart-item/show-cart-item.component'
+import { ActivatedRoute } from '../../../node_modules/@angular/router';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
+
 export class HomeComponent implements OnInit {
 
   public data = [];
@@ -18,28 +20,29 @@ export class HomeComponent implements OnInit {
   public add: boolean = true;
   public addInCart: boolean = false;
   public selectedIdx: number;
-  public cartCount:number=0;
-  public cartItemArray: Order[] = [{
-    "id": null,
-    "productName": "",
-    "price": null,
-    "quantity": null
-  }];
+  public cartCount: number = 0;
+  public cartItemArray: Order[] = [];
   public booleanArray: boolean[] = [];
   public cartLength: number = 0;
   constructor(
     private dataService: DataServiceService,
-    private addToCartService: AddToCartServiceService
+    private route: ActivatedRoute
   ) { }
-
-  // @ViewChild(ShowCartItemComponent)
-  // private showCartComponent: ShowCartItemComponent;
 
 
   ngOnInit() {
     this.categoryType(this.type);
   }
 
+  getCartItemArray(l): Order[] {
+    debugger
+    return this.cartItemArray;
+  }
+
+  getCartLength(a): number {
+    debugger
+    return this.cartLength;
+  }
   categoryType(type: string) {
     this.type = type;
     this.data = [];
@@ -60,31 +63,50 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  quantityDecrease(productId: number) {
+
+  addToJson(): void {
     debugger
-    this.cartItemArray[productId].quantity--;
-    if (this.cartItemArray[productId].quantity == 0) {
-      this.cartLength--;
-      this.booleanArray[productId] = false;
-      this.cartItemArray[productId] = null;
-    }
-  }
-  quantityIncrease(productId: number) {
-    debugger
-    this.cartItemArray[productId].quantity++;
+    this.dataService.saveCartItem(this.cartItemArray)
+      .subscribe();
   }
 
-  addToCart(product: Data): Order[] {
+
+  quantityDecrease(product: Data) {
+    debugger
+
+    var i;
+    for (i = 0; i <= this.cartItemArray.length; i++) {
+      if (this.cartItemArray[i].Product == product) {
+        this.cartItemArray[i].quantity--;
+        if (this.cartItemArray[i].quantity == 0) {
+          this.cartLength--;
+          this.booleanArray[product.id] = false;
+          this.cartItemArray.splice(i, 1)
+        }
+        break;
+      }
+    }
+  }
+  quantityIncrease(product: Data) {
+    debugger
+    var i;
+    for (i = 0; i <= this.cartItemArray.length; i++) {
+      if (this.cartItemArray[i].Product == product) {
+        this.cartItemArray[i].quantity++;
+        break;
+      }
+    }
+  }
+
+  addToCart(product: Data): void {
     debugger
     const cartItem: Order = new Order();
-    cartItem.id=++this.cartLength;
-    cartItem.price = product.price;
-    cartItem.productName = product.name;
+    cartItem.Product = product;
     cartItem.quantity = 1;
-    this.cartItemArray[product.id] = cartItem;
+    this.cartItemArray.push(cartItem);
     this.booleanArray[product.id] = true;
-    // this.cartLength++;
-    return this.cartItemArray;
+    this.cartLength++;
+    // return this.cartItemArray;
   }
 
   getDairy(): any {
