@@ -4,7 +4,7 @@ import { DataServiceService } from '../services/data-service.service'
 import { AddToCartServiceService } from '../services/add-to-cart-service.service'
 import { Order } from '../order';
 import { AfterViewInit, ViewChild } from '@angular/core';
-import { ShowCartItemComponent} from '../show-cart-item/show-cart-item.component'
+import { ShowCartItemComponent } from '../show-cart-item/show-cart-item.component'
 
 @Component({
   selector: 'app-home',
@@ -15,13 +15,18 @@ export class HomeComponent implements OnInit {
 
   public data = [];
   public type: string = "all";
-  public quantity = 1;
   public add: boolean = true;
   public addInCart: boolean = false;
   public selectedIdx: number;
-  public cartItem:Order[] = [];
-  public booleanArray:boolean[]=[];
-  public cartLength:number=0;
+  public cartCount:number=0;
+  public cartItemArray: Order[] = [{
+    "id": null,
+    "productName": "",
+    "price": null,
+    "quantity": null
+  }];
+  public booleanArray: boolean[] = [];
+  public cartLength: number = 0;
   constructor(
     private dataService: DataServiceService,
     private addToCartService: AddToCartServiceService
@@ -29,7 +34,7 @@ export class HomeComponent implements OnInit {
 
   // @ViewChild(ShowCartItemComponent)
   // private showCartComponent: ShowCartItemComponent;
- 
+
 
   ngOnInit() {
     this.categoryType(this.type);
@@ -55,27 +60,31 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  quantityDecrease(product:Data) {
-    this.cartItem[product.id].quantity--;
-    if (this.cartItem[product.id].quantity == 0) {
-      this.booleanArray[product.id] = false;
+  quantityDecrease(productId: number) {
+    debugger
+    this.cartItemArray[productId].quantity--;
+    if (this.cartItemArray[productId].quantity == 0) {
       this.cartLength--;
+      this.booleanArray[productId] = false;
+      this.cartItemArray[productId] = null;
     }
   }
-  quantityIncrease(product:Data) {
-    this.cartItem[product.id].quantity++;
+  quantityIncrease(productId: number) {
+    debugger
+    this.cartItemArray[productId].quantity++;
   }
 
-  addToCart(product: Data): Order {
-    debugger    
+  addToCart(product: Data): Order[] {
+    debugger
     const cartItem: Order = new Order();
+    cartItem.id=++this.cartLength;
     cartItem.price = product.price;
     cartItem.productName = product.name;
     cartItem.quantity = 1;
-    this.cartItem[product.id]=cartItem;
-    this.booleanArray[product.id]=true;
-    this.cartLength++;
-    return cartItem;
+    this.cartItemArray[product.id] = cartItem;
+    this.booleanArray[product.id] = true;
+    // this.cartLength++;
+    return this.cartItemArray;
   }
 
   getDairy(): any {

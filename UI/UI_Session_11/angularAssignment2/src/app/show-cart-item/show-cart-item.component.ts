@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Order } from '../order';
 
 @Component({
@@ -7,12 +7,22 @@ import { Order } from '../order';
   styleUrls: ['./show-cart-item.component.css']
 })
 export class ShowCartItemComponent implements OnInit {
-  @Input() length:number;
-  // @Input() cartItem:Order[];
+  @Input() length: number;
+  @Input() cartItemArray: Order[];
+  @Output() childEventIncrease = new EventEmitter();
+  @Output() childEventDecrease = new EventEmitter();
   constructor() { }
 
   ngOnInit() {
-    alert("Hi"+this.length)
   }
+  quantityDecrease(itemId: number) {
+    debugger
+    this.childEventDecrease.emit(itemId);
+  }
+  quantityIncrease(itemId: number) {
+    debugger
+    this.childEventIncrease.emit(itemId);
+  }
+
 
 }

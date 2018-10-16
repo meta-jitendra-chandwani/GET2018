@@ -37,20 +37,29 @@
         Price
       </th>
     </table>
-    <!-- <table *ngFor="let item of cartItem">
-      <tr>
-        {{item.name}}
+    <table *ngFor="let item of cartItemArray">
+      <tr class="row" *ngIf="true">
+        <td class="col">
+          {{item.id}}
+        </td>
+        <td class="col">
+          {{item.productName}}
+        </td>
+
+        <td class="col">
+          <!-- <a class="btn btn-secondary col-3 text-white" (click)=quantityDecrease(item.id)>-</a> -->
+          {{item.quantity}}
+          <!-- <a class="btn btn-secondary col-3 text-white" (click)=quantityIncrease(item.id)>+</a> -->
+
+        </td>
+        <td class="col">
+          {{item.price}}
+        </td>
       </tr>
       <tr>
 
       </tr>
-      <tr>
-
-      </tr>
-      <tr>
-
-      </tr>
-    </table> -->
+    </table>
 
   </section>
 </body>

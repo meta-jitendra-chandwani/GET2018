@@ -17,8 +17,7 @@
       </a>
       <a routerLink="/shopping-cart" class="badge badge-warning p-2 rounded">{{cartLength}}</a>
     </nav>
-    <!--  [cartItem]=cartItem -->
-    <app-show-cart-item [length]=cartLength></app-show-cart-item>
+    <app-show-cart-item [length]="cartLength" [cartItemArray]="cartItemArray" (childEventIncrease)="quantityIncrease(productId)" (childEventDecrease)="quantityDecrease(productId)"></app-show-cart-item>
   </header>
   <section class="row">
     <div class="col-md-3 offset-md-1 p-2">
@@ -52,9 +51,9 @@
             <p class="card-text px-4 ">$ {{product.price}}</p>
             <a *ngIf="booleanArray[product.id]!=true" href="# " class="btn btn-secondary btn-block" (click)=addToCart(product)>ADD TO CART</a>
             <div *ngIf="booleanArray[product.id]==true" class="row p-0 m-0">
-              <a class="btn btn-secondary col-3 text-white" (click)=quantityDecrease(product)>-</a>
-              <span class="col-6 border-top d-flex justify-content-center align-items-center">{{this.cartItem[product.id].quantity}} in cart</span>
-              <a class="btn btn-secondary col-3 text-white" (click)=quantityIncrease(product)>+</a>
+              <a class="btn btn-secondary col-3 text-white" (click)=quantityDecrease(product.id)>-</a>
+              <span class="col-6 border-top d-flex justify-content-center align-items-center">{{this.cartItemArray[product.id].quantity}} in cart</span>
+              <a class="btn btn-secondary col-3 text-white" (click)=quantityIncrease(product.id)>+</a>
             </div>
           </div>
         </div>
