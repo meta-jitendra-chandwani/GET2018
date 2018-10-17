@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>User Management System</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+        crossorigin="anonymous">
+</head>
+
+<body class="container border">
+    <header class="container">
+        <div class="text-center py-1">
+            <strong>User Management</strong>
+        </div>
+    </header>
+    <section class="container">
+        <div class="clearfix pt-5">
+            <h3 class="float-left">Users</h3>
+            <app-modal-basic class="btn float-right py-0 mt-1 mr-5"></app-modal-basic>
+        </div>
+    </section>
+
+    <section class="container row">
+        <div class="col-md-11 flex-row border mb-4" id="search">
+            <i class="fas fa-search col-1"></i>
+            <input type='text' class="col-11" [(ngModel)]="searchText" placeholder='Search...' />
+        </div>
+        <div class="col-md-1">
+            <button type="button" class="btn float-right py-0 mt-1">Search</button>
+        </div>
+    </section>
+
+    <section class="row mb-2 p-2">
+        <div class='col-4 mb-5' *ngFor="let user of users | filter: searchText">
+            <div class="card flex-row justify-content-center align-items-center">
+                <img class="card-img-left img-thumbnail col-4 border-0" src="../../assets/image/user-logo.jpg">
+                <div class="card-body col-8">
+                    <span>
+                        <h5 class="card-title">{{user.name}}</h5>
+                    </span>
+                    <span (click)=show(user)>
+                        <i class="fas fa-pen-alt float-right bg-primary text-dark p-2 rounded-circle">
+                        </i>
+                    </span>
+                    <p class="card-text">
+                        <i class="fas fa-phone pr-2"></i>{{user.mobile}}</p>
+                    <p class="card-text">
+                        <i class='fas fa-map-marker-alt pr-2'></i>{{user.location}}</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>

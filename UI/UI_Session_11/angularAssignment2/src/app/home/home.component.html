@@ -1,0 +1,69 @@
+<head>
+  <title>User Management System</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+    crossorigin="anonymous">
+</head>
+<!-- <router-outlet (lengthOfCart)="getCartLength(l)" (cartItem)="getCartItemArray(a)" (childEventIncrease)="quantityIncrease(product)" (childEventDecrease)="quantityDecrease(product)"></router-outlet> -->
+
+<body>
+
+<!-- </body> *ngIf="routingEnable==false"> -->
+  <header class="border-bottom p-4 mb-2">
+    <nav>
+      <a href="#" class="px-2 offset-md-1 text-dark">
+        <i class="fas fa-leaf"></i>
+      </a>
+      <a href="#" class="px-2 text-muted">
+        <i class="fas fa-shopping-cart"></i>
+      </a>
+      <a routerLink="/shopping-cart" class="badge badge-warning p-2 rounded" (click)="addToJson()">{{cartLength}}</a>
+    </nav>
+    <!-- <router-outlet [length]="cartLength" [cartItemArray]="cartItemArray" (childEventIncrease)="quantityIncrease(product)" (childEventDecrease)="quantityDecrease(product)"></router-outlet> -->
+    <!-- <app-show-cart-item [length]="cartLength" [cartItemArray]="cartItemArray" (childEventIncrease)="quantityIncrease(product)" (childEventDecrease)="quantityDecrease(product)"></app-show-cart-item> -->
+  </header>
+  <section class="row">
+    <div class="col-md-3 offset-md-1 p-2">
+      <ul class="list-unstyled" id="sideMenu">
+        <li class="list-group-item list-group-item" (click)="categoryType('all')" [class.isActive]="type === 'all'">
+          All Categories
+        </li>
+        <li class="list-group-item list-group-item" (click)="categoryType('bread')" [class.isActive]="type === 'bread'">
+          Bread
+        </li>
+        <li class="list-group-item list-group-item" (click)="categoryType('dairy')" [class.isActive]="type === 'dairy'">
+          Dairy
+        </li>
+        <li class="list-group-item list-group-item" (click)="categoryType('fruits')" [class.isActive]="type === 'fruits'">
+          Fruits
+        </li>
+        <li class="list-group-item list-group-item" (click)="categoryType('season')" [class.isActive]="type === 'season'">
+          Seasonings and Spices
+        </li>
+        <li class="list-group-item list-group-item" (click)="categoryType('vegetables')" [class.isActive]="type === 'vegetables'">
+          Vegetables
+        </li>
+      </ul>
+    </div>
+    <section class="row mb-2 p-2 col-8">
+      <div class='col-5 mb-5' *ngFor="let product of data">
+        <div class="card">
+          <img class="card-img-top " height="200px " [src]="product.imgUrl " alt="Card image cap ">
+          <div class="card-body p-0 ">
+            <h5 class="card-title px-4 pt-2 ">{{product.name}}</h5>
+            <p class="card-text px-4 ">$ {{product.price}}</p>
+            <a *ngIf="booleanArray[product.id]!=true" href="# " class="btn btn-secondary btn-block" (click)=addToCart(product)>ADD TO CART</a>
+            <div *ngIf="booleanArray[product.id]==true" class="row p-0 m-0">
+              <a class="btn btn-secondary col-3 text-white" (click)=quantityDecrease(product)>-</a>
+              <span class="col-6 border-top d-flex justify-content-center align-items-center">in cart</span>
+              <a class="btn btn-secondary col-3 text-white" (click)=quantityIncrease(product)>+</a>
+              <!-- {{this.cartItemArray[product].quantity}}  -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </section>
+
+</body>

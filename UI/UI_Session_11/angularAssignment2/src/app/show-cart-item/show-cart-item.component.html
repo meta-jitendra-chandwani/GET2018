@@ -1,0 +1,111 @@
+<head>
+  <title>User Management System</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+    crossorigin="anonymous">
+</head>
+
+<body>
+  <header class="p-4 mb-2">
+    <h1>Shopping Cart</h1>
+  </header>
+  <section class="card col-9">
+    <div class="flex-row p-4">
+      <!-- <span class="card-body col-6">
+        You have {{length}} items in your shopping cart.
+      </span> -->
+      <span class="card-body col-6">
+        You have {{cartList[0].length}} items in your shopping cart.
+      </span>
+      <span class="card-body">
+        <span class="btn btn-secondary">
+          Clear Shopping Cart
+        </span>
+      </span>
+    </div>
+
+
+    <!-- <table class="px-10">
+      <tr style="display:flex;text-align:center;align-items:center;border-top:0.25px solid grey">
+        <th class="p-2" style="flex:1">
+
+        </th>
+        <th class="p-2" style="flex:1">
+          Product
+        </th>
+        <th class="p-2" style="flex:1">
+          Quantity
+        </th>
+        <th class="p-2" style="flex:1">
+          Price
+        </th>
+      </tr>
+      <tr *ngFor="let item of cartItemArray" style="display:flex;text-align:center;align-items:center;border-top:0.25px solid grey">
+        <td class="p-2" style="flex:1;" *ngIf="item.quantity!=null">
+          <img class="rounded-circle" height="50px" [src]="item.Product.imgUrl" alt="Card image cap ">
+        </td>
+        <td class="p-2" style="flex:1" *ngIf="item.quantity!=null">
+          {{item.Product.name}}
+        </td>
+
+        <td class="p-2" style="flex:1" *ngIf="item.quantity!=null">
+          <!-- <a class="btn btn-secondary col-3 text-white" (click)=quantityDecrease(item.id)>-</a> 
+          {{item.quantity}}
+          <!-- <a class="btn btn-secondary col-3 text-white" (click)=quantityIncrease(item.id)>+</a> 
+
+        </td>
+        <td class="p-2" style="flex:1" *ngIf="item.quantity!=null">
+          $ {{item.Product.price}}
+        </td>
+      </tr>
+    </table> -->
+
+
+
+    <table class="px-10">
+      <tr style="display:flex;text-align:center;align-items:center;border-top:0.25px solid grey">
+        <th class="p-2" style="flex:1">
+
+        </th>
+        <th class="p-2" style="flex:1">
+          Product
+        </th>
+        <th class="p-2" style="flex:1">
+          Quantity
+        </th>
+        <th class="p-2" style="flex:1">
+          Price
+        </th>
+      </tr>
+      <tr *ngFor="let item of cartList[0]" style="display:flex;text-align:center;align-items:center;border-top:0.25px solid grey">
+        <td class="p-2" style="flex:1;" *ngIf="item.quantity!=null">
+          <img class="rounded-circle" height="50px" [src]="item.Product.imgUrl" alt="Card image cap ">
+        </td>
+        <td class="p-2" style="flex:1" *ngIf="item.quantity!=null">
+          {{item.Product.name}}
+        </td>
+
+        <td class="p-2" style="flex:1" *ngIf="item.quantity!=null">
+          <a class="btn btn-secondary col-3 text-white" (click)=quantityDecrease(item.id)>-</a>
+          {{item.quantity}}
+          <a class="btn btn-secondary col-3 text-white" (click)=quantityIncrease(item.id)>+</a>
+
+        </td>
+        <td class="p-2" style="flex:1" *ngIf="item.quantity!=null">
+          $ {{item.Product.price}}
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <button class="btn btn-primary">Checkout</button>
+          <span>{{total}}</span>
+        </td>
+
+
+      </tr>
+
+    </table>
+
+  </section>
+</body>

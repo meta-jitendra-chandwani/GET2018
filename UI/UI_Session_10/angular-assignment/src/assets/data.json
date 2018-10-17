@@ -1,0 +1,64 @@
+{
+  "user": [
+    {
+      "id": 1,
+      "name": "Jitendra",
+      "mobile": "9829699033",
+      "location": "Rajasthan"
+    },
+    {
+      "id": 2,
+      "name": "Rahul Sharma",
+      "mobile": "9782270497",
+      "location": "Rajasthan"
+    },
+    {
+      "id": 3,
+      "name": "Vaibhav",
+      "mobile": "456987455",
+      "location": "Rajasthan"
+    },
+    {
+      "id": 4,
+      "name": "Ram Ji lal",
+      "mobile": "9829699033",
+      "location": "Rajasthan"
+    },
+    {
+      "id": 5,
+      "name": "Kunika Tomer",
+      "mobile": "9782270497",
+      "location": "Delhi"
+    },
+    {
+      "id": 6,
+      "name": "Mayank",
+      "mobile": "9782270497",
+      "location": "Delhi"
+    },
+    {
+      "id": 7,
+      "name": "Rajendra",
+      "mobile": "9782270497",
+      "location": "Delhi"
+    },
+    {
+      "name": "Sankalp",
+      "mobile": "145236987",
+      "location": "sankalp home",
+      "id": 8
+    },
+    {
+      "name": "Vaibhav",
+      "mobile": "121345645",
+      "location": "78 kumba marg",
+      "id": 9
+    },
+    {
+      "name": "Ayushi Nagar",
+      "mobile": "7073722442",
+      "location": "Banglore",
+      "id": 10
+    }
+  ]
+}
