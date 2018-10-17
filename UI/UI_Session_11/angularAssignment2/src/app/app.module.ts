@@ -15,7 +15,7 @@ const routes: Routes = [
     AppComponent,
     HomeComponent,
     UsersComponent,
-    ShowCartItemComponent
+    ShowCartItemComponent,
   ],
   imports: [
     BrowserModule, HttpClientModule, RouterModule.forRoot(routes)

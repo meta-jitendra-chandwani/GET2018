@@ -1,11 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Data } from '../fruits';
 import { DataServiceService } from '../services/data-service.service'
-import { AddToCartServiceService } from '../services/add-to-cart-service.service'
 import { Order } from '../order';
-import { AfterViewInit, ViewChild } from '@angular/core';
-import { ShowCartItemComponent } from '../show-cart-item/show-cart-item.component'
-import { ActivatedRoute } from '../../../node_modules/@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -24,9 +20,9 @@ export class HomeComponent implements OnInit {
   public cartItemArray: Order[] = [];
   public booleanArray: boolean[] = [];
   public cartLength: number = 0;
+  public routingEnable: boolean = false;
   constructor(
     private dataService: DataServiceService,
-    private route: ActivatedRoute
   ) { }
 
 
@@ -66,6 +62,7 @@ export class HomeComponent implements OnInit {
 
   addToJson(): void {
     debugger
+    this.routingEnable=true;
     this.dataService.saveCartItem(this.cartItemArray)
       .subscribe();
   }
