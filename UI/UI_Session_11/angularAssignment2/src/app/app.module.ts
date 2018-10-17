@@ -3,18 +3,19 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
-import { UsersComponent } from './users/users.component';
 import { ShowCartItemComponent } from './show-cart-item/show-cart-item.component';
 import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
-  { path: 'shopping-cart', component: ShowCartItemComponent, data: { "length": 0, "cartItemArray": [] } }
+  { path: '', redirectTo: '/home-cart', pathMatch: 'full' },
+  { path: 'shopping-cart', component: ShowCartItemComponent },
+  { path: 'home-cart', component: HomeComponent }
+
 ];
+
 @NgModule({
-  // exports: [RouterModule],
   declarations: [
     AppComponent,
     HomeComponent,
-    UsersComponent,
     ShowCartItemComponent,
   ],
   imports: [

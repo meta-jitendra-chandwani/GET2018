@@ -19,32 +19,19 @@ export class ShowCartItemComponent implements OnInit {
   public cartItemArray: Order;
   public cartList: Order[] = [];
   public sub;
-  public total:number=0;
+  public total: number = 0;
   constructor(
     private dataService: DataServiceService, ) { }
 
 
   ngOnInit() {
-    debugger
-    this.getCartItem();
-
-    alert(this.cartItem[0].quantity)
-    // var i;
-    // var total:number=0;
-    // for (i = 0; i <= this.cartList.length; i++) {
-    //   this.total += this.cartList[i].Product.price * this.cartList[i].quantity
-    // }
-    // this.length = this.cartList.length;
-    // this.cartItemArray = this.cartList;
-    // alert(this.cartList.Product[1].quantity)
   }
 
-  getCartItem(): any {
+  getCartItem(): any{
+    alert("Data")
     this.dataService.getCartItem().subscribe((data: Order[]) => this.cartList = data);
   }
-  ngOnDestroy() {
-    this.sub.unsubscribe();
-  }
+
   quantityDecrease(itemId: number) {
     debugger
     this.childEventDecrease.emit(itemId);

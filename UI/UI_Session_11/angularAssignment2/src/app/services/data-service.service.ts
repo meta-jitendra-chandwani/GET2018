@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { Data } from "../fruits";
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Order } from '../order';
+import { map } from 'rxjs/operators';
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
@@ -41,12 +42,13 @@ export class DataServiceService {
 
   saveCartItem(cartItemArray: Order[]) {
     debugger
-    return this.http.post<Order[]>(this._cartUrl,cartItemArray,httpOptions)
+    return this.http.post<Order[]>(this._cartUrl, cartItemArray, httpOptions)
   }
 
-  getCartItem():Observable<Order[]>{
+  getCartItem(): Observable<Order[]> {
     debugger
-    return this.http.get<Order[]>(this._cartUrl);
+    return this.http.get<Order[]>(this._cartUrl)
+      .pipe(map(response => response));
   }
 
   // addUser(user: Fruits): Observable<Fruits> {

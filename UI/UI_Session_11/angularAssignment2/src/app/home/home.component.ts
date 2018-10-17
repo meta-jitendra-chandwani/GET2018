@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Data } from '../fruits';
 import { DataServiceService } from '../services/data-service.service'
 import { Order } from '../order';
+import { ShowCartItemComponent } from '../show-cart-item/show-cart-item.component'
 
 @Component({
   selector: 'app-home',
@@ -21,13 +22,22 @@ export class HomeComponent implements OnInit {
   public booleanArray: boolean[] = [];
   public cartLength: number = 0;
   public routingEnable: boolean = false;
+  // public router;
   constructor(
     private dataService: DataServiceService,
   ) { }
-
+  @Output() eventClicked = new EventEmitter<Event>();
+  // @ViewChild(ShowCartItemComponent) childComponent;
 
   ngOnInit() {
     this.categoryType(this.type);
+  }
+
+  ngOnDestroy() {
+    debugger
+    this.dataService.saveCartItem(this.cartItemArray).subscribe(() => console.log("Data Save"));
+    this.eventClicked.emit();
+
   }
 
   getCartItemArray(l): Order[] {
@@ -60,12 +70,10 @@ export class HomeComponent implements OnInit {
   }
 
 
-  addToJson(): void {
-    debugger
-    this.routingEnable=true;
-    this.dataService.saveCartItem(this.cartItemArray)
-      .subscribe();
-  }
+  // addToJson(): void {
+  //   debugger
+  // }
+
 
 
   quantityDecrease(product: Data) {
