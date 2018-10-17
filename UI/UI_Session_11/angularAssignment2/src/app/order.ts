@@ -1,6 +1,7 @@
+import { Data } from "./fruits";
+
 export class Order {
-    id:number;
-    productName: string;
-    price: number;
+    Product: Data;
     quantity: number;
+    totalPrice: number;
 }

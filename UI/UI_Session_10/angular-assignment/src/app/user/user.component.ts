@@ -36,7 +36,7 @@ export class UserComponent implements OnInit {
 
   getUser(): any {
     debugger
-    return this.userService.getItems().subscribe((data: User[]) => this.users = data);
+    return this.userService.getItems().subscribe((data) => this.users.push(data));
   }
 
 }

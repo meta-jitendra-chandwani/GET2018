@@ -5,8 +5,11 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
     crossorigin="anonymous">
 </head>
+<!-- <router-outlet (lengthOfCart)="getCartLength(l)" (cartItem)="getCartItemArray(a)" (childEventIncrease)="quantityIncrease(product)" (childEventDecrease)="quantityDecrease(product)"></router-outlet> -->
 
 <body>
+
+<!-- </body> *ngIf="routingEnable==false"> -->
   <header class="border-bottom p-4 mb-2">
     <nav>
       <a href="#" class="px-2 offset-md-1 text-dark">
@@ -15,9 +18,10 @@
       <a href="#" class="px-2 text-muted">
         <i class="fas fa-shopping-cart"></i>
       </a>
-      <a routerLink="/shopping-cart" class="badge badge-warning p-2 rounded">{{cartLength}}</a>
+      <a routerLink="/shopping-cart" class="badge badge-warning p-2 rounded" (click)="addToJson()">{{cartLength}}</a>
     </nav>
-    <app-show-cart-item [length]="cartLength" [cartItemArray]="cartItemArray" (childEventIncrease)="quantityIncrease(productId)" (childEventDecrease)="quantityDecrease(productId)"></app-show-cart-item>
+    <!-- <router-outlet [length]="cartLength" [cartItemArray]="cartItemArray" (childEventIncrease)="quantityIncrease(product)" (childEventDecrease)="quantityDecrease(product)"></router-outlet> -->
+    <!-- <app-show-cart-item [length]="cartLength" [cartItemArray]="cartItemArray" (childEventIncrease)="quantityIncrease(product)" (childEventDecrease)="quantityDecrease(product)"></app-show-cart-item> -->
   </header>
   <section class="row">
     <div class="col-md-3 offset-md-1 p-2">
@@ -51,9 +55,10 @@
             <p class="card-text px-4 ">$ {{product.price}}</p>
             <a *ngIf="booleanArray[product.id]!=true" href="# " class="btn btn-secondary btn-block" (click)=addToCart(product)>ADD TO CART</a>
             <div *ngIf="booleanArray[product.id]==true" class="row p-0 m-0">
-              <a class="btn btn-secondary col-3 text-white" (click)=quantityDecrease(product.id)>-</a>
-              <span class="col-6 border-top d-flex justify-content-center align-items-center">{{this.cartItemArray[product.id].quantity}} in cart</span>
-              <a class="btn btn-secondary col-3 text-white" (click)=quantityIncrease(product.id)>+</a>
+              <a class="btn btn-secondary col-3 text-white" (click)=quantityDecrease(product)>-</a>
+              <span class="col-6 border-top d-flex justify-content-center align-items-center">in cart</span>
+              <a class="btn btn-secondary col-3 text-white" (click)=quantityIncrease(product)>+</a>
+              <!-- {{this.cartItemArray[product].quantity}}  -->
             </div>
           </div>
         </div>
