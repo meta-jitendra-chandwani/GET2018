@@ -3,7 +3,7 @@ import { Data } from '../fruits';
 import { DataServiceService } from '../services/data-service.service'
 import { Order } from '../order';
 import { ShowCartItemComponent } from '../show-cart-item/show-cart-item.component'
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -19,23 +19,29 @@ export class HomeComponent implements OnInit {
   public selectedIdx: number;
   public cartCount: number = 0;
   public cartItemArray: Order[] = [];
-  public cartArray: any[] =[];
+  public cartArray: any[] = [];
   public booleanArray: boolean[] = [];
   public cartLength: number = 0;
-  public value:number=-1;
+  public value: number = -1;
 
   constructor(
     private dataService: DataServiceService,
+    private router: Router
   ) { }
 
   ngOnInit() {
     this.categoryType(this.type);
   }
 
-  ngOnDestroy() {
+
+  routerClick() {
     debugger
-    this.dataService.saveCartItem(this.cartItemArray).subscribe(() => console.log("Data Save"));
+    if (this.cartItemArray.length != 0) {
+      this.dataService.saveCartItem(this.cartItemArray).subscribe(() => console.log("Data Save"));
+    }
+    this.router.navigate(['/shopping-cart']);
   }
+
 
   getCartItemArray(l): Order[] {
     debugger
@@ -105,7 +111,7 @@ export class HomeComponent implements OnInit {
     this.cartItemArray.push(cartItem);
     this.booleanArray[product.id] = true;
     this.cartLength++;
-    this.cartArray[product.id]=1;
+    this.cartArray[product.id] = 1;
 
   }
 

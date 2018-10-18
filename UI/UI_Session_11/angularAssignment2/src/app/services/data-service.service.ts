@@ -20,6 +20,7 @@ export class DataServiceService {
   private _categoryBread: string = "?category=bread";
   private _categoryDairy: string = "?category=dairy";
   private _cartUrl: string = "http://localhost:3000/order"
+  private _userOrder: string = "http://localhost:3002/user-order";
 
   getDairyItems(): Observable<Data[]> {
     return this.http.get<Data[]>(`${this._urlAll}/${this._categoryDairy}`);
@@ -53,6 +54,13 @@ export class DataServiceService {
   deleteCartItem(): Observable<Order[]> {
     debugger
     return this.http.delete<Order[]>(`${this._cartUrl}/1`);
+  }
+
+  saveOrderItem(cartItem: Order[]) {
+    return this.http.post<Order[]>(this._userOrder, cartItem, httpOptions)
+  }
+  getOrderItems(): Observable<Order[]> {
+    return this.http.get<Order[]>(this._userOrder);
   }
 
 }

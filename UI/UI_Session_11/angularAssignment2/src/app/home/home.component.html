@@ -15,7 +15,7 @@
       <a routerLink="/shopping-cart" class="px-2 text-muted">
         <i class="fas fa-shopping-cart"></i>
       </a>
-      <a routerLink="/shopping-cart" class="badge badge-warning p-2 rounded">{{cartLength}}</a>
+      <a class="badge badge-warning p-2 rounded" (click)="routerClick()">{{cartLength}}</a>
     </nav>
   </header>
   <section class="row">

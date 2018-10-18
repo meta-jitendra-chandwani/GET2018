@@ -1,36 +1,51 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Order } from '../order';
-import { ActivatedRoute } from '@angular/router'
 import { DataServiceService } from '../services/data-service.service';
-import { validateConfig } from '../../../node_modules/@angular/router/src/config';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-show-cart-item',
   templateUrl: './show-cart-item.component.html',
   styleUrls: ['./show-cart-item.component.css']
 })
 export class ShowCartItemComponent implements OnInit {
-  // @Input() length: number;
-  // @Input() cartItemArray: Order[];
+
   @Output() childEventIncrease = new EventEmitter();
   @Output() childEventDecrease = new EventEmitter();
   @Output() lengthOfCart = new EventEmitter();
   @Output() cartItem = new EventEmitter();
   public length: number;
   public cartItemArray: Order;
-  public cartList: Order[] = [];
+  public cartList;
   public sub;
   public total: number = 0;
   constructor(
-    private dataService: DataServiceService, ) { }
+    private spinner: NgxSpinnerService,
+    private dataService: DataServiceService,
+    private router: Router) { }
 
 
   ngOnInit() {
-    this.getCartItem();
+    this.spinner.show();
+
+    setTimeout(() => {
+      this.functionCall();
+      this.spinner.hide();
+    }, 500);
+  }
+  functionCall() {
+    this.dataService.getCartItem().subscribe((data: Order[]) => {
+      this.cartList = data[0],
+        this.calculateTotal(this.cartList);
+    });
   }
 
-  getCartItem(): any {
-    // alert("Data")
-    this.dataService.getCartItem().subscribe((data: Order[]) => this.cartList = data);
+  calculateTotal(list) {
+    var i;
+    for (i = 0; i < list.length; i++) {
+      this.total += list[i].Product.price * list[i].quantity;
+    }
   }
 
   quantityDecrease(itemId: number) {
@@ -49,5 +64,7 @@ export class ShowCartItemComponent implements OnInit {
     });
   }
 
-
+  checkout() {
+    this.router.navigate(['/check-out']);
+  }
 }
