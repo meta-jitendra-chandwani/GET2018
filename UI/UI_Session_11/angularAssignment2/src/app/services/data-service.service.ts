@@ -50,14 +50,9 @@ export class DataServiceService {
     return this.http.get<Order[]>(this._cartUrl)
       .pipe(map(response => response));
   }
+  deleteCartItem(): Observable<Order[]> {
+    debugger
+    return this.http.delete<Order[]>(`${this._cartUrl}/1`);
+  }
 
-  // addUser(user: Fruits): Observable<Fruits> {
-  //   debugger
-  //   return this.http.post<Fruits>(this._url, user, httpOptions);
-  // }
-
-  // updateUser(user: Fruits): Observable<any> {
-  //   debugger;
-  //   return this.http.put(`${this._url}/${user.id}`, user, httpOptions);
-  // }
 }

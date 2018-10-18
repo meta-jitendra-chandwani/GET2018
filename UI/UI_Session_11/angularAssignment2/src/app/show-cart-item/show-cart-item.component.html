@@ -7,60 +7,30 @@
 </head>
 
 <body>
-  <header class="p-4 mb-2">
-    <h1>Shopping Cart</h1>
+  <header class="border-bottom p-4 mb-2">
+    <nav>
+      <a routerLink="/home-cart" class="px-2 offset-md-1 text-dark">
+        <i class="fas fa-leaf"></i>
+      </a>
+      <a routerLink="/shopping-cart" class="px-2 text-muted">
+        <i class="fas fa-shopping-cart"></i>
+      </a>
+      <a routerLink="/shopping-cart" class="badge badge-warning p-2 rounded">{{cartLength}}</a>
+    </nav>
   </header>
-  <section class="card col-9">
+
+  <section class="card col-9" *ngIf="cartList.length!=0">
+    <h1>Shopping Cart</h1>
     <div class="flex-row p-4">
-      <!-- <span class="card-body col-6">
-        You have {{length}} items in your shopping cart.
-      </span> -->
       <span class="card-body col-6">
         You have {{cartList[0].length}} items in your shopping cart.
       </span>
       <span class="card-body">
-        <span class="btn btn-secondary">
+        <span class="btn btn-secondary" (click)="clearCart()">
           Clear Shopping Cart
         </span>
       </span>
     </div>
-
-
-    <!-- <table class="px-10">
-      <tr style="display:flex;text-align:center;align-items:center;border-top:0.25px solid grey">
-        <th class="p-2" style="flex:1">
-
-        </th>
-        <th class="p-2" style="flex:1">
-          Product
-        </th>
-        <th class="p-2" style="flex:1">
-          Quantity
-        </th>
-        <th class="p-2" style="flex:1">
-          Price
-        </th>
-      </tr>
-      <tr *ngFor="let item of cartItemArray" style="display:flex;text-align:center;align-items:center;border-top:0.25px solid grey">
-        <td class="p-2" style="flex:1;" *ngIf="item.quantity!=null">
-          <img class="rounded-circle" height="50px" [src]="item.Product.imgUrl" alt="Card image cap ">
-        </td>
-        <td class="p-2" style="flex:1" *ngIf="item.quantity!=null">
-          {{item.Product.name}}
-        </td>
-
-        <td class="p-2" style="flex:1" *ngIf="item.quantity!=null">
-          <!-- <a class="btn btn-secondary col-3 text-white" (click)=quantityDecrease(item.id)>-</a> 
-          {{item.quantity}}
-          <!-- <a class="btn btn-secondary col-3 text-white" (click)=quantityIncrease(item.id)>+</a> 
-
-        </td>
-        <td class="p-2" style="flex:1" *ngIf="item.quantity!=null">
-          $ {{item.Product.price}}
-        </td>
-      </tr>
-    </table> -->
-
 
 
     <table class="px-10">
@@ -76,6 +46,9 @@
         </th>
         <th class="p-2" style="flex:1">
           Price
+        </th>
+        <th class="p-2" style="flex:1">
+          Total Price
         </th>
       </tr>
       <tr *ngFor="let item of cartList[0]" style="display:flex;text-align:center;align-items:center;border-top:0.25px solid grey">
@@ -95,6 +68,9 @@
         <td class="p-2" style="flex:1" *ngIf="item.quantity!=null">
           $ {{item.Product.price}}
         </td>
+        <td class="p-2" style="flex:1" *ngIf="item.quantity!=null">
+          $ {{item.Product.price*item.quantity}}
+        </td>
       </tr>
       <tr>
         <td>
@@ -107,5 +83,12 @@
 
     </table>
 
+  </section>
+  <section class="p-4" *ngIf="cartList.length==0">
+    <h1>Your Cart is empty</h1>
+    <button class="p-2" class="btn btn-outline-secondary text-dark">
+      <i class="fas fa-arrow-circle-left"></i>
+      <span routerLink="/home-cart"> Go To Home</span>
+    </button>
   </section>
 </body>

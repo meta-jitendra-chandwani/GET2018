@@ -9,7 +9,7 @@
 <body>
   <header class="border-bottom p-4 mb-2">
     <nav>
-      <a class="px-2 offset-md-1 text-dark">
+      <a routerLink="/home-cart" class="px-2 offset-md-1 text-dark">
         <i class="fas fa-leaf"></i>
       </a>
       <a routerLink="/shopping-cart" class="px-2 text-muted">
@@ -51,7 +51,7 @@
             <button *ngIf="booleanArray[product.id]!=true" class="btn btn-secondary btn-block" (click)=addToCart(product)>ADD TO CART</button>
             <div *ngIf="booleanArray[product.id]==true" class="row p-0 m-0">
               <button class="btn btn-secondary col-3 text-white" (click)=quantityDecrease(product)>-</button>
-              <span class="col-6 border-top d-flex justify-content-center align-items-center">in cart</span>
+              <span class="col-6 border-top d-flex justify-content-center align-items-center">{{cartArray[product.id]}} in cart</span>
               <button class="btn btn-secondary col-3 text-white" (click)=quantityIncrease(product)>+</button>
             </div>
           </div>

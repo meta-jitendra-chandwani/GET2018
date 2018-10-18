@@ -25,10 +25,11 @@ export class ShowCartItemComponent implements OnInit {
 
 
   ngOnInit() {
+    this.getCartItem();
   }
 
-  getCartItem(): any{
-    alert("Data")
+  getCartItem(): any {
+    // alert("Data")
     this.dataService.getCartItem().subscribe((data: Order[]) => this.cartList = data);
   }
 
@@ -39,6 +40,13 @@ export class ShowCartItemComponent implements OnInit {
   quantityIncrease(itemId: number) {
     debugger
     this.childEventIncrease.emit(itemId);
+  }
+
+  clearCart() {
+    debugger
+    this.dataService.deleteCartItem().subscribe((data) => {
+      console.log("success");
+    });
   }
 
 

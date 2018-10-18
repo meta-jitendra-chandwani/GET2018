@@ -19,15 +19,14 @@ export class HomeComponent implements OnInit {
   public selectedIdx: number;
   public cartCount: number = 0;
   public cartItemArray: Order[] = [];
+  public cartArray: any[] =[];
   public booleanArray: boolean[] = [];
   public cartLength: number = 0;
-  public routingEnable: boolean = false;
-  // public router;
+  public value:number=-1;
+
   constructor(
     private dataService: DataServiceService,
   ) { }
-  @Output() eventClicked = new EventEmitter<Event>();
-  // @ViewChild(ShowCartItemComponent) childComponent;
 
   ngOnInit() {
     this.categoryType(this.type);
@@ -36,8 +35,6 @@ export class HomeComponent implements OnInit {
   ngOnDestroy() {
     debugger
     this.dataService.saveCartItem(this.cartItemArray).subscribe(() => console.log("Data Save"));
-    this.eventClicked.emit();
-
   }
 
   getCartItemArray(l): Order[] {
@@ -69,17 +66,10 @@ export class HomeComponent implements OnInit {
     }
   }
 
-
-  // addToJson(): void {
-  //   debugger
-  // }
-
-
-
   quantityDecrease(product: Data) {
     debugger
-
     var i;
+    this.cartArray[product.id]--;
     for (i = 0; i <= this.cartItemArray.length; i++) {
       if (this.cartItemArray[i].Product == product) {
         this.cartItemArray[i].quantity--;
@@ -91,7 +81,9 @@ export class HomeComponent implements OnInit {
         break;
       }
     }
+
   }
+
   quantityIncrease(product: Data) {
     debugger
     var i;
@@ -101,17 +93,20 @@ export class HomeComponent implements OnInit {
         break;
       }
     }
+    this.cartArray[product.id]++;
   }
 
   addToCart(product: Data): void {
     debugger
+    this.value++;
     const cartItem: Order = new Order();
     cartItem.Product = product;
     cartItem.quantity = 1;
     this.cartItemArray.push(cartItem);
     this.booleanArray[product.id] = true;
     this.cartLength++;
-    // return this.cartItemArray;
+    this.cartArray[product.id]=1;
+
   }
 
   getDairy(): any {
