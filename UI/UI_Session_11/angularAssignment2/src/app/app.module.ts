@@ -3,22 +3,36 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
-import { UsersComponent } from './users/users.component';
 import { ShowCartItemComponent } from './show-cart-item/show-cart-item.component';
 import { RouterModule, Routes } from '@angular/router';
+import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { CheckOutComponent } from './check-out/check-out.component';
+import { OrderSuccessComponent } from './order-success/order-success.component';
+
 const routes: Routes = [
-  { path: 'shopping-cart', component: ShowCartItemComponent, data: { "length": 0, "cartItemArray": [] } }
+  { path: '', redirectTo: '/home-cart', pathMatch: 'full' },
+  { path: 'shopping-cart', component: ShowCartItemComponent },
+  { path: 'home-cart', component: HomeComponent },
+  { path: 'check-out', component: CheckOutComponent },
+  { path: 'order-success', component: OrderSuccessComponent }
+
 ];
+
 @NgModule({
-  // exports: [RouterModule],
   declarations: [
     AppComponent,
     HomeComponent,
-    UsersComponent,
     ShowCartItemComponent,
+    CheckOutComponent,
+    OrderSuccessComponent,
   ],
   imports: [
-    BrowserModule, HttpClientModule, RouterModule.forRoot(routes)
+    Ng4LoadingSpinnerModule.forRoot(),
+    BrowserModule,
+    HttpClientModule,
+    RouterModule.forRoot(routes),
+    NgxSpinnerModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

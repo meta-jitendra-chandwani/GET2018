@@ -21,14 +21,8 @@ export class UserComponent implements OnInit {
 
   show(user: User): void {
     debugger;
-    // this.getItemsThroughId(x.id);
     this.childModalComponent.modalShow(user);
   }
-
-  // getItemsThroughId(id: number): any {
-  //   debugger
-  //   return this.userService.getItemsThroughId(id).subscribe((user: User) => this.user = user);
-  // }
 
   ngOnInit() {
     this.getUser();

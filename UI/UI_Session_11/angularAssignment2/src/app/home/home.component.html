@@ -5,23 +5,18 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
     crossorigin="anonymous">
 </head>
-<!-- <router-outlet (lengthOfCart)="getCartLength(l)" (cartItem)="getCartItemArray(a)" (childEventIncrease)="quantityIncrease(product)" (childEventDecrease)="quantityDecrease(product)"></router-outlet> -->
 
 <body>
-
-<!-- </body> *ngIf="routingEnable==false"> -->
   <header class="border-bottom p-4 mb-2">
     <nav>
-      <a href="#" class="px-2 offset-md-1 text-dark">
+      <a routerLink="/home-cart" class="px-2 offset-md-1 text-dark">
         <i class="fas fa-leaf"></i>
       </a>
-      <a href="#" class="px-2 text-muted">
+      <a routerLink="/shopping-cart" class="px-2 text-muted">
         <i class="fas fa-shopping-cart"></i>
       </a>
-      <a routerLink="/shopping-cart" class="badge badge-warning p-2 rounded" (click)="addToJson()">{{cartLength}}</a>
+      <a class="badge badge-warning p-2 rounded" (click)="routerClick()">{{cartLength}}</a>
     </nav>
-    <!-- <router-outlet [length]="cartLength" [cartItemArray]="cartItemArray" (childEventIncrease)="quantityIncrease(product)" (childEventDecrease)="quantityDecrease(product)"></router-outlet> -->
-    <!-- <app-show-cart-item [length]="cartLength" [cartItemArray]="cartItemArray" (childEventIncrease)="quantityIncrease(product)" (childEventDecrease)="quantityDecrease(product)"></app-show-cart-item> -->
   </header>
   <section class="row">
     <div class="col-md-3 offset-md-1 p-2">
@@ -53,12 +48,11 @@
           <div class="card-body p-0 ">
             <h5 class="card-title px-4 pt-2 ">{{product.name}}</h5>
             <p class="card-text px-4 ">$ {{product.price}}</p>
-            <a *ngIf="booleanArray[product.id]!=true" href="# " class="btn btn-secondary btn-block" (click)=addToCart(product)>ADD TO CART</a>
+            <button *ngIf="booleanArray[product.id]!=true" class="btn btn-secondary btn-block" (click)=addToCart(product)>ADD TO CART</button>
             <div *ngIf="booleanArray[product.id]==true" class="row p-0 m-0">
-              <a class="btn btn-secondary col-3 text-white" (click)=quantityDecrease(product)>-</a>
-              <span class="col-6 border-top d-flex justify-content-center align-items-center">in cart</span>
-              <a class="btn btn-secondary col-3 text-white" (click)=quantityIncrease(product)>+</a>
-              <!-- {{this.cartItemArray[product].quantity}}  -->
+              <button class="btn btn-secondary col-3 text-white" (click)=quantityDecrease(product)>-</button>
+              <span class="col-6 border-top d-flex justify-content-center align-items-center">{{cartArray[product.id]}} in cart</span>
+              <button class="btn btn-secondary col-3 text-white" (click)=quantityIncrease(product)>+</button>
             </div>
           </div>
         </div>

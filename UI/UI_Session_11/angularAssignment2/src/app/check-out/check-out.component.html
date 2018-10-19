@@ -1,0 +1,78 @@
+<head>
+  <title>User Management System</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+    crossorigin="anonymous">
+</head>
+
+<body>
+  <header class="border-bottom p-4 mb-2">
+    <nav>
+      <a routerLink="/home-cart" class="px-2 offset-md-1 text-dark">
+        <i class="fas fa-leaf"></i>
+      </a>
+      <a routerLink="/shopping-cart" class="px-2 text-muted">
+        <i class="fas fa-shopping-cart"></i>
+      </a>
+      <a class="badge badge-warning p-2 rounded" (click)="routerClick()">{{cartList.length}}</a>
+    </nav>
+  </header>
+  <h1 style="padding-left: 11rem">
+    Shipping
+  </h1>
+  <section class="row">
+
+    <div class="col-5 offset-md-1">
+
+      <h4 class="m-2">
+        Name
+      </h4>
+      <input class="col p-2 my-2" type="text" required>
+      <br>
+      <h4 class="m-2">
+        Address
+      </h4>
+      <input class="col p-2 my-2" type="text" placeholder="line 1"  required>
+      <br>
+
+      <input class="col p-2 my-2" type="text" placeholder="line 2" required>
+      <br>
+      <h4 class="m-2">
+        City
+      </h4>
+      <input class="col p-2 my-2" type="text" name="city" required>
+<button class="btn btn-primary" (click)="placedOrder()">Place Order</button>
+    </div>
+    <div class="card col-4 p-4">
+      <h1>
+        Order Summary
+      </h1>
+      <p>
+        You have {{cartList.length}} items in your shopping cart.
+      </p>
+      <table>
+        <tr *ngFor="let item of cartList">
+          <td class="px-4 py-2 text-left" style="flex:1;">
+            {{item.quantity}} x {{item.Product.name}}
+          </td>
+          <td class="p-2 text-right" style="flex:1;">
+            $ {{item.Product.price*item.quantity}}
+          </td>
+        </tr>
+        <tr>
+          <td class="p-2 text-left" style="flex:1;">
+            <strong>
+              Total
+            </strong>
+          </td>
+          <td class="p-2 text-right" style="flex:1;">
+            <strong>
+              $ {{total.toFixed(2)}}
+            </strong>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </section>
+</body>

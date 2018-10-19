@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { Data } from "../fruits";
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Order } from '../order';
+import { map } from 'rxjs/operators';
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
@@ -19,6 +20,7 @@ export class DataServiceService {
   private _categoryBread: string = "?category=bread";
   private _categoryDairy: string = "?category=dairy";
   private _cartUrl: string = "http://localhost:3000/order"
+  private _userOrder: string = "http://localhost:3002/user-order";
 
   getDairyItems(): Observable<Data[]> {
     return this.http.get<Data[]>(`${this._urlAll}/${this._categoryDairy}`);
@@ -41,21 +43,24 @@ export class DataServiceService {
 
   saveCartItem(cartItemArray: Order[]) {
     debugger
-    return this.http.post<Order[]>(this._cartUrl,cartItemArray,httpOptions)
+    return this.http.post<Order[]>(this._cartUrl, cartItemArray, httpOptions)
   }
 
-  getCartItem():Observable<Order[]>{
+  getCartItem(): Observable<Order[]> {
     debugger
-    return this.http.get<Order[]>(this._cartUrl);
+    return this.http.get<Order[]>(this._cartUrl)
+      .pipe(map(response => response));
+  }
+  deleteCartItem(): Observable<Order[]> {
+    debugger
+    return this.http.delete<Order[]>(`${this._cartUrl}/1`);
   }
 
-  // addUser(user: Fruits): Observable<Fruits> {
-  //   debugger
-  //   return this.http.post<Fruits>(this._url, user, httpOptions);
-  // }
+  saveOrderItem(cartItem: Order[]) {
+    return this.http.post<Order[]>(this._userOrder, cartItem, httpOptions)
+  }
+  getOrderItems(): Observable<Order[]> {
+    return this.http.get<Order[]>(this._userOrder);
+  }
 
-  // updateUser(user: Fruits): Observable<any> {
-  //   debugger;
-  //   return this.http.put(`${this._url}/${user.id}`, user, httpOptions);
-  // }
 }
