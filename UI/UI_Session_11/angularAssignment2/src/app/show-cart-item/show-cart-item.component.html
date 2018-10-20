@@ -18,10 +18,10 @@
       <a routerLink="/shopping-cart" class="badge badge-warning p-2 rounded">{{cartList.length}}</a>
     </nav>
   </header>
-  <section style="margin-left: 11rem">
+  <section style="margin-left: 11rem" *ngIf="cartList!=null">
 
-    <h1>Shopping Cart</h1>
-    <section class="m-2 card col-6" *ngIf="cartList.length!=0">
+    <h1>Shopping Cart {{cartList.length}} </h1>
+    <section class="m-2 card col-6">
 
       <div class="card-body row p-4">
         <span class="col">
@@ -87,11 +87,11 @@
 
     </section>
   </section>
-  <section class="p-4" *ngIf="cartList.length==0">
+  <section class="p-4" *ngIf="cartList==null">
     <h1>Your Cart is empty</h1>
-    <button class="p-2" class="btn btn-outline-secondary text-dark">
+    <button routerLink="/home-cart" class="p-2" class="btn btn-outline-secondary text-dark">
       <i class="fas fa-arrow-circle-left"></i>
-      <span routerLink="/home-cart" class="px-2"> Go back to Home</span>
+      <span class="px-2"> Go back to Home</span>
     </button>
   </section>
 </body>

@@ -12,10 +12,13 @@
       <a routerLink="/home-cart" class="px-2 offset-md-1 text-dark">
         <i class="fas fa-leaf"></i>
       </a>
-      <a routerLink="/shopping-cart" class="px-2 text-muted">
-        <i class="fas fa-shopping-cart"></i>
+      <a (click)="routerClick()">
+        <span class="px-2 text-muted">
+          <i class="fas fa-shopping-cart"></i>
+        </span>
+        <span class="badge badge-warning p-2 rounded">{{cartLength}}</span>
       </a>
-      <a class="badge badge-warning p-2 rounded" (click)="routerClick()">{{cartLength}}</a>
+
     </nav>
   </header>
   <section class="row">
@@ -48,10 +51,12 @@
           <div class="card-body p-0 ">
             <h5 class="card-title px-4 pt-2 ">{{product.name}}</h5>
             <p class="card-text px-4 ">$ {{product.price}}</p>
-            <button *ngIf="booleanArray[product.id]!=true" class="btn btn-secondary btn-block" (click)=addToCart(product)>ADD TO CART</button>
+            <button *ngIf="booleanArray[product.id]!=true" class="btn btn-secondary btn-block" (click)=addToCart(product)>ADD
+              TO CART</button>
             <div *ngIf="booleanArray[product.id]==true" class="row p-0 m-0">
               <button class="btn btn-secondary col-3 text-white" (click)=quantityDecrease(product)>-</button>
-              <span class="col-6 border-top d-flex justify-content-center align-items-center">{{cartArray[product.id]}} in cart</span>
+              <span class="col-6 border-top d-flex justify-content-center align-items-center">{{cartArray[product.id]}}
+                in cart</span>
               <button class="btn btn-secondary col-3 text-white" (click)=quantityIncrease(product)>+</button>
             </div>
           </div>

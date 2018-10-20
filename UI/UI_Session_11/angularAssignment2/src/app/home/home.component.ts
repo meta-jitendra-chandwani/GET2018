@@ -23,6 +23,7 @@ export class HomeComponent implements OnInit {
   public booleanArray: boolean[] = [];
   public cartLength: number = 0;
   public value: number = -1;
+  public length: number;
 
   constructor(
     private dataService: DataServiceService,
