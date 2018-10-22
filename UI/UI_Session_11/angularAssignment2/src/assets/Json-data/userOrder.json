@@ -1,4 +1,28 @@
 {
   "user-order": [
+    [
+      {
+        "Product": {
+          "id": 1,
+          "name": "Apple",
+          "price": 45,
+          "description": "This is apple",
+          "imgUrl": "../../assets/Image/Fruit/apple.jpeg",
+          "category": "fruits"
+        },
+        "quantity": 2
+      },
+      {
+        "Product": {
+          "id": 2,
+          "name": "Banana",
+          "price": 45,
+          "description": "This is Banana",
+          "imgUrl": "../../assets/Image/Fruit/banana.jpeg",
+          "category": "fruits"
+        },
+        "quantity": 1
+      }
+    ]
   ]
 }
