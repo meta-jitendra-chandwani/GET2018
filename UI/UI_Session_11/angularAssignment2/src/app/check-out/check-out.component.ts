@@ -27,7 +27,7 @@ export class CheckOutComponent implements OnInit {
     }, 500);
   }
   functionCall() {
-    this.dataService.getCartItem().subscribe((data: Order[]) => {
+    this.dataService.getOrderItems().subscribe((data: Order[]) => {
       this.cartList = data[0],
         this.calculateTotal(this.cartList);
     });
@@ -44,11 +44,14 @@ export class CheckOutComponent implements OnInit {
   }
 
   placedOrder() {
+    this.dataService.deleteCartItem().subscribe((data) => {
+      console.log("Cart Empty Successfully");
+    });
     this.router.navigate(['/order-success']);
     // this.dataService.saveOrderItem(this.cartList)
-    this.dataService.deleteCartItem().subscribe((data) => {
-      console.log("success");
-    });
+    // this.dataService.deleteCartItem().subscribe((data) => {
+    //   console.log("success");
+    // });
   }
 
 }

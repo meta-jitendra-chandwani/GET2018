@@ -70,9 +70,9 @@ export class ShowCartItemComponent implements OnInit {
     this.dataService.saveOrderItem(this.cartList).subscribe((data) => {
       console.log("Data Save to Order")
     });
-    this.dataService.deleteCartItem().subscribe((data) => {
-      console.log("Cart Empty Successfully");
-    });
+    // this.dataService.deleteCartItem().subscribe((data) => {
+    //   console.log("Cart Empty Successfully");
+    // });
     this.router.navigate(['/check-out']);
   }
 }

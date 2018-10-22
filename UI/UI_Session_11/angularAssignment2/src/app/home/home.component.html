@@ -7,22 +7,22 @@
 </head>
 
 <body>
-  <header class="border-bottom p-4 mb-2">
-    <nav>
-      <a routerLink="/home-cart" class="px-2 offset-md-1 text-dark">
+  <header class="border-bottom p-4 mb-2 h4">
+    <nav class="ml-4">
+      <a routerLink="/home-cart" class="px-2 text-dark">
         <i class="fas fa-leaf"></i>
       </a>
       <a (click)="routerClick()">
-        <span class="px-2 text-muted">
+        <span class="px-2 text-muted h5">
           <i class="fas fa-shopping-cart"></i>
         </span>
-        <span class="badge badge-warning p-2 rounded">{{cartLength}}</span>
+        <span class="badge badge-warning text-muted rounded-circle h5">{{cartLength}}</span>
       </a>
 
     </nav>
   </header>
-  <section class="row">
-    <div class="col-md-3 offset-md-1 p-2">
+  <section class="row justify-content-center">
+    <div class="col-md-2 ml-5 p-2">
       <ul class="list-unstyled" id="sideMenu">
         <li class="list-group-item list-group-item" (click)="categoryType('all')" [class.isActive]="type === 'all'">
           All Categories
@@ -44,7 +44,7 @@
         </li>
       </ul>
     </div>
-    <section class="row mb-2 p-2 col-8">
+    <section class="row mb-2 p-2 col-6">
       <div class='col-5 mb-5' *ngFor="let product of data">
         <div class="card">
           <img class="card-img-top " height="200px " [src]="product.imgUrl " alt="Card image cap ">

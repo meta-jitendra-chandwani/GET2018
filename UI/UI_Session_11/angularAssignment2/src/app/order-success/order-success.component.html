@@ -1,3 +1,30 @@
-<p>
-  order-success works!
-</p>
+<head>
+  <title>User Management System</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+    crossorigin="anonymous">
+</head>
+
+<body>
+  <header class="border-bottom p-4 mb-2 h4">
+    <nav class="ml-4">
+      <a routerLink="/home-cart" class="px-2 text-dark">
+        <i class="fas fa-leaf"></i>
+      </a>
+      <a (click)="routerClick()">
+        <span class="px-2 text-muted h5">
+          <i class="fas fa-shopping-cart"></i>
+        </span>
+        <span class="badge badge-warning text-muted rounded-circle h5">{{cartLength}}</span>
+      </a>
+
+    </nav>
+  </header>
+  <section class="p-4">
+    <h1> Thank You! </h1>
+    <p>
+      We have receive your order and will process it within the next 24 hours!
+    </p>
+  </section>
+</body>
