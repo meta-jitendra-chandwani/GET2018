@@ -1,7 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { UserService } from '../user.service';
-import { NgForm } from '../../../node_modules/@angular/forms';
 import { User } from '../user';
 
 @Component({
@@ -10,48 +9,38 @@ import { User } from '../user';
   styleUrls: ['./modal-basic.component.css']
 })
 export class ModalBasicComponent {
+
+  public users: User[];
+  // public user: User;
+  // public content: string;
+  // public modalBoolean: boolean = true;
+
   constructor(private modalService: NgbModal,
     private userService: UserService,
   ) { }
 
-  users: User[];
-  public user: User;
-  content: string;
-  modalBoolean: boolean = true;
+  // updateModal(user) {
+  //   this.modalBoolean = false;
+  //   this.user = user;
+  //   this.modalService.open(this.content);
+  // }
 
-  modalShow(user) {
-    this.modalBoolean = false;
-    this.user = user;
-    this.modalService.open(this.content);
-  }
-
-  open(content) {
-    this.user = null;
-    this.modalBoolean = true;
-    this.content = content;
+  openModal(content) {
+    debugger
+    // this.user = null;
+    // this.modalBoolean = true;
+    // this.content = content;
     this.modalService.open(content);
   }
 
   addUser(name: string, mobile: string, location: string): void {
-    debugger
-    const newUser: User = new User();
-    newUser.name = name;
-    newUser.mobile = mobile;
-    newUser.location = location;
-    this.userService.addUser(newUser)
+    this.userService.addUser(new User(name, mobile, location))
       .subscribe(insertedUser => {
         this.users.push(insertedUser);
       })
   }
 
-  save(): void {
-    this.userService.updateUser(this.user).subscribe(() => this.goBack("Data Save"));
-    this.content = '';
-  }
-  goBack(message: string): void {
-    console.log(message);
-
-    this.modalService.dismissAll();
-    this.content = '';
-  }
+  // save(): void {
+  //   this.userService.updateUser(this.user).subscribe(() => console.log("Data Save"));
+  // }
 }
