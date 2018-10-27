@@ -21,7 +21,7 @@ export class UserComponent implements OnInit {
 
   show(user: User): void {
     debugger;
-    this.childModalComponent.modalShow(user);
+    this.childModalComponent.updateModal(user);
   }
 
   ngOnInit() {
@@ -30,7 +30,7 @@ export class UserComponent implements OnInit {
 
   getUser(): any {
     debugger
-    return this.userService.getItems().subscribe((data) => this.users.push(data));
+    return this.userService.getItems().subscribe((data) => this.users = data);
   }
 
 }

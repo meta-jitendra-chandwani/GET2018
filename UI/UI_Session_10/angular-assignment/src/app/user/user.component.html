@@ -40,10 +40,11 @@
                     <span>
                         <h5 class="card-title">{{user.name}}</h5>
                     </span>
-                    <span (click)=show(user)>
+                    <!-- <span (click)=show(user)>
                         <i class="fas fa-pen-alt float-right bg-primary text-dark p-2 rounded-circle">
                         </i>
-                    </span>
+                    </span> -->
+                    <app-update-modal [user]="user"></app-update-modal>
                     <p class="card-text">
                         <i class="fas fa-phone pr-2"></i>{{user.mobile}}</p>
                     <p class="card-text">
