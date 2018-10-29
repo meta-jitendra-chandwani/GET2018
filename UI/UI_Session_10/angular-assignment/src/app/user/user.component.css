@@ -6,6 +6,10 @@ h5{
     display: inline;
 }
 
+/* .update-hover:hover app-update-modal{
+    visibility: hidden;
+} */
+
 
 * {
     border: 0px solid black;

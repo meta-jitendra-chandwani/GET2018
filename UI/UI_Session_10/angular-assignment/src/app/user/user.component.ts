@@ -2,8 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter, ViewChild, AfterViewIni
 import { UserService } from '../user.service';
 import { User } from '../user';
 import { ModalBasicComponent } from '../modal-basic/modal-basic.component'
-import { Subscriber } from '../../../node_modules/rxjs';
-// import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user',
@@ -14,23 +13,20 @@ export class UserComponent implements OnInit {
   public users = []
   public user: User;
   constructor(
-    private userService: UserService
+    private userService: UserService,
+    private router: Router
   ) { }
-
-  @ViewChild(ModalBasicComponent) childModalComponent;
-
-  show(user: User): void {
-    debugger;
-    this.childModalComponent.updateModal(user);
-  }
 
   ngOnInit() {
     this.getUser();
   }
 
   getUser(): any {
-    debugger
-    return this.userService.getItems().subscribe((data) => this.users = data);
+    return this.userService.getItems().subscribe((response) => this.users = response);
+  }
+
+  updateModal(user:User){
+    this.router.navigate(['/modal',user.id]);
   }
 
 }
