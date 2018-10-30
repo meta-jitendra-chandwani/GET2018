@@ -8,6 +8,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ModalBasicComponent } from './modal-basic/modal-basic.component';
 import { AppRoutingModule } from './app-routing.module';
+import { AuthGuardService } from './auth-guard.service';
 
 @NgModule({
   declarations: [
@@ -21,9 +22,10 @@ import { AppRoutingModule } from './app-routing.module';
     FormsModule,
     Ng2SearchPipeModule,
     NgbModule,
-    AppRoutingModule
+    AppRoutingModule,
+    // AuthGuardService
   ],
-  providers: [],
+  providers: [AuthGuardService],
   bootstrap: [AppComponent],
 })
 export class AppModule { }
