@@ -4,17 +4,9 @@
 </head>
 
 <body class="container border">
-    <header class="container">
-        <div class="text-center py-1">
-            <h3>
-                <strong>User Management</strong>
-            </h3>
-        </div>
-    </header>
     <div class="d-flex justify-content-center align-items-center" id="dialogue-header">
         <strong *ngIf="user" class="p-3">Update User : {{user.name}}</strong>
         <strong *ngIf="modalBoolean" class="p-3">Add User</strong>
-
     </div>
     <div class="container">
         <form *ngIf="user">
@@ -35,7 +27,7 @@
             </div>
         </form>
         <form *ngIf="modalBoolean">
-             <div class="form-group input-group-sm">
+            <div class="form-group input-group-sm">
                 <label for="name">Name</label>
                 <input type="text" class="form-control" id="name" placeholder="Enter User name" [(ngModel)]="userName" name="name" />
             </div>
@@ -52,7 +44,7 @@
         </form>
     </div>
     <div class="modal-footer">
-        <button type="button" class="btn btn-light" (click)="close('Cancel Clicked')" style="color: gray">Cancel</button>
+        <button type="button" class="btn btn-light" (click)="close()" style="color: gray">Cancel</button>
         <button *ngIf="modalBoolean" class="btn btn-primary" (click)="addUser(userName,userMobile,userAddress);">Save</button>
         <button *ngIf="user" class="btn btn-primary" (click)="save()">Update Details</button>
     </div>

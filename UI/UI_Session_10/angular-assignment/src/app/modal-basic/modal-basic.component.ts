@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { UserService } from '../user.service';
 import { User } from '../user';
-import { Router,ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-modal-basic',
@@ -13,7 +13,7 @@ export class ModalBasicComponent {
 
   public users: User[];
   userId: number;
-  user:User;
+  user: User;
   private sub: any;
   // public user: User;
   // public content: string;
@@ -37,20 +37,24 @@ export class ModalBasicComponent {
       .subscribe(insertedUser => {
         this.users.push(insertedUser);
       })
-      this.router.navigate(['./home']);
+    this.router.navigate(['./home']);
   }
 
 
   ngOnInit() {
+    this.modalBoolean = true;
     this.sub = this.route.params.subscribe(params => {
-      this.userId = params.id;
+      if (params.id != undefined) {
+        this.userId = params.id;
+      }
     });
-   this.getUserById(this.userId);
+    this.userId != undefined ? this.getUserById(this.userId) : 0;
+
   }
 
-  getUserById(id:number):any{
-    this.modalBoolean=false;
-    this.userService.getItemById(id).subscribe((response : User)=> this.user = response);
+  getUserById(id: number): any {
+    this.modalBoolean = false;
+    this.userService.getItemById(id).subscribe((response: User) => this.user = response);
 
   }
 
@@ -60,6 +64,9 @@ export class ModalBasicComponent {
 
   save(): void {
     this.userService.updateUser(this.user).subscribe(() => console.log("Data Save"));
+    this.router.navigate(['/home']);
+  }
+  close(){
     this.router.navigate(['/home']);
   }
 }

@@ -7,7 +7,7 @@ import { UserComponent } from './user/user.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ModalBasicComponent } from './modal-basic/modal-basic.component';
-import { UpdateModalComponent } from './update-modal/update-modal.component';
+// import { UpdateModalComponent } from './update-modal/update-modal.component';
 import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -20,7 +20,7 @@ const routes: Routes = [
     AppComponent,
     UserComponent,
     ModalBasicComponent,
-    UpdateModalComponent,
+    // UpdateModalComponent,
   ],
   imports: [
     BrowserModule,
