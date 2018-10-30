@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { UserService } from '../user.service';
 import { User } from '../user';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -11,62 +10,47 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class ModalBasicComponent {
 
-  public users: User[];
-  userId: number;
-  user: User;
+  private userId: number;
+  private user: User;
   private sub: any;
-  // public user: User;
-  // public content: string;
-  public modalBoolean: boolean = true;
+  private modalBoolean: boolean = true;
 
-  constructor(private modalService: NgbModal,
+  constructor(
     private userService: UserService,
     private router: Router,
     private route: ActivatedRoute
   ) { }
-
-  openModal(content) {
-    debugger
-    this.user = null;
-    this.modalBoolean = true;
-    this.modalService.open(content);
-  }
-
-  addUser(name: string, mobile: string, location: string): void {
-    this.userService.addUser(new User(name, mobile, location))
-      .subscribe(insertedUser => {
-        this.users.push(insertedUser);
-      })
-    this.router.navigate(['./home']);
-  }
-
-
+  
   ngOnInit() {
-    this.modalBoolean = true;
     this.sub = this.route.params.subscribe(params => {
       if (params.id != undefined) {
         this.userId = params.id;
       }
     });
-    this.userId != undefined ? this.getUserById(this.userId) : 0;
+    this.userId ? this.getUserById(this.userId) : 0;
+  }
 
+  addUser(name: string, mobile: string, location: string): void {
+    this.userService.addUser(new User(name, mobile, location))
+      .subscribe();
+    this.router.navigate(['./home']);
   }
 
   getUserById(id: number): any {
     this.modalBoolean = false;
-    this.userService.getItemById(id).subscribe((response: User) => this.user = response);
-
-  }
-
-  ngOnDestroy() {
-    this.sub.unsubscribe();
+    this.userService.getUserById(id).subscribe((response: User) => this.user = response);
   }
 
   save(): void {
     this.userService.updateUser(this.user).subscribe(() => console.log("Data Save"));
     this.router.navigate(['/home']);
   }
+
   close(){
     this.router.navigate(['/home']);
+  }
+
+  ngOnDestroy() {
+    this.sub.unsubscribe();
   }
 }

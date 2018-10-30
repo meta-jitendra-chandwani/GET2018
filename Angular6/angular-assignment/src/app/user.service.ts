@@ -10,16 +10,15 @@ const httpOptions = {
 })
 export class UserService {
 
-  constructor(private http: HttpClient) { }
-
   private _url: string = "http://localhost:3000/user";
 
-  getItems(): Observable<User[]> {
+  constructor(private http: HttpClient) { }
+
+  getUser(): Observable<User[]> {
     return this.http.get<User[]>(this._url, httpOptions);
   }
 
-  getItemById(id: number): Observable<User> {
-    // alert(`${this._url}/${id}`)
+  getUserById(id: number): Observable<User> {
     return this.http.get<User>(`${this._url}/${id}`);
   }
 
