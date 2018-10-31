@@ -9,8 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit {
-  public users = []
-  public user: User;
+  public users : User[] = [];
   constructor(
     private userService: UserService,
     private router: Router
@@ -21,11 +20,11 @@ export class UserComponent implements OnInit {
   }
 
   getUser(): any {
-    return this.userService.getUser().subscribe((response) => this.users = response);
+    return this.userService.getUser().subscribe((response: User[]) => this.users = response);
   }
 
-  updateModal(user:User){
-    this.router.navigate(['/update-user',user.id]);
+  updateModal(user: User) {
+    this.router.navigate(['/update-user', user.id]);
   }
 
 }
