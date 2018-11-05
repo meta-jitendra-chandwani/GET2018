@@ -7,6 +7,7 @@ import { DropdownModule } from 'primeng/dropdown';
 import { ButtonModule } from 'primeng/button';
 import { CalendarModule } from 'primeng/calendar';
 import { CheckboxModule } from 'primeng/checkbox';
+import {TableModule} from 'primeng/table';
 
 @NgModule({
   exports: [
@@ -17,7 +18,8 @@ import { CheckboxModule } from 'primeng/checkbox';
     DropdownModule,
     ButtonModule,
     CalendarModule,
-    CheckboxModule
+    CheckboxModule,
+    TableModule
   ],
   declarations: []
 })
