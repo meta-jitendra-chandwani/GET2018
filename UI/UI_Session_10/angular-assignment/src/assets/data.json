@@ -14,7 +14,7 @@
     },
     {
       "id": 3,
-      "name": "Vaibhav",
+      "name": "Vaibhav Gautam",
       "mobile": "456987455",
       "location": "Rajasthan"
     },
@@ -43,22 +43,16 @@
       "location": "Delhi"
     },
     {
-      "name": "Sankalp",
-      "mobile": "145236987",
-      "location": "sankalp home",
+      "name": "Ayushi",
+      "mobile": "70775464",
+      "location": "Banglore",
       "id": 8
     },
     {
-      "name": "Vaibhav",
-      "mobile": "121345645",
-      "location": "78 kumba marg",
+      "name": "Hunny ",
+      "mobile": "737756566",
+      "location": "Mandsaur",
       "id": 9
-    },
-    {
-      "name": "Ayushi Nagar",
-      "mobile": "7073722442",
-      "location": "Banglore",
-      "id": 10
     }
   ]
 }

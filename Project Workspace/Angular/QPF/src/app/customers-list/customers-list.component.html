@@ -1,0 +1,95 @@
+<h1>Customers</h1>
+
+<div *ngFor="let customer of customers | async" style="width: 300px;">
+  <customer-details [customer]='customer'></customer-details>
+</div>
+
+<div>
+  <button type="button" class="button btn-danger" (click)='deleteCustomers()'>Delete All</button>
+</div>
+
+<p-tabView>
+  <p-tabPanel [header]="item.header" *ngFor="let item of items; let i = index" [selected]="i == 0">
+    {{item.content}}
+  </p-tabPanel>
+</p-tabView>
+
+<p-tabView>
+  <p-tabPanel header="Header 1">
+
+    <p-table [value]="fieldArray">
+      <ng-template pTemplate="header">
+        <tr>
+          <th *ngFor="let header of tableHeader">{{header}}</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-field>
+        <tr>
+          <td>
+            <p-dropdown [options]="timelinesItemList" [(ngModel)]="field.selectedTimeline"></p-dropdown>
+            <button (click)="show(field.selectedTimeline)">Value</button>
+          </td>
+          <td>
+            <p-dropdown [options]="achievmentsList" [(ngModel)]="field.selectedAchievement"></p-dropdown>
+          </td>
+          <td>
+            <button pButton type="button" label="Click" (click)="handleClick()" style="background-color: green"></button>
+            <p-button label="Click" (onClick)="handleClick()"></p-button>
+          </td>
+          <td>
+            <p-calendar [(ngModel)]="value"></p-calendar>
+            <p-calendar [(ngModel)]="dateValue" [minDate]="minDateValue" [maxDate]="maxDateValue" [readonlyInput]="true" [numberOfMonths]="3"></p-calendar>
+          </td>
+
+          <button pButton type="button" label="x" (click)="deleteRow(field)"></button>
+        </tr>
+      </ng-template>
+    </p-table>
+    <button pButton (click)="addRow()" label="Add Row"></button>
+
+    <!-- <table>
+      <tr>
+        <th>Timelines</th>
+        <th>My Achievement</th>
+        <th>Summary</th>
+        <th>Details</th>
+      </tr>
+      <tr *ngFor="let field of fieldArray; let i = index">
+        <!-- Drop down menu 
+        <td>
+          <p-dropdown [options]="timelinesItemList" [(ngModel)]="field.selectedTimeline"></p-dropdown>
+          <button (click)="show(field.selectedTimeline)">Value</button>
+        </td>
+        <!-- Drop down menu 
+        <td>
+          <p-dropdown [options]="achievmentsList" [(ngModel)]="field.selectedAchievement"></p-dropdown>
+        </td>
+        <!-- Button 
+        <td>
+          <button pButton type="button" label="Click" (click)="handleClick()" style="background-color: green"></button>
+          <p-button label="Click" (onClick)="handleClick()"></p-button>
+
+        </td>
+        <!-- Calendar 
+        <td>
+          <p-calendar [(ngModel)]="value"></p-calendar>
+          <p-calendar [(ngModel)]="dateValue" [minDate]="minDateValue" [maxDate]="maxDateValue" [readonlyInput]="true" [numberOfMonths]="3"></p-calendar>
+
+        </td>
+        <td>
+          <p-calendar [(ngModel)]="dateValue" [showTransitionOptions]="'10ms'" [hideTransitionOptions]="'5ms'"></p-calendar>
+        </td>
+        <button (click)="deleteRow(i)">x</button>
+      </tr>
+      <button (click)="addRow()">Add Row</button>
+    </table> -->
+    <p-checkbox name="groupname" value="val1" [(ngModel)]="selectedValues" label="Value 1"></p-checkbox>
+    <p-checkbox name="groupname" value="val2" [(ngModel)]="selectedValues" label="Value 2"></p-checkbox>
+  </p-tabPanel>
+  <p-tabPanel header="Header 2">
+    Content 2
+  </p-tabPanel>
+  <p-tabPanel header="Header 3">
+    Content 3
+  </p-tabPanel>
+</p-tabView>

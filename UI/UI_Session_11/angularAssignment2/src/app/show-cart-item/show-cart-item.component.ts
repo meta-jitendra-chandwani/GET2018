@@ -17,7 +17,7 @@ export class ShowCartItemComponent implements OnInit {
   @Output() cartItem = new EventEmitter();
   public length: number;
   public cartItemArray: Order;
-  public cartList;
+  public cartList = null;
   public sub;
   public total: number = 0;
   constructor(
@@ -27,6 +27,7 @@ export class ShowCartItemComponent implements OnInit {
 
 
   ngOnInit() {
+    debugger
     this.spinner.show();
 
     setTimeout(() => {
@@ -59,12 +60,19 @@ export class ShowCartItemComponent implements OnInit {
 
   clearCart() {
     debugger
+    this.cartList==null;
     this.dataService.deleteCartItem().subscribe((data) => {
-      console.log("success");
+      console.log("Cart Empty Successfully");
     });
   }
 
   checkout() {
+    this.dataService.saveOrderItem(this.cartList).subscribe((data) => {
+      console.log("Data Save to Order")
+    });
+    // this.dataService.deleteCartItem().subscribe((data) => {
+    //   console.log("Cart Empty Successfully");
+    // });
     this.router.navigate(['/check-out']);
   }
 }

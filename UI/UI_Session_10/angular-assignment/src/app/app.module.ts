@@ -7,12 +7,14 @@ import { UserComponent } from './user/user.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ModalBasicComponent } from './modal-basic/modal-basic.component';
+import { UpdateModalComponent } from './update-modal/update-modal.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UserComponent,
     ModalBasicComponent,
+    UpdateModalComponent,
   ],
   imports: [
     BrowserModule,

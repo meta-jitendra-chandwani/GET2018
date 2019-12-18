@@ -3,4 +3,9 @@ export class User {
   name: string;
   mobile: string;
   location: string;
+  constructor(name,mobile,location){
+    this.name=name;
+    this.mobile=mobile;
+    this.location=location
+  }
 }

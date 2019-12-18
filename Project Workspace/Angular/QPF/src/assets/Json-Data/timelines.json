@@ -1,0 +1,28 @@
+{
+    "timelines": [
+        {
+            "id": 0,
+            "timelinePeriod": "Week : Oct 1"
+        },
+        {
+            "id": 1,
+            "timelinePeriod": "Week : Oct 8"
+        },
+        {
+            "id": 2,
+            "timelinePeriod": "Week : Oct 15"
+        },
+        {
+            "id": 3,
+            "timelinePeriod": "Week : Oct 22"
+        },
+        {
+            "id": 4,
+            "timelinePeriod": "Week : Oct 29"
+        },
+        {
+            "id": 5,
+            "timelinePeriod": "Week : Oct 1"
+        }
+    ]
+}

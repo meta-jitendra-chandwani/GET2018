@@ -7,19 +7,22 @@
 </head>
 
 <body>
-  <header class="border-bottom p-4 mb-2">
-    <nav>
-      <a routerLink="/home-cart" class="px-2 offset-md-1 text-dark">
+  <header class="border-bottom p-4 mb-2 h4">
+    <nav class="ml-4">
+      <a routerLink="/home-cart" class="px-2 text-dark">
         <i class="fas fa-leaf"></i>
       </a>
-      <a routerLink="/shopping-cart" class="px-2 text-muted">
-        <i class="fas fa-shopping-cart"></i>
+      <a (click)="routerClick()">
+        <span class="px-2 text-muted h5">
+          <i class="fas fa-shopping-cart"></i>
+        </span>
+        <span class="badge badge-warning text-muted rounded-circle h5">{{cartLength}}</span>
       </a>
-      <a class="badge badge-warning p-2 rounded" (click)="routerClick()">{{cartLength}}</a>
+
     </nav>
   </header>
-  <section class="row">
-    <div class="col-md-3 offset-md-1 p-2">
+  <section class="row justify-content-center">
+    <div class="col-md-2 ml-5 p-2">
       <ul class="list-unstyled" id="sideMenu">
         <li class="list-group-item list-group-item" (click)="categoryType('all')" [class.isActive]="type === 'all'">
           All Categories
@@ -41,17 +44,19 @@
         </li>
       </ul>
     </div>
-    <section class="row mb-2 p-2 col-8">
+    <section class="row mb-2 p-2 col-6">
       <div class='col-5 mb-5' *ngFor="let product of data">
         <div class="card">
           <img class="card-img-top " height="200px " [src]="product.imgUrl " alt="Card image cap ">
           <div class="card-body p-0 ">
             <h5 class="card-title px-4 pt-2 ">{{product.name}}</h5>
             <p class="card-text px-4 ">$ {{product.price}}</p>
-            <button *ngIf="booleanArray[product.id]!=true" class="btn btn-secondary btn-block" (click)=addToCart(product)>ADD TO CART</button>
+            <button *ngIf="booleanArray[product.id]!=true" class="btn btn-secondary btn-block" (click)=addToCart(product)>ADD
+              TO CART</button>
             <div *ngIf="booleanArray[product.id]==true" class="row p-0 m-0">
               <button class="btn btn-secondary col-3 text-white" (click)=quantityDecrease(product)>-</button>
-              <span class="col-6 border-top d-flex justify-content-center align-items-center">{{cartArray[product.id]}} in cart</span>
+              <span class="col-6 border-top d-flex justify-content-center align-items-center">{{cartArray[product.id]}}
+                in cart</span>
               <button class="btn btn-secondary col-3 text-white" (click)=quantityIncrease(product)>+</button>
             </div>
           </div>
